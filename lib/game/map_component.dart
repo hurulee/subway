@@ -1,39 +1,70 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'models.dart';
 
-// Shared layout constants
-const double kTrackX = 130.0;
-const double kTrackTopY = 100.0;
-const double kTrackBottomY = 2800.0;
-const double kTrackLength = kTrackBottomY - kTrackTopY;
+// ── Layout constants ──────────────────────────────────────────────────────────
+const double kExpressTrackX = 80.0;
+const double kLocalTrackX   = 210.0;
+const double kTrackTopY     = 100.0;
+const double kTrackBottomY  = 4200.0;
+const double kTrackLength   = kTrackBottomY - kTrackTopY;
 
-const double kPlatformLeft = kTrackX + 18.0;
-const double kPlatformRight = kPlatformLeft + 180.0;
+// Express platform sits in the gap between the two tracks
+const double kExpressPlatLeft  = kExpressTrackX + 16.0; //  96
+const double kExpressPlatRight = kLocalTrackX - 16.0;   // 194
+
+// Local platform is to the right of the local track
+const double kLocalPlatLeft  = kLocalTrackX + 16.0;     // 226
+const double kLocalPlatRight = 365.0;
+
 const double kPlatformHalfLen = 130.0;
 
-double stationWorldY(double trackT) =>
-    kTrackBottomY - trackT * kTrackLength;
+double stationWorldY(double trackT) => kTrackBottomY - trackT * kTrackLength;
 
 class MapComponent {
-  final List<Station> stations;
-  late final List<double> stationYs;
+  final List<Station> localStations;
+  final List<Station> expressStations;
+  final List<SwitchPoint> switchPoints;
 
-  MapComponent({required this.stations}) {
-    stationYs = stations.map((s) => stationWorldY(s.trackPosition)).toList();
+  late final List<double> _localYs;
+  late final List<double> _expressYs;
+  late final List<double> _switchYs;
+
+  MapComponent({
+    required this.localStations,
+    required this.expressStations,
+    required this.switchPoints,
+  }) {
+    _localYs   = localStations.map((s) => stationWorldY(s.trackPosition)).toList();
+    _expressYs = expressStations.map((s) => stationWorldY(s.trackPosition)).toList();
+    _switchYs  = switchPoints.map((sp) => stationWorldY(sp.trackPosition + sp.windowSize / 2)).toList();
   }
 
-  /// Render in world space. Canvas has already been translated by the caller.
   void render(Canvas canvas) {
-    _drawTrack(canvas);
-    for (int i = 0; i < stations.length; i++) {
-      _drawStation(canvas, stations[i], stationYs[i]);
+    _drawTrack(canvas, kLocalTrackX);
+    _drawTrack(canvas, kExpressTrackX);
+
+    for (int i = 0; i < switchPoints.length; i++) {
+      _drawSwitchZone(canvas, switchPoints[i]);
+    }
+    for (int i = 0; i < localStations.length; i++) {
+      _drawStation(canvas, localStations[i], _localYs[i],
+          trackX: kLocalTrackX,
+          platLeft: kLocalPlatLeft,
+          platRight: kLocalPlatRight);
+    }
+    for (int i = 0; i < expressStations.length; i++) {
+      _drawStation(canvas, expressStations[i], _expressYs[i],
+          trackX: kExpressTrackX,
+          platLeft: kExpressPlatLeft,
+          platRight: kExpressPlatRight);
     }
   }
 
-  void _drawTrack(Canvas canvas) {
-    // Tunnel floor between rails
+  void _drawTrack(Canvas canvas, double trackX) {
+    // Tunnel floor
     canvas.drawRect(
-      Rect.fromLTWH(kTrackX - 16, kTrackTopY, 32, kTrackLength),
+      Rect.fromLTWH(trackX - 16, kTrackTopY, 32, kTrackLength),
       Paint()..color = const Color(0xFF2A2A2A),
     );
 
@@ -45,8 +76,7 @@ class MapComponent {
     final tieCount = (kTrackLength / tieStep).ceil();
     for (int i = 0; i <= tieCount; i++) {
       final y = kTrackTopY + i * tieStep;
-      canvas.drawLine(
-          Offset(kTrackX - 14, y), Offset(kTrackX + 14, y), tiePaint);
+      canvas.drawLine(Offset(trackX - 14, y), Offset(trackX + 14, y), tiePaint);
     }
 
     // Rails
@@ -54,39 +84,81 @@ class MapComponent {
       ..color = const Color(0xFF999999)
       ..strokeWidth = 4
       ..strokeCap = StrokeCap.square;
-    canvas.drawLine(Offset(kTrackX - 9, kTrackTopY),
-        Offset(kTrackX - 9, kTrackBottomY), railPaint);
-    canvas.drawLine(Offset(kTrackX + 9, kTrackTopY),
-        Offset(kTrackX + 9, kTrackBottomY), railPaint);
+    canvas.drawLine(Offset(trackX - 9, kTrackTopY), Offset(trackX - 9, kTrackBottomY), railPaint);
+    canvas.drawLine(Offset(trackX + 9, kTrackTopY), Offset(trackX + 9, kTrackBottomY), railPaint);
   }
 
-  void _drawStation(Canvas canvas, Station station, double worldY) {
+  void _drawSwitchZone(Canvas canvas, SwitchPoint sp) {
+    final topY    = stationWorldY(sp.trackPosition);
+    final bottomY = stationWorldY(sp.trackPosition + sp.windowSize);
+    final midY    = (topY + bottomY) / 2;
+    final midX    = (kLocalTrackX + kExpressTrackX) / 2;
+
+    final linePaint = Paint()
+      ..color = const Color(0xFFFFDD00).withValues(alpha: 0.6)
+      ..strokeWidth = 2.0;
+
+    // Diagonal crossover lines
+    canvas.drawLine(Offset(kLocalTrackX, topY),    Offset(kExpressTrackX, bottomY), linePaint);
+    canvas.drawLine(Offset(kExpressTrackX, topY),  Offset(kLocalTrackX, bottomY),   linePaint);
+
+    // Diamond marker at midpoint
+    final path = Path()
+      ..moveTo(midX, midY - 10)
+      ..lineTo(midX + 9, midY)
+      ..lineTo(midX, midY + 10)
+      ..lineTo(midX - 9, midY)
+      ..close();
+    canvas.drawPath(path, Paint()..color = const Color(0xFFFFDD00));
+
+    // "SW" label
+    final tp = TextPainter(
+      text: const TextSpan(
+        text: 'SW',
+        style: TextStyle(color: Colors.black, fontSize: 8, fontWeight: FontWeight.bold),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    tp.paint(canvas, Offset(midX - tp.width / 2, midY - tp.height / 2));
+  }
+
+  void _drawStation(
+    Canvas canvas,
+    Station station,
+    double worldY, {
+    required double trackX,
+    required double platLeft,
+    required double platRight,
+  }) {
     final paint = Paint();
+    final platWidth = platRight - platLeft;
 
     // Platform body
     paint.color = const Color(0xFF999999);
     canvas.drawRect(
-      Rect.fromLTWH(kPlatformLeft, worldY - kPlatformHalfLen,
-          kPlatformRight - kPlatformLeft, kPlatformHalfLen * 2),
+      Rect.fromLTWH(platLeft, worldY - kPlatformHalfLen, platWidth, kPlatformHalfLen * 2),
       paint,
     );
 
     // Yellow safety edge
     paint.color = const Color(0xFFFFCC00);
     canvas.drawRect(
-      Rect.fromLTWH(kPlatformLeft, worldY - kPlatformHalfLen,
-          6, kPlatformHalfLen * 2),
+      Rect.fromLTWH(platLeft, worldY - kPlatformHalfLen, 5, kPlatformHalfLen * 2),
       paint,
     );
 
-    // Station dot on track
-    paint.color = Colors.white;
-    paint.style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(kTrackX, worldY), 8, paint);
-    paint.color = const Color(0xFF0039A6);
-    paint.style = PaintingStyle.stroke;
-    paint.strokeWidth = 2.5;
-    canvas.drawCircle(Offset(kTrackX, worldY), 8, paint);
+    // Track dot
+    paint
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(Offset(trackX, worldY), 7, paint);
+    paint
+      ..color = station.track == TrackType.express
+          ? const Color(0xFFAA4400)
+          : const Color(0xFF0039A6)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.5;
+    canvas.drawCircle(Offset(trackX, worldY), 7, paint);
     paint.style = PaintingStyle.fill;
 
     // Station name
@@ -94,23 +166,25 @@ class MapComponent {
       text: TextSpan(
         text: station.name,
         style: const TextStyle(
-            color: Colors.white, fontSize: 11, fontWeight: FontWeight.w700),
+            color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700),
       ),
       textDirection: TextDirection.ltr,
-    )..layout(maxWidth: kPlatformRight - kPlatformLeft - 16);
+    )..layout(maxWidth: platWidth - 24);
     namePainter.paint(
-        canvas, Offset(kPlatformLeft + 12, worldY - namePainter.height / 2));
+        canvas, Offset(platLeft + 8, worldY - namePainter.height / 2));
 
     // Passenger badge
     if (station.passengers > 0) {
-      final badgeX = kPlatformRight - 22;
-      paint.color = const Color(0xFFFFCC00);
-      canvas.drawCircle(Offset(badgeX, worldY), 14, paint);
+      final badgeX = platRight - 16;
+      paint.color = station.track == TrackType.express
+          ? const Color(0xFFFF6600)
+          : const Color(0xFFFFCC00);
+      canvas.drawCircle(Offset(badgeX, worldY), 13, paint);
       final numPainter = TextPainter(
         text: TextSpan(
           text: '${station.passengers}',
           style: const TextStyle(
-              color: Colors.black, fontSize: 11, fontWeight: FontWeight.bold),
+              color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
         ),
         textDirection: TextDirection.ltr,
       )..layout();

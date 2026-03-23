@@ -43,12 +43,12 @@ class _GameScreenState extends State<GameScreen> {
       body: GameWidget(
         game: _game,
         overlayBuilderMap: {
-          'hud': (context, game) => HudOverlay(game: game as SubwayGame),
-          'brake': (context, game) => BrakeButton(game: game as SubwayGame),
-          'levelComplete': (context, game) =>
-              LevelCompleteOverlay(game: game as SubwayGame),
+          'hud':           (context, game) => HudOverlay(game: game as SubwayGame),
+          'brake':         (context, game) => BrakeButton(game: game as SubwayGame),
+          'switch':        (context, game) => SwitchButton(game: game as SubwayGame),
+          'levelComplete': (context, game) => LevelCompleteOverlay(game: game as SubwayGame),
         },
-        initialActiveOverlays: const ['hud', 'brake'],
+        initialActiveOverlays: const ['hud', 'brake', 'switch'],
       ),
     );
   }
@@ -72,16 +72,23 @@ class HudOverlay extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _hudPill('Passengers: ${data.passengers}', Colors.green),
-                  _hudPill('Time: ${data.elapsed.toStringAsFixed(1)}s',
-                      Colors.blue),
+                  _hudPill('Time: ${data.elapsed.toStringAsFixed(1)}s', Colors.blue),
                 ],
               ),
               const SizedBox(height: 8),
-              _hudPill(
-                  data.nextStation.isNotEmpty
-                      ? 'Next: ${data.nextStation}'
-                      : '',
-                  Colors.orange),
+              Row(
+                children: [
+                  if (data.nextStation.isNotEmpty)
+                    _hudPill('Next: ${data.nextStation}', Colors.orange),
+                  const SizedBox(width: 8),
+                  _hudPill(
+                    data.currentTrack == TrackType.express ? 'EXPRESS' : 'LOCAL',
+                    data.currentTrack == TrackType.express
+                        ? const Color(0xFFCC4400)
+                        : const Color(0xFF0039A6),
+                  ),
+                ],
+              ),
             ],
           ),
         );
@@ -93,7 +100,7 @@ class HudOverlay extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.8),
+        color: color.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(text,
@@ -122,18 +129,16 @@ class BrakeButton extends StatelessWidget {
             builder: (context, braking, _) {
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 100),
-                width: 120,
-                height: 120,
+                width: 110,
+                height: 110,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: braking ? Colors.red : Colors.red.shade800,
                   boxShadow: braking
-                      ? [
-                          BoxShadow(
-                              color: Colors.red.withValues(alpha: 0.6),
-                              blurRadius: 20,
-                              spreadRadius: 5)
-                        ]
+                      ? [BoxShadow(
+                          color: Colors.red.withValues(alpha: 0.6),
+                          blurRadius: 20,
+                          spreadRadius: 5)]
                       : [],
                 ),
                 child: const Center(
@@ -146,6 +151,57 @@ class BrakeButton extends StatelessWidget {
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class SwitchButton extends StatelessWidget {
+  final SubwayGame game;
+  const SwitchButton({super.key, required this.game});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 40, right: 20),
+        child: ValueListenableBuilder<bool>(
+          valueListenable: game.switchAvailableNotifier,
+          builder: (context, available, _) {
+            return GestureDetector(
+              onTap: available ? () => game.requestSwitch() : null,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: 90,
+                height: 90,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: available
+                      ? const Color(0xFFFFAA00)
+                      : Colors.grey.shade800,
+                  boxShadow: available
+                      ? [BoxShadow(
+                          color: const Color(0xFFFFAA00).withValues(alpha: 0.6),
+                          blurRadius: 18,
+                          spreadRadius: 4)]
+                      : [],
+                ),
+                child: Center(
+                  child: Text(
+                    'SWITCH\nTRACK',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: available ? Colors.black : Colors.grey.shade600,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

@@ -11,6 +11,30 @@ class TrainComponent {
   double targetSpeed = 0.0;
   double trackT = 0.0;
 
+  // Lane / switch animation  (0.0 = local, 1.0 = express)
+  double laneOffset = 0.0;
+  bool isSwitching = false;
+  static const double switchDuration = 0.7;
+  double _switchProgress = 0.0;
+  double _switchStartOffset = 0.0;
+  double _switchTargetOffset = 0.0;
+
+  void switchToTrack(double targetLaneOffset) {
+    if (isSwitching) return;
+    _switchStartOffset = laneOffset;
+    _switchTargetOffset = targetLaneOffset;
+    _switchProgress = 0.0;
+    isSwitching = true;
+  }
+
+  /// Tilt angle (radians) — peaks at midpoint of switch, used by caller for rotation.
+  double get switchTiltAngle {
+    if (!isSwitching) return 0.0;
+    return sin(pi * _switchProgress) *
+        (_switchTargetOffset > _switchStartOffset ? 1 : -1) *
+        0.14; // ~8 degrees
+  }
+
   // Car dimensions (top-down view)
   static const double carW = 28.0;
   static const double carH = 55.0;
@@ -25,6 +49,21 @@ class TrainComponent {
   final Random _rng = Random();
 
   void update(double dt) {
+    // Switch lane animation
+    if (isSwitching) {
+      _switchProgress += dt / switchDuration;
+      if (_switchProgress >= 1.0) {
+        _switchProgress = 1.0;
+        laneOffset = _switchTargetOffset;
+        isSwitching = false;
+      } else {
+        final t = _switchProgress;
+        final eased = t < 0.5 ? 2 * t * t : 1 - pow(-2 * t + 2, 2) / 2;
+        laneOffset = _switchStartOffset +
+            (_switchTargetOffset - _switchStartOffset) * eased;
+      }
+    }
+
     if (isBraking) {
       speed -= brakeDeceleration * dt;
       if (speed > 10) {
