@@ -15,12 +15,14 @@ class Level {
   final List<Station> stations;
   final int startIndex;
   final int endIndex;
+  final double parTime;
 
   const Level({
     required this.name,
     required this.stations,
     required this.startIndex,
     required this.endIndex,
+    required this.parTime,
   });
 }
 
@@ -28,12 +30,18 @@ class HudData {
   final int passengers;
   final double elapsed;
   final String nextStation;
+  final int passengerScore;
+  final int timeBonus;
 
   const HudData({
     required this.passengers,
     required this.elapsed,
     required this.nextStation,
+    this.passengerScore = 0,
+    this.timeBonus = 0,
   });
+
+  int get totalScore => passengerScore + timeBonus;
 }
 
 // NYC-inspired A line subset
@@ -47,6 +55,7 @@ final level1 = Level(
   ],
   startIndex: 0,
   endIndex: 4,
+  parTime: 30.0,
 );
 
 // Use this as the actual level data
@@ -63,4 +72,5 @@ final gameLevel = Level(
   ],
   startIndex: 0,
   endIndex: 6,
+  parTime: 60.0,
 );

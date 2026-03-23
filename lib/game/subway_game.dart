@@ -22,6 +22,7 @@ class SubwayGame extends FlameGame {
   bool _stoppedAtStation = false;
   double _stopTimer = 0.0;
   static const double stopDuration = 2.0;
+  double _startupDelay = 0.9;
 
   static const double cruiseSpeed = 180.0;
   static const double perfectZone = 14.0;
@@ -35,8 +36,6 @@ class SubwayGame extends FlameGame {
     _map = MapComponent(stations: level.stations);
     _train = TrainComponent();
     _train.trackT = level.stations[level.startIndex].trackPosition;
-    _stoppedAtStation = true;
-    _stopTimer = stopDuration - 0.9;
   }
 
   double _worldYForT(double t) => kTrackBottomY - t * kTrackLength;
@@ -46,6 +45,10 @@ class SubwayGame extends FlameGame {
     super.update(dt);
     if (_levelDone) return;
 
+    if (_startupDelay > 0) {
+      _startupDelay -= dt;
+      return;
+    }
     _elapsed += dt;
     _train.isBraking = brakingNotifier.value;
     _train.targetSpeed = (_stoppedAtStation || brakingNotifier.value) ? 0.0 : cruiseSpeed;
@@ -53,7 +56,8 @@ class SubwayGame extends FlameGame {
 
     if (_stoppedAtStation) {
       _stopTimer += dt;
-      if (_stopTimer >= stopDuration) {
+      final earlyDepart = !brakingNotifier.value && _stopTimer >= 0.5;
+      if (earlyDepart || _stopTimer >= stopDuration) {
         _stoppedAtStation = false;
         _stopTimer = 0;
         _nextStationIndex++;
@@ -68,7 +72,7 @@ class SubwayGame extends FlameGame {
       _checkArrival();
     }
 
-    _updateHud();
+    if (!_levelDone) _updateHud();
   }
 
   void _checkArrival() {
@@ -104,7 +108,6 @@ class SubwayGame extends FlameGame {
     }
 
     _train.speed = 0;
-    brakingNotifier.value = false;
     _stoppedAtStation = true;
   }
 
@@ -118,6 +121,15 @@ class SubwayGame extends FlameGame {
 
   void _finishLevel() {
     _levelDone = true;
+    final passengerScore = _passengers * 10;
+    final timeBonus = ((level.parTime - _elapsed) * 10).round().clamp(0, 999999);
+    hudNotifier.value = HudData(
+      passengers: _passengers,
+      elapsed: _elapsed,
+      nextStation: '',
+      passengerScore: passengerScore,
+      timeBonus: timeBonus,
+    );
     overlays.add('levelComplete');
     overlays.remove('brake');
   }
@@ -149,8 +161,7 @@ class SubwayGame extends FlameGame {
     brakingNotifier.value = false;
     hudNotifier.value =
         const HudData(passengers: 0, elapsed: 0, nextStation: '');
-    _stoppedAtStation = true;
-    _stopTimer = stopDuration - 0.9;
+    _startupDelay = 0.9;
   }
 
   @override
