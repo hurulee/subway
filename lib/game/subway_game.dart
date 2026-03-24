@@ -17,11 +17,18 @@ class SubwayGame extends FlameGame {
   late TrainComponent _train;
   late MapComponent _map;
 
-  final Level level = gameLevel;
+  // ── Level progression ──────────────────────────────────────────────────────
+  int _currentLevelIndex = 0;
+  int _totalScore = 0;
 
-  // Per-track station lists (filtered from level.stations on load)
-  late final List<Station> _localStations;
-  late final List<Station> _expressStations;
+  Level get level => gameLevels[_currentLevelIndex];
+  int get currentLevelNumber => _currentLevelIndex + 1;
+  bool get isLastLevel => _currentLevelIndex >= gameLevels.length - 1;
+  int get totalScore => _totalScore;
+
+  // Per-track station lists
+  late List<Station> _localStations;
+  late List<Station> _expressStations;
 
   // Per-track next-station indices
   int _nextLocalIdx = 1;
@@ -38,25 +45,31 @@ class SubwayGame extends FlameGame {
   int _currentSwitchIdx = 0;
   bool _switchAvailable = false;
 
-  // Signals: pre-computed (localSignal, expressSignal) per switch segment
-  late final List<(SignalColor, SignalColor)> _segmentSignals;
+  // Signals
+  late List<(SignalColor, SignalColor)> _segmentSignals;
 
   // Obstacles
   final Set<int> _hitObstacles = {};
   int _penaltyCount = 0;
   double _penaltyFlashTimer = 0.0;
 
-  static const double cruiseSpeed = 160.0;
-  static const double perfectZone = 80.0;
-  static const double goodZone = 130.0;
   static const double trainScreenFraction = 0.68;
 
   double get _activeCruiseSpeed => _activeTrack == TrackType.express
-      ? cruiseSpeed * level.expressSpeedMultiplier
-      : cruiseSpeed;
+      ? level.cruiseSpeed * level.expressSpeedMultiplier
+      : level.cruiseSpeed;
+
+  // Braking zones scale with platform length
+  double get _perfectZone => level.platformHalfLen * 0.615;
+  double get _goodZone => level.platformHalfLen;
 
   @override
   Future<void> onLoad() async {
+    _train = TrainComponent();
+    _initLevel();
+  }
+
+  void _initLevel() {
     _localStations   = level.stations.where((s) => s.track == TrackType.local).toList();
     _expressStations = level.stations.where((s) => s.track == TrackType.express).toList();
 
@@ -65,9 +78,34 @@ class SubwayGame extends FlameGame {
       expressStations: _expressStations,
       switchPoints:    level.switchPoints,
       obstacles:       level.obstacles,
+      platformHalfLen: level.platformHalfLen,
     );
-    _train = TrainComponent();
+
     _train.trackT = _localStations[level.startIndex].trackPosition;
+    _train.speed = 0;
+    _train.laneOffset = 0.0;
+    _train.isSwitching = false;
+
+    _passengers = 0;
+    _elapsed = 0;
+    _levelDone = false;
+    _nextLocalIdx = 1;
+    _nextExpressIdx = 1;
+    _activeTrack = TrackType.local;
+    _stoppedAtStation = false;
+    _stopTimer = 0;
+    _currentSwitchIdx = 0;
+    _switchAvailable = false;
+    _hitObstacles.clear();
+    _penaltyCount = 0;
+    _penaltyFlashTimer = 0;
+    _startupDelay = 0.9;
+
+    brakingNotifier.value = false;
+    switchAvailableNotifier.value = false;
+    hudNotifier.value = HudData(
+      passengers: 0, elapsed: 0, nextStation: '', level: currentLevelNumber,
+    );
 
     _segmentSignals = _computeSegmentSignals();
   }
@@ -171,9 +209,9 @@ class SubwayGame extends FlameGame {
     final trainY  = _worldYForT(_train.trackT);
     final distPx  = trainY - targetY;
 
-    if (_train.speed < 8 && distPx < goodZone * 2) {
+    if (_train.speed < 8 && distPx < _goodZone * 2) {
       _arriveAtStation(idx);
-    } else if (distPx < -goodZone * 3) {
+    } else if (distPx < -_goodZone * 3) {
       _missStation(idx);
     }
   }
@@ -185,9 +223,9 @@ class SubwayGame extends FlameGame {
       final distPx =
           (_worldYForT(_train.trackT) - _worldYForT(station.trackPosition)).abs();
       int boarded;
-      if (distPx <= perfectZone) {
+      if (distPx <= _perfectZone) {
         boarded = station.passengers;
-      } else if (distPx <= goodZone) {
+      } else if (distPx <= _goodZone) {
         boarded = (station.passengers * 0.6).round();
       } else {
         boarded = (station.passengers * 0.25).round();
@@ -206,8 +244,7 @@ class SubwayGame extends FlameGame {
     }
   }
 
-  /// Keep the inactive track's index pointing at the next station ahead,
-  /// so that switching to it immediately gives a valid target.
+  /// Keep the inactive track's index pointing at the next station ahead.
   void _syncPassiveTrackIndex() {
     final passiveStations =
         _activeTrack == TrackType.local ? _expressStations : _localStations;
@@ -235,7 +272,6 @@ class SubwayGame extends FlameGame {
     }
 
     final sp = level.switchPoints[_currentSwitchIdx];
-    // Use the front of the train (leading edge) as the reference point
     final frontT = _train.trackT + TrainComponent.h / 2 / kTrackLength;
     final inWindow = frontT >= sp.trackPosition &&
         frontT <= sp.trackPosition + sp.windowSize;
@@ -245,7 +281,6 @@ class SubwayGame extends FlameGame {
       switchAvailableNotifier.value = inWindow;
     }
 
-    // Missed the window — advance to the next switch point
     if (!inWindow && frontT > sp.trackPosition + sp.windowSize) {
       _currentSwitchIdx++;
     }
@@ -257,8 +292,7 @@ class SubwayGame extends FlameGame {
         _activeTrack == TrackType.local ? TrackType.express : TrackType.local;
     _activeTrack = targetTrack;
 
-    // Pre-clear obstacles on the new track that are already behind the train,
-    // so they don't trigger a false penalty after the switch.
+    // Pre-clear obstacles on the new track already behind the train
     for (int i = 0; i < level.obstacles.length; i++) {
       final obs = level.obstacles[i];
       if (obs.track == targetTrack && obs.trackPosition <= _train.trackT) {
@@ -277,7 +311,6 @@ class SubwayGame extends FlameGame {
       if (_hitObstacles.contains(i)) continue;
       final obs = level.obstacles[i];
       if (obs.track != _activeTrack) continue;
-      // Front of train in trackT space
       final frontT = _train.trackT + TrainComponent.h / (2 * kTrackLength);
       if (frontT >= obs.trackPosition) {
         _hitObstacles.add(i);
@@ -297,6 +330,9 @@ class SubwayGame extends FlameGame {
     final passengerScore = _passengers * 10;
     final timeBonus =
         ((level.parTime - _elapsed) * 10).round().clamp(0, 999999);
+    final levelScore = (passengerScore + timeBonus - _penaltyCount * 50).clamp(0, 999999);
+    _totalScore += levelScore;
+
     hudNotifier.value = HudData(
       passengers: _passengers,
       elapsed: _elapsed,
@@ -305,10 +341,17 @@ class SubwayGame extends FlameGame {
       timeBonus: timeBonus,
       currentTrack: _activeTrack,
       penaltyCount: _penaltyCount,
+      level: currentLevelNumber,
     );
-    overlays.add('levelComplete');
+
     overlays.remove('brake');
     overlays.remove('switch');
+
+    if (isLastLevel) {
+      overlays.add('gameComplete');
+    } else {
+      overlays.add('levelComplete');
+    }
   }
 
   void _updateHud() {
@@ -324,6 +367,7 @@ class SubwayGame extends FlameGame {
       localSignal: sig.$1,
       expressSignal: sig.$2,
       penaltyCount: _penaltyCount,
+      level: currentLevelNumber,
     );
   }
 
@@ -332,31 +376,42 @@ class SubwayGame extends FlameGame {
     brakingNotifier.value = braking;
   }
 
-  void restartLevel() {
+  /// Advance to next level after completing current one.
+  void proceedToNextLevel() {
+    if (isLastLevel) return;
     overlays.remove('levelComplete');
     overlays.add('brake');
     overlays.add('switch');
-    _passengers = 0;
-    _elapsed = 0;
-    _levelDone = false;
-    _nextLocalIdx = 1;
-    _nextExpressIdx = 1;
-    _activeTrack = TrackType.local;
-    _stoppedAtStation = false;
-    _stopTimer = 0;
-    _currentSwitchIdx = 0;
-    _switchAvailable = false;
-    switchAvailableNotifier.value = false;
-    _hitObstacles.clear();
-    _penaltyCount = 0;
-    _penaltyFlashTimer = 0;
-    _train.trackT = _localStations[level.startIndex].trackPosition;
-    _train.speed = 0;
-    _train.laneOffset = 0.0;
-    _train.isSwitching = false;
-    brakingNotifier.value = false;
-    hudNotifier.value = const HudData(passengers: 0, elapsed: 0, nextStation: '');
-    _startupDelay = 0.9;
+    _currentLevelIndex++;
+    _initLevel();
+  }
+
+  /// Restart current level (retry).
+  void restartLevel() {
+    overlays.remove('levelComplete');
+    overlays.remove('gameComplete');
+    overlays.add('brake');
+    overlays.add('switch');
+    // Don't subtract previously accumulated score from prior levels
+    _totalScore -= _computeLevelScore();
+    _initLevel();
+  }
+
+  /// Restart entire game from level 1.
+  void restartGame() {
+    overlays.remove('gameComplete');
+    overlays.remove('levelComplete');
+    overlays.add('brake');
+    overlays.add('switch');
+    _currentLevelIndex = 0;
+    _totalScore = 0;
+    _initLevel();
+  }
+
+  int _computeLevelScore() {
+    final passengerScore = _passengers * 10;
+    final timeBonus = ((level.parTime - _elapsed) * 10).round().clamp(0, 999999);
+    return (passengerScore + timeBonus - _penaltyCount * 50).clamp(0, 999999);
   }
 
   @override
@@ -371,7 +426,6 @@ class SubwayGame extends FlameGame {
       Rect.fromLTWH(0, 0, size.x, size.y),
       Paint()..color = const Color(0xFF111111),
     );
-    // Left tunnel wall
     canvas.drawRect(
       Rect.fromLTWH(0, 0, kExpressTrackX - 20, size.y),
       Paint()..color = const Color(0xFF1C1C1C),
@@ -383,7 +437,6 @@ class SubwayGame extends FlameGame {
 
     _map.render(canvas);
 
-    // Train X interpolated between local and express track centres
     final trainX = kLocalTrackX +
         (kExpressTrackX - kLocalTrackX) * _train.laneOffset;
     final trainLeft = trainX - TrainComponent.w / 2;
@@ -439,7 +492,7 @@ class SubwayGame extends FlameGame {
       Paint()..color = fillColor,
     );
 
-    final markerX = barX + barW * (1 - perfectZone / 400);
+    final markerX = barX + barW * (1 - _perfectZone / 400);
     canvas.drawLine(
       Offset(markerX, barY - 5),
       Offset(markerX, barY + barH + 5),
@@ -479,7 +532,6 @@ class SubwayGame extends FlameGame {
     if (_penaltyFlashTimer <= 0) return;
     final alpha = (_penaltyFlashTimer / 2.0).clamp(0.0, 1.0);
 
-    // Red screen tint
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.x, size.y),
       Paint()..color = Color.fromRGBO(220, 0, 0, alpha * 0.30),

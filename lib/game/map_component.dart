@@ -12,8 +12,6 @@ const double kExpressPlatLeft  = kExpressTrackX + 16.0;
 const double kExpressPlatRight = kLocalTrackX - 16.0;
 const double kLocalPlatLeft    = kLocalTrackX + 16.0;
 const double kLocalPlatRight   = 365.0;
-const double kPlatformHalfLen  = 130.0;
-
 double stationWorldY(double trackT) => kTrackBottomY - trackT * kTrackLength;
 
 class MapComponent {
@@ -21,6 +19,7 @@ class MapComponent {
   final List<Station> expressStations;
   final List<SwitchPoint> switchPoints;
   final List<Obstacle> obstacles;
+  final double platformHalfLen;
 
   late final List<double> _localYs;
   late final List<double> _expressYs;
@@ -30,6 +29,7 @@ class MapComponent {
     required this.expressStations,
     required this.switchPoints,
     required this.obstacles,
+    this.platformHalfLen = 130.0,
   }) {
     _localYs   = localStations.map((s) => stationWorldY(s.trackPosition)).toList();
     _expressYs = expressStations.map((s) => stationWorldY(s.trackPosition)).toList();
@@ -118,13 +118,13 @@ class MapComponent {
 
     paint.color = const Color(0xFF999999);
     canvas.drawRect(
-      Rect.fromLTWH(platLeft, worldY - kPlatformHalfLen, platWidth, kPlatformHalfLen * 2),
+      Rect.fromLTWH(platLeft, worldY - platformHalfLen, platWidth, platformHalfLen * 2),
       paint,
     );
 
     paint.color = const Color(0xFFFFCC00);
     canvas.drawRect(
-      Rect.fromLTWH(platLeft, worldY - kPlatformHalfLen, 5, kPlatformHalfLen * 2),
+      Rect.fromLTWH(platLeft, worldY - platformHalfLen, 5, platformHalfLen * 2),
       paint,
     );
 

@@ -47,6 +47,7 @@ class _GameScreenState extends State<GameScreen> {
           'brake':         (context, game) => BrakeButton(game: game as SubwayGame),
           'switch':        (context, game) => SwitchButton(game: game as SubwayGame),
           'levelComplete': (context, game) => LevelCompleteOverlay(game: game as SubwayGame),
+          'gameComplete':  (context, game) => GameCompleteOverlay(game: game as SubwayGame),
         },
         initialActiveOverlays: const ['hud', 'brake', 'switch'],
       ),
@@ -72,6 +73,7 @@ class HudOverlay extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _hudPill('Passengers: ${data.passengers}', Colors.green),
+                  _hudPill('LVL ${data.level}', Colors.purple),
                   _hudPill('Time: ${data.elapsed.toStringAsFixed(1)}s', Colors.blue),
                 ],
               ),
@@ -264,8 +266,8 @@ class LevelCompleteOverlay extends StatelessWidget {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('Level Complete!',
-                    style: TextStyle(
+                Text('Level ${data.level} Complete!',
+                    style: const TextStyle(
                         color: Colors.yellow,
                         fontSize: 28,
                         fontWeight: FontWeight.bold)),
@@ -280,23 +282,85 @@ class LevelCompleteOverlay extends StatelessWidget {
                     style: const TextStyle(color: Colors.red, fontSize: 16),
                   ),
                 const Divider(color: Colors.yellow, height: 32),
-                Text('Total Score: ${data.totalScore}',
+                Text('Level Score: ${data.totalScore}',
+                    style: const TextStyle(color: Colors.white, fontSize: 18)),
+                const SizedBox(height: 4),
+                Text('Total Score: ${game.totalScore}',
                     style: const TextStyle(
                         color: Colors.yellow,
                         fontSize: 24,
                         fontWeight: FontWeight.bold)),
                 const SizedBox(height: 24),
                 ElevatedButton(
-                  onPressed: () => game.restartLevel(),
+                  onPressed: () => game.proceedToNextLevel(),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.yellow,
                       foregroundColor: Colors.black),
-                  child: const Text('Play Again',
+                  child: const Text('Next Level',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ],
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class GameCompleteOverlay extends StatelessWidget {
+  final SubwayGame game;
+  const GameCompleteOverlay({super.key, required this.game});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        padding: const EdgeInsets.all(32),
+        decoration: BoxDecoration(
+          color: Colors.black87,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.amber, width: 3),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('🏁  Game Complete!',
+                style: TextStyle(
+                    color: Colors.amber,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            const Text('All 5 levels cleared',
+                style: TextStyle(color: Colors.white70, fontSize: 16)),
+            const Divider(color: Colors.amber, height: 40),
+            ValueListenableBuilder<HudData>(
+              valueListenable: game.hudNotifier,
+              builder: (context, data, _) => Column(
+                children: [
+                  Text('Last Level Score: ${data.totalScore}',
+                      style: const TextStyle(color: Colors.white, fontSize: 16)),
+                  const SizedBox(height: 8),
+                  Text('Total Score: ${game.totalScore}',
+                      style: const TextStyle(
+                          color: Colors.amber,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 28),
+            ElevatedButton(
+              onPressed: () => game.restartGame(),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amber,
+                  foregroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
+              child: const Text('Play Again',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            ),
+          ],
         ),
       ),
     );
