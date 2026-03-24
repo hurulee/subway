@@ -1,9 +1,10 @@
 enum TrackType { local, express }
+enum SignalColor { green, red }
 
 class Station {
   final String name;
   final int passengers;
-  final double trackPosition; // 0.0 – 1.0 along the track
+  final double trackPosition;
   final TrackType track;
 
   const Station({
@@ -15,9 +16,15 @@ class Station {
 }
 
 class SwitchPoint {
-  final double trackPosition; // trackT where the switch window opens
-  final double windowSize;    // trackT range the button stays active
+  final double trackPosition;
+  final double windowSize;
   const SwitchPoint({required this.trackPosition, required this.windowSize});
+}
+
+class Obstacle {
+  final double trackPosition;
+  final TrackType track;
+  const Obstacle({required this.trackPosition, required this.track});
 }
 
 class Level {
@@ -28,6 +35,7 @@ class Level {
   final double parTime;
   final List<SwitchPoint> switchPoints;
   final double expressSpeedMultiplier;
+  final List<Obstacle> obstacles;
 
   const Level({
     required this.name,
@@ -37,6 +45,7 @@ class Level {
     required this.parTime,
     this.switchPoints = const [],
     this.expressSpeedMultiplier = 1.0,
+    this.obstacles = const [],
   });
 }
 
@@ -47,6 +56,9 @@ class HudData {
   final int passengerScore;
   final int timeBonus;
   final TrackType currentTrack;
+  final SignalColor localSignal;
+  final SignalColor expressSignal;
+  final int penaltyCount;
 
   const HudData({
     required this.passengers,
@@ -55,9 +67,14 @@ class HudData {
     this.passengerScore = 0,
     this.timeBonus = 0,
     this.currentTrack = TrackType.local,
+    this.localSignal = SignalColor.green,
+    this.expressSignal = SignalColor.green,
+    this.penaltyCount = 0,
   });
 
-  int get totalScore => passengerScore + timeBonus;
+  int get penaltyDeduction => penaltyCount * 50;
+  int get totalScore =>
+      (passengerScore + timeBonus - penaltyDeduction).clamp(0, 999999);
 }
 
 final gameLevel = Level(
@@ -86,4 +103,13 @@ final gameLevel = Level(
     SwitchPoint(trackPosition: 0.68, windowSize: 0.06), // after Broad Channel
   ],
   expressSpeedMultiplier: 1.35,
+  // One obstacle per segment, always on different tracks so at least one is safe.
+  // Segment 1 (0.16–0.38): obstacle on local  → signals: local=RED,    express=GREEN
+  // Segment 2 (0.44–0.68): obstacle on express → signals: local=GREEN, express=RED
+  // Segment 3 (0.74–0.94): obstacle on local  → signals: local=RED,    express=GREEN
+  obstacles: const [
+    Obstacle(trackPosition: 0.27, track: TrackType.local),
+    Obstacle(trackPosition: 0.56, track: TrackType.express),
+    Obstacle(trackPosition: 0.84, track: TrackType.local),
+  ],
 );

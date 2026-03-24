@@ -89,10 +89,45 @@ class HudOverlay extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  _signalLight('EXPRESS', data.expressSignal),
+                  const SizedBox(width: 10),
+                  _signalLight('LOCAL', data.localSignal),
+                ],
+              ),
             ],
           ),
         );
       },
+    );
+  }
+
+  Widget _signalLight(String label, SignalColor signal) {
+    final isGreen = signal == SignalColor.green;
+    final color = isGreen ? Colors.green : Colors.red;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+        color: Colors.black54,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: color, width: 2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 12,
+            height: 12,
+            decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+          ),
+          const SizedBox(width: 6),
+          Text(label,
+              style: TextStyle(
+                  color: color, fontWeight: FontWeight.bold, fontSize: 12)),
+        ],
+      ),
     );
   }
 
@@ -239,6 +274,11 @@ class LevelCompleteOverlay extends StatelessWidget {
                     style: const TextStyle(color: Colors.white, fontSize: 18)),
                 Text('Time: ${data.elapsed.toStringAsFixed(1)}s  (+${data.timeBonus} pts)',
                     style: const TextStyle(color: Colors.white, fontSize: 18)),
+                if (data.penaltyCount > 0)
+                  Text(
+                    '${data.penaltyCount}× obstacle  (−${data.penaltyDeduction} pts)',
+                    style: const TextStyle(color: Colors.red, fontSize: 16),
+                  ),
                 const Divider(color: Colors.yellow, height: 32),
                 Text('Total Score: ${data.totalScore}',
                     style: const TextStyle(

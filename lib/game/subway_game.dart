@@ -38,6 +38,14 @@ class SubwayGame extends FlameGame {
   int _currentSwitchIdx = 0;
   bool _switchAvailable = false;
 
+  // Signals: pre-computed (localSignal, expressSignal) per switch segment
+  late final List<(SignalColor, SignalColor)> _segmentSignals;
+
+  // Obstacles
+  final Set<int> _hitObstacles = {};
+  int _penaltyCount = 0;
+  double _penaltyFlashTimer = 0.0;
+
   static const double cruiseSpeed = 160.0;
   static const double perfectZone = 80.0;
   static const double goodZone = 130.0;
@@ -56,10 +64,46 @@ class SubwayGame extends FlameGame {
       localStations:   _localStations,
       expressStations: _expressStations,
       switchPoints:    level.switchPoints,
+      obstacles:       level.obstacles,
     );
     _train = TrainComponent();
     _train.trackT = _localStations[level.startIndex].trackPosition;
+
+    _segmentSignals = _computeSegmentSignals();
   }
+
+  /// Pre-compute (localSignal, expressSignal) for each switch segment.
+  List<(SignalColor, SignalColor)> _computeSegmentSignals() {
+    final signals = <(SignalColor, SignalColor)>[];
+    for (int i = 0; i < level.switchPoints.length; i++) {
+      final segStart = level.switchPoints[i].trackPosition +
+          level.switchPoints[i].windowSize;
+      final segEnd = i + 1 < level.switchPoints.length
+          ? level.switchPoints[i + 1].trackPosition
+          : 1.0;
+
+      bool localRed = false;
+      bool expressRed = false;
+      for (final obs in level.obstacles) {
+        if (obs.trackPosition >= segStart && obs.trackPosition <= segEnd) {
+          if (obs.track == TrackType.local) localRed = true;
+          if (obs.track == TrackType.express) expressRed = true;
+        }
+      }
+      // Safety: never both red
+      if (localRed && expressRed) expressRed = false;
+      signals.add((
+        localRed ? SignalColor.red : SignalColor.green,
+        expressRed ? SignalColor.red : SignalColor.green,
+      ));
+    }
+    // Past all switch points: both green
+    signals.add((SignalColor.green, SignalColor.green));
+    return signals;
+  }
+
+  (SignalColor, SignalColor) get _currentSignals =>
+      _segmentSignals[_currentSwitchIdx.clamp(0, _segmentSignals.length - 1)];
 
   double _worldYForT(double t) => kTrackBottomY - t * kTrackLength;
 
@@ -88,6 +132,7 @@ class SubwayGame extends FlameGame {
     }
 
     _elapsed += dt;
+    if (_penaltyFlashTimer > 0) _penaltyFlashTimer -= dt;
     _train.isBraking = brakingNotifier.value;
     _train.targetSpeed =
         (_stoppedAtStation || brakingNotifier.value) ? 0.0 : _activeCruiseSpeed;
@@ -112,6 +157,7 @@ class SubwayGame extends FlameGame {
       if (_train.trackT >= 1.0) { _finishLevel(); return; }
       _syncPassiveTrackIndex();
       _checkSwitchWindow();
+      _checkObstacles();
     }
 
     if (!_levelDone) _updateHud();
@@ -210,10 +256,40 @@ class SubwayGame extends FlameGame {
     final targetTrack =
         _activeTrack == TrackType.local ? TrackType.express : TrackType.local;
     _activeTrack = targetTrack;
+
+    // Pre-clear obstacles on the new track that are already behind the train,
+    // so they don't trigger a false penalty after the switch.
+    for (int i = 0; i < level.obstacles.length; i++) {
+      final obs = level.obstacles[i];
+      if (obs.track == targetTrack && obs.trackPosition <= _train.trackT) {
+        _hitObstacles.add(i);
+      }
+    }
+
     _train.switchToTrack(targetTrack == TrackType.express ? 1.0 : 0.0);
     _switchAvailable = false;
     switchAvailableNotifier.value = false;
     _currentSwitchIdx++;
+  }
+
+  void _checkObstacles() {
+    for (int i = 0; i < level.obstacles.length; i++) {
+      if (_hitObstacles.contains(i)) continue;
+      final obs = level.obstacles[i];
+      if (obs.track != _activeTrack) continue;
+      // Front of train in trackT space
+      final frontT = _train.trackT + TrainComponent.h / (2 * kTrackLength);
+      if (frontT >= obs.trackPosition) {
+        _hitObstacles.add(i);
+        _applyPenalty();
+      }
+    }
+  }
+
+  void _applyPenalty() {
+    _elapsed += 10.0;
+    _penaltyCount++;
+    _penaltyFlashTimer = 2.0;
   }
 
   void _finishLevel() {
@@ -228,6 +304,7 @@ class SubwayGame extends FlameGame {
       passengerScore: passengerScore,
       timeBonus: timeBonus,
       currentTrack: _activeTrack,
+      penaltyCount: _penaltyCount,
     );
     overlays.add('levelComplete');
     overlays.remove('brake');
@@ -238,11 +315,15 @@ class SubwayGame extends FlameGame {
     final idx = _nextActiveIdx;
     final nextName =
         idx < _activeStations.length ? _activeStations[idx].name : '';
+    final sig = _currentSignals;
     hudNotifier.value = HudData(
       passengers: _passengers,
       elapsed: _elapsed,
       nextStation: nextName,
       currentTrack: _activeTrack,
+      localSignal: sig.$1,
+      expressSignal: sig.$2,
+      penaltyCount: _penaltyCount,
     );
   }
 
@@ -266,6 +347,9 @@ class SubwayGame extends FlameGame {
     _currentSwitchIdx = 0;
     _switchAvailable = false;
     switchAvailableNotifier.value = false;
+    _hitObstacles.clear();
+    _penaltyCount = 0;
+    _penaltyFlashTimer = 0;
     _train.trackT = _localStations[level.startIndex].trackPosition;
     _train.speed = 0;
     _train.laneOffset = 0.0;
@@ -322,6 +406,7 @@ class SubwayGame extends FlameGame {
     // ── Screen-space overlays ───────────────────────────────────────────────
     _renderApproachBar(canvas);
     _renderSpeedIndicator(canvas);
+    _renderPenaltyFlash(canvas);
   }
 
   void _renderApproachBar(Canvas canvas) {
@@ -388,5 +473,33 @@ class SubwayGame extends FlameGame {
       textDirection: TextDirection.ltr,
     )..layout();
     tp.paint(canvas, Offset(size.x - tp.width - 16, size.y - 195));
+  }
+
+  void _renderPenaltyFlash(Canvas canvas) {
+    if (_penaltyFlashTimer <= 0) return;
+    final alpha = (_penaltyFlashTimer / 2.0).clamp(0.0, 1.0);
+
+    // Red screen tint
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, size.x, size.y),
+      Paint()..color = Color.fromRGBO(220, 0, 0, alpha * 0.30),
+    );
+
+    if (alpha > 0.4) {
+      final tp = TextPainter(
+        text: const TextSpan(
+          text: '⚠  OBSTACLE HIT  ⚠\n+10s penalty  −50 pts',
+          style: TextStyle(
+              color: Colors.red,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              height: 1.6),
+        ),
+        textDirection: TextDirection.ltr,
+        textAlign: TextAlign.center,
+      )..layout(maxWidth: size.x - 32);
+      tp.paint(
+          canvas, Offset((size.x - tp.width) / 2, size.y * 0.38));
+    }
   }
 }
