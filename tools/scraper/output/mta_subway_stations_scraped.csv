@@ -1,0 +1,748 @@
+line,sequence,section,station_name,stop_type,structure,transfers,ada,terminal
+1,1,Bronx stations,Van Cortlandt Park-242,local,elevated,No Transfers,no,yes
+1,2,Bronx stations,238 St,local,elevated,No Transfers,no,no
+1,3,Bronx stations,231 St,local,elevated,No Transfers,yes,no
+1,4,Manhattan stations,Marble Hill-225 St,local,elevated,No Transfers,no,no
+1,5,Manhattan stations,215 St,local,elevated,No Transfers,no,no
+1,6,Manhattan stations,207 St,local,elevated,No Transfers,no,no
+1,7,Manhattan stations,Dyckman St,local,elevated,No Transfers,yes,no
+1,8,Manhattan stations,191 St,local,subway,No Transfers,no,no
+1,9,Manhattan stations,181 St,local,subway,No Transfers,no,no
+1,10,Manhattan stations,168 St,local,subway,"A,C all times except late nights",no,no
+1,11,Manhattan stations,157 St,local,subway,No Transfers,no,no
+1,12,Manhattan stations,145 St,local,subway,No Transfers,no,no
+1,13,Manhattan stations,137 St-City College,local,subway,No Transfers,no,no
+1,14,Manhattan stations,125 St,local,elevated,No Transfers,no,no
+1,15,Manhattan stations,116 St-Columbia University,local,subway,M60 SBS Bus to Airport,no,no
+1,16,Manhattan stations,Cathedral Pkwy (110 St),local,subway,No Transfers,no,no
+1,17,Manhattan stations,103 St,local,subway,No Transfers,no,no
+1,18,Manhattan stations,96 St,local_and_express,subway,"2,3",yes,no
+1,19,Manhattan stations,86 St,local,subway,No Transfers,no,no
+1,20,Manhattan stations,79 St,local,subway,No Transfers,no,no
+1,21,Manhattan stations,72 St,local,subway,"2,3",no,no
+1,22,Manhattan stations,66 St-Lincoln Center,local,subway,No Transfers,yes,no
+1,23,Manhattan stations,59 St-Columbus Circle,local,subway,"A,B weekdays until 11 p.m., C all times except late nights, D",yes,no
+1,24,Manhattan stations,50 St,local,subway,No Transfers,no,no
+1,25,Manhattan stations,Times Sq-42 St,local_and_express,subway,"N,Q,2,3,7 all times, W weekdays only, R,S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes
+1,26,Manhattan stations,34 St-Penn Station,local_and_express,subway,"2,3 all times except late nights",yes,no
+1,27,Manhattan stations,28 St,local,subway,No Transfers,no,no
+1,28,Manhattan stations,23 St,local,subway,No Transfers,no,no
+1,29,Manhattan stations,18 St,local,subway,No Transfers,no,no
+1,30,Manhattan stations,14 St,local_and_express,subway,"F,L,M all times except late nights, 2,3 all times except late nights",yes,no
+1,31,Manhattan stations,Christopher St-Stonewall,local,subway,No Transfers,no,no
+1,32,Manhattan stations,Houston St,local,subway,No Transfers,no,no
+1,33,Manhattan stations,Canal St,local,subway,No Transfers,no,no
+1,34,Manhattan stations,Franklin St,local,subway,No Transfers,no,no
+1,35,Manhattan stations,Chambers St,local_and_express,subway,"2,3 all times except late nights",yes,no
+1,36,Manhattan stations,WTC Cortlandt,local,subway,No Transfers,yes,no
+1,37,Manhattan stations,Rector St,local,subway,No Transfers,no,no
+1,38,Manhattan stations,South Ferry,local,subway,"R,W weekdays only",no,no
+2,1,Bronx stations,Wakefield-241 St,local,elevated,5 limited weekday rush hour service,no,no
+2,2,Bronx stations,Nereid Av,local,elevated,5 limited weekday rush hour service,no,no
+2,3,Bronx stations,233 St,local,elevated,5 limited weekday rush hour service,yes,no
+2,4,Bronx stations,225 St,local,elevated,5 limited weekday rush hour service,no,no
+2,5,Bronx stations,219 St,local,elevated,5 limited weekday rush hour service,no,no
+2,6,Bronx stations,Gun Hill Rd,local,elevated,5 limited weekday rush hour service,yes,no
+2,7,Bronx stations,Burke Av,local,elevated,5 limited weekday rush hour service,no,no
+2,8,Bronx stations,Allerton Av,local,elevated,5 limited weekday rush hour service,no,no
+2,9,Bronx stations,Pelham Pkwy,local,elevated,5 limited weekday rush hour service,yes,no
+2,10,Bronx stations,Bronx Park East,local,elevated,5 limited weekday rush hour service,no,no
+2,11,Bronx stations,E 180 St,local_and_express,elevated,5 all times,yes,no
+2,12,Bronx stations,West Farms Sq-E Tremont Av,local,elevated,5 all times except rush hour and late nights,no,no
+2,13,Bronx stations,174 St,local,elevated,5 all times except rush hour and late nights,no,no
+2,14,Bronx stations,Freeman St,local,elevated,5 all times except rush hour and late nights,no,no
+2,15,Bronx stations,Simpson St,local,elevated,5 all times except rush hour and late nights,yes,no
+2,16,Bronx stations,Intervale Av,local,elevated,5 all times except rush hour and late nights,no,no
+2,17,Bronx stations,Prospect Av,local,elevated,5 all times except rush hour and late nights,no,no
+2,18,Bronx stations,Jackson Av,local,elevated,5 all times except rush hour and late nights,no,no
+2,19,Bronx stations,3 Av-149 St,local_and_express,subway,5 all times except late nights,yes,no
+2,20,Bronx stations,149 St-Grand Concourse,local_and_express,subway,5 all times except late nights,no,no
+2,21,Manhattan stations,135 St,local,subway,3,yes,no
+2,22,Manhattan stations,125 St,local,subway,"3,SBS M60 to Airport",no,no
+2,23,Manhattan stations,116 St,local,subway,3,no,no
+2,24,Manhattan stations,110 St-Malcolm X Plaza,local,subway,3,no,no
+2,25,Manhattan stations,96 St,local_and_express,subway,"1,3",yes,no
+2,26,Manhattan stations,72 St,local_and_express,subway,"1,3",yes,no
+2,27,Manhattan stations,Times Sq-42 St,local_and_express,subway,"N,Q,1,3,7 all times, W weekdays only, R,S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes
+2,28,Manhattan stations,34 St-Penn Station,local_and_express,subway,"1,3 all times except late nights",yes,no
+2,29,Manhattan stations,14 St,local_and_express,subway,"F,L all times, M weekdays only, 1,3 all times except late nights",yes,no
+2,30,Manhattan stations,Chambers St,local_and_express,subway,"1,3 all times except late nights",yes,no
+2,31,Manhattan stations,Park Place,local,subway,"A,C all times except late nights,E,R,W weekdays only,3 all times except late nights",no,no
+2,32,Manhattan stations,Fulton St,local,subway,"A,C all times except late nights,J,Z rush hour only, 3 all times except late nights, 4, 5 all times except late nights",yes,no
+2,33,Manhattan stations,Wall St,local,subway,3 all times except late nights,no,no
+2,34,Brooklyn stations,Clark St,local,subway,3 all times except late nights,no,no
+2,35,Brooklyn stations,Borough Hall,local_and_express,subway,"4, 3 all times except late nights, 5 weekdays only",yes,no
+2,36,Brooklyn stations,Hoyt St,local,subway,3 all times except late nights,no,no
+2,37,Brooklyn stations,Nevins St,local_and_express,subway,"3 all times except late nights, 4, 5 weekdays only",no,no
+2,38,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"4, B weekdays until 11pm, D,N,Q,R,W limited rush hour, 3 all times except late nights, 5 weekdays only",yes,no
+2,39,Brooklyn stations,Bergen St,local,subway,3 all times except late nights,no,no
+2,40,Brooklyn stations,Grand Army Plaza,local,subway,3 all times except late nights,no,no
+2,41,Brooklyn stations,Eastern Pkwy-Brooklyn Museum,local,subway,3 all times except late nights,yes,no
+2,42,Brooklyn stations,Franklin Av-Medgar Evers College,local_and_express,subway,"3 all times except late nights, 4 all times, 5 weekdays only",no,no
+2,43,Brooklyn stations,President St-Medgar Evers College,local,subway,5 weekdays only,no,no
+2,44,Brooklyn stations,Sterling St,local,subway,5 weekdays only,no,no
+2,45,Brooklyn stations,Winthrop St,local,subway,5 weekdays only,no,no
+2,46,Brooklyn stations,Church Av,local,subway,5 weekdays only,yes,no
+2,47,Brooklyn stations,Beverly Rd,local,subway,5 weekdays only,no,no
+2,48,Brooklyn stations,Newkirk Av-Little Haiti,local,subway,5 weekdays only,no,no
+2,49,Brooklyn stations,Flatbush Av-Brooklyn College,local,subway,5 weekdays only,yes,no
+3,1,Manhattan stations,Harlem-148 St,local,subway,No transfers,no,no
+3,2,Manhattan stations,145 St,local,subway,No transfers,no,no
+3,3,Manhattan stations,135 St,local,subway,2,yes,no
+3,4,Manhattan stations,125 St,local,subway,"2, SBS M60 to Airport",no,no
+3,5,Manhattan stations,116 St,local,subway,2,no,no
+3,6,Manhattan stations,110 St-Malcolm X Plaza,local,subway,2,no,no
+3,7,Manhattan stations,96 St,local_and_express,subway,"1, 2",yes,no
+3,8,Manhattan stations,72 St,local_and_express,subway,"1, 2",yes,no
+3,9,Manhattan stations,Times Square-42 St,local_and_express,subway,"N, Q, 1, 2, 7 all times, W weekdays only, R, S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes
+3,10,Manhattan stations,34 St-Penn Station,local_and_express,subway,"1, 2",yes,no
+3,11,Manhattan stations,14 St,local_and_express,subway,"F/M, L all times except late nights, 1, 2",yes,no
+3,12,Manhattan stations,Chambers St,local_and_express,subway,"1, 2",yes,no
+3,13,Manhattan stations,Park Place,local,subway,"A, C all times except late nights,E,R,W weekdays only,2",no,no
+3,14,Manhattan stations,Fulton St,local,subway,"A, C all times except late nights,J,Z rush hour only, 2, 4, 5 all times except late nights",yes,no
+3,15,Manhattan stations,Wall St,local,subway,2,no,no
+3,16,Brooklyn stations,Clark St,local,subway,2,no,no
+3,17,Brooklyn stations,Borough Hall,local_and_express,subway,"2, 4, 5 weekdays only, R",yes,no
+3,18,Brooklyn stations,Hoyt St,local,subway,2,no,no
+3,19,Brooklyn stations,Nevins St,local_and_express,subway,"2,4,5 weekdays only",no,no
+3,20,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays untul 11 pm, D,N,Q,R,W limited rush hour service, 2,4,5 weekdays only",yes,no
+3,21,Brooklyn stations,Bergen St,local,subway,2,no,no
+3,22,Brooklyn stations,Grand Army Plaza,local,subway,2,no,no
+3,23,Brooklyn stations,Eastern Parkway-Brooklyn Museum,local,subway,2,yes,no
+3,24,Brooklyn stations,Franklin Av-Medgar Evers College,local_and_express,subway,"2,4,5 weekdays only",no,no
+3,25,Brooklyn stations,Nostrand Av,local,subway,No Transfers,no,no
+3,26,Brooklyn stations,Kingston Av,local,subway,No Transfers,no,no
+3,27,Brooklyn stations,Crown Heights-Utica Av,local_and_express,subway,4,yes,no
+3,28,Brooklyn stations,Sutter Ave-Rutland Rd,local,elevated,No Transfers,no,no
+3,29,Brooklyn stations,Saratoga Av,local,elevated,No Transfers,no,no
+3,30,Brooklyn stations,Rockaway Av,local,elevated,No Transfers,no,no
+3,31,Brooklyn stations,Junius St,local,elevated,Free out-of-system transfer to L at Livonia Av,no,no
+3,32,Brooklyn stations,Pennsylvania Av,local,elevated,No Transfers,no,no
+3,33,Brooklyn stations,Van Siclen Av,local,elevated,No Transfers,no,no
+3,34,Brooklyn stations,New Lots Av,local,elevated,Bus or Airtrain to Airport,no,no
+4,1,The Bronx stations,Woodlawn,local,elevated,No Transfers,no,yes
+4,2,The Bronx stations,Mosholu Pkwy,local,elevated,No Transfers,yes,no
+4,3,The Bronx stations,Bedford Pk Blvd-Lehman College,local,elevated,No Transfers,no,no
+4,4,The Bronx stations,Kingsbridge Rd,local,elevated,No Transfers,no,no
+4,5,The Bronx stations,Fordham Rd,local,elevated,No Transfers,yes,no
+4,6,The Bronx stations,183 St,local,elevated,No Transfers,no,no
+4,7,The Bronx stations,Burnside Av,local,elevated,No Transfers,no,no
+4,8,The Bronx stations,176 St,local,elevated,No Transfers,no,no
+4,9,The Bronx stations,Mt Eden Av,local,elevated,No Transfers,no,no
+4,10,The Bronx stations,170 St,local,elevated,No Transfers,yes,no
+4,11,The Bronx stations,167 St,local,elevated,No Transfers,no,no
+4,12,The Bronx stations,161 St-Yankee Stadium,local,elevated,"B rush hours only, D all times except late nights",yes,no
+4,13,The Bronx stations,149 St-Grand Concourse,local_and_express,subway,"2, 5 all times except late nights",no,no
+4,14,The Bronx stations,138 St-Grand Concourse,local,subway,5 all times except late nights,no,no
+4,15,Manhattan stations,125 St,local_and_express,subway,"5 all times except late nights, 6, Bus or train to airport",yes,no
+4,16,Manhattan stations,86 St,local,subway,"5 all times except late nights, 6",yes,no
+4,17,Manhattan stations,59 St,local_and_express,subway,"N, R all times except late nights, W weekdays only, 5 all times except late nights, 6, free out-of-system transfer to Lexington Av/63 St F, Q",no,no
+4,18,Manhattan stations,Grand Central-42 St,local_and_express,subway,"5, S all times except late nights, 6, 7 all times",yes,no
+4,19,Manhattan stations,14 St-Union Sq,local_and_express,subway,"L, N, Q, R all times except late nights, W weekdays only, 5 all times except late night, 6",no,no
+4,20,Manhattan stations,Brooklyn Bridge-City Hall,local_and_express,subway,"J, Z rush hours only, 5 all times except late nights, 6",yes,no
+4,21,Manhattan stations,Fulton St,express,subway,"A, C all times except late nights, J, Z rush hour only, 2, 3 all times except late nights, 5 all times except late nights",yes,no
+4,22,Manhattan stations,Wall St,express,subway,5 all times except late nights,no,no
+4,23,Manhattan stations,Bowling Green,express,subway,5 all times except late nights,yes,no
+4,24,Brooklyn stations,Borough Hall,local_and_express,subway,"2, 3 all times except late nights,5 weekdays only, R",yes,no
+4,25,Brooklyn stations,Nevins St,local_and_express,subway,"2, 3 all times except late nights ,5 weekdays only",no,no
+4,26,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays untul 11 pm, D,N,Q,R,W limited rush hour service, 2,3 all times except late nights, ,5 weekdays only",yes,no
+4,27,Brooklyn stations,Franklin Av-Medgar Evers College,local_and_express,subway,"2, 3 all times except late nights, 5 weekdays only",no,no
+4,28,Brooklyn stations,Crown Heights-Utica Av,local_and_express,subway,3 all times except late nights,no,no
+5,1,Eastchester Dyre Avenue branch stations,Eastchester-Dyre Av,local,elevated,No Transfers,no,yes
+5,2,Eastchester Dyre Avenue branch stations,Baychester Av,local,elevated,No Transfers,no,no
+5,3,Eastchester Dyre Avenue branch stations,Gun Hill Rd,local,elevated,No Transfers,yes,no
+5,4,Eastchester Dyre Avenue branch stations,Pelham Pkwy,local,elevated,No Transfers,no,no
+5,5,Eastchester Dyre Avenue branch stations,Morris Park,local,elevated,No Transfers,no,no
+5,6,Eastchester Dyre Avenue branch stations,E 180 St,local_and_express,elevated,2,yes,no
+5,7,Eastchester Dyre Avenue branch stations,West Farms Sq-E Tremont Av,local,elevated,2,no,no
+5,8,Eastchester Dyre Avenue branch stations,174 St,local,elevated,2,no,no
+5,9,Eastchester Dyre Avenue branch stations,Freeman St,local,elevated,2,no,no
+5,10,Eastchester Dyre Avenue branch stations,Simpson St,local,elevated,2,yes,no
+5,11,Eastchester Dyre Avenue branch stations,Intervale Av,local,elevated,2,no,no
+5,12,Eastchester Dyre Avenue branch stations,Prospect Av,local,elevated,2,no,no
+5,13,Eastchester Dyre Avenue branch stations,Jackson Av,local,elevated,2,no,no
+5,14,Eastchester Dyre Avenue branch stations,3 Av-149 St,local_and_express,subway,2,yes,no
+5,15,Eastchester Dyre Avenue branch stations,149 St-Grand Concourse,local_and_express,subway,"2, 4",no,no
+5,16,Eastchester Dyre Avenue branch stations,138 St-Grand Concourse,local,subway,4 all except rush hours,no,no
+5,17,Eastchester Dyre Avenue branch stations,125 St,local_and_express,subway,"4, 6, Bus or train to airport",yes,no
+5,18,Eastchester Dyre Avenue branch stations,86 St,local,subway,"4, 6",yes,no
+5,19,Eastchester Dyre Avenue branch stations,59 St,local_and_express,subway,"N, R all times except late nights, W weekdays only, 4,6, , free out-of-system transfer to Lexington Av/63 St F,Q",no,no
+5,20,Eastchester Dyre Avenue branch stations,Grand Central-42 St,local_and_express,subway,"S all times except late nights, 4,6,7 all times",yes,no
+5,21,Eastchester Dyre Avenue branch stations,14 St-Union Sq,local_and_express,subway,"L, N, Q, R all times except late nights, W weekdays only, 4, 6",no,no
+5,22,Eastchester Dyre Avenue branch stations,Brooklyn Bridge-City Hall,local_and_express,subway,"J, Z rush hours only, 4, 6",yes,no
+5,23,Eastchester Dyre Avenue branch stations,Fulton St,express,subway,"A, C all times except late nights,J, Z rush hour only, 2, 3 all times except late nights,4",yes,no
+5,24,Eastchester Dyre Avenue branch stations,Wall St,express,subway,4,no,no
+5,25,Eastchester Dyre Avenue branch stations,Bowling Green,express,subway,4,yes,no
+5,26,Nereid Avenue branch stations,Nereid Av,local,elevated,2,no,no
+5,27,Nereid Avenue branch stations,233 St,local,elevated,2,yes,no
+5,28,Nereid Avenue branch stations,225 St,local,elevated,2,no,no
+5,29,Nereid Avenue branch stations,219 St,local,elevated,2,no,no
+5,30,Nereid Avenue branch stations,Gun Hill Rd,local,elevated,2,yes,no
+5,31,Nereid Avenue branch stations,Burke Av,local,elevated,2,no,no
+5,32,Nereid Avenue branch stations,Allerton Av,local,elevated,2,no,no
+5,33,Nereid Avenue branch stations,Pelham Pkwy,local,elevated,2,no,no
+5,34,Nereid Avenue branch stations,Bronx Park East,local,elevated,2,no,no
+5,35,Brooklyn stations,Borough Hall,local_and_express,subway,"2, 3 all time except late nights, 4, R",yes,no
+5,36,Brooklyn stations,Nevins St,local_and_express,subway,"2, 3 all time except late nights, 4",no,no
+5,37,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D,N,Q,R,W limited rush hour service, 2,3 all times except late nights, 4",yes,no
+5,38,Brooklyn stations,Franklin Av-Medgar Evers College,local_and_express,subway,"2, 3 all time except late nights, 4",no,no
+5,39,Brooklyn stations,President St-Medgar Evers College,local,subway,2,no,no
+5,40,Brooklyn stations,Sterling St,local,subway,2,no,no
+5,41,Brooklyn stations,Winthrop St,local,subway,2,no,no
+5,42,Brooklyn stations,Church Av,local,subway,2,yes,no
+5,43,Brooklyn stations,Beverly Rd,local,subway,2,no,no
+5,44,Brooklyn stations,Newkirk Av-Little Haiti,local,subway,2,no,no
+5,45,Brooklyn stations,Flatbush Av-Brooklyn College,local,subway,2,yes,no
+6,1,The Bronx stations,Pelham Bay Park,local,elevated,No Transfers,yes,yes
+6,2,The Bronx stations,Buhre Av,local,elevated,No Transfers,no,no
+6,3,The Bronx stations,Middletown Rd,local,elevated,No Transfers,no,no
+6,4,The Bronx stations,Westchester Sq-East Tremont Av,local,elevated,No Transfers,yes,no
+6,5,The Bronx stations,Zerega Av,local,elevated,No Transfers,no,no
+6,6,The Bronx stations,Castle Hill Av,local,elevated,No Transfers,no,no
+6,7,The Bronx stations,Parkchester,local_and_express,elevated,Limited weekday peak direction express,yes,no
+6,8,The Bronx stations,St Lawrence Av,local,elevated,No Transfers,no,no
+6,9,The Bronx stations,Morrison Av-Soundview,local,elevated,No Transfers,no,no
+6,10,The Bronx stations,Elder Av,local,elevated,No Transfers,no,no
+6,11,The Bronx stations,Whitlock Av,local,elevated,No Transfers,no,no
+6,12,The Bronx stations,Hunts Point Av,local_and_express,subway,Limited weekday peak direction express,yes,no
+6,13,The Bronx stations,Longwood Av,local,subway,No Transfers,no,no
+6,14,The Bronx stations,E 149 St,local,subway,No Transfers,yes,no
+6,15,The Bronx stations,E 143 St-St Mary's St,local,subway,No Transfers,no,no
+6,16,The Bronx stations,Cypress Av,local,subway,No Transfers,no,no
+6,17,The Bronx stations,Brook Av,local,subway,No Transfers,no,no
+6,18,The Bronx stations,3 Av-138 St,local_and_express,subway,Limited weekday peak direction express,no,no
+6,19,Manhattan stations,125 St,local_and_express,subway,"4,5 all times except late nights, bus or train to Airport",yes,no
+6,20,Manhattan stations,116 St,local,subway,No Transfers,no,no
+6,21,Manhattan stations,110 St,local,subway,No Transfers,no,no
+6,22,Manhattan stations,103 St,local,subway,No Transfers,no,no
+6,23,Manhattan stations,96 St,local,subway,No Transfers,no,no
+6,24,Manhattan stations,86 St,local_and_express,subway,"4,5 all times except late nights",no,no
+6,25,Manhattan stations,77 St,local,subway,No Transfers,no,no
+6,26,Manhattan stations,68 St-Hunter College,local,subway,No Transfers,yes,no
+6,27,Manhattan stations,59 St,local_and_express,subway,"N,R all times except late nights, W weekdays only, 4, 5 all times except late nights, free out-of-system transfer to Lexington Av/63 St M,Q",no,no
+6,28,Manhattan stations,51 St,local,subway,"E,F weekdays until 9:30 p.m.",yes,no
+6,29,Manhattan stations,Grand Central-42 St,local_and_express,subway,"5,S all times except late nights, 4,7 all times",yes,no
+6,30,Manhattan stations,33 St,local,subway,No Transfers,no,no
+6,31,Manhattan stations,28 St,local,subway,No Transfers,yes,no
+6,32,Manhattan stations,23 St,local,subway,No Transfers,yes,no
+6,33,Manhattan stations,14 St-Union Sq,local_and_express,subway,"L,N,Q,R all times except late nights, W weekdays only, 4,5 all times except late nights",no,no
+6,34,Manhattan stations,Astor Pl,local,subway,No Transfers,no,no
+6,35,Manhattan stations,Bleecker St,local,subway,"B weekdays until 11 p.m., D,F,M all times except late nights",yes,no
+6,36,Manhattan stations,Spring St,local,subway,No Transfers,no,no
+6,37,Manhattan stations,Canal St,local,subway,"J,N,Q,R all times except late nights, W weekdays only",yes,no
+6,38,Manhattan stations,Brooklyn Bridge-City Hall,local_and_express,subway,"J,Z rush hours only,4,5 all times except late nights",yes,yes
+7,1,Queens stations,Flushing-Main St,local_and_express,subway,Q48 to LGA Airport,yes,yes
+7,2,Queens stations,Mets-Willets Point,local_and_express,elevated,Q48 to LGA Airport,no,no
+7,3,Queens stations,111 St,local,elevated,Q48 to LGA Airport,no,no
+7,4,Queens stations,103 St-Corona Plaza,local,elevated,No Transfers,no,no
+7,5,Queens stations,Junction Blvd,local_and_express,elevated,Q72 to LGA Airport,yes,no
+7,6,Queens stations,90 St-Elmhurst Av,local,elevated,No Transfers,no,no
+7,7,Queens stations,82 St-Jackson Hts,local,elevated,No Transfers,no,no
+7,8,Queens stations,74 St-Broadway,local,elevated,"E, F, M weekdays until 11pm, R all times except late nights, LaGuardia Link Q70 SBS, Q47 LGA Airport",yes,no
+7,9,Queens stations,69 St,local,elevated,No Transfers,no,no
+7,10,Queens stations,61 St-Woodside,local_and_express,elevated,LaGuardia Link Q70 SBS,yes,no
+7,11,Queens stations,52 St,local,elevated,No Transfers,no,no
+7,12,Queens stations,46 St-Bliss St,local,elevated,No Transfers,no,no
+7,13,Queens stations,40 St-Lowery St,local,elevated,No Transfers,no,no
+7,14,Queens stations,33 St-Rawson St,local,elevated,No Transfers,no,no
+7,15,Queens stations,Queensboro Plaza,local_and_express,elevated,"N, W weekdays only",yes,no
+7,16,Queens stations,Court Sq,local_and_express,elevated,"E, G, F weekdays until 9:30 p.m.",yes,no
+7,17,Queens stations,Hunters Point Av,local_and_express,subway,No Transfers,no,no
+7,18,Queens stations,Vernon Blvd-Jackson Av,local_and_express,subway,No Transfers,no,no
+7,19,Manhattan stations,Grand Central-42 St,local_and_express,subway,"5, S all times except late nights, 4,6 all times",yes,no
+7,20,Manhattan stations,5 Av,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm",no,no
+7,21,Manhattan stations,Times Sq-42 St,local_and_express,subway,"N,Q,1,2,3 all times, W weekdays only, R,S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes
+7,22,Manhattan stations,34 St-Hudson Yards,local_and_express,subway,No Transfers,yes,no
+A,1,Stations on the A line,Inwood-207 St,local,subway,No Transfers,yes,yes
+A,2,Stations on the A line,Dyckman St,local,subway,No Transfers,no,no
+A,3,Stations on the A line,190 St,local,subway,No Transfers,no,no
+A,4,Stations on the A line,181 St,local,subway,No Transfers,yes,no
+A,5,Stations on the A line,175 St,local,subway,No Transfers,yes,no
+A,6,Stations on the A line,168 St,local_and_express,subway,"C all times except late nights, 1",yes,no
+A,7,Stations on the A line,145 St,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D",no,no
+A,8,Stations on the A line,125 St,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D",yes,no
+A,9,Stations on the A line,59 St-Columbus Circle,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D, 1",yes,no
+A,10,Stations on the A line,42 St/Port Authority Bus Terminal,local_and_express,subway,"C all times except late nights, E all times; Times Sq-42 St N,Q,1,2,3,7 all times, W weekdays only, R,S all times except late nights",yes,no
+A,11,Stations on the A line,34 St-Penn Station,local_and_express,subway,"C all times except late nights, E, LIRR",yes,no
+A,12,Stations on the A line,14 St,local_and_express,subway,"C all times except late nights, E, L",yes,no
+A,13,Stations on the A line,W 4 St-Washington Sq,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D, E, F, M weekdays until 11 p.m.",yes,no
+A,14,Stations on the A line,Canal St,local_and_express,subway,"C all times except late nights, E",no,no
+A,15,Stations on the A line,Chambers St,local_and_express,subway,"C all times except late nights, E, 2, 3, all times except late nights, R all times except late nights, W weekdays only",no,no
+A,16,Stations on the A line,Fulton St,local_and_express,subway,"C all times except late nights, J, Z rush hour only, 2m 3 all times except late nights, 4, 5",yes,no
+A,17,Stations on the A line,High St,local_and_express,subway,C all times except late nights,no,no
+A,18,Stations on the A line,Jay St-MetroTech,local_and_express,subway,"C all times except late nights, F, R all times except late nights",yes,no
+A,19,Stations on the A line,Hoyt-Schermerhorn,local_and_express,subway,"C all times except late nights, G",no,no
+A,20,Stations on the A line,Nostrand Av,local_and_express,subway,C all times except late nights,no,no
+A,21,Stations on the A line,Utica Av,local_and_express,subway,C all times except late nights,yes,no
+A,22,Stations on the A line,Broadway Junction,local_and_express,subway,"C all times except late nights, J, L, Z rush hour only",no,no
+A,23,Stations on the A line,Euclid Av,local_and_express,subway,C all times except late nights,yes,no
+A,24,Stations on the A line,Grant Av,local,subway,No Transfers,no,no
+A,25,Stations on the A line,80 St,local,elevated,No Transfers,no,no
+A,26,Stations on the A line,88 St,local,elevated,No Transfers,no,no
+A,27,Stations on the A line,Rockaway Blvd,local,elevated,No Transfers,no,no
+A,28,Stations on the Lefferts Boulevard branch,104 St,local,elevated,No Transfers,no,no
+A,29,Stations on the Lefferts Boulevard branch,111 St,local,elevated,No Transfers,no,no
+A,30,Stations on the Lefferts Boulevard branch,Ozone Pk-Lefferts Boulevard,local,elevated,No Transfers,yes,no
+A,31,Stations on the Far Rockaway branch,Aqueduct Racetrack,local,at_grade,No Transfers,yes,no
+A,32,Stations on the Far Rockaway branch,Aqueduct-North Conduit Av,local,at_grade,No Transfers,no,no
+A,33,Stations on the Far Rockaway branch,Howard Beach-JFK Airport,local,at_grade,Airtrain to JFK,yes,no
+A,34,Stations on the Far Rockaway branch,Broad Channel,local,at_grade,S,no,no
+A,35,Stations on the Far Rockaway branch,Beach 67 St,local,elevated,No Transfers,yes,no
+A,36,Stations on the Far Rockaway branch,Beach 60 St,local,elevated,No Transfers,no,no
+A,37,Stations on the Far Rockaway branch,Beach 44 St,local,elevated,No Transfers,no,no
+A,38,Stations on the Far Rockaway branch,Beach 36 St,local,elevated,No Transfers,no,no
+A,39,Stations on the Far Rockaway branch,Beach 25 St,local,elevated,No Transfers,no,no
+A,40,Stations on the Far Rockaway branch,Far Rockaway-Mott Av,local,elevated,No Transfers,yes,no
+A,41,Stations on the Rockaway Park branch,Broad Channel,local,at_grade,S,no,no
+A,42,Stations on the Rockaway Park branch,Beach 90 St,local,elevated,S,no,no
+A,43,Stations on the Rockaway Park branch,Beach 98 St,local,elevated,S,no,no
+A,44,Stations on the Rockaway Park branch,Beach 105 St,local,elevated,S,no,no
+A,45,Stations on the Rockaway Park branch,Rockaway Park-Beach 116 St,local,at_grade,S,yes,no
+B,1,The Bronx stations,Bedford Park Blvd,local_and_express,subway,D,yes,yes
+B,2,The Bronx stations,Kingsbridge Rd,local_and_express,subway,D,yes,no
+B,3,The Bronx stations,Fordham Rd,local_and_express,subway,D,no,no
+B,4,The Bronx stations,182-183 Sts,local,subway,D except rush hours in the peak direction,no,no
+B,5,The Bronx stations,Tremont Av,local_and_express,subway,D,yes,no
+B,6,The Bronx stations,174-175 Sts,local,subway,D except rush hours in the peak direction,no,no
+B,7,The Bronx stations,170 St,local,subway,D except rush hours in the peak direction,no,no
+B,8,The Bronx stations,167 St,local,subway,D except rush hours in the peak direction,no,no
+B,9,The Bronx stations,161 St-Yankee Stadium,local,subway,"D except rush hours in the peak direction, 4",yes,no
+B,10,Manhattan stations,155 St,local,subway,D all times except rush hours,no,no
+B,11,Manhattan stations,145 St,local_and_express,subway,"A, C except late nights, D",no,no
+B,12,Manhattan stations,135 St,local_and_express,subway,C except late nights,yes,no
+B,13,Manhattan stations,125 St,local,subway,"A, C except late nights, D, M60 SBS to LGA Airport",no,no
+B,14,Manhattan stations,116 St,local,subway,C except late nights,no,no
+B,15,Manhattan stations,Cathedral Pkwy (110 St),local,subway,C except late nights,no,no
+B,16,Manhattan stations,103 St,local,subway,C except late nights,no,no
+B,17,Manhattan stations,96 St,local,subway,C except late nights,no,no
+B,18,Manhattan stations,86 St,local,subway,C except late nights,no,no
+B,19,Manhattan stations,81 St-Museum of Natural History,local,subway,C except late nights,no,no
+B,20,Manhattan stations,72 St,local,subway,C except late nights,no,no
+B,21,Manhattan stations,59 St-Columbus Circle,local_and_express,subway,"A, C except late nights, D, 1",yes,no
+B,22,Manhattan stations,7 Av,local,subway,"D, E",no,no
+B,23,Manhattan stations,47-50 Sts-Rockefeller Ctr,local_and_express,subway,"D, F, M weekdays only",yes,no
+B,24,Manhattan stations,42 St-Bryant Park,local_and_express,subway,"D, F, M weekdays only, 7",no,no
+B,25,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"D, F, M weekdays only, N, Q, R except late nights, W weekdays only",yes,no
+B,26,Manhattan stations,W 4 St-Washington Sq,local_and_express,subway,"D, F, M weekdays only, A, C except late nights, E",yes,no
+B,27,Manhattan stations,Broadway-Lafayette St,local_and_express,subway,"D, F, M weekdays only, 6",yes,no
+B,28,Manhattan stations,Grand St,local_and_express,subway,D,no,no
+B,29,Brooklyn stations,DeKalb Av,local_and_express,subway,"Q, R except late nights",yes,no
+B,30,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"D, N, Q, Rexcept late nights, 2, 3 except late nights, 4, 5 weekdays",yes,no
+B,31,Brooklyn stations,7 Av,local_and_express,subway,Q,no,no
+B,32,Brooklyn stations,Prospect Park,local_and_express,open_cut,"Q, Franklin Avenue Shuttle",yes,no
+B,33,Brooklyn stations,Church Av,local_and_express,open_cut,Q,yes,no
+B,34,Brooklyn stations,Newkirk Plaza,local_and_express,open_cut,Q,no,no
+B,35,Brooklyn stations,Kings Hwy,local_and_express,open_cut,Q,yes,no
+B,36,Brooklyn stations,Sheepshead Bay,local_and_express,open_cut,Q,yes,no
+B,37,Brooklyn stations,Brighton Beach,local_and_express,elevated,Q,no,no
+C,1,Manhattan stations,168 St,local_and_express,subway,"A, 1",yes,no
+C,2,Manhattan stations,163 St-Amsterdam Av,local,subway,No Transfers,no,no
+C,3,Manhattan stations,155 St,local,subway,No Transfers,no,no
+C,4,Manhattan stations,145 St,local_and_express,subway,"A, B weekdays until 11 p.m, D",no,no
+C,5,Manhattan stations,135 St,local,subway,B weekdays until 11 p.m.,no,no
+C,6,Manhattan stations,125 St,local_and_express,subway,"A, B weekdays until 11 p.m.",yes,no
+C,7,Manhattan stations,116 St,local,subway,B weekdays until 11 p.m.,no,no
+C,8,Manhattan stations,Cathedral Pkwy (110 St),local,subway,B weekdays until 11 p.m.,no,no
+C,9,Manhattan stations,103 St,local,subway,B weekdays until 11 p.m.,no,no
+C,10,Manhattan stations,96 St,local,subway,B weekdays until 11 p.m.,no,no
+C,11,Manhattan stations,86 St,local,subway,B weekdays until 11 p.m.,no,no
+C,12,Manhattan stations,81 St-Museum of Natural History,local,subway,B weekdays until 11 p.m.,no,no
+C,13,Manhattan stations,72 St,local,subway,B weekdays until 11 p.m.,no,no
+C,14,Manhattan stations,59 St-Columbus Circle,local_and_express,subway,"A, B weekdays until 11 p.m., D, 1",yes,no
+C,15,Manhattan stations,50 St,local,subway,E,yes,no
+C,16,Manhattan stations,42 St/Port Authority Bus Terminal,local_and_express,subway,"A, E; Times Sq-42 St N,Q,1,2,3,7 all times, W weekdays only, R,S all times except late nights",yes,no
+C,17,Manhattan stations,34 St-Penn Station,local_and_express,subway,"A, E, LIRR",yes,no
+C,18,Manhattan stations,23 St,local,subway,E,no,no
+C,19,Manhattan stations,14 St,local_and_express,subway,"A, E",yes,no
+C,20,Manhattan stations,W 4-Washington Sq,local_and_express,subway,"A, B weekdays until 11 p.m., D, E, F, M weekdays until 11 p.m.",yes,no
+C,21,Manhattan stations,Spring St,local,subway,E,yes,no
+C,22,Manhattan stations,Canal St,local_and_express,subway,"A, E",no,no
+C,23,Manhattan stations,Chambers St,local_and_express,subway,"A , E, 2, 3, all times except late nights, R all times except late nights, W weekdays only",no,no
+C,24,Manhattan stations,Fulton St,local_and_express,subway,"A, J, Z rush hour only, 2m 3 all times except late nights, 4, 5",yes,no
+C,25,Brooklyn stations,High St,local_and_express,subway,A,no,no
+C,26,Brooklyn stations,Jay St-MetroTech,local_and_express,subway,"A, F, R all times except late nights",yes,no
+C,27,Brooklyn stations,Hoyt-Schermerhorn,local_and_express,subway,"A, G",no,no
+C,28,Brooklyn stations,Lafayette Av,local,subway,No Transfers,no,no
+C,29,Brooklyn stations,Clinton-Washington Avs,local,subway,No Transfers,no,no
+C,30,Brooklyn stations,Franklin Av,local,subway,S,yes,no
+C,31,Brooklyn stations,Nostrand Av,local_and_express,subway,A,no,no
+C,32,Brooklyn stations,Kingston-Throop Avs,local,subway,No Transfers,no,no
+C,33,Brooklyn stations,Utica Av,local_and_express,subway,A,yes,no
+C,34,Brooklyn stations,Ralph Av,local,subway,No Transfers,no,no
+C,35,Brooklyn stations,Rockaway Av,local,subway,No Transfers,no,no
+C,36,Brooklyn stations,Broadway Junction,local_and_express,subway,"A, J, L, Z rush hour only",no,no
+C,37,Brooklyn stations,Liberty Av,local,subway,No Transfers,no,no
+C,38,Brooklyn stations,Van Siclen Av,local,subway,No Transfers,no,no
+C,39,Brooklyn stations,Shepherd Av,local,subway,No Transfers,no,no
+C,40,Brooklyn stations,Euclid Av,local_and_express,subway,A,yes,no
+D,1,The Bronx stations,Norwood-205 St,local_and_express,subway,No Transfers,no,no
+D,2,The Bronx stations,Bedford Park Blvd,local_and_express,subway,B during rush hours,yes,yes
+D,3,The Bronx stations,Kingsbridge Rd,local_and_express,subway,B during rush hours,yes,no
+D,4,The Bronx stations,Fordham Rd,local_and_express,subway,B during rush hours,no,no
+D,5,The Bronx stations,182-183 Sts,local,subway,B during rush hours,no,no
+D,6,The Bronx stations,Tremont Av,local_and_express,subway,B during rush hours,yes,no
+D,7,The Bronx stations,174-175 Sts,local,subway,B during rush hours,no,no
+D,8,The Bronx stations,170 St,local,subway,B during rush hours,no,no
+D,9,The Bronx stations,167 St,local,subway,B during rush hours,no,no
+D,10,The Bronx stations,161 St-Yankee Stadium,local,subway,"4, B during rush hours",yes,no
+D,11,Manhattan stations,155 St,local,subway,B during rush hours,no,no
+D,12,Manhattan stations,145 St,local_and_express,subway,"A, C except late nights, B",no,no
+D,13,Manhattan stations,125 St,local,subway,"A, C except late nights, B, M60 SBS to LGA Airport",yes,no
+D,14,Manhattan stations,59 St-Columbus Circle,local_and_express,subway,"A, C except late nights, B, 1",yes,no
+D,15,Manhattan stations,7 Av,local,subway,"B, E",no,no
+D,16,Manhattan stations,47-50 Sts-Rockefeller Ctr,local_and_express,subway,"B, F, M weekdays only",yes,no
+D,17,Manhattan stations,42 St-Bryant Pk,local_and_express,subway,"B, F, M weekdays only, 7",no,no
+D,18,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"B, F, M weekdays only, N, Q, R except late nights, W weekdays only",yes,no
+D,19,Manhattan stations,W 4 St-Washington Sq,local_and_express,subway,"B, F, M weekdays only, A, C except late nights, E",yes,no
+D,20,Manhattan stations,Broadway-Lafayette St,local_and_express,subway,"B, F, M weekdays only, 6",yes,no
+D,21,Manhattan stations,Grand St,local_and_express,subway,B,no,no
+D,22,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B, N, Q, Rexcept late nights, 2, 3 except late nights, 4, 5 weekdays",yes,no
+D,23,Brooklyn stations,36 St,local_and_express,subway,"N, R",no,no
+D,24,Brooklyn stations,9 Av,local,open_cut,No Transfers,no,no
+D,25,Brooklyn stations,Fort Hamilton Pkwy,local,elevated,No Transfers,no,no
+D,26,Brooklyn stations,50 St,local,elevated,No Transfers,no,no
+D,27,Brooklyn stations,55 St,local,elevated,No Transfers,no,no
+D,28,Brooklyn stations,62 St,local,elevated,No Transfers,yes,no
+D,29,Brooklyn stations,71 St,local,elevated,No Transfers,no,no
+D,30,Brooklyn stations,79 St,local,elevated,No Transfers,no,no
+D,31,Brooklyn stations,18 Av,local,elevated,No Transfers,no,no
+D,32,Brooklyn stations,20 Av,local,elevated,No Transfers,no,no
+D,33,Brooklyn stations,Bay Pkwy,local,elevated,No Transfers,yes,no
+D,34,Brooklyn stations,25 Av,local,elevated,No Transfers,no,no
+D,35,Brooklyn stations,Bay-50 St,local,elevated,No Transfers,no,no
+D,36,Brooklyn stations,Coney Island-Stillwell Av,local,elevated,"F, N, Q",yes,yes
+E,1,Queens stations,Jamaica Center-Parsons/Archer,express,subway,"J, Z rush hour only",yes,yes
+E,2,Queens stations,Sutphin Blvd-Archer Av-JFK Airport,express,subway,"J, Z rush hour only, LIRR",yes,no
+E,3,Queens stations,Jamaica-Van Wyck,local,subway,No Transfers,yes,no
+E,4,Queens stations,Briarwood,local,subway,F,no,no
+E,5,Queens stations,Kew Gardens-Union Tpke,express,subway,F,yes,no
+E,6,Queens stations,75 Av,local,subway,F,no,no
+E,7,Queens stations,Forest Hills-71 Av,local_and_express,subway,"F, M weekdays until 9:30p.m., R all times except late nights",yes,no
+E,8,Queens stations,Jackson Hts-Roosevelt Av,local_and_express,subway,"7, F, M weekdays until 9:30 p.m., R all times except late nights",yes,no
+E,9,Queens stations,Queens Plaza,local_and_express,subway,"F weekdays until 9:30 p.m., R all times except late nights",yes,no
+E,10,Queens stations,Court Sq-23 St,express,subway,"F weekdays until 9:30 p.m., G, 7",yes,no
+E,11,Manhattan stations,Lexington Av/53 St,express,subway,"F weekdays until 9:30 p.m., 6",yes,no
+E,12,Manhattan stations,5 Av/53 St,express,subway,F weekdays until 9:30 p.m.,no,no
+E,13,Manhattan stations,7 Av,express,subway,"B weekdays until 11 p.m., D",no,no
+E,14,Manhattan stations,50 St,local,subway,C all times except late nights,yes,no
+E,15,Manhattan stations,42 St/Port Authority Bus Terminal,local_and_express,subway,"C all times except late nights, A all times; Times Sq-42 St N,Q,1,2,3,7 all times, W weekdays only, R,S all times except late nights",yes,no
+E,16,Manhattan stations,34 St-Penn Station,local_and_express,subway,"A all times, C all times except late nights, LIRR",yes,no
+E,17,Manhattan stations,23 St,local,subway,C all times except late nights,no,no
+E,18,Manhattan stations,14 St,local_and_express,subway,"A all times, C all times except late nights",yes,no
+E,19,Manhattan stations,W 4 St-Washington Sq,local_and_express,subway,"A all times, B weekdays until 11 p.m., D, C all times except late nights, F, M weekdays until 11 p.m",yes,no
+E,20,Manhattan stations,Spring St,local,subway,C all times except late nights,yes,no
+E,21,Manhattan stations,Canal St,local_and_express,subway,"A all times, C all times except late nights",no,no
+E,22,Manhattan stations,World Trade Center,local,subway,"A all times, C all times except late nights, 2, 3 all times except late nights, R",yes,no
+F,1,Queens stations,Jamaica-179 St,local,subway,"E limited rush hour service, Q3 bus to JFK Airport",yes,yes
+F,2,Queens stations,169 St,local,subway,Q3 bus to JFK Airport,no,no
+F,3,Queens stations,Parsons Blvd,local,subway,No Transfers,no,no
+F,4,Queens stations,Sutphin Blvd,local,subway,No Transfers,no,no
+F,5,Queens stations,Briarwood,local,subway,E,no,no
+F,6,Queens stations,Kew Gardens-Union Tpke,local_and_express,subway,"E, Q10 bus to JFK Airport",yes,no
+F,7,Queens stations,75 Av,local,subway,E,no,no
+F,8,Queens stations,Forest Hills-71 Av,local_and_express,subway,"E, M weekdays except late nights, R except late nights",yes,no
+F,9,Queens stations,Jackson Hts-Roosevelt Av,local_and_express,subway,"E, M weekdays until 11pm, R except late nights, 7, LaGuardia Link Q70 SBS, Q47 LGA Airport",yes,no
+F,10,Queens stations,Queens Plaza,express,subway,"E, R",yes,no
+F,11,Queens stations,Court Sq-23 St,express,subway,"E, G, 7",yes,no
+F,12,Manhattan stations,Lexington Av/53 St,express,subway,"E, 6",yes,no
+F,13,Manhattan stations,5 Av/53 St,express,subway,E,no,no
+F,14,Manhattan stations,47-50 Sts Rockefeller Ctr,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm",yes,no
+F,15,Manhattan stations,42 St-Bryant Pk,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, 7",no,no
+F,16,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, N, Q, R except late nights, W weekdays only",yes,no
+F,17,Manhattan stations,23 St,local,subway,M weekdays until 11pm,no,no
+F,18,Manhattan stations,14 St,local,subway,"L, M weekdays until 11pm, 1, 2, 3 except late nights",yes,no
+F,19,Manhattan stations,W 4 St-Washington Sq,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, A, C except late nights, E",yes,no
+F,20,Manhattan stations,Broadway-Lafayette St,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, 6",yes,no
+F,21,Manhattan stations,2 Av,local,subway,No Transfers,no,no
+F,22,Manhattan stations,Delancey St-Essex St,local,subway,"J, M except late nights, Z rush hours only",no,no
+F,23,Manhattan stations,East Broadway,local,subway,No Transfers,no,no
+F,24,Brooklyn stations,York St,local,subway,No Transfers,no,no
+F,25,Brooklyn stations,Jay St-MetroTech,local_and_express,subway,"A, C except late nights, R except late nights",yes,no
+F,26,Brooklyn stations,Bergen St,local,subway,G,no,no
+F,27,Brooklyn stations,Carroll St,local,subway,G,no,no
+F,28,Brooklyn stations,Smith-9 Sts,local,elevated,G,no,no
+F,29,Brooklyn stations,4 Av-9 St,local,elevated,"G, R except late nights",no,no
+F,30,Brooklyn stations,7 Av,local_and_express,subway,G,yes,no
+F,31,Brooklyn stations,15 St-Prospect Park,local,subway,G,no,no
+F,32,Brooklyn stations,Fort Hamilton Pkwy,local,subway,G,no,no
+F,33,Brooklyn stations,Church Av,local,subway,G,no,no
+F,34,Brooklyn stations,Ditmas Av,local,elevated,No Transfers,no,no
+F,35,Brooklyn stations,18 Av,local,elevated,No Transfers,no,no
+F,36,Brooklyn stations,Avenue I,local,elevated,No Transfers,no,no
+F,37,Brooklyn stations,Bay Pkwy,local,elevated,No Transfers,no,no
+F,38,Brooklyn stations,Avenue N,local,elevated,No Transfers,no,no
+F,39,Brooklyn stations,Avenue P,local,elevated,No Transfers,no,no
+F,40,Brooklyn stations,Kings Hwy,express,elevated,No Transfers,no,no
+F,41,Brooklyn stations,Avenue U,local,elevated,No Transfers,no,no
+F,42,Brooklyn stations,Avenue X,local,elevated,No Transfers,no,no
+F,43,Brooklyn stations,Neptune Av,local,elevated,No Transfers,no,no
+F,44,Brooklyn stations,W 8 St-NY Aquarium,local,elevated,Q,no,no
+F,45,Brooklyn stations,Coney Island-Stillwell Av,local,elevated,"D, N ,Q",yes,yes
+G,1,Queens stations,Court Sq,local,subway,"E, F, 7 rush hours until 9:30 pm peak direction",yes,yes
+G,2,Queens stations,21 St,local,subway,No Transfers,no,no
+G,3,Brooklyn stations,Greenpoint Av,local,subway,No Transfers,yes,no
+G,4,Brooklyn stations,Nassau Av,local,subway,No Transfers,no,no
+G,5,Brooklyn stations,Metropolitan Av,local,subway,L all times,yes,no
+G,6,Brooklyn stations,Broadway,local,subway,No Transfers,no,no
+G,7,Brooklyn stations,Flushing Av,local,subway,No Transfers,no,no
+G,8,Brooklyn stations,Myrtle Willoughby Avs,local,subway,No Transfers,no,no
+G,9,Brooklyn stations,Bedford-Nostrand Avs,local,subway,No Transfers,no,no
+G,10,Brooklyn stations,Classon Av,local,subway,No Transfers,no,no
+G,11,Brooklyn stations,Clinton-Washington Avs,local,subway,No Transfers,no,no
+G,12,Brooklyn stations,Fulton St,local,subway,No Transfers,no,no
+G,13,Brooklyn stations,Hoyt-Schermerhorn,local_and_express,subway,"A all times, C all times except late nights",no,no
+G,14,Brooklyn stations,Bergen St,local,subway,F all times,no,no
+G,15,Brooklyn stations,Carroll St,local,subway,F all times,no,no
+G,16,Brooklyn stations,Smith-9 Sts,local,viaduct,F all times,no,no
+G,17,Brooklyn stations,4 Av-9 Sts,local,viaduct,"F all times, R all times",no,no
+G,18,Brooklyn stations,7 Av,local_and_express,subway,F all times,yes,no
+G,19,Brooklyn stations,15 St-Prospect Park,local,subway,F all times,no,no
+G,20,Brooklyn stations,Fort Hamilton Pkwy,local,subway,F all times,no,no
+G,21,Brooklyn stations,Church Av,local,subway,F all times,yes,yes
+J,1,Queens stations,Jamaica Center-Parsons/Archer,express,subway,"E,Z rush hour",yes,yes
+J,2,Queens stations,Sutphin Blvd-Archer Av-JFK Airport,express,subway,"E,Z rush hour only, LIRR",yes,no
+J,3,Queens stations,121 St,local,elevated,Z rush hour only,no,no
+J,4,Queens stations,111 St,local,elevated,No Transfers,no,no
+J,5,Queens stations,104 St,local,elevated,Z rush hour only,no,no
+J,6,Queens stations,Woodhaven Blvd,local_and_express,elevated,Z rush hour only,yes,no
+J,7,Queens stations,85 St-Forest Pkwy,local,elevated,No Transfers,no,no
+J,8,Queens stations,75 St-Elderts Ln,local,elevated,Z rush hour only,no,no
+J,9,Brooklyn stations,Cypress Hills,local,elevated,No Transfers,no,no
+J,10,Brooklyn stations,Crescent St,local_and_express,elevated,Z rush hour only,no,no
+J,11,Brooklyn stations,Norwood Av,local,elevated,Z rush hour only,no,no
+J,12,Brooklyn stations,Cleveland St,local,elevated,No Transfers,no,no
+J,13,Brooklyn stations,Van Siclen Av,local,elevated,Z rush hour only,no,no
+J,14,Brooklyn stations,Alabama Av,local_and_express,elevated,Z rush hour only,no,no
+J,15,Brooklyn stations,Broadway Junction,local_and_express,elevated,"A,C all times except late nights,L,Z rush hour only",no,no
+J,16,Brooklyn stations,Chauncey St,local,elevated,Z rush hour only,no,no
+J,17,Brooklyn stations,Halsey St,local,elevated,No Transfers,no,no
+J,18,Brooklyn stations,Gates Av,local,elevated,Z rush hour only,no,no
+J,19,Brooklyn stations,Kosciuszko St,local,elevated,No Transfers,no,no
+J,20,Brooklyn stations,Myrtle Av,local_and_express,elevated,"M,Z rush hour only",no,no
+J,21,Brooklyn stations,Flushing Av,local,elevated,M all times except late nights,yes,no
+J,22,Brooklyn stations,Lorimer St,local,elevated,M all times except late nights,no,no
+J,23,Brooklyn stations,Hewes St,local,elevated,M all times except late nights,no,no
+J,24,Brooklyn stations,Marcy Av,local_and_express,elevated,"M all times except late nights,Z rush hour only",yes,no
+J,25,Manhattan stations,Delancey St-Essex St,local,subway,"F,M all times except late nights,Z rush hour only",no,no
+J,26,Manhattan stations,Bowery,local,subway,Z rush hour only,no,no
+J,27,Manhattan stations,Canal St,local,subway,"N,Q,R all times except late nights,W weekdays only,Z rush hour only,6",no,no
+J,28,Manhattan stations,Chambers St,local,subway,"Z rush hour only,4,5,6",yes,no
+J,29,Manhattan stations,Fulton St,local,subway,"A,C all times except late nights,Z rush hour only,2,3 all times except late nights,4,5 all times except late nights",yes,no
+J,30,Manhattan stations,Broad St,local,subway,Z rush hour only,no,no
+L,1,Manhattan Stations,8 Av,express,subway,"A all times, E all times, C all times except late nights",yes,yes
+L,2,Manhattan Stations,6 Av,local,subway,"1 all times, 2 all times, 3 all times except late nights, F all times, M weekdays during rush hour",yes,no
+L,3,Manhattan Stations,14 St-Union Sq,express,subway,"N,Q,R all times except late nights, W weekdays only, 4,5 all times except late nights, 6",yes,no
+L,4,Manhattan Stations,3 Av,local,subway,No Transfers,no,no
+L,5,Manhattan Stations,1 Av,local,subway,No Transfers,yes,no
+L,6,Brooklyn stations,Bedford Av,local,subway,No Transfers,yes,no
+L,7,Brooklyn stations,Lorimer St,local,subway,G all times,yes,no
+L,8,Brooklyn stations,Graham Av,local,subway,No Transfers,no,no
+L,9,Brooklyn stations,Grand St,local,subway,No Transfers,yes,no
+L,10,Brooklyn stations,Montrose Av,local,subway,No Transfers,no,no
+L,11,Brooklyn stations,Morgan Av,local,subway,No Transfers,no,no
+L,12,Brooklyn stations,Jefferson St,local,subway,No Transfers,no,no
+L,13,Brooklyn stations,DeKalb Av,local,subway,No Transfers,no,no
+L,14,Brooklyn stations,Myrtle-Wyckoff Avs,local,subway,M all times,yes,no
+L,15,Brooklyn stations,Halsey St,local,subway,No Transfers,no,no
+L,16,Brooklyn stations,Wilson Av,local,subway,No Transfers,yes,no
+L,17,Brooklyn stations,Bushwick Av-Aberdeen St,local,subway,No Transfers,no,no
+L,18,Brooklyn stations,Broadway Junction,express,subway,"A all times, C all times except late nights, J all times, Z during rush hour",no,no
+L,19,Brooklyn stations,Atlantic Av,local,subway,No Transfers,no,no
+L,20,Brooklyn stations,Sutter Av,local,subway,No Transfers,no,no
+L,21,Brooklyn stations,Livonia Av,local,subway,Free out-of-system transfer to 3 at Junius St,yes,no
+L,22,Brooklyn stations,New Lots Av,local,subway,B15 to JFK Airport,no,no
+L,23,Brooklyn stations,East 105 St,local,subway,No Transfers,no,no
+L,24,Brooklyn stations,Canarsie-Rockaway Pkwy,local,subway,No Transfers,yes,yes
+M,1,Queens stations,Forest Hills-71 Av,express,subway,"E, F, R except late nights",yes,no
+M,2,Queens stations,67 Av,local,subway,R except late nights,no,no
+M,3,Queens stations,63 Dr-Rego Park,local,subway,"R except late nights, Q72 to Laguardia",no,no
+M,4,Queens stations,Woodhaven Blvd,local,subway,R except late nights,no,no
+M,5,Queens stations,Grand Av-Newtown,local,subway,R except late nights,no,no
+M,6,Queens stations,Elmhurst Av,local,subway,R except late nights,no,no
+M,7,Queens stations,Jackson Hts-Roosevelt Av,local_and_express,subway,"E, F, R except late nights, 7",yes,no
+M,8,Queens stations,65 St,local,subway,R except late nights,no,no
+M,9,Queens stations,Northern Blvd,local,subway,R except late nights,yes,no
+M,10,Queens stations,46 St,local,subway,R except late nights,no,no
+M,11,Queens stations,Steinway St,local,subway,R except late nights,no,no
+M,12,Queens stations,36 St,local,subway,R except late nights,no,no
+M,13,Queens stations,21 St-Queensbridge,local,subway,No Transfers,yes,no
+M,14,Manhattan stations,Roosevelt Island,local,subway,No Transfers,yes,no
+M,15,Manhattan stations,Lexington Av/63 St,local,subway,"Q, free out-of-system transfer to Lexington Av/59 St to N, R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6",yes,no
+M,16,Manhattan stations,57 St,local,subway,No Transfers,no,no
+M,17,Manhattan stations,47-50 Sts-Rockefeller Ctr,local_and_express,subway,"B weekdays until 11pm, D, F",yes,no
+M,18,Manhattan stations,42 St-Bryant Pk,local_and_express,subway,"B weekdays until 11pm, D, F, 7",no,no
+M,19,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11pm, D, F, N, Q, R except late nights, W weekdays only",yes,no
+M,20,Manhattan stations,23 St,local,subway,F,no,no
+M,21,Manhattan stations,14 St,local,subway,"F, L, 1, 2, 3 except late nights",yes,no
+M,22,Manhattan stations,W 4 St-Washington Sq,local_and_express,subway,"A, C except late nights, E, B weekdays until 11pm, D, F",yes,no
+M,23,Manhattan stations,Broadway-Lafayette St,local_and_express,subway,"B weekdays until 11pm, D, F, 6",yes,no
+M,24,Manhattan stations,Delancey St-Essex St,local,subway,"F, J, Z rush hours only",no,no
+M,25,Brooklyn and Queens stations,Marcy Av,local_and_express,elevated,"J, Z rush hours in peak direction",yes,no
+M,26,Brooklyn and Queens stations,Hewes St,local,elevated,J,no,no
+M,27,Brooklyn and Queens stations,Lorimer St,local,elevated,J,no,no
+M,28,Brooklyn and Queens stations,Flushing Av,local,elevated,J,yes,no
+M,29,Brooklyn and Queens stations,Myrtle Av,local_and_express,elevated,"J, Z rush hours in peak direction",no,no
+M,30,Brooklyn and Queens stations,Central Av,local,elevated,No Transfers,no,no
+M,31,Brooklyn and Queens stations,Knickerbocker Av,local,elevated,No Transfers,no,no
+M,32,Brooklyn and Queens stations,Myrtle-Wyckoff Avs,local,elevated,L,yes,no
+M,33,Brooklyn and Queens stations,Seneca Av,local,elevated,No Transfers,no,no
+M,34,Brooklyn and Queens stations,Forest Av,local,elevated,No Transfers,no,no
+M,35,Brooklyn and Queens stations,Fresh Pond Rd,local,elevated,No Transfers,no,no
+M,36,Brooklyn and Queens stations,Middle Village-Metropolitan Av,local,elevated,No Transfers,yes,no
+N,1,Queens stations,Astoria Ditmars Blvd,local,elevated,W weekdays only,no,yes
+N,2,Queens stations,Astoria Blvd,local,elevated,"W weekdays only, M60 SBS to LGA Airport",yes,no
+N,3,Queens stations,30 Av,local,elevated,W weekdays only,no,no
+N,4,Queens stations,Broadway,local,elevated,W weekdays only,no,no
+N,5,Queens stations,36 Av,local,elevated,W weekdays only,no,no
+N,6,Queens stations,39 Av,local,elevated,W weekdays only,no,no
+N,7,Queens stations,Queensboro Plaza,local_and_express,elevated,"W weekdays only, 7",yes,no
+N,8,Manhattan stations,Lexington Av/59 St,local,subway,"R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6, free out-of-system transfer to F, Q at Lexington Av/63 St",no,no
+N,9,Manhattan stations,5 Av/59 St,local,subway,"R all times except late nights, W weekdays only",no,no
+N,10,Manhattan stations,57 St-7 Av,local_and_express,subway,"Q, R all times except late nights, W weekdays only",yes,no
+N,11,Manhattan stations,49 St,local,subway,"R all times except late nights, W weekdays only",yes,no
+N,12,Manhattan stations,Times Sq-42 St,local_and_express,subway,"A, C all times except late nights, E, Q, R all times except late nights, W weekdays only, S all times except late nights, 1, 2, 3, 7",yes,no
+N,13,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm, Q, R all times except late nights, W weekdays only",yes,no
+N,14,Manhattan stations,14 St-Union Sq,local_and_express,subway,"L, Q, R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6",no,no
+N,15,Manhattan stations,Canal St,local_and_express,subway,"J, Q, R all times except late nights, W weekdays only, Z rush hour only, 6",yes,no
+N,16,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D, Q, R, 2, 3 all times except late nights, 4, 5 weekdays only",yes,no
+N,17,Brooklyn stations,36 St,local_and_express,subway,"D, R",no,no
+N,18,Brooklyn stations,59 St,local_and_express,subway,R,yes,no
+N,19,Brooklyn stations,8 Av,local,open_cut,No Transfers,yes,no
+N,20,Brooklyn stations,Fort Hamilton Pkwy,local,open_cut,No Transfers,no,no
+N,21,Brooklyn stations,New Utrecht Av,local,open_cut,D,yes,no
+N,22,Brooklyn stations,18 Av,local,open_cut,No Transfers,no,no
+N,23,Brooklyn stations,20 Av,local,open_cut,No Transfers,no,no
+N,24,Brooklyn stations,Bay Pkwy,local,open_cut,No Transfers,no,no
+N,25,Brooklyn stations,Kings Hwy,local,open_cut,No Transfers,no,no
+N,26,Brooklyn stations,Avenue U,local,open_cut,No Transfers,no,no
+N,27,Brooklyn stations,86 St,local,open_cut,No Transfers,no,no
+N,28,Brooklyn stations,Coney Island-Stillwell Av,local_and_express,elevated,"D, F, Q",yes,no
+Q,1,Manhattan stations,96 St,local,subway,No Transfers,yes,yes
+Q,2,Manhattan stations,86 St,local,subway,No Transfers,yes,no
+Q,3,Manhattan stations,72 St,local,subway,No Transfers,yes,no
+Q,4,Manhattan stations,Lexington Av/63 St,local,subway,"M weekdays 6 a.m. - 9:30 p.m.; Free out-of-system transfer to Lexington Av/59 St to N, R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6",yes,no
+Q,5,Manhattan stations,57 St-7 Av,local_and_express,subway,"N, R, W",yes,no
+Q,6,Manhattan stations,Times Sq-42 St,local_and_express,subway,"A, C all times except late nights, E, N, R all times except late nights, W weekdays only, S all times except late nights, 1, 2, 3, 7",yes,no
+Q,7,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm, N, R all times except late nights, W weekdays only",yes,no
+Q,8,Manhattan stations,14 St-Union Sq,local_and_express,subway,"L, N, R all times except late nights, W weekdays o nly, Z rush hour only, 6",yes,no
+Q,9,Manhattan stations,Canal St,local_and_express,subway,"J, N, R all times except late nights, W weekdays only, Z rush hour only, 6",no,no
+Q,10,Brooklyn stations,DeKalb Av,local_and_express,subway,"B weekdays until 11 pm, R all times except late nights",yes,no
+Q,11,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D, N, R, 2, 3 all times except late nights, 4, 5, weekdays only",yes,no
+Q,12,Brooklyn stations,7 Av,local_and_express,subway,B weekdays until 11 pm,no,no
+Q,13,Brooklyn stations,Prospect Park,local_and_express,open_cut,"B weekdays until 11 pm, S",yes,no
+Q,14,Brooklyn stations,Parkside Av,local,open_cut,No Transfers,no,no
+Q,15,Brooklyn stations,Church Av,local_and_express,open_cut,B weekdays until 11 pm,yes,no
+Q,16,Brooklyn stations,Beverly Rd,local,open_cut,No Transfers,no,no
+Q,17,Brooklyn stations,Cortelyou Rd,local,open_cut,No Transfers,no,no
+Q,18,Brooklyn stations,Newkirk Plaza,local_and_express,open_cut,B weekdays until 11 pm,no,no
+Q,19,Brooklyn stations,Avenue H,local,open_cut,No Transfers,yes,no
+Q,20,Brooklyn stations,Avenue J,local,open_cut,No Transfers,no,no
+Q,21,Brooklyn stations,Avenue M,local,open_cut,No Transfers,no,no
+Q,22,Brooklyn stations,Kings Hwy,local_and_express,open_cut,B weekdays until 11 pm,yes,no
+Q,23,Brooklyn stations,Avenue U,local,open_cut,No Transfers,no,no
+Q,24,Brooklyn stations,Neck Rd,local,open_cut,No Transfers,no,no
+Q,25,Brooklyn stations,Sheepshead Bay,local_and_express,open_cut,B weekdays until 11 pm,yes,no
+Q,26,Brooklyn stations,Brighton Beach,local_and_express,elevated,B weekdays until 11 pm,no,no
+Q,27,Brooklyn stations,Ocean Pkwy,local,elevated,No Transfers,no,no
+Q,28,Brooklyn stations,W 8 St-NY Aquarium,local,elevated,F,no,no
+Q,29,Brooklyn stations,Coney Island-Stillwell Av,local_and_express,elevated,"D, F, N",yes,no
+R,1,Queens stations,Forest Hills-71 Av,local_and_express,subway,"E, F; M weekdays approx. 6 a.m. to 9:30 p.m.",yes,yes
+R,2,Queens stations,67 Av,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,3,Queens stations,63 Dr-Rego Park,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,4,Queens stations,Woodhaven Blvd,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,5,Queens stations,Grand Av,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,6,Queens stations,Elmhurst Av,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,7,Queens stations,Jackson Hts-Roosevelt Av,local_and_express,subway,"E, F, M weekdays approx. 6 a.m. to 9:30 p.m., 7",yes,no
+R,8,Queens stations,65 St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,9,Queens stations,Northern Blvd,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,yes,no
+R,10,Queens stations,46 St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,11,Queens stations,Steinway St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,12,Queens stations,36 St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no
+R,13,Queens stations,Queens Plaza,local_and_express,subway,"E, F weekdays until 9:30 p.m.",yes,no
+R,14,Manhattan stations,Lexington Av/59 St,local,subway,"N, W weekdays only, 4, 5 all times except late nights, 6, free out-of-system transfer to F, Q at Lexington Av/63 St",no,no
+R,15,Manhattan stations,5 Av/59 St,local,subway,"N, W weekdays only",no,no
+R,16,Manhattan stations,57 St-7 Av,local_and_express,subway,"Q, N, W weekdays only",yes,no
+R,17,Manhattan stations,49 St,local,subway,"N, W weekdays only",yes,no
+R,18,Manhattan stations,Times Square-42 St,local_and_express,subway,"A, C all times except late nights, E, Q, R all times except late nights, W weekdays only, S all times except late nights, 1, 2, 3, 7",yes,no
+R,19,Manhattan stations,34 St-Herald Square,local_and_express,subway,"B weekdays until 11 pm, D, F, M until 11 pm, Q, W weekdays only",yes,no
+R,20,Manhattan stations,28 St,local,subway,W weekdays only,no,no
+R,21,Manhattan stations,23 St,local,subway,W weekdays only,no,no
+R,22,Manhattan stations,14 St-Union Sq,local_and_express,subway,"L, Q, N, W weekdays only, 4, 5 all times except last night, 6",yes,no
+R,23,Manhattan stations,8 St-NYU,local,subway,W weekdays only,no,no
+R,24,Manhattan stations,Prince St,local,subway,W weekdays only,no,no
+R,25,Manhattan stations,Canal St,local_and_express,subway,"J, Q, N, W weekdays only, Z rush hour only, 6",no,no
+R,26,Manhattan stations,City Hall,local,subway,W weekdays only,no,no
+R,27,Manhattan stations,Cortlandt St,local,subway,"A, C all times except late nights, E, W weekdays only, 2, 3 all times except late nights",yes,no
+R,28,Manhattan stations,Rector St,local,subway,W weekdays only,no,no
+R,29,Manhattan stations,Whitehall St-South Ferry,local,subway,"W weekdays only, 1",no,no
+R,30,Brooklyn stations,Court St,local,subway,"2, 3 all times except late nights, 4, 5 weekdays only",no,no
+R,31,Brooklyn stations,Jay St-MetroTech,local_and_express,subway,"A, C all times except late nights, F",yes,no
+R,32,Brooklyn stations,DeKalb Av,local_and_express,subway,"B weekdays until 11 pm, Q",yes,no
+R,33,Brooklyn stations,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D, N, Q, 2, 3 all times except late nights, 4, 5 weekdays only",yes,no
+R,34,Brooklyn stations,Union St,local,subway,No Transfers,no,no
+R,35,Brooklyn stations,4 Av-9 St,local,subway,"F, G",no,no
+R,36,Brooklyn stations,Prospect Av,local,subway,No Transfers,no,no
+R,37,Brooklyn stations,25 St,local,subway,No Transfers,no,no
+R,38,Brooklyn stations,36 St,local,subway,"D, N",no,no
+R,39,Brooklyn stations,45 St,local,subway,No Transfers,no,no
+R,40,Brooklyn stations,53 St,local,subway,No Transfers,no,no
+R,41,Brooklyn stations,59 St,local,subway,N,yes,no
+R,42,Brooklyn stations,Bay Ridge Av,local,subway,No Transfers,no,no
+R,43,Brooklyn stations,77 St,local,subway,No Transfers,no,no
+R,44,Brooklyn stations,86 St,local,subway,No Transfers,yes,no
+R,45,Brooklyn stations,Bay Ridge-95 St,local,subway,No Transfers,yes,yes
+S,1,42 St Shuttle (Manhattan),Times Sq-42 St,express,subway,"N,Q,1,2,3,7 all times, W weekdays only, R all times except late nights; 42 St/Port Authority A, E all times, C all times except late nights",yes,yes
+S,2,42 St Shuttle (Manhattan),Grand Central-42 St,express,subway,"5 all times except late nights, 4,6,7 all times",yes,yes
+S,3,Franklin Shuttle (Brooklyn),Franklin Av,local,elevated,"C except late nights, A late nights",no,no
+S,4,Franklin Shuttle (Brooklyn),Park Place,local,open_cut,No Transfers,yes,no
+S,5,Franklin Shuttle (Brooklyn),Botanic Garden,local,open_cut,"2, 4 all times, 3 except late nights, 5 weekdays only",no,no
+S,6,Franklin Shuttle (Brooklyn),Prospect Park,local_and_express,open_cut,"Q all times, B weekdays and weekday evenings only",yes,no
+S,7,Rockaway Shuttle (Queens),Broad Channel,local,at_grade,A all times,no,no
+S,8,Rockaway Shuttle (Queens),Beach 90 St,local,elevated,A all times,no,no
+S,9,Rockaway Shuttle (Queens),Beach 98 St,local,elevated,A all times,no,no
+S,10,Rockaway Shuttle (Queens),Beach 105 St,local,elevated,A all times,no,no
+S,11,Rockaway Shuttle (Queens),Rockaway Park-Beach 116 St,local,at_grade,A all times,yes,no
+W,1,Queens stations,Astoria-Ditmars Blvd,local,elevated,N,no,yes
+W,2,Queens stations,Astoria Blvd,local,elevated,"N, M60 SBS to LGA Airport",yes,no
+W,3,Queens stations,30 Av,local,elevated,N,no,no
+W,4,Queens stations,Broadway,local,elevated,N,no,no
+W,5,Queens stations,36 Av,local,elevated,N,no,no
+W,6,Queens stations,39 Av,local,elevated,N,no,no
+W,7,Queens stations,Queensboro Plaza,local_and_express,elevated,"N, 7",yes,no
+W,8,Manhattan stations,Lexington Av/59 St,local,subway,"R all times except late nights, N, 4, 5 all times except late nights, 6, free out-of-system transfer to F, Q at Lexington Av/63 St",no,no
+W,9,Manhattan stations,5 Av/59 St,local,subway,"R all times except late nights, N",no,no
+W,10,Manhattan stations,57-7 Av,local_and_express,subway,"Q, R all times except late nights, N",yes,no
+W,11,Manhattan stations,49 St,local,subway,"R all times except late nights, N",yes,no
+W,12,Manhattan stations,Times Sq-42 St,local_and_express,subway,"A, C all times except late nights, E, Q, R all times except late nights, 1, 2, 3, 7",yes,no
+W,13,Manhattan stations,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm, Q, R all times except late nights, N",yes,no
+W,14,Manhattan stations,28 St,local,subway,R all times except late nights,no,no
+W,15,Manhattan stations,23 St,local,subway,R all times except late nights,no,no
+W,16,Manhattan stations,14 St-Union Sq,local_and_express,subway,"L, N, Q, R all times except late nights, 4, 5 all times except late nights, 6",yes,no
+W,17,Manhattan stations,8 St-NYU,local,subway,R all times except late nights,no,no
+W,18,Manhattan stations,Prince St,local,subway,R all times except late nights,no,no
+W,19,Manhattan stations,Canal St,local_and_express,subway,"J, Q, N, R all times except late nights, Z rush hour only, 6",no,no
+W,20,Manhattan stations,City Hall,local,subway,R all times except late nights,no,no
+W,21,Manhattan stations,Cortlandt St,local,subway,"A, C, all times except late nights, E, R all times except late nights, 2, 3 all times except late nights",yes,no
+W,22,Manhattan stations,Rector St,local,subway,R all times except late nights,no,no
+W,23,Manhattan stations,Whitehall St-South Ferry,local,subway,"R all times except late nights, 1",no,no
+Z,1,Queens stations,Jamaica Center-Parsons/Archer,express,subway,"E,J rush hour",yes,yes
+Z,2,Queens stations,Sutphin Blvd-Archer Av-JFK Airport,express,subway,"E,J, LIRR",yes,no
+Z,3,Queens stations,121 St,local,elevated,J all times except rush hours,no,no
+Z,4,Queens stations,104 St,local,elevated,J all times except rush hours,no,no
+Z,5,Queens stations,Woodhaven Blvd,local_and_express,elevated,J,yes,no
+Z,6,Queens stations,75 St-Elderts Ln,local,elevated,Z rush hour only,no,no
+Z,7,Brooklyn stations,Crescent St,local_and_express,elevated,J,no,no
+Z,8,Brooklyn stations,Norwood Av,local,elevated,J all times except rush hours,no,no
+Z,9,Brooklyn stations,Van Siclen Av,local,elevated,J all times except rush hours,no,no
+Z,10,Brooklyn stations,Alabama Av,local_and_express,elevated,J,no,no
+Z,11,Brooklyn stations,Broadway Junction,local_and_express,elevated,"A,C all times except late nights,L,J",no,no
+Z,12,Brooklyn stations,Chauncey St,local,elevated,J all times except rush hours,no,no
+Z,13,Brooklyn stations,Gates Av,local,elevated,J all times except rush hours,no,no
+Z,14,Brooklyn stations,Myrtle Av,local_and_express,elevated,"J,M",no,no
+Z,15,Brooklyn stations,Marcy Av,local_and_express,elevated,"J,M all times except late nights",yes,no
+Z,16,Manhattan stations,Delancey St Essex St,local,subway,"F,M all times except late nights,J",no,no
+Z,17,Manhattan stations,Bowery,local,subway,J,no,no
+Z,18,Manhattan stations,Canal St,local,subway,"N,Q,R all times except late nights,W weekdays only,J,6",no,no
+Z,19,Manhattan stations,Chambers St,local,subway,"J,4,5,6",yes,no
+Z,20,Manhattan stations,Fulton St,local,subway,"A,C all times except late nights,J,2,3 all times except late nights,4,5 all times except late nights",yes,no
+Z,21,Manhattan stations,Broad St,local,subway,J,no,no
