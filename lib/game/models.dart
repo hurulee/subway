@@ -115,9 +115,9 @@ const gameLevels = [
       SwitchPoint(trackPosition: 0.68, windowSize: 0.06),
     ],
     expressSpeedMultiplier: 1.35,
-    // Segment 1 only: local=RED, express=GREEN
+    // Segment 2 only: local=RED, express=GREEN
     obstacles: [
-      Obstacle(trackPosition: 0.27, track: TrackType.local),
+      Obstacle(trackPosition: 0.56, track: TrackType.local),
     ],
   ),
   // ── Level 2 ──────────────────────────────────────────────────────────────

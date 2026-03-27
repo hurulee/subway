@@ -39,7 +39,7 @@ class SubwayGame extends FlameGame {
   bool _stoppedAtStation = false;
   double _stopTimer = 0.0;
   static const double stopDuration = 2.0;
-  double _startupDelay = 0.9;
+  bool _waitingForStart = true;
 
   // Switch window tracking
   int _currentSwitchIdx = 0;
@@ -99,7 +99,8 @@ class SubwayGame extends FlameGame {
     _hitObstacles.clear();
     _penaltyCount = 0;
     _penaltyFlashTimer = 0;
-    _startupDelay = 0.9;
+    _waitingForStart = true;
+    overlays.add('readyToStart');
 
     brakingNotifier.value = false;
     switchAvailableNotifier.value = false;
@@ -164,10 +165,7 @@ class SubwayGame extends FlameGame {
     super.update(dt);
     if (_levelDone) return;
 
-    if (_startupDelay > 0) {
-      _startupDelay -= dt;
-      return;
-    }
+    if (_waitingForStart) return;
 
     _elapsed += dt;
     if (_penaltyFlashTimer > 0) _penaltyFlashTimer -= dt;
@@ -374,6 +372,12 @@ class SubwayGame extends FlameGame {
   void setBraking(bool braking) {
     if (_levelDone) return;
     brakingNotifier.value = braking;
+  }
+
+  void startLevel() {
+    if (!_waitingForStart) return;
+    _waitingForStart = false;
+    overlays.remove('readyToStart');
   }
 
   /// Advance to next level after completing current one.

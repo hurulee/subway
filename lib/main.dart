@@ -46,6 +46,7 @@ class _GameScreenState extends State<GameScreen> {
           'hud':           (context, game) => HudOverlay(game: game as SubwayGame),
           'brake':         (context, game) => BrakeButton(game: game as SubwayGame),
           'switch':        (context, game) => SwitchButton(game: game as SubwayGame),
+          'readyToStart':  (context, game) => ReadyToStartOverlay(game: game as SubwayGame),
           'levelComplete': (context, game) => LevelCompleteOverlay(game: game as SubwayGame),
           'gameComplete':  (context, game) => GameCompleteOverlay(game: game as SubwayGame),
         },
@@ -239,6 +240,36 @@ class SwitchButton extends StatelessWidget {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class ReadyToStartOverlay extends StatelessWidget {
+  final SubwayGame game;
+  const ReadyToStartOverlay({super.key, required this.game});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 48),
+        child: ElevatedButton(
+          onPressed: () => game.startLevel(),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 18),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(32),
+            ),
+          ),
+          child: Text(
+            'START  LVL ${game.currentLevelNumber}',
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );
