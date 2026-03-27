@@ -1,0 +1,239 @@
+{
+  "system": "nyc",
+  "line": "Q",
+  "name": "Q Train",
+  "stations": [
+    {
+      "name": "96 St",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.784318,
+      "lon": -73.947152
+    },
+    {
+      "name": "86 St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.054286,
+      "lat": 40.777891,
+      "lon": -73.951787
+    },
+    {
+      "name": "72 St",
+      "stop_type": "local",
+      "passengers": 4,
+      "track_position": 0.088571,
+      "lat": 40.768799,
+      "lon": -73.958424
+    },
+    {
+      "name": "Lexington Av/63 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.122857,
+      "lat": 40.764629,
+      "lon": -73.966113
+    },
+    {
+      "name": "57 St-7 Av",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.157143,
+      "lat": 40.764664,
+      "lon": -73.980658
+    },
+    {
+      "name": "Times Sq-42 St",
+      "stop_type": "local_and_express",
+      "passengers": 30,
+      "track_position": 0.191429,
+      "lat": 40.754672,
+      "lon": -73.986754
+    },
+    {
+      "name": "34 St-Herald Sq",
+      "stop_type": "local_and_express",
+      "passengers": 13,
+      "track_position": 0.225714,
+      "lat": 40.749567,
+      "lon": -73.98795
+    },
+    {
+      "name": "14 St-Union Sq",
+      "stop_type": "local_and_express",
+      "passengers": 12,
+      "track_position": 0.26,
+      "lat": 40.735736,
+      "lon": -73.990568
+    },
+    {
+      "name": "Canal St",
+      "stop_type": "local_and_express",
+      "passengers": 6,
+      "track_position": 0.294286,
+      "lat": 40.718383,
+      "lon": -74.00046
+    },
+    {
+      "name": "DeKalb Av",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.328571,
+      "lat": 40.690635,
+      "lon": -73.981824
+    },
+    {
+      "name": "Atlantic Av-Barclays Ctr",
+      "stop_type": "local_and_express",
+      "passengers": 5,
+      "track_position": 0.362857,
+      "lat": 40.68446,
+      "lon": -73.97689
+    },
+    {
+      "name": "7 Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.397143,
+      "lat": 40.67705,
+      "lon": -73.972367
+    },
+    {
+      "name": "Prospect Park",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.431429,
+      "lat": 40.661614,
+      "lon": -73.962246
+    },
+    {
+      "name": "Parkside Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.465714,
+      "lat": 40.655292,
+      "lon": -73.961495
+    },
+    {
+      "name": "Church Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.5,
+      "lat": 40.650527,
+      "lon": -73.962982
+    },
+    {
+      "name": "Beverley Rd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.534286,
+      "lat": 40.644031,
+      "lon": -73.964492
+    },
+    {
+      "name": "Cortelyou Rd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.568571,
+      "lat": 40.640927,
+      "lon": -73.963891
+    },
+    {
+      "name": "Newkirk Plaza",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.602857,
+      "lat": 40.635082,
+      "lon": -73.962793
+    },
+    {
+      "name": "Avenue H",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.637143,
+      "lat": 40.62927,
+      "lon": -73.961639
+    },
+    {
+      "name": "Avenue J",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.671429,
+      "lat": 40.625039,
+      "lon": -73.960803
+    },
+    {
+      "name": "Avenue M",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.705714,
+      "lat": 40.617618,
+      "lon": -73.959399
+    },
+    {
+      "name": "Kings Hwy",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.74,
+      "lat": 40.60867,
+      "lon": -73.957734
+    },
+    {
+      "name": "Avenue U",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.774286,
+      "lat": 40.5993,
+      "lon": -73.955929
+    },
+    {
+      "name": "Neck Rd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.808571,
+      "lat": 40.595246,
+      "lon": -73.955161
+    },
+    {
+      "name": "Sheepshead Bay",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.842857,
+      "lat": 40.586896,
+      "lon": -73.954155
+    },
+    {
+      "name": "Brighton Beach",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.877143,
+      "lat": 40.577621,
+      "lon": -73.961376
+    },
+    {
+      "name": "Ocean Pkwy",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.911429,
+      "lat": 40.576312,
+      "lon": -73.968501
+    },
+    {
+      "name": "W 8 St-NY Aquarium",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.945714,
+      "lat": 40.576127,
+      "lon": -73.975939
+    },
+    {
+      "name": "Coney Island-Stillwell Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.98,
+      "lat": 40.577422,
+      "lon": -73.981233
+    }
+  ]
+}

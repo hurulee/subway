@@ -1,0 +1,367 @@
+{
+  "system": "nyc",
+  "line": "R",
+  "name": "R Train",
+  "stations": [
+    {
+      "name": "Forest Hills-71 Av",
+      "stop_type": "local_and_express",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.721691,
+      "lon": -73.844521
+    },
+    {
+      "name": "67 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.041818,
+      "lat": 40.726523,
+      "lon": -73.852719
+    },
+    {
+      "name": "63 Dr-Rego Park",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.063636,
+      "lat": 40.729846,
+      "lon": -73.861604
+    },
+    {
+      "name": "Woodhaven Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.085455,
+      "lat": 40.733106,
+      "lon": -73.869229
+    },
+    {
+      "name": "Grand Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.107273,
+      "lat": 40.737015,
+      "lon": -73.877223
+    },
+    {
+      "name": "Elmhurst Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.129091,
+      "lat": 40.742454,
+      "lon": -73.882017
+    },
+    {
+      "name": "Jackson Hts-Roosevelt Av",
+      "stop_type": "local_and_express",
+      "passengers": 8,
+      "track_position": 0.150909,
+      "lat": 40.746644,
+      "lon": -73.891338
+    },
+    {
+      "name": "65 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.172727,
+      "lat": 40.749669,
+      "lon": -73.898453
+    },
+    {
+      "name": "Northern Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.194545,
+      "lat": 40.752885,
+      "lon": -73.906006
+    },
+    {
+      "name": "46 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.216364,
+      "lat": 40.756312,
+      "lon": -73.913333
+    },
+    {
+      "name": "Steinway St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.238182,
+      "lat": 40.756879,
+      "lon": -73.92074
+    },
+    {
+      "name": "36 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.26,
+      "lat": 40.752039,
+      "lon": -73.928781
+    },
+    {
+      "name": "Queens Plaza",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.281818,
+      "lat": 40.748973,
+      "lon": -73.937243
+    },
+    {
+      "name": "Lexington Av/59 St",
+      "stop_type": "local",
+      "passengers": 6,
+      "track_position": 0.303636,
+      "lat": 40.76266,
+      "lon": -73.967258
+    },
+    {
+      "name": "5 Av/59 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.325455,
+      "lat": 40.764811,
+      "lon": -73.973347
+    },
+    {
+      "name": "57 St-7 Av",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.347273,
+      "lat": 40.764664,
+      "lon": -73.980658
+    },
+    {
+      "name": "49 St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.369091,
+      "lat": 40.759901,
+      "lon": -73.984139
+    },
+    {
+      "name": "Times Square-42 St",
+      "stop_type": "local_and_express",
+      "passengers": 30,
+      "track_position": 0.390909,
+      "lat": 40.754672,
+      "lon": -73.986754
+    },
+    {
+      "name": "34 St-Herald Square",
+      "stop_type": "local_and_express",
+      "passengers": 13,
+      "track_position": 0.412727,
+      "lat": 40.749567,
+      "lon": -73.98795
+    },
+    {
+      "name": "28 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.434545,
+      "lat": 40.745494,
+      "lon": -73.988691
+    },
+    {
+      "name": "23 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.456364,
+      "lat": 40.741303,
+      "lon": -73.989344
+    },
+    {
+      "name": "14 St-Union Sq",
+      "stop_type": "local_and_express",
+      "passengers": 12,
+      "track_position": 0.478182,
+      "lat": 40.735736,
+      "lon": -73.990568
+    },
+    {
+      "name": "8 St-NYU",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.5,
+      "lat": 40.730328,
+      "lon": -73.992629
+    },
+    {
+      "name": "Prince St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.521818,
+      "lat": 40.724329,
+      "lon": -73.997702
+    },
+    {
+      "name": "Canal St",
+      "stop_type": "local_and_express",
+      "passengers": 6,
+      "track_position": 0.543636,
+      "lat": 40.719527,
+      "lon": -74.001775
+    },
+    {
+      "name": "City Hall",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.565455,
+      "lat": 40.713282,
+      "lon": -74.006978
+    },
+    {
+      "name": "Cortlandt St",
+      "stop_type": "local",
+      "passengers": 7,
+      "track_position": 0.587273,
+      "lat": 40.710668,
+      "lon": -74.011029
+    },
+    {
+      "name": "Rector St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.609091,
+      "lat": 40.70722,
+      "lon": -74.013342
+    },
+    {
+      "name": "Whitehall St-South Ferry",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.630909,
+      "lat": 40.703087,
+      "lon": -74.012994
+    },
+    {
+      "name": "Court St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.652727,
+      "lat": 40.6941,
+      "lon": -73.991777
+    },
+    {
+      "name": "Jay St-MetroTech",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.674545,
+      "lat": 40.69218,
+      "lon": -73.985942
+    },
+    {
+      "name": "DeKalb Av",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.696364,
+      "lat": 40.690635,
+      "lon": -73.981824
+    },
+    {
+      "name": "Atlantic Av-Barclays Ctr",
+      "stop_type": "local_and_express",
+      "passengers": 5,
+      "track_position": 0.718182,
+      "lat": 40.683666,
+      "lon": -73.97881
+    },
+    {
+      "name": "Union St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.74,
+      "lat": 40.677316,
+      "lon": -73.98311
+    },
+    {
+      "name": "4 Av-9 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.761818,
+      "lat": 40.670847,
+      "lon": -73.988302
+    },
+    {
+      "name": "Prospect Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.783636,
+      "lat": 40.665414,
+      "lon": -73.992872
+    },
+    {
+      "name": "25 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.805455,
+      "lat": 40.660397,
+      "lon": -73.998091
+    },
+    {
+      "name": "36 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.827273,
+      "lat": 40.655144,
+      "lon": -74.003549
+    },
+    {
+      "name": "45 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.849091,
+      "lat": 40.648939,
+      "lon": -74.010006
+    },
+    {
+      "name": "53 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.870909,
+      "lat": 40.645069,
+      "lon": -74.014034
+    },
+    {
+      "name": "59 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.892727,
+      "lat": 40.641362,
+      "lon": -74.017881
+    },
+    {
+      "name": "Bay Ridge Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.914545,
+      "lat": 40.634967,
+      "lon": -74.023377
+    },
+    {
+      "name": "77 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.936364,
+      "lat": 40.629742,
+      "lon": -74.02551
+    },
+    {
+      "name": "86 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.958182,
+      "lat": 40.622687,
+      "lon": -74.028398
+    },
+    {
+      "name": "Bay Ridge-95 St",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.98,
+      "lat": 40.616622,
+      "lon": -74.030876
+    }
+  ]
+}

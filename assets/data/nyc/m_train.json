@@ -1,0 +1,295 @@
+{
+  "system": "nyc",
+  "line": "M",
+  "name": "M Train",
+  "stations": [
+    {
+      "name": "Forest Hills-71 Av",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.02,
+      "lat": 40.721691,
+      "lon": -73.844521
+    },
+    {
+      "name": "67 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.047429,
+      "lat": 40.726523,
+      "lon": -73.852719
+    },
+    {
+      "name": "63 Dr-Rego Park",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.074857,
+      "lat": 40.729846,
+      "lon": -73.861604
+    },
+    {
+      "name": "Woodhaven Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.102286,
+      "lat": 40.733106,
+      "lon": -73.869229
+    },
+    {
+      "name": "Grand Av-Newtown",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.129714,
+      "lat": 40.737015,
+      "lon": -73.877223
+    },
+    {
+      "name": "Elmhurst Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.157143,
+      "lat": 40.742454,
+      "lon": -73.882017
+    },
+    {
+      "name": "Jackson Hts-Roosevelt Av",
+      "stop_type": "local_and_express",
+      "passengers": 8,
+      "track_position": 0.184571,
+      "lat": 40.746644,
+      "lon": -73.891338
+    },
+    {
+      "name": "65 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.212,
+      "lat": 40.749669,
+      "lon": -73.898453
+    },
+    {
+      "name": "Northern Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.239429,
+      "lat": 40.752885,
+      "lon": -73.906006
+    },
+    {
+      "name": "46 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.266857,
+      "lat": 40.756312,
+      "lon": -73.913333
+    },
+    {
+      "name": "Steinway St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.294286,
+      "lat": 40.756879,
+      "lon": -73.92074
+    },
+    {
+      "name": "36 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.321714,
+      "lat": 40.752039,
+      "lon": -73.928781
+    },
+    {
+      "name": "21 St-Queensbridge",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.349143,
+      "lat": 40.754203,
+      "lon": -73.942836
+    },
+    {
+      "name": "Roosevelt Island",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.376571,
+      "lat": 40.759145,
+      "lon": -73.95326
+    },
+    {
+      "name": "Lexington Av/63 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.404,
+      "lat": 40.764629,
+      "lon": -73.966113
+    },
+    {
+      "name": "57 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.431429,
+      "lat": 40.763972,
+      "lon": -73.97745
+    },
+    {
+      "name": "47-50 Sts-Rockefeller Ctr",
+      "stop_type": "local_and_express",
+      "passengers": 7,
+      "track_position": 0.458857,
+      "lat": 40.758663,
+      "lon": -73.981329
+    },
+    {
+      "name": "42 St-Bryant Pk",
+      "stop_type": "local_and_express",
+      "passengers": 30,
+      "track_position": 0.486286,
+      "lat": 40.754222,
+      "lon": -73.984569
+    },
+    {
+      "name": "34 St-Herald Sq",
+      "stop_type": "local_and_express",
+      "passengers": 13,
+      "track_position": 0.513714,
+      "lat": 40.749719,
+      "lon": -73.987823
+    },
+    {
+      "name": "23 St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.541143,
+      "lat": 40.742878,
+      "lon": -73.992821
+    },
+    {
+      "name": "14 St",
+      "stop_type": "local",
+      "passengers": 5,
+      "track_position": 0.568571,
+      "lat": 40.738228,
+      "lon": -73.996209
+    },
+    {
+      "name": "W 4 St-Washington Sq",
+      "stop_type": "local_and_express",
+      "passengers": 6,
+      "track_position": 0.596,
+      "lat": 40.732338,
+      "lon": -74.000495
+    },
+    {
+      "name": "Broadway-Lafayette St",
+      "stop_type": "local_and_express",
+      "passengers": 5,
+      "track_position": 0.623429,
+      "lat": 40.725297,
+      "lon": -73.996204
+    },
+    {
+      "name": "Delancey St-Essex St",
+      "stop_type": "local",
+      "passengers": 4,
+      "track_position": 0.650857,
+      "lat": 40.718315,
+      "lon": -73.987437
+    },
+    {
+      "name": "Marcy Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.678286,
+      "lat": 40.708359,
+      "lon": -73.957757
+    },
+    {
+      "name": "Hewes St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.705714,
+      "lat": 40.70687,
+      "lon": -73.953431
+    },
+    {
+      "name": "Lorimer St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.733143,
+      "lat": 40.703869,
+      "lon": -73.947408
+    },
+    {
+      "name": "Flushing Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.760571,
+      "lat": 40.70026,
+      "lon": -73.941126
+    },
+    {
+      "name": "Myrtle Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.788,
+      "lat": 40.697207,
+      "lon": -73.935657
+    },
+    {
+      "name": "Central Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.815429,
+      "lat": 40.697857,
+      "lon": -73.927397
+    },
+    {
+      "name": "Knickerbocker Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.842857,
+      "lat": 40.698664,
+      "lon": -73.919711
+    },
+    {
+      "name": "Myrtle-Wyckoff Avs",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.870286,
+      "lat": 40.69943,
+      "lon": -73.912385
+    },
+    {
+      "name": "Seneca Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.897714,
+      "lat": 40.702762,
+      "lon": -73.90774
+    },
+    {
+      "name": "Forest Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.925143,
+      "lat": 40.704423,
+      "lon": -73.903077
+    },
+    {
+      "name": "Fresh Pond Rd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.952571,
+      "lat": 40.706186,
+      "lon": -73.895877
+    },
+    {
+      "name": "Middle Village-Metropolitan Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.98,
+      "lat": 40.711396,
+      "lon": -73.889601
+    }
+  ]
+}

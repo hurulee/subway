@@ -1,0 +1,199 @@
+{
+  "system": "nyc",
+  "line": "L",
+  "name": "L Train",
+  "stations": [
+    {
+      "name": "8 Av",
+      "stop_type": "local_and_express",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.739777,
+      "lon": -74.002578
+    },
+    {
+      "name": "6 Av",
+      "stop_type": "local",
+      "passengers": 14,
+      "track_position": 0.061739,
+      "lat": 40.737335,
+      "lon": -73.996786
+    },
+    {
+      "name": "14 St-Union Sq",
+      "stop_type": "local_and_express",
+      "passengers": 30,
+      "track_position": 0.103478,
+      "lat": 40.734789,
+      "lon": -73.99073
+    },
+    {
+      "name": "3 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.145217,
+      "lat": 40.732849,
+      "lon": -73.986122
+    },
+    {
+      "name": "1 Av",
+      "stop_type": "local",
+      "passengers": 8,
+      "track_position": 0.186957,
+      "lat": 40.730953,
+      "lon": -73.981628
+    },
+    {
+      "name": "Bedford Av",
+      "stop_type": "local",
+      "passengers": 12,
+      "track_position": 0.228696,
+      "lat": 40.717304,
+      "lon": -73.956872
+    },
+    {
+      "name": "Lorimer St",
+      "stop_type": "local",
+      "passengers": 5,
+      "track_position": 0.270435,
+      "lat": 40.714063,
+      "lon": -73.950275
+    },
+    {
+      "name": "Graham Av",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.312174,
+      "lat": 40.714565,
+      "lon": -73.944053
+    },
+    {
+      "name": "Grand St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.353913,
+      "lat": 40.711926,
+      "lon": -73.94067
+    },
+    {
+      "name": "Montrose Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.395652,
+      "lat": 40.707739,
+      "lon": -73.93985
+    },
+    {
+      "name": "Morgan Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.437391,
+      "lat": 40.706152,
+      "lon": -73.933147
+    },
+    {
+      "name": "Jefferson St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.47913,
+      "lat": 40.706607,
+      "lon": -73.922913
+    },
+    {
+      "name": "DeKalb Av",
+      "stop_type": "local",
+      "passengers": 4,
+      "track_position": 0.52087,
+      "lat": 40.703811,
+      "lon": -73.918425
+    },
+    {
+      "name": "Myrtle-Wyckoff Avs",
+      "stop_type": "local",
+      "passengers": 7,
+      "track_position": 0.562609,
+      "lat": 40.699814,
+      "lon": -73.911586
+    },
+    {
+      "name": "Halsey St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.604348,
+      "lat": 40.695602,
+      "lon": -73.904084
+    },
+    {
+      "name": "Wilson Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.646087,
+      "lat": 40.688764,
+      "lon": -73.904046
+    },
+    {
+      "name": "Bushwick Av-Aberdeen St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.687826,
+      "lat": 40.682829,
+      "lon": -73.905249
+    },
+    {
+      "name": "Broadway Junction",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.729565,
+      "lat": 40.678856,
+      "lon": -73.90324
+    },
+    {
+      "name": "Atlantic Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.771304,
+      "lat": 40.675345,
+      "lon": -73.903097
+    },
+    {
+      "name": "Sutter Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.813043,
+      "lat": 40.669367,
+      "lon": -73.901975
+    },
+    {
+      "name": "Livonia Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.854783,
+      "lat": 40.664038,
+      "lon": -73.900571
+    },
+    {
+      "name": "New Lots Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.896522,
+      "lat": 40.658733,
+      "lon": -73.899232
+    },
+    {
+      "name": "East 105 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.938261,
+      "lat": 40.650573,
+      "lon": -73.899485
+    },
+    {
+      "name": "Canarsie-Rockaway Pkwy",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.98,
+      "lat": 40.646654,
+      "lon": -73.90185
+    }
+  ]
+}

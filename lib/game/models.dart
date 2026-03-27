@@ -29,7 +29,7 @@ class Obstacle {
 
 class Level {
   final String name;
-  final List<Station> stations;
+  final List<Station> stations; // empty when loaded from a RouteData asset
   final int startIndex;
   final int endIndex;
   final double parTime;
@@ -41,7 +41,7 @@ class Level {
 
   const Level({
     required this.name,
-    required this.stations,
+    this.stations = const [],
     required this.startIndex,
     required this.endIndex,
     required this.parTime,
@@ -83,28 +83,16 @@ class HudData {
       (passengerScore + timeBonus - penaltyDeduction).clamp(0, 999999);
 }
 
-// ── Shared station list ───────────────────────────────────────────────────────
-const _stations = [
-  // ── Local track ──────────────────────────────────────────────────────────
-  Station(name: 'Far Rockaway',  passengers: 0,  trackPosition: 0.04, track: TrackType.local),
-  Station(name: 'Mott Ave',      passengers: 8,  trackPosition: 0.18, track: TrackType.local),
-  Station(name: 'Beach 25 St',   passengers: 14, trackPosition: 0.32, track: TrackType.local),
-  Station(name: 'Howard Beach',  passengers: 10, trackPosition: 0.48, track: TrackType.local),
-  Station(name: 'Broad Channel', passengers: 18, trackPosition: 0.64, track: TrackType.local),
-  Station(name: 'Rockaway Blvd', passengers: 12, trackPosition: 0.78, track: TrackType.local),
-  Station(name: 'Jay St',        passengers: 0,  trackPosition: 0.94, track: TrackType.local),
-  // ── Express track ────────────────────────────────────────────────────────
-  Station(name: 'Far Rockaway',  passengers: 0,  trackPosition: 0.04, track: TrackType.express),
-  Station(name: 'Howard Beach',  passengers: 20, trackPosition: 0.48, track: TrackType.express),
-  Station(name: 'Broad Channel', passengers: 28, trackPosition: 0.64, track: TrackType.express),
-  Station(name: 'Jay St',        passengers: 0,  trackPosition: 0.94, track: TrackType.express),
-];
+// ── Level definitions ─────────────────────────────────────────────────────────
+//
+// Stations are loaded at runtime from assets/data/nyc/a_train.json
+// (7 key stations: indices 0, 5, 9, 17, 22, 29, 36).
+// startIndex / endIndex refer into the local-station list of that subset.
 
 const gameLevels = [
   // ── Level 1 — intro ──────────────────────────────────────────────────────
   Level(
-    name: 'A Train — Far Rockaway to Jay St',
-    stations: _stations,
+    name: 'A Train — Inwood to Far Rockaway',
     startIndex: 0, endIndex: 6,
     parTime: 90,
     platformHalfLen: 178,
@@ -122,8 +110,7 @@ const gameLevels = [
   ),
   // ── Level 2 ──────────────────────────────────────────────────────────────
   Level(
-    name: 'A Train — Far Rockaway to Jay St',
-    stations: _stations,
+    name: 'A Train — Inwood to Far Rockaway',
     startIndex: 0, endIndex: 6,
     parTime: 78,
     platformHalfLen: 163,
@@ -142,8 +129,7 @@ const gameLevels = [
   ),
   // ── Level 3 ──────────────────────────────────────────────────────────────
   Level(
-    name: 'A Train — Far Rockaway to Jay St',
-    stations: _stations,
+    name: 'A Train — Inwood to Far Rockaway',
     startIndex: 0, endIndex: 6,
     parTime: 68,
     platformHalfLen: 148,
@@ -163,8 +149,7 @@ const gameLevels = [
   ),
   // ── Level 4 — adds 4th switch point ──────────────────────────────────────
   Level(
-    name: 'A Train — Far Rockaway to Jay St',
-    stations: _stations,
+    name: 'A Train — Inwood to Far Rockaway',
     startIndex: 0, endIndex: 6,
     parTime: 60,
     platformHalfLen: 134,
@@ -186,8 +171,7 @@ const gameLevels = [
   ),
   // ── Level 5 — adds 5th switch point ──────────────────────────────────────
   Level(
-    name: 'A Train — Far Rockaway to Jay St',
-    stations: _stations,
+    name: 'A Train — Inwood to Far Rockaway',
     startIndex: 0, endIndex: 6,
     parTime: 52,
     platformHalfLen: 119,

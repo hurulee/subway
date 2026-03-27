@@ -1,10 +1,12 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'models.dart';
+import 'route_data.dart';
 import 'train_component.dart';
 import 'map_component.dart';
 
 class SubwayGame extends FlameGame {
+  final String routeAsset;
   final ValueNotifier<HudData> hudNotifier =
       ValueNotifier(const HudData(passengers: 0, elapsed: 0, nextStation: ''));
   final ValueNotifier<bool> brakingNotifier = ValueNotifier(false);
@@ -55,6 +57,10 @@ class SubwayGame extends FlameGame {
 
   static const double trainScreenFraction = 0.68;
 
+  // Route data loaded from JSON asset.
+  static const int _kStationCount = 7;
+  late RouteData _route;
+
   double get _activeCruiseSpeed => _activeTrack == TrackType.express
       ? level.cruiseSpeed * level.expressSpeedMultiplier
       : level.cruiseSpeed;
@@ -63,15 +69,25 @@ class SubwayGame extends FlameGame {
   double get _perfectZone => level.platformHalfLen * 0.615;
   double get _goodZone => level.platformHalfLen;
 
+  SubwayGame({required this.routeAsset});
+
   @override
   Future<void> onLoad() async {
     _train = TrainComponent();
+    final base = await RouteData.load(routeAsset);
+    final n = base.stations.length;
+    final count = _kStationCount.clamp(2, n);
+    final indices = List.generate(
+      count,
+      (i) => (i * (n - 1) / (count - 1)).round(),
+    );
+    _route = base.subset(indices);
     _initLevel();
   }
 
   void _initLevel() {
-    _localStations   = level.stations.where((s) => s.track == TrackType.local).toList();
-    _expressStations = level.stations.where((s) => s.track == TrackType.express).toList();
+    _localStations   = _route.localStations;
+    _expressStations = _route.expressStations;
 
     _map = MapComponent(
       localStations:   _localStations,

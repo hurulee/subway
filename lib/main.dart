@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'game/subway_game.dart';
 import 'game/models.dart';
+import 'line_select_screen.dart' show LineSelectScreen, kLines, LineInfo;
 
 void main() {
   runApp(const SubwayApp());
@@ -16,13 +17,14 @@ class SubwayApp extends StatelessWidget {
       title: 'Subway',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const GameScreen(),
+      home: const LineSelectScreen(),
     );
   }
 }
 
 class GameScreen extends StatefulWidget {
-  const GameScreen({super.key});
+  final String routeAsset;
+  const GameScreen({super.key, required this.routeAsset});
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -34,7 +36,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    _game = SubwayGame();
+    _game = SubwayGame(routeAsset: widget.routeAsset);
   }
 
   @override
@@ -60,8 +62,17 @@ class HudOverlay extends StatelessWidget {
   final SubwayGame game;
   const HudOverlay({super.key, required this.game});
 
+  LineInfo? get _lineInfo {
+    try {
+      return kLines.firstWhere((l) => l.assetPath == game.routeAsset);
+    } catch (_) {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final lineInfo = _lineInfo;
     return ValueListenableBuilder<HudData>(
       valueListenable: game.hudNotifier,
       builder: (context, data, _) {
@@ -74,6 +85,7 @@ class HudOverlay extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _hudPill('Passengers: ${data.passengers}', Colors.green),
+                  if (lineInfo != null) _lineBullet(lineInfo),
                   _hudPill('LVL ${data.level}', Colors.purple),
                   _hudPill('Time: ${data.elapsed.toStringAsFixed(1)}s', Colors.blue),
                 ],
@@ -104,6 +116,36 @@ class HudOverlay extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _lineBullet(LineInfo info) {
+    return Container(
+      width: 38,
+      height: 38,
+      decoration: BoxDecoration(
+        color: info.bg,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: info.bg.withValues(alpha: 0.5),
+            blurRadius: 6,
+            spreadRadius: 1,
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          info.label,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: info.fg,
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+            height: 1.1,
+          ),
+        ),
+      ),
     );
   }
 

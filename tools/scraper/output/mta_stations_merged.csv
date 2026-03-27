@@ -1,0 +1,731 @@
+line,sequence,boro,station_name,stop_type,structure,transfers,ada,terminal,gtfs_lat,gtfs_lon,complex_id,daytime_routes,division,mta_line_name,ridership_2024,mta_match,rider_match
+1,1,Bx,Van Cortlandt Park-242,local,elevated,No Transfers,no,yes,40.889248,-73.898583,293,1,IRT,Broadway - 7Av,"1,385,093",fuzzy(0.93),fuzzy(0.93)
+1,2,Bx,238 St,local,elevated,No Transfers,no,no,40.884667,-73.90087,294,1,IRT,Broadway - 7Av,"921,050",exact,exact
+1,3,Bx,231 St,local,elevated,No Transfers,yes,no,40.878856,-73.904834,295,1,IRT,Broadway - 7Av,"1,780,122",exact,exact
+1,4,M,Marble Hill-225 St,local,elevated,No Transfers,no,no,40.874561,-73.909831,296,1,IRT,Broadway - 7Av,"1,008,592",exact,exact
+1,5,M,215 St,local,elevated,No Transfers,no,no,40.869444,-73.915279,297,1,IRT,Broadway - 7Av,"495,736",exact,exact
+1,6,M,207 St,local,elevated,No Transfers,no,no,40.864621,-73.918822,298,1,IRT,Broadway - 7Av,"1,244,261",exact,exact
+1,7,M,Dyckman St,local,elevated,No Transfers,yes,no,40.860531,-73.925536,299,1,IRT,Broadway - 7Av,"1,462,682",exact,exact
+1,8,M,191 St,local,subway,No Transfers,no,no,40.855225,-73.929412,300,1,IRT,Broadway - 7Av,"1,586,212",exact,exact
+1,9,M,181 St,local,subway,No Transfers,no,no,40.849505,-73.933596,301,1,IRT,Broadway - 7Av,"2,242,135",exact,exact
+1,10,M,168 St,local,subway,"A,C all times except late nights",no,no,40.840556,-73.940133,605,1,IRT,Broadway - 7Av,"5,272,833",no_match,exact
+1,11,M,157 St,local,subway,No Transfers,no,no,40.834041,-73.94489,303,1,IRT,Broadway - 7Av,"2,238,202",exact,exact
+1,12,M,145 St,local,subway,No Transfers,no,no,40.826551,-73.95036,304,1,IRT,Broadway - 7Av,"2,114,398",exact,exact
+1,13,M,137 St-City College,local,subway,No Transfers,no,no,40.822008,-73.953676,305,1,IRT,Broadway - 7Av,"2,561,284",exact,exact
+1,14,M,125 St,local,elevated,No Transfers,no,no,40.815581,-73.958372,306,1,IRT,Broadway - 7Av,"1,977,586",exact,exact
+1,15,M,116 St-Columbia University,local,subway,M60 SBS Bus to Airport,no,no,40.807722,-73.96411,307,1,IRT,Broadway - 7Av,"3,326,487",exact,exact
+1,16,M,Cathedral Pkwy (110 St),local,subway,No Transfers,no,no,40.803967,-73.966847,308,1,IRT,Broadway - 7Av,"2,874,549",exact,exact
+1,17,M,103 St,local,subway,No Transfers,no,no,40.799446,-73.968379,309,1,IRT,Broadway - 7Av,"2,777,091",exact,exact
+1,18,M,96 St,local_and_express,subway,"2,3",yes,no,40.793919,-73.972323,310,1 2 3,IRT,Broadway - 7Av,"8,250,940",exact,exact
+1,19,M,86 St,local,subway,No Transfers,no,no,40.788644,-73.976218,311,1,IRT,Broadway - 7Av,"3,715,031",exact,exact
+1,20,M,79 St,local,subway,No Transfers,no,no,40.783934,-73.979917,312,1,IRT,Broadway - 7Av,"3,207,507",exact,exact
+1,21,M,72 St,local,subway,"2,3",no,no,40.778453,-73.98197,313,1 2 3,IRT,Broadway - 7Av,"9,752,193",exact,exact
+1,22,M,66 St-Lincoln Center,local,subway,No Transfers,yes,no,40.77344,-73.982209,314,1,IRT,Broadway - 7Av,"4,774,721",exact,exact
+1,23,M,59 St-Columbus Circle,local,subway,"A,B weekdays until 11 p.m., C all times except late nights, D",yes,no,40.768247,-73.981929,614,1,IRT,Broadway - 7Av,"16,884,912",exact,exact
+1,24,M,50 St,local,subway,No Transfers,no,no,40.761728,-73.983849,316,1,IRT,Broadway - 7Av,"5,434,523",exact,exact
+1,25,M,Times Sq-42 St,local_and_express,subway,"N,Q,2,3,7 all times, W weekdays only, R,S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes,40.75529,-73.987495,611,1 2 3,IRT,Broadway - 7Av,"57,743,486",exact,exact
+1,26,M,34 St-Penn Station,local_and_express,subway,"2,3 all times except late nights",yes,no,40.750373,-73.991057,318,1 2 3,IRT,Broadway - 7Av,"16,373,975",exact,exact
+1,27,M,28 St,local,subway,No Transfers,no,no,40.747215,-73.993365,319,1,IRT,Broadway - 7Av,"3,106,290",exact,exact
+1,28,M,23 St,local,subway,No Transfers,no,no,40.744081,-73.995657,320,1,IRT,Broadway - 7Av,"3,237,445",exact,exact
+1,29,M,18 St,local,subway,No Transfers,no,no,40.74104,-73.997871,321,1,IRT,Broadway - 7Av,"1,786,568",exact,exact
+1,30,M,14 St,local_and_express,subway,"F,L,M all times except late nights, 2,3 all times except late nights",yes,no,40.737826,-74.000201,601,1 2 3,IRT,Broadway - 7Av,"10,463,838",exact,exact
+1,31,M,Christopher St-Stonewall,local,subway,No Transfers,no,no,40.733422,-74.002906,323,1,IRT,Broadway - 7Av,"3,005,038",exact,no_match
+1,32,M,Houston St,local,subway,No Transfers,no,no,40.728251,-74.005367,324,1,IRT,Broadway - 7Av,"3,067,997",exact,exact
+1,33,M,Canal St,local,subway,No Transfers,no,no,40.722854,-74.006277,325,1,IRT,Broadway - 7Av,"1,193,850",exact,exact
+1,34,M,Franklin St,local,subway,No Transfers,no,no,40.719318,-74.006886,326,1,IRT,Broadway - 7Av,"1,408,018",exact,exact
+1,35,M,Chambers St,local_and_express,subway,"2,3 all times except late nights",yes,no,40.715478,-74.009266,327,1 2 3,IRT,Broadway - 7Av,"3,952,229",exact,exact
+1,36,M,WTC Cortlandt,local,subway,No Transfers,yes,no,40.711835,-74.012188,328,1,IRT,Broadway - 7Av,"3,730,170",exact,exact
+1,37,M,Rector St,local,subway,No Transfers,no,no,40.707513,-74.013783,329,1,IRT,Broadway - 7Av,"1,669,671",exact,exact
+1,38,M,South Ferry,local,subway,"R,W weekdays only",no,no,40.702068,-74.013664,635,1,IRT,Broadway - 7Av,"6,519,960",exact,exact
+2,1,Bx,Wakefield-241 St,local,elevated,5 limited weekday rush hour service,no,no,40.903125,-73.85062,416,2,IRT,Lenox - White Plains Rd,"778,337",exact,exact
+2,2,Bx,Nereid Av,local,elevated,5 limited weekday rush hour service,no,no,40.898379,-73.854376,417,2 5,IRT,Lenox - White Plains Rd,"519,303",exact,exact
+2,3,Bx,233 St,local,elevated,5 limited weekday rush hour service,yes,no,40.893193,-73.857473,418,2 5,IRT,Lenox - White Plains Rd,"725,758",exact,exact
+2,4,Bx,225 St,local,elevated,5 limited weekday rush hour service,no,no,40.888022,-73.860341,419,2 5,IRT,Lenox - White Plains Rd,"546,645",exact,exact
+2,5,Bx,219 St,local,elevated,5 limited weekday rush hour service,no,no,40.883895,-73.862633,420,2 5,IRT,Lenox - White Plains Rd,"434,397",exact,exact
+2,6,Bx,Gun Hill Rd,local,elevated,5 limited weekday rush hour service,yes,no,40.87785,-73.866256,421,2 5,IRT,Lenox - White Plains Rd,"1,241,021",exact,exact
+2,7,Bx,Burke Av,local,elevated,5 limited weekday rush hour service,no,no,40.871356,-73.867164,422,2 5,IRT,Lenox - White Plains Rd,"490,814",exact,exact
+2,8,Bx,Allerton Av,local,elevated,5 limited weekday rush hour service,no,no,40.865462,-73.867352,423,2 5,IRT,Lenox - White Plains Rd,"800,761",exact,exact
+2,9,Bx,Pelham Pkwy,local,elevated,5 limited weekday rush hour service,yes,no,40.857192,-73.867615,424,2 5,IRT,Lenox - White Plains Rd,"1,514,724",exact,exact
+2,10,Bx,Bronx Park East,local,elevated,5 limited weekday rush hour service,no,no,40.848828,-73.868457,425,2 5,IRT,Lenox - White Plains Rd,"431,235",exact,exact
+2,11,Bx,E 180 St,local_and_express,elevated,5 all times,yes,no,40.841894,-73.873488,426,2 5,IRT,Lenox - White Plains Rd,"1,694,993",exact,exact
+2,12,Bx,West Farms Sq-E Tremont Av,local,elevated,5 all times except rush hour and late nights,no,no,40.840295,-73.880049,427,2 5,IRT,Lenox - White Plains Rd,"970,899",exact,exact
+2,13,Bx,174 St,local,elevated,5 all times except rush hour and late nights,no,no,40.837288,-73.887734,428,2 5,IRT,Lenox - White Plains Rd,"1,045,557",exact,exact
+2,14,Bx,Freeman St,local,elevated,5 all times except rush hour and late nights,no,no,40.829993,-73.891865,429,2 5,IRT,Lenox - White Plains Rd,"802,767",exact,exact
+2,15,Bx,Simpson St,local,elevated,5 all times except rush hour and late nights,yes,no,40.824073,-73.893064,430,2 5,IRT,Lenox - White Plains Rd,"1,368,041",exact,exact
+2,16,Bx,Intervale Av,local,elevated,5 all times except rush hour and late nights,no,no,40.822181,-73.896736,431,2 5,IRT,Lenox - White Plains Rd,"535,565",exact,exact
+2,17,Bx,Prospect Av,local,elevated,5 all times except rush hour and late nights,no,no,40.819585,-73.90177,432,2 5,IRT,Lenox - White Plains Rd,"1,202,994",exact,exact
+2,18,Bx,Jackson Av,local,elevated,5 all times except rush hour and late nights,no,no,40.81649,-73.907807,433,2 5,IRT,Lenox - White Plains Rd,"924,682",exact,exact
+2,19,Bx,3 Av-149 St,local_and_express,subway,5 all times except late nights,yes,no,40.816109,-73.917757,434,2 5,IRT,Lenox - White Plains Rd,"3,698,471",exact,exact
+2,20,Bx,149 St-Grand Concourse,local_and_express,subway,5 all times except late nights,no,no,40.81841,-73.926718,603,2 5,IRT,Lenox - White Plains Rd,"2,087,669",exact,exact
+2,21,M,135 St,local,subway,3,yes,no,40.814229,-73.94077,438,2 3,IRT,Lenox - White Plains Rd,"2,237,928",exact,exact
+2,22,M,125 St,local,subway,"3,SBS M60 to Airport",no,no,40.807754,-73.945495,439,2 3,IRT,Lenox - White Plains Rd,"2,978,249",exact,exact
+2,23,M,116 St,local,subway,3,no,no,40.802098,-73.949625,440,2 3,IRT,Lenox - White Plains Rd,"1,936,567",exact,exact
+2,24,M,110 St-Malcolm X Plaza,local,subway,3,no,no,40.799075,-73.951822,441,2 3,IRT,Lenox - White Plains Rd,"1,541,225",exact,no_match
+2,25,M,96 St,local_and_express,subway,"1,3",yes,no,40.793919,-73.972323,310,1 2 3,IRT,Broadway - 7Av,"8,250,940",exact,exact
+2,26,M,72 St,local_and_express,subway,"1,3",yes,no,40.778453,-73.98197,313,1 2 3,IRT,Broadway - 7Av,"9,752,193",exact,exact
+2,27,M,Times Sq-42 St,local_and_express,subway,"N,Q,1,3,7 all times, W weekdays only, R,S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes,40.75529,-73.987495,611,1 2 3,IRT,Broadway - 7Av,"57,743,486",exact,exact
+2,28,M,34 St-Penn Station,local_and_express,subway,"1,3 all times except late nights",yes,no,40.750373,-73.991057,318,1 2 3,IRT,Broadway - 7Av,"16,373,975",exact,exact
+2,29,M,14 St,local_and_express,subway,"F,L all times, M weekdays only, 1,3 all times except late nights",yes,no,40.737826,-74.000201,601,1 2 3,IRT,Broadway - 7Av,"10,463,838",exact,exact
+2,30,M,Chambers St,local_and_express,subway,"1,3 all times except late nights",yes,no,40.715478,-74.009266,327,1 2 3,IRT,Broadway - 7Av,"3,952,229",exact,exact
+2,31,M,Park Place,local,subway,"A,C all times except late nights,E,R,W weekdays only,3 all times except late nights",no,no,40.713051,-74.008811,624,2 3,IRT,Clark St,"13,299,237",exact,exact
+2,32,M,Fulton St,local,subway,"A,C all times except late nights,J,Z rush hour only, 3 all times except late nights, 4, 5 all times except late nights",yes,no,40.709416,-74.006571,628,2 3,IRT,Clark St,"19,221,396",exact,exact
+2,33,M,Wall St,local,subway,3 all times except late nights,no,no,40.706821,-74.0091,333,2 3,IRT,Clark St,"4,112,164",exact,exact
+2,34,Bk,Clark St,local,subway,3 all times except late nights,no,no,40.697466,-73.993086,334,2 3,IRT,Clark St,"1,780,831",exact,exact
+2,35,Bk,Borough Hall,local_and_express,subway,"4, 3 all times except late nights, 5 weekdays only",yes,no,40.693219,-73.989998,620,2 3,IRT,Clark St,"6,188,561",exact,exact
+2,36,Bk,Hoyt St,local,subway,3 all times except late nights,no,no,40.690545,-73.985065,336,2 3,IRT,Eastern Pky,"1,922,028",exact,exact
+2,37,Bk,Nevins St,local_and_express,subway,"3 all times except late nights, 4, 5 weekdays only",no,no,40.688246,-73.980492,337,2 3 4 5,IRT,Eastern Pky,"2,243,094",exact,exact
+2,38,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"4, B weekdays until 11pm, D,N,Q,R,W limited rush hour, 3 all times except late nights, 5 weekdays only",yes,no,40.684359,-73.977666,617,2 3 4 5,IRT,Eastern Pky,"10,108,995",exact,exact
+2,39,Bk,Bergen St,local,subway,3 all times except late nights,no,no,40.680829,-73.975098,339,2 3,IRT,Eastern Pky,"1,110,608",exact,exact
+2,40,Bk,Grand Army Plaza,local,subway,3 all times except late nights,no,no,40.675235,-73.971046,340,2 3,IRT,Eastern Pky,"1,730,993",exact,exact
+2,41,Bk,Eastern Pkwy-Brooklyn Museum,local,subway,3 all times except late nights,yes,no,40.671987,-73.964375,341,2 3,IRT,Eastern Pky,"1,168,932",exact,exact
+2,42,Bk,Franklin Av-Medgar Evers College,local_and_express,subway,"3 all times except late nights, 4 all times, 5 weekdays only",no,no,40.670682,-73.958131,626,2 3 4 5,IRT,Eastern Pky,"3,463,808",exact,no_match
+2,43,Bk,President St-Medgar Evers College,local,subway,5 weekdays only,no,no,40.667883,-73.950683,353,2 5,IRT,Nostrand,"749,838",exact,no_match
+2,44,Bk,Sterling St,local,subway,5 weekdays only,no,no,40.662742,-73.95085,354,2 5,IRT,Nostrand,"1,256,701",exact,exact
+2,45,Bk,Winthrop St,local,subway,5 weekdays only,no,no,40.656652,-73.9502,355,2 5,IRT,Nostrand,"1,660,594",exact,exact
+2,46,Bk,Church Av,local,subway,5 weekdays only,yes,no,40.650843,-73.949575,356,2 5,IRT,Nostrand,"1,880,019",exact,exact
+2,47,Bk,Beverly Rd,local,subway,5 weekdays only,no,no,40.645098,-73.948959,357,2 5,IRT,Nostrand,"966,119",exact,exact
+2,48,Bk,Newkirk Av-Little Haiti,local,subway,5 weekdays only,no,no,40.639967,-73.948411,358,2 5,IRT,Nostrand,"1,446,054",exact,no_match
+2,49,Bk,Flatbush Av-Brooklyn College,local,subway,5 weekdays only,yes,no,40.632836,-73.947642,359,2 5,IRT,Nostrand,"3,662,300",exact,exact
+3,1,M,Harlem-148 St,local,subway,No transfers,no,no,40.82388,-73.93647,436,3,IRT,Lenox - White Plains Rd,"649,115",exact,exact
+3,2,M,145 St,local,subway,No transfers,no,no,40.820421,-73.936245,437,3,IRT,Lenox - White Plains Rd,"571,427",exact,exact
+3,3,M,135 St,local,subway,2,yes,no,40.814229,-73.94077,438,2 3,IRT,Lenox - White Plains Rd,"2,237,928",exact,exact
+3,4,M,125 St,local,subway,"2, SBS M60 to Airport",no,no,40.807754,-73.945495,439,2 3,IRT,Lenox - White Plains Rd,"2,978,249",exact,exact
+3,5,M,116 St,local,subway,2,no,no,40.802098,-73.949625,440,2 3,IRT,Lenox - White Plains Rd,"1,936,567",exact,exact
+3,6,M,110 St-Malcolm X Plaza,local,subway,2,no,no,40.799075,-73.951822,441,2 3,IRT,Lenox - White Plains Rd,"3,463,808",exact,no_match
+3,7,M,96 St,local_and_express,subway,"1, 2",yes,no,40.793919,-73.972323,310,1 2 3,IRT,Broadway - 7Av,"8,250,940",exact,exact
+3,8,M,72 St,local_and_express,subway,"1, 2",yes,no,40.778453,-73.98197,313,1 2 3,IRT,Broadway - 7Av,"9,752,193",exact,exact
+3,9,M,Times Square-42 St,local_and_express,subway,"N, Q, 1, 2, 7 all times, W weekdays only, R, S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes,40.75529,-73.987495,611,1 2 3,IRT,Broadway - 7Av,"57,743,486",exact,exact
+3,10,M,34 St-Penn Station,local_and_express,subway,"1, 2",yes,no,40.750373,-73.991057,318,1 2 3,IRT,Broadway - 7Av,"16,373,975",exact,exact
+3,11,M,14 St,local_and_express,subway,"F/M, L all times except late nights, 1, 2",yes,no,40.737826,-74.000201,601,1 2 3,IRT,Broadway - 7Av,"10,463,838",exact,exact
+3,12,M,Chambers St,local_and_express,subway,"1, 2",yes,no,40.715478,-74.009266,327,1 2 3,IRT,Broadway - 7Av,"3,952,229",exact,exact
+3,13,M,Park Place,local,subway,"A, C all times except late nights,E,R,W weekdays only,2",no,no,40.713051,-74.008811,624,2 3,IRT,Clark St,"13,299,237",exact,exact
+3,14,M,Fulton St,local,subway,"A, C all times except late nights,J,Z rush hour only, 2, 4, 5 all times except late nights",yes,no,40.709416,-74.006571,628,2 3,IRT,Clark St,"19,221,396",exact,exact
+3,15,M,Wall St,local,subway,2,no,no,40.706821,-74.0091,333,2 3,IRT,Clark St,"4,112,164",exact,exact
+3,16,Bk,Clark St,local,subway,2,no,no,40.697466,-73.993086,334,2 3,IRT,Clark St,"1,780,831",exact,exact
+3,17,Bk,Borough Hall,local_and_express,subway,"2, 4, 5 weekdays only, R",yes,no,40.693219,-73.989998,620,2 3,IRT,Clark St,"6,188,561",exact,exact
+3,18,Bk,Hoyt St,local,subway,2,no,no,40.690545,-73.985065,336,2 3,IRT,Eastern Pky,"1,922,028",exact,exact
+3,19,Bk,Nevins St,local_and_express,subway,"2,4,5 weekdays only",no,no,40.688246,-73.980492,337,2 3 4 5,IRT,Eastern Pky,"2,243,094",exact,exact
+3,20,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays untul 11 pm, D,N,Q,R,W limited rush hour service, 2,4,5 weekdays only",yes,no,40.684359,-73.977666,617,2 3 4 5,IRT,Eastern Pky,"10,108,995",exact,exact
+3,21,Bk,Bergen St,local,subway,2,no,no,40.680829,-73.975098,339,2 3,IRT,Eastern Pky,"1,110,608",exact,exact
+3,22,Bk,Grand Army Plaza,local,subway,2,no,no,40.675235,-73.971046,340,2 3,IRT,Eastern Pky,"1,730,993",exact,exact
+3,23,Bk,Eastern Parkway-Brooklyn Museum,local,subway,2,yes,no,40.671987,-73.964375,341,2 3,IRT,Eastern Pky,"1,168,932",exact,exact
+3,24,Bk,Franklin Av-Medgar Evers College,local_and_express,subway,"2,4,5 weekdays only",no,no,40.670682,-73.958131,626,2 3 4 5,IRT,Eastern Pky,"3,463,808",exact,no_match
+3,25,Bk,Nostrand Av,local,subway,No Transfers,no,no,40.669847,-73.950466,343,3,IRT,Eastern Pky,"813,825",exact,exact
+3,26,Bk,Kingston Av,local,subway,No Transfers,no,no,40.669399,-73.942161,344,3,IRT,Eastern Pky,"987,378",exact,exact
+3,27,Bk,Crown Heights-Utica Av,local_and_express,subway,4,yes,no,40.668897,-73.932942,345,3 4,IRT,Eastern Pky,"5,144,720",exact,exact
+3,28,Bk,Sutter Ave-Rutland Rd,local,elevated,No Transfers,no,no,40.664717,-73.92261,346,3,IRT,Eastern Pky,"1,259,304",fuzzy(0.98),fuzzy(0.98)
+3,29,Bk,Saratoga Av,local,elevated,No Transfers,no,no,40.661453,-73.916327,347,3,IRT,Eastern Pky,"920,003",exact,exact
+3,30,Bk,Rockaway Av,local,elevated,No Transfers,no,no,40.662549,-73.908946,348,3,IRT,Eastern Pky,"939,532",exact,exact
+3,31,Bk,Junius St,local,elevated,Free out-of-system transfer to L at Livonia Av,no,no,40.663515,-73.902447,349,3,IRT,Eastern Pky,"495,941",exact,exact
+3,32,Bk,Pennsylvania Av,local,elevated,No Transfers,no,no,40.664635,-73.894895,350,3,IRT,Eastern Pky,"783,925",exact,exact
+3,33,Bk,Van Siclen Av,local,elevated,No Transfers,no,no,40.665449,-73.889395,351,3,IRT,Eastern Pky,"478,373",exact,exact
+3,34,Bk,New Lots Av,local,elevated,Bus or Airtrain to Airport,no,no,40.666235,-73.884079,352,3,IRT,Eastern Pky,"991,222",exact,exact
+4,1,Bx,Woodlawn,local,elevated,No Transfers,no,yes,40.886037,-73.878751,378,4,IRT,Jerome Av,"1,302,003",exact,exact
+4,2,Bx,Mosholu Pkwy,local,elevated,No Transfers,yes,no,40.87975,-73.884655,379,4,IRT,Jerome Av,"1,457,518",exact,exact
+4,3,Bx,Bedford Pk Blvd-Lehman College,local,elevated,No Transfers,no,no,40.873412,-73.890064,380,4,IRT,Jerome Av,"1,083,618",exact,exact
+4,4,Bx,Kingsbridge Rd,local,elevated,No Transfers,no,no,40.86776,-73.897174,381,4,IRT,Jerome Av,"1,670,156",exact,exact
+4,5,Bx,Fordham Rd,local,elevated,No Transfers,yes,no,40.862803,-73.901034,382,4,IRT,Jerome Av,"1,885,625",exact,exact
+4,6,Bx,183 St,local,elevated,No Transfers,no,no,40.858407,-73.903879,383,4,IRT,Jerome Av,"1,077,990",exact,exact
+4,7,Bx,Burnside Av,local,elevated,No Transfers,no,no,40.853453,-73.907684,384,4,IRT,Jerome Av,"1,984,913",exact,exact
+4,8,Bx,176 St,local,elevated,No Transfers,no,no,40.84848,-73.911794,385,4,IRT,Jerome Av,"1,059,310",exact,exact
+4,9,Bx,Mt Eden Av,local,elevated,No Transfers,no,no,40.844434,-73.914685,386,4,IRT,Jerome Av,"941,014",exact,exact
+4,10,Bx,170 St,local,elevated,No Transfers,yes,no,40.840075,-73.917791,387,4,IRT,Jerome Av,"1,396,033",exact,exact
+4,11,Bx,167 St,local,elevated,No Transfers,no,no,40.835537,-73.9214,388,4,IRT,Jerome Av,"1,709,423",exact,exact
+4,12,Bx,161 St-Yankee Stadium,local,elevated,"B rush hours only, D all times except late nights",yes,no,40.827994,-73.925831,604,4,IRT,Jerome Av,"5,964,943",exact,exact
+4,13,Bx,149 St-Grand Concourse,local_and_express,subway,"2, 5 all times except late nights",no,no,40.818375,-73.927351,603,4,IRT,Jerome Av,"2,087,669",exact,exact
+4,14,Bx,138 St-Grand Concourse,local,subway,5 all times except late nights,no,no,40.813224,-73.929849,391,4 5,IRT,Jerome Av,"817,671",exact,exact
+4,15,M,125 St,local_and_express,subway,"5 all times except late nights, 6, Bus or train to airport",yes,no,40.804138,-73.937594,392,4 5 6,IRT,Lexington Av,"5,425,934",exact,exact
+4,16,M,86 St,local,subway,"5 all times except late nights, 6",yes,no,40.779492,-73.955589,397,4 5 6,IRT,Lexington Av,"11,068,503",exact,exact
+4,17,M,59 St,local_and_express,subway,"N, R all times except late nights, W weekdays only, 5 all times except late nights, 6, free out-of-system transfer to Lexington Av/63 St F, Q",no,no,40.762526,-73.967967,613,4 5 6,IRT,Lexington Av,"11,961,525",exact,exact
+4,18,M,Grand Central-42 St,local_and_express,subway,"5, S all times except late nights, 6, 7 all times",yes,no,40.751776,-73.976848,610,4 5 6,IRT,Lexington Av,"33,496,874",exact,exact
+4,19,M,14 St-Union Sq,local_and_express,subway,"L, N, Q, R all times except late nights, W weekdays only, 5 all times except late night, 6",no,no,40.734673,-73.989951,602,4 5 6,IRT,Lexington Av,"22,811,597",exact,exact
+4,20,M,Brooklyn Bridge-City Hall,local_and_express,subway,"J, Z rush hours only, 5 all times except late nights, 6",yes,no,40.713065,-74.004131,622,4 5 6,IRT,Lexington Av,"5,911,226",exact,exact
+4,21,M,Fulton St,local_and_express,subway,"A, C all times except late nights, J, Z rush hour only, 2, 3 all times except late nights, 5 all times except late nights",yes,no,40.710368,-74.009509,628,4 5,IRT,Lexington Av,"19,221,396",exact,exact
+4,22,M,Wall St,local_and_express,subway,5 all times except late nights,no,no,40.707557,-74.011862,413,4 5,IRT,Lexington Av,"3,602,663",exact,exact
+4,23,M,Bowling Green,local_and_express,subway,5 all times except late nights,yes,no,40.704817,-74.014065,414,4 5,IRT,Lexington Av,"4,676,646",exact,exact
+4,24,Bk,Borough Hall,local_and_express,subway,"2, 3 all times except late nights,5 weekdays only, R",yes,no,40.692404,-73.990151,620,4 5,IRT,Eastern Pky,"6,188,561",exact,exact
+4,25,Bk,Nevins St,local_and_express,subway,"2, 3 all times except late nights ,5 weekdays only",no,no,40.688246,-73.980492,337,2 3 4 5,IRT,Eastern Pky,"2,243,094",exact,exact
+4,26,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays untul 11 pm, D,N,Q,R,W limited rush hour service, 2,3 all times except late nights, ,5 weekdays only",yes,no,40.684359,-73.977666,617,2 3 4 5,IRT,Eastern Pky,"10,108,995",exact,exact
+4,27,Bk,Franklin Av-Medgar Evers College,local_and_express,subway,"2, 3 all times except late nights, 5 weekdays only",no,no,40.670682,-73.958131,626,2 3 4 5,IRT,Eastern Pky,"3,463,808",exact,no_match
+4,28,Bk,Crown Heights-Utica Av,local_and_express,subway,3 all times except late nights,no,no,40.668897,-73.932942,345,3 4,IRT,Eastern Pky,"5,144,720",exact,exact
+5,1,Bx,Eastchester-Dyre Av,local,elevated,No Transfers,no,yes,40.8883,-73.830834,442,5,IRT,Dyre Av,"696,740",exact,exact
+5,2,Bx,Baychester Av,local,elevated,No Transfers,no,no,40.878663,-73.838591,443,5,IRT,Dyre Av,"526,066",exact,exact
+5,3,Bx,Gun Hill Rd,local,elevated,No Transfers,yes,no,40.87785,-73.866256,421,2 5,IRT,Lenox - White Plains Rd,"1,241,021",exact,exact
+5,4,Bx,Pelham Pkwy,local,elevated,No Transfers,no,no,40.857192,-73.867615,424,2 5,IRT,Lenox - White Plains Rd,"1,514,724",exact,exact
+5,5,Bx,Morris Park,local,elevated,No Transfers,no,no,40.854364,-73.860495,446,5,IRT,Dyre Av,"528,231",exact,exact
+5,6,Bx,E 180 St,local_and_express,elevated,2,yes,no,40.841894,-73.873488,426,2 5,IRT,Lenox - White Plains Rd,"1,694,993",exact,exact
+5,7,Bx,West Farms Sq-E Tremont Av,local,elevated,2,no,no,40.840295,-73.880049,427,2 5,IRT,Lenox - White Plains Rd,"970,899",exact,exact
+5,8,Bx,174 St,local,elevated,2,no,no,40.837288,-73.887734,428,2 5,IRT,Lenox - White Plains Rd,"1,045,557",exact,exact
+5,9,Bx,Freeman St,local,elevated,2,no,no,40.829993,-73.891865,429,2 5,IRT,Lenox - White Plains Rd,"802,767",exact,exact
+5,10,Bx,Simpson St,local,elevated,2,yes,no,40.824073,-73.893064,430,2 5,IRT,Lenox - White Plains Rd,"1,368,041",exact,exact
+5,11,Bx,Intervale Av,local,elevated,2,no,no,40.822181,-73.896736,431,2 5,IRT,Lenox - White Plains Rd,"535,565",exact,exact
+5,12,Bx,Prospect Av,local,elevated,2,no,no,40.819585,-73.90177,432,2 5,IRT,Lenox - White Plains Rd,"1,202,994",exact,exact
+5,13,Bx,Jackson Av,local,elevated,2,no,no,40.81649,-73.907807,433,2 5,IRT,Lenox - White Plains Rd,"924,682",exact,exact
+5,14,Bx,3 Av-149 St,local_and_express,subway,2,yes,no,40.816109,-73.917757,434,2 5,IRT,Lenox - White Plains Rd,"3,698,471",exact,exact
+5,15,Bx,149 St-Grand Concourse,local_and_express,subway,"2, 4",no,no,40.81841,-73.926718,603,2 5,IRT,Lenox - White Plains Rd,"2,087,669",exact,exact
+5,16,Bx,138 St-Grand Concourse,local,subway,4 all except rush hours,no,no,40.813224,-73.929849,391,4 5,IRT,Jerome Av,"817,671",exact,exact
+5,17,M,125 St,local_and_express,subway,"4, 6, Bus or train to airport",yes,no,40.804138,-73.937594,392,4 5 6,IRT,Lexington Av,"5,425,934",exact,exact
+5,18,M,86 St,local,subway,"4, 6",yes,no,40.779492,-73.955589,397,4 5 6,IRT,Lexington Av,"11,068,503",exact,exact
+5,19,M,59 St,local_and_express,subway,"N, R all times except late nights, W weekdays only, 4,6, , free out-of-system transfer to Lexington Av/63 St F,Q",no,no,40.762526,-73.967967,613,4 5 6,IRT,Lexington Av,"11,961,525",exact,exact
+5,20,M,Grand Central-42 St,local_and_express,subway,"S all times except late nights, 4,6,7 all times",yes,no,40.751776,-73.976848,610,4 5 6,IRT,Lexington Av,"33,496,874",exact,exact
+5,21,M,14 St-Union Sq,local_and_express,subway,"L, N, Q, R all times except late nights, W weekdays only, 4, 6",no,no,40.734673,-73.989951,602,4 5 6,IRT,Lexington Av,"22,811,597",exact,exact
+5,22,M,Brooklyn Bridge-City Hall,local_and_express,subway,"J, Z rush hours only, 4, 6",yes,no,40.713065,-74.004131,622,4 5 6,IRT,Lexington Av,"5,911,226",exact,exact
+5,23,M,Fulton St,local_and_express,subway,"A, C all times except late nights,J, Z rush hour only, 2, 3 all times except late nights,4",yes,no,40.710368,-74.009509,628,4 5,IRT,Lexington Av,"19,221,396",exact,exact
+5,24,M,Wall St,local_and_express,subway,4,no,no,40.707557,-74.011862,413,4 5,IRT,Lexington Av,"3,602,663",exact,exact
+5,25,M,Bowling Green,local_and_express,subway,4,yes,no,40.704817,-74.014065,414,4 5,IRT,Lexington Av,"4,676,646",exact,exact
+5,26,Bk,Borough Hall,local_and_express,subway,"2, 3 all time except late nights, 4, R",yes,no,40.692404,-73.990151,620,4 5,IRT,Eastern Pky,"6,188,561",exact,exact
+5,27,Bk,Nevins St,local_and_express,subway,"2, 3 all time except late nights, 4",no,no,40.688246,-73.980492,337,2 3 4 5,IRT,Eastern Pky,"2,243,094",exact,exact
+5,28,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D,N,Q,R,W limited rush hour service, 2,3 all times except late nights, 4",yes,no,40.684359,-73.977666,617,2 3 4 5,IRT,Eastern Pky,"10,108,995",exact,exact
+5,29,Bk,Franklin Av-Medgar Evers College,local_and_express,subway,"2, 3 all time except late nights, 4",no,no,40.670682,-73.958131,626,2 3 4 5,IRT,Eastern Pky,"3,463,808",exact,no_match
+5,30,Bk,President St-Medgar Evers College,local,subway,2,no,no,40.667883,-73.950683,353,2 5,IRT,Nostrand,"749,838",exact,no_match
+5,31,Bk,Sterling St,local,subway,2,no,no,40.662742,-73.95085,354,2 5,IRT,Nostrand,"1,256,701",exact,exact
+5,32,Bk,Winthrop St,local,subway,2,no,no,40.656652,-73.9502,355,2 5,IRT,Nostrand,"1,660,594",exact,exact
+5,33,Bk,Church Av,local,subway,2,yes,no,40.650843,-73.949575,356,2 5,IRT,Nostrand,"1,880,019",exact,exact
+5,34,Bk,Beverly Rd,local,subway,2,no,no,40.645098,-73.948959,357,2 5,IRT,Nostrand,"966,119",exact,exact
+5,35,Bk,Newkirk Av-Little Haiti,local,subway,2,no,no,40.639967,-73.948411,358,2 5,IRT,Nostrand,"1,446,054",exact,no_match
+5,36,Bk,Flatbush Av-Brooklyn College,local,subway,2,yes,no,40.632836,-73.947642,359,2 5,IRT,Nostrand,"3,662,300",exact,exact
+6,1,Bx,Pelham Bay Park,local,elevated,No Transfers,yes,yes,40.852462,-73.828121,360,6,IRT,Pelham,"1,136,845",exact,exact
+6,2,Bx,Buhre Av,local,elevated,No Transfers,no,no,40.84681,-73.832569,361,6,IRT,Pelham,"766,190",exact,exact
+6,3,Bx,Middletown Rd,local,elevated,No Transfers,no,no,40.843863,-73.836322,362,6,IRT,Pelham,"400,435",exact,exact
+6,4,Bx,Westchester Sq-East Tremont Av,local,elevated,No Transfers,yes,no,40.839892,-73.842952,363,6,IRT,Pelham,"693,959",exact,exact
+6,5,Bx,Zerega Av,local,elevated,No Transfers,no,no,40.836488,-73.847036,364,6,IRT,Pelham,"484,950",exact,exact
+6,6,Bx,Castle Hill Av,local,elevated,No Transfers,no,no,40.834255,-73.851222,365,6,IRT,Pelham,"1,115,405",exact,exact
+6,7,Bx,Parkchester,local_and_express,elevated,Limited weekday peak direction express,yes,no,40.833226,-73.860816,366,6,IRT,Pelham,"2,775,161",exact,exact
+6,8,Bx,St Lawrence Av,local,elevated,No Transfers,no,no,40.831509,-73.867618,367,6,IRT,Pelham,"731,490",exact,fuzzy(0.97)
+6,9,Bx,Morrison Av-Soundview,local,elevated,No Transfers,no,no,40.829521,-73.874516,368,6,IRT,Pelham,"1,063,493",exact,exact
+6,10,Bx,Elder Av,local,elevated,No Transfers,no,no,40.828584,-73.879159,369,6,IRT,Pelham,"1,118,754",exact,exact
+6,11,Bx,Whitlock Av,local,elevated,No Transfers,no,no,40.826525,-73.886283,370,6,IRT,Pelham,"359,232",exact,exact
+6,12,Bx,Hunts Point Av,local_and_express,subway,Limited weekday peak direction express,yes,no,40.820948,-73.890549,371,6,IRT,Pelham,"1,940,171",exact,exact
+6,13,Bx,Longwood Av,local,subway,No Transfers,no,no,40.816104,-73.896435,372,6,IRT,Pelham,"670,300",exact,exact
+6,14,Bx,E 149 St,local,subway,No Transfers,yes,no,40.812118,-73.904098,373,6,IRT,Pelham,"935,029",exact,exact
+6,15,Bx,E 143 St-St Mary's St,local,subway,No Transfers,no,no,40.808719,-73.907657,374,6,IRT,Pelham,"264,544",exact,exact
+6,16,Bx,Cypress Av,local,subway,No Transfers,no,no,40.805368,-73.914042,375,6,IRT,Pelham,"597,739",exact,exact
+6,17,Bx,Brook Av,local,subway,No Transfers,no,no,40.807566,-73.91924,376,6,IRT,Pelham,"1,063,081",exact,exact
+6,18,Bx,3 Av-138 St,local_and_express,subway,Limited weekday peak direction express,no,no,40.810476,-73.926138,377,6,IRT,Pelham,"1,634,603",exact,exact
+6,19,M,125 St,local_and_express,subway,"4,5 all times except late nights, bus or train to Airport",yes,no,40.804138,-73.937594,392,4 5 6,IRT,Lexington Av,"5,425,934",exact,exact
+6,20,M,116 St,local,subway,No Transfers,no,no,40.798629,-73.941617,393,6,IRT,Lexington Av,"2,733,594",exact,exact
+6,21,M,110 St,local,subway,No Transfers,no,no,40.79502,-73.94425,394,6,IRT,Lexington Av,"2,019,446",exact,exact
+6,22,M,103 St,local,subway,No Transfers,no,no,40.7906,-73.947478,395,6,IRT,Lexington Av,"2,475,803",exact,exact
+6,23,M,96 St,local,subway,No Transfers,no,no,40.785672,-73.95107,396,6,IRT,Lexington Av,"3,844,627",exact,exact
+6,24,M,86 St,local_and_express,subway,"4,5 all times except late nights",no,no,40.779492,-73.955589,397,4 5 6,IRT,Lexington Av,"11,068,503",exact,exact
+6,25,M,77 St,local,subway,No Transfers,no,no,40.77362,-73.959874,398,6,IRT,Lexington Av,"6,445,043",exact,exact
+6,26,M,68 St-Hunter College,local,subway,No Transfers,yes,no,40.768141,-73.96387,399,6,IRT,Lexington Av,"5,278,269",exact,exact
+6,27,M,59 St,local_and_express,subway,"N,R all times except late nights, W weekdays only, 4, 5 all times except late nights, free out-of-system transfer to Lexington Av/63 St M,Q",no,no,40.762526,-73.967967,613,4 5 6,IRT,Lexington Av,"11,961,525",exact,exact
+6,28,M,51 St,local,subway,"E,F weekdays until 9:30 p.m.",yes,no,40.757107,-73.97192,612,6,IRT,Lexington Av,"12,536,617",exact,exact
+6,29,M,Grand Central-42 St,local_and_express,subway,"5,S all times except late nights, 4,7 all times",yes,no,40.751776,-73.976848,610,4 5 6,IRT,Lexington Av,"33,496,874",exact,exact
+6,30,M,33 St,local,subway,No Transfers,no,no,40.746081,-73.982076,403,6,IRT,Lexington Av,"6,166,420",exact,exact
+6,31,M,28 St,local,subway,No Transfers,yes,no,40.74307,-73.984264,404,6,IRT,Lexington Av,"4,617,397",exact,exact
+6,32,M,23 St,local,subway,No Transfers,yes,no,40.739864,-73.986599,405,6,IRT,Lexington Av,"5,594,512",no_match,exact
+6,33,M,14 St-Union Sq,local_and_express,subway,"L,N,Q,R all times except late nights, W weekdays only, 4,5 all times except late nights",no,no,40.734673,-73.989951,602,4 5 6,IRT,Lexington Av,"22,811,597",exact,exact
+6,34,M,Astor Pl,local,subway,No Transfers,no,no,40.730054,-73.99107,407,6,IRT,Lexington Av,"4,055,298",exact,fuzzy(0.84)
+6,35,M,Bleecker St,local,subway,"B weekdays until 11 p.m., D,F,M all times except late nights",yes,no,40.725915,-73.994659,619,6,IRT,Lexington Av,"9,991,286",exact,exact
+6,36,M,Spring St,local,subway,No Transfers,no,no,40.722301,-73.997141,409,6,IRT,Lexington Av,"3,212,098",exact,exact
+6,37,M,Canal St,local,subway,"J,N,Q,R all times except late nights, W weekdays only",yes,no,40.718803,-74.000193,623,6,IRT,Lexington Av,"11,048,920",exact,exact
+6,38,M,Brooklyn Bridge-City Hall,local_and_express,subway,"J,Z rush hours only,4,5 all times except late nights",yes,yes,40.713065,-74.004131,622,4 5 6,IRT,Lexington Av,"5,911,226",exact,exact
+7,1,Q,Flushing-Main St,local_and_express,subway,Q48 to LGA Airport,yes,yes,40.7596,-73.83003,447,7,IRT,Flushing,"14,592,853",exact,exact
+7,2,Q,Mets-Willets Point,local_and_express,elevated,Q48 to LGA Airport,no,no,40.754622,-73.845625,448,7,IRT,Flushing,"1,928,104",exact,exact
+7,3,Q,111 St,local,elevated,Q48 to LGA Airport,no,no,40.75173,-73.855334,449,7,IRT,Flushing,"2,137,552",exact,exact
+7,4,Q,103 St-Corona Plaza,local,elevated,No Transfers,no,no,40.749865,-73.8627,450,7,IRT,Flushing,"6,368,620",exact,exact
+7,5,Q,Junction Blvd,local_and_express,elevated,Q72 to LGA Airport,yes,no,40.749145,-73.869527,451,7,IRT,Flushing,"6,592,444",exact,exact
+7,6,Q,90 St-Elmhurst Av,local,elevated,No Transfers,no,no,40.748408,-73.876613,452,7,IRT,Flushing,"4,726,496",exact,exact
+7,7,Q,82 St-Jackson Hts,local,elevated,No Transfers,no,no,40.747659,-73.883697,453,7,IRT,Flushing,"2,372,450",exact,exact
+7,8,Q,74 St-Broadway,local,elevated,"E, F, M weekdays until 11pm, R all times except late nights, LaGuardia Link Q70 SBS, Q47 LGA Airport",yes,no,40.746848,-73.891394,616,7,IRT,Flushing,"15,086,001",exact,fuzzy(0.88)
+7,9,Q,69 St,local,elevated,No Transfers,no,no,40.746325,-73.896403,455,7,IRT,Flushing,"1,440,517",exact,exact
+7,10,Q,61 St-Woodside,local_and_express,elevated,LaGuardia Link Q70 SBS,yes,no,40.74563,-73.902984,456,7,IRT,Flushing,"3,808,140",exact,no_match
+7,11,Q,52 St,local,elevated,No Transfers,no,no,40.744149,-73.912549,457,7,IRT,Flushing,"1,479,311",exact,exact
+7,12,Q,46 St-Bliss St,local,elevated,No Transfers,no,no,40.743132,-73.918435,458,7,IRT,Flushing,"2,866,397",exact,exact
+7,13,Q,40 St-Lowery St,local,elevated,No Transfers,no,no,40.743781,-73.924016,459,7,IRT,Flushing,"2,195,905",exact,exact
+7,14,Q,33 St-Rawson St,local,elevated,No Transfers,no,no,40.744587,-73.930997,460,7,IRT,Flushing,"1,703,545",exact,exact
+7,15,Q,Queensboro Plaza,local_and_express,elevated,"N, W weekdays only",yes,no,40.750582,-73.940202,461,7,IRT,Flushing,"3,124,138",exact,exact
+7,16,Q,Court Sq,local_and_express,elevated,"E, G, F weekdays until 9:30 p.m.",yes,no,40.747023,-73.945264,606,7,IRT,Flushing,"6,032,857",exact,exact
+7,17,Q,Hunters Point Av,local_and_express,subway,No Transfers,no,no,40.742216,-73.948916,463,7,IRT,Flushing,"1,023,393",exact,exact
+7,18,Q,Vernon Blvd-Jackson Av,local_and_express,subway,No Transfers,no,no,40.742626,-73.953581,464,7,IRT,Flushing,"3,859,105",exact,exact
+7,19,M,Grand Central-42 St,local_and_express,subway,"5, S all times except late nights, 4,6 all times",yes,no,40.751431,-73.976041,610,7,IRT,Flushing,"33,496,874",exact,exact
+7,20,M,5 Av,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm",no,no,40.753821,-73.981963,609,7,IRT,Flushing,"57,743,486",exact,exact
+7,21,M,Times Sq-42 St,local_and_express,subway,"N,Q,1,2,3 all times, W weekdays only, R,S all times except late nights; 42 St/Port Authority Bus Terminal A, E all times, C all times except late nights",yes,yes,40.755477,-73.987691,611,7,IRT,Flushing,"57,743,486",exact,exact
+7,22,M,34 St-Hudson Yards,local_and_express,subway,No Transfers,yes,no,40.755882,-74.00191,471,7,IRT,Flushing,"6,082,370",exact,exact
+A,1,M,Inwood-207 St,local,subway,No Transfers,yes,yes,40.868072,-73.919899,143,A,IND,8th Av - Fulton St,"1,818,236",exact,exact
+A,2,M,Dyckman St,local,subway,No Transfers,no,no,40.865491,-73.927271,144,A,IND,8th Av - Fulton St,"1,423,484",exact,exact
+A,3,M,190 St,local,subway,No Transfers,no,no,40.859022,-73.93418,145,A,IND,8th Av - Fulton St,"992,298",exact,exact
+A,4,M,181 St,local,subway,No Transfers,yes,no,40.851695,-73.937969,146,A,IND,8th Av - Fulton St,"2,042,771",exact,exact
+A,5,M,175 St,local,subway,No Transfers,yes,no,40.847391,-73.939704,147,A,IND,8th Av - Fulton St,"2,284,232",exact,exact
+A,6,M,168 St,local_and_express,subway,"C all times except late nights, 1",yes,no,40.840719,-73.939561,605,A C,IND,8th Av - Fulton St,"5,272,833",exact,exact
+A,7,M,145 St,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D",no,no,40.824783,-73.944216,151,A C,IND,8th Av - Fulton St,"4,958,581",exact,exact
+A,8,M,125 St,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D",yes,no,40.811109,-73.952343,153,A C B D,IND,8th Av - Fulton St,"5,853,749",exact,exact
+A,9,M,59 St-Columbus Circle,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D, 1",yes,no,40.768296,-73.981736,614,A C B D,IND,8th Av - Fulton St,"16,884,912",exact,exact
+A,10,M,42 St/Port Authority Bus Terminal,local_and_express,subway,"C all times except late nights, E all times; Times Sq-42 St N,Q,1,2,3,7 all times, W weekdays only, R,S all times except late nights",yes,no,40.757308,-73.989735,611,A C E,IND,8th Av - Fulton St,"57,743,486",exact,no_match
+A,11,M,34 St-Penn Station,local_and_express,subway,"C all times except late nights, E, LIRR",yes,no,40.752287,-73.993391,164,A C E,IND,8th Av - Fulton St,"18,393,456",exact,exact
+A,12,M,14 St,local_and_express,subway,"C all times except late nights, E, L",yes,no,40.740893,-74.00169,618,A C E,IND,8th Av - Fulton St,"11,672,402",exact,exact
+A,13,M,W 4 St-Washington Sq,local_and_express,subway,"B weekdays until 11 p.m., C all times except late nights, D, E, F, M weekdays until 11 p.m.",yes,no,40.732338,-74.000495,167,A C E,IND,8th Av - Fulton St,"10,872,255",exact,exact
+A,14,M,Canal St,local_and_express,subway,"C all times except late nights, E",no,no,40.720824,-74.005229,169,A C E,IND,8th Av - Fulton St,"4,133,553",exact,exact
+A,15,M,Chambers St,local_and_express,subway,"C all times except late nights, E, 2, 3, all times except late nights, R all times except late nights, W weekdays only",no,no,40.714111,-74.008585,624,A C,IND,8th Av - Fulton St,"13,299,237",exact,exact
+A,16,M,Fulton St,local_and_express,subway,"C all times except late nights, J, Z rush hour only, 2m 3 all times except late nights, 4, 5",yes,no,40.710197,-74.007691,628,A C,IND,8th Av - Fulton St,"19,221,396",exact,exact
+A,17,Bk,High St,local_and_express,subway,C all times except late nights,no,no,40.699337,-73.990531,173,A C,IND,8th Av - Fulton St,"2,213,320",exact,exact
+A,18,Bk,Jay St-MetroTech,local_and_express,subway,"C all times except late nights, F, R all times except late nights",yes,no,40.692338,-73.987342,636,A C F,IND,8th Av - Fulton St,"8,252,709",exact,exact
+A,19,Bk,Hoyt-Schermerhorn,local_and_express,subway,"C all times except late nights, G",no,no,40.688484,-73.985001,175,A C G,IND,8th Av - Fulton St,"2,866,434",fuzzy(0.89),fuzzy(0.89)
+A,20,Bk,Nostrand Av,local_and_express,subway,C all times except late nights,no,no,40.680438,-73.950426,179,A C,IND,8th Av - Fulton St,"3,923,075",exact,exact
+A,21,Bk,Utica Av,local_and_express,subway,C all times except late nights,yes,no,40.679364,-73.930729,181,A C,IND,8th Av - Fulton St,"2,844,307",exact,exact
+A,22,Bk,Broadway Junction,local_and_express,subway,"C all times except late nights, J, L, Z rush hour only",no,no,40.678334,-73.905316,621,A C,IND,8th Av - Fulton St,"1,808,472",exact,exact
+A,23,Bk,Euclid Av,local_and_express,subway,C all times except late nights,yes,no,40.675377,-73.872106,188,A C,IND,8th Av - Fulton St,"2,166,608",exact,exact
+A,24,Bk,Grant Av,local,subway,No Transfers,no,no,40.677044,-73.86505,189,A,IND,Liberty Av,"1,113,187",no_match,no_match
+A,25,Q,80 St,local,elevated,No Transfers,no,no,40.679371,-73.858992,190,A,IND,Liberty Av,"876,880",exact,exact
+A,26,Q,88 St,local,elevated,No Transfers,no,no,40.679843,-73.85147,191,A,IND,Liberty Av,"570,555",exact,exact
+A,27,Q,Rockaway Blvd,local,elevated,No Transfers,no,no,40.680429,-73.843853,192,A,IND,Liberty Av,"1,486,223",exact,exact
+A,28,Q,Aqueduct Racetrack,local,at_grade,No Transfers,yes,no,40.672097,-73.835919,196,A,IND,Rockaway,"171,518",exact,exact
+A,29,Q,Aqueduct-North Conduit Av,local,at_grade,No Transfers,no,no,40.668234,-73.834058,197,A,IND,Rockaway,"168,832",exact,exact
+A,30,Q,Howard Beach-JFK Airport,local,at_grade,Airtrain to JFK,yes,no,40.660476,-73.830301,198,A,IND,Rockaway,"975,786",exact,exact
+A,31,Q,Broad Channel,local,at_grade,S,no,no,40.608382,-73.815925,199,A S,IND,Rockaway,"57,312",exact,exact
+A,32,Q,Beach 67 St,local,elevated,No Transfers,yes,no,40.590927,-73.796924,204,A,IND,Rockaway,"161,389",exact,fuzzy(0.91)
+A,33,Q,Beach 60 St,local,elevated,No Transfers,no,no,40.592374,-73.788522,205,A,IND,Rockaway,"332,332",exact,exact
+A,34,Q,Beach 44 St,local,elevated,No Transfers,no,no,40.592943,-73.776013,206,A,IND,Rockaway,"146,574",exact,exact
+A,35,Q,Beach 36 St,local,elevated,No Transfers,no,no,40.595398,-73.768175,207,A,IND,Rockaway,"161,389",exact,exact
+A,36,Q,Beach 25 St,local,elevated,No Transfers,no,no,40.600066,-73.761353,208,A,IND,Rockaway,"304,422",exact,exact
+A,37,Q,Far Rockaway-Mott Av,local,elevated,No Transfers,yes,no,40.603995,-73.755405,209,A,IND,Rockaway,"961,694",exact,exact
+B,1,Bx,Bedford Park Blvd,local_and_express,subway,D,yes,yes,40.873244,-73.887138,211,B D,IND,Concourse,"1,159,574",exact,exact
+B,2,Bx,Kingsbridge Rd,local_and_express,subway,D,yes,no,40.866978,-73.893509,212,B D,IND,Concourse,"1,152,463",exact,exact
+B,3,Bx,Fordham Rd,local_and_express,subway,D,no,no,40.861296,-73.897749,213,B D,IND,Concourse,"1,679,247",exact,exact
+B,4,Bx,182-183 Sts,local,subway,D except rush hours in the peak direction,no,no,40.856093,-73.900741,214,B D,IND,Concourse,"845,033",exact,exact
+B,5,Bx,Tremont Av,local_and_express,subway,D,yes,no,40.85041,-73.905227,215,B D,IND,Concourse,"1,331,993",exact,exact
+B,6,Bx,174-175 Sts,local,subway,D except rush hours in the peak direction,no,no,40.8459,-73.910136,216,B D,IND,Concourse,"790,023",exact,exact
+B,7,Bx,170 St,local,subway,D except rush hours in the peak direction,no,no,40.839306,-73.9134,217,B D,IND,Concourse,"1,009,389",exact,exact
+B,8,Bx,167 St,local,subway,D except rush hours in the peak direction,no,no,40.833771,-73.91844,218,B D,IND,Concourse,"1,446,880",exact,exact
+B,9,Bx,161 St-Yankee Stadium,local,subway,"D except rush hours in the peak direction, 4",yes,no,40.827905,-73.925651,604,B D,IND,Concourse,"5,964,943",exact,exact
+B,10,M,155 St,local,subway,D all times except rush hours,no,no,40.830135,-73.938209,220,B D,IND,Concourse,"556,909",exact,exact
+B,11,M,145 St,local_and_express,subway,"A, C except late nights, D",no,no,40.824783,-73.944216,151,B D,IND,Concourse,"4,958,581",exact,exact
+B,12,M,135 St,local_and_express,subway,C except late nights,yes,no,40.817894,-73.947649,152,C B,IND,8th Av - Fulton St,"1,153,046",exact,exact
+B,13,M,125 St,local,subway,"A, C except late nights, D, M60 SBS to LGA Airport",no,no,40.811109,-73.952343,153,A C B D,IND,8th Av - Fulton St,"5,853,749",exact,exact
+B,14,M,116 St,local,subway,C except late nights,no,no,40.805085,-73.954882,154,C B,IND,8th Av - Fulton St,"1,446,836",exact,exact
+B,15,M,Cathedral Pkwy (110 St),local,subway,C except late nights,no,no,40.800603,-73.958161,155,C B,IND,8th Av - Fulton St,"1,780,033",exact,exact
+B,16,M,103 St,local,subway,C except late nights,no,no,40.796092,-73.961454,156,C B,IND,8th Av - Fulton St,"1,075,955",exact,exact
+B,17,M,96 St,local,subway,C except late nights,no,no,40.791642,-73.964696,157,C B,IND,8th Av - Fulton St,"2,243,864",exact,exact
+B,18,M,86 St,local,subway,C except late nights,no,no,40.785868,-73.968916,158,C B,IND,8th Av - Fulton St,"2,694,426",exact,exact
+B,19,M,81 St-Museum of Natural History,local,subway,C except late nights,no,no,40.781433,-73.972143,159,C B,IND,8th Av - Fulton St,"3,595,507",exact,exact
+B,20,M,72 St,local,subway,C except late nights,no,no,40.775594,-73.97641,160,C B,IND,8th Av - Fulton St,"2,651,985",exact,exact
+B,21,M,59 St-Columbus Circle,local_and_express,subway,"A, C except late nights, D, 1",yes,no,40.768296,-73.981736,614,A C B D,IND,8th Av - Fulton St,"16,884,912",exact,exact
+B,22,M,7 Av,local,subway,"D, E",no,no,40.762862,-73.981637,277,E B D,IND,Queens Blvd,"4,291,303",exact,exact
+B,23,M,47-50 Sts-Rockefeller Ctr,local_and_express,subway,"D, F, M weekdays only",yes,no,40.758663,-73.981329,225,B D F M,IND,6th Av - Culver,"12,514,970",exact,exact
+B,24,M,42 St-Bryant Park,local_and_express,subway,"D, F, M weekdays only, 7",no,no,40.754222,-73.984569,609,B D F M,IND,6th Av - Culver,"57,743,486",exact,no_match
+B,25,M,34 St-Herald Sq,local_and_express,subway,"D, F, M weekdays only, N, Q, R except late nights, W weekdays only",yes,no,40.749719,-73.987823,607,B D F M,IND,6th Av - Culver,"25,012,549",exact,exact
+B,26,M,W 4 St-Washington Sq,local_and_express,subway,"D, F, M weekdays only, A, C except late nights, E",yes,no,40.732338,-74.000495,167,B D F M,IND,6th Av - Culver,"10,872,255",exact,exact
+B,27,M,Broadway-Lafayette St,local_and_express,subway,"D, F, M weekdays only, 6",yes,no,40.725297,-73.996204,619,B D F M,IND,6th Av - Culver,"9,991,286",exact,exact
+B,28,M,Grand St,local_and_express,subway,D,no,no,40.718267,-73.993753,231,B D,IND,6th Av - Culver,"5,902,255",exact,exact
+B,29,Bk,DeKalb Av,local_and_express,subway,"Q, R except late nights",yes,no,40.690635,-73.981824,26,B Q R,BMT,Broadway - Brighton,"4,955,471",exact,exact
+B,30,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"D, N, Q, Rexcept late nights, 2, 3 except late nights, 4, 5 weekdays",yes,no,40.68446,-73.97689,617,B Q,BMT,Broadway - Brighton,"10,108,995",exact,exact
+B,31,Bk,7 Av,local_and_express,subway,Q,no,no,40.67705,-73.972367,41,B Q,BMT,Broadway - Brighton,"2,176,497",exact,exact
+B,32,Bk,Prospect Park,local_and_express,open_cut,"Q, Franklin Avenue Shuttle",yes,no,40.661614,-73.962246,42,B Q S,BMT,Broadway - Brighton,"2,183,676",exact,exact
+B,33,Bk,Church Av,local_and_express,open_cut,Q,yes,no,40.650527,-73.962982,44,B Q,BMT,Broadway - Brighton,"2,819,621",exact,exact
+B,34,Bk,Newkirk Plaza,local_and_express,open_cut,Q,no,no,40.635082,-73.962793,47,B Q,BMT,Broadway - Brighton,"2,146,924",exact,exact
+B,35,Bk,Kings Hwy,local_and_express,open_cut,Q,yes,no,40.60867,-73.957734,51,B Q,BMT,Broadway - Brighton,"4,222,570",exact,exact
+B,36,Bk,Sheepshead Bay,local_and_express,open_cut,Q,yes,no,40.586896,-73.954155,54,B Q,BMT,Broadway - Brighton,"2,810,621",exact,exact
+B,37,Bk,Brighton Beach,local_and_express,elevated,Q,no,no,40.577621,-73.961376,55,B Q,BMT,Broadway - Brighton,"2,493,646",exact,exact
+C,1,M,168 St,local_and_express,subway,"A, 1",yes,no,40.840719,-73.939561,605,A C,IND,8th Av - Fulton St,"5,272,833",exact,exact
+C,2,M,163 St-Amsterdam Av,local,subway,No Transfers,no,no,40.836013,-73.939892,149,C,IND,8th Av - Fulton St,"890,476",exact,exact
+C,3,M,155 St,local,subway,No Transfers,no,no,40.830518,-73.941514,150,C,IND,8th Av - Fulton St,"564,295",exact,exact
+C,4,M,145 St,local_and_express,subway,"A, B weekdays until 11 p.m, D",no,no,40.824783,-73.944216,151,A C,IND,8th Av - Fulton St,"4,958,581",exact,exact
+C,5,M,135 St,local,subway,B weekdays until 11 p.m.,no,no,40.817894,-73.947649,152,C B,IND,8th Av - Fulton St,"1,153,046",exact,exact
+C,6,M,125 St,local_and_express,subway,"A, B weekdays until 11 p.m.",yes,no,40.811109,-73.952343,153,A C B D,IND,8th Av - Fulton St,"5,853,749",exact,exact
+C,7,M,116 St,local,subway,B weekdays until 11 p.m.,no,no,40.805085,-73.954882,154,C B,IND,8th Av - Fulton St,"1,446,836",exact,exact
+C,8,M,Cathedral Pkwy (110 St),local,subway,B weekdays until 11 p.m.,no,no,40.800603,-73.958161,155,C B,IND,8th Av - Fulton St,"1,780,033",exact,exact
+C,9,M,103 St,local,subway,B weekdays until 11 p.m.,no,no,40.796092,-73.961454,156,C B,IND,8th Av - Fulton St,"1,075,955",exact,exact
+C,10,M,96 St,local,subway,B weekdays until 11 p.m.,no,no,40.791642,-73.964696,157,C B,IND,8th Av - Fulton St,"2,243,864",exact,exact
+C,11,M,86 St,local,subway,B weekdays until 11 p.m.,no,no,40.785868,-73.968916,158,C B,IND,8th Av - Fulton St,"2,694,426",exact,exact
+C,12,M,81 St-Museum of Natural History,local,subway,B weekdays until 11 p.m.,no,no,40.781433,-73.972143,159,C B,IND,8th Av - Fulton St,"3,595,507",exact,exact
+C,13,M,72 St,local,subway,B weekdays until 11 p.m.,no,no,40.775594,-73.97641,160,C B,IND,8th Av - Fulton St,"2,651,985",exact,exact
+C,14,M,59 St-Columbus Circle,local_and_express,subway,"A, B weekdays until 11 p.m., D, 1",yes,no,40.768296,-73.981736,614,A C B D,IND,8th Av - Fulton St,"16,884,912",exact,exact
+C,15,M,50 St,local,subway,E,yes,no,40.762456,-73.985984,162,C E,IND,8th Av - Fulton St,"5,542,652",exact,exact
+C,16,M,42 St/Port Authority Bus Terminal,local_and_express,subway,"A, E; Times Sq-42 St N,Q,1,2,3,7 all times, W weekdays only, R,S all times except late nights",yes,no,40.757308,-73.989735,611,A C E,IND,8th Av - Fulton St,"57,743,486",exact,no_match
+C,17,M,34 St-Penn Station,local_and_express,subway,"A, E, LIRR",yes,no,40.752287,-73.993391,164,A C E,IND,8th Av - Fulton St,"18,393,456",exact,exact
+C,18,M,23 St,local,subway,E,no,no,40.745906,-73.998041,165,C E,IND,8th Av - Fulton St,"4,927,741",exact,exact
+C,19,M,14 St,local_and_express,subway,"A, E",yes,no,40.740893,-74.00169,618,A C E,IND,8th Av - Fulton St,"11,672,402",exact,exact
+C,20,M,W 4-Washington Sq,local_and_express,subway,"A, B weekdays until 11 p.m., D, E, F, M weekdays until 11 p.m.",yes,no,40.732338,-74.000495,167,A C E,IND,8th Av - Fulton St,"10,872,255",fuzzy(0.88),fuzzy(0.88)
+C,21,M,Spring St,local,subway,E,yes,no,40.726227,-74.003739,168,C E,IND,8th Av - Fulton St,"3,300,868",exact,exact
+C,22,M,Canal St,local_and_express,subway,"A, E",no,no,40.720824,-74.005229,169,A C E,IND,8th Av - Fulton St,"4,133,553",exact,exact
+C,23,M,Chambers St,local_and_express,subway,"A , E, 2, 3, all times except late nights, R all times except late nights, W weekdays only",no,no,40.714111,-74.008585,624,A C,IND,8th Av - Fulton St,"13,299,237",exact,exact
+C,24,M,Fulton St,local_and_express,subway,"A, J, Z rush hour only, 2m 3 all times except late nights, 4, 5",yes,no,40.710197,-74.007691,628,A C,IND,8th Av - Fulton St,"19,221,396",exact,exact
+C,25,Bk,High St,local_and_express,subway,A,no,no,40.699337,-73.990531,173,A C,IND,8th Av - Fulton St,"2,213,320",exact,exact
+C,26,Bk,Jay St-MetroTech,local_and_express,subway,"A, F, R all times except late nights",yes,no,40.692338,-73.987342,636,A C F,IND,8th Av - Fulton St,"8,252,709",exact,exact
+C,27,Bk,Hoyt-Schermerhorn,local_and_express,subway,"A, G",no,no,40.688484,-73.985001,175,A C G,IND,8th Av - Fulton St,"2,866,434",fuzzy(0.89),fuzzy(0.89)
+C,28,Bk,Lafayette Av,local,subway,No Transfers,no,no,40.686113,-73.973946,176,C,IND,8th Av - Fulton St,"1,365,749",exact,exact
+C,29,Bk,Clinton-Washington Avs,local,subway,No Transfers,no,no,40.683263,-73.965838,177,C,IND,8th Av - Fulton St,"1,723,708",exact,exact
+C,30,Bk,Franklin Av,local,subway,S,yes,no,40.68138,-73.956848,627,C,IND,8th Av - Fulton St,"1,288,429",exact,exact
+C,31,Bk,Nostrand Av,local_and_express,subway,A,no,no,40.680438,-73.950426,179,A C,IND,8th Av - Fulton St,"3,923,075",exact,exact
+C,32,Bk,Kingston-Throop Avs,local,subway,No Transfers,no,no,40.679921,-73.940858,180,C,IND,8th Av - Fulton St,"1,541,318",exact,exact
+C,33,Bk,Utica Av,local_and_express,subway,A,yes,no,40.679364,-73.930729,181,A C,IND,8th Av - Fulton St,"2,844,307",exact,exact
+C,34,Bk,Ralph Av,local,subway,No Transfers,no,no,40.678822,-73.920786,182,C,IND,8th Av - Fulton St,"1,093,924",exact,exact
+C,35,Bk,Rockaway Av,local,subway,No Transfers,no,no,40.67834,-73.911946,183,C,IND,8th Av - Fulton St,"1,186,961",exact,exact
+C,36,Bk,Broadway Junction,local_and_express,subway,"A, J, L, Z rush hour only",no,no,40.678334,-73.905316,621,A C,IND,8th Av - Fulton St,"1,808,472",exact,exact
+C,37,Bk,Liberty Av,local,subway,No Transfers,no,no,40.674542,-73.896548,185,C,IND,8th Av - Fulton St,"505,130",exact,exact
+C,38,Bk,Van Siclen Av,local,subway,No Transfers,no,no,40.67271,-73.890358,186,C,IND,8th Av - Fulton St,"557,300",exact,exact
+C,39,Bk,Shepherd Av,local,subway,No Transfers,no,no,40.67413,-73.88075,187,C,IND,8th Av - Fulton St,"542,990",exact,exact
+C,40,Bk,Euclid Av,local_and_express,subway,A,yes,no,40.675377,-73.872106,188,A C,IND,8th Av - Fulton St,"2,166,608",exact,exact
+D,1,Bx,Norwood-205 St,local_and_express,subway,No Transfers,no,no,40.874811,-73.878855,210,D,IND,Concourse,"1,290,615",exact,exact
+D,2,Bx,Bedford Park Blvd,local_and_express,subway,B during rush hours,yes,yes,40.873244,-73.887138,211,B D,IND,Concourse,"1,159,574",exact,exact
+D,3,Bx,Kingsbridge Rd,local_and_express,subway,B during rush hours,yes,no,40.866978,-73.893509,212,B D,IND,Concourse,"1,152,463",exact,exact
+D,4,Bx,Fordham Rd,local_and_express,subway,B during rush hours,no,no,40.861296,-73.897749,213,B D,IND,Concourse,"1,679,247",exact,exact
+D,5,Bx,182-183 Sts,local,subway,B during rush hours,no,no,40.856093,-73.900741,214,B D,IND,Concourse,"845,033",exact,exact
+D,6,Bx,Tremont Av,local_and_express,subway,B during rush hours,yes,no,40.85041,-73.905227,215,B D,IND,Concourse,"1,331,993",exact,exact
+D,7,Bx,174-175 Sts,local,subway,B during rush hours,no,no,40.8459,-73.910136,216,B D,IND,Concourse,"790,023",exact,exact
+D,8,Bx,170 St,local,subway,B during rush hours,no,no,40.839306,-73.9134,217,B D,IND,Concourse,"1,009,389",exact,exact
+D,9,Bx,167 St,local,subway,B during rush hours,no,no,40.833771,-73.91844,218,B D,IND,Concourse,"1,446,880",exact,exact
+D,10,Bx,161 St-Yankee Stadium,local,subway,"4, B during rush hours",yes,no,40.827905,-73.925651,604,B D,IND,Concourse,"5,964,943",exact,exact
+D,11,M,155 St,local,subway,B during rush hours,no,no,40.830135,-73.938209,220,B D,IND,Concourse,"556,909",exact,exact
+D,12,M,145 St,local_and_express,subway,"A, C except late nights, B",no,no,40.824783,-73.944216,151,B D,IND,Concourse,"4,958,581",exact,exact
+D,13,M,125 St,local,subway,"A, C except late nights, B, M60 SBS to LGA Airport",yes,no,40.811109,-73.952343,153,A C B D,IND,8th Av - Fulton St,"5,853,749",exact,exact
+D,14,M,59 St-Columbus Circle,local_and_express,subway,"A, C except late nights, B, 1",yes,no,40.768296,-73.981736,614,A C B D,IND,8th Av - Fulton St,"16,884,912",exact,exact
+D,15,M,7 Av,local,subway,"B, E",no,no,40.762862,-73.981637,277,E B D,IND,Queens Blvd,"4,291,303",exact,exact
+D,16,M,47-50 Sts-Rockefeller Ctr,local_and_express,subway,"B, F, M weekdays only",yes,no,40.758663,-73.981329,225,B D F M,IND,6th Av - Culver,"12,514,970",exact,exact
+D,17,M,42 St-Bryant Pk,local_and_express,subway,"B, F, M weekdays only, 7",no,no,40.754222,-73.984569,609,B D F M,IND,6th Av - Culver,"57,743,486",exact,no_match
+D,18,M,34 St-Herald Sq,local_and_express,subway,"B, F, M weekdays only, N, Q, R except late nights, W weekdays only",yes,no,40.749719,-73.987823,607,B D F M,IND,6th Av - Culver,"25,012,549",exact,exact
+D,19,M,W 4 St-Washington Sq,local_and_express,subway,"B, F, M weekdays only, A, C except late nights, E",yes,no,40.732338,-74.000495,167,B D F M,IND,6th Av - Culver,"10,872,255",exact,exact
+D,20,M,Broadway-Lafayette St,local_and_express,subway,"B, F, M weekdays only, 6",yes,no,40.725297,-73.996204,619,B D F M,IND,6th Av - Culver,"9,991,286",exact,exact
+D,21,M,Grand St,local_and_express,subway,B,no,no,40.718267,-73.993753,231,B D,IND,6th Av - Culver,"5,902,255",exact,exact
+D,22,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B, N, Q, Rexcept late nights, 2, 3 except late nights, 4, 5 weekdays",yes,no,40.683666,-73.97881,617,D N R,BMT,4th Av,"10,108,995",exact,exact
+D,23,Bk,36 St,local_and_express,subway,"N, R",no,no,40.655144,-74.003549,32,D N R,BMT,4th Av,"3,587,714",exact,exact
+D,24,Bk,9 Av,local,open_cut,No Transfers,no,no,40.646292,-73.994324,59,D,BMT,West End,"1,295,604",exact,exact
+D,25,Bk,Fort Hamilton Pkwy,local,elevated,No Transfers,no,no,40.640914,-73.994304,60,D,BMT,West End,"907,528",exact,exact
+D,26,Bk,50 St,local,elevated,No Transfers,no,no,40.63626,-73.994791,61,D,BMT,West End,"767,871",exact,exact
+D,27,Bk,55 St,local,elevated,No Transfers,no,no,40.631435,-73.995476,62,D,BMT,West End,"423,359",exact,exact
+D,28,Bk,62 St,local,elevated,No Transfers,yes,no,40.626472,-73.996895,615,D,BMT,West End,"1,152,489",exact,exact
+D,29,Bk,71 St,local,elevated,No Transfers,no,no,40.619589,-73.998864,64,D,BMT,West End,"1,107,830",exact,exact
+D,30,Bk,79 St,local,elevated,No Transfers,no,no,40.613501,-74.00061,65,D,BMT,West End,"1,437,533",exact,exact
+D,31,Bk,18 Av,local,elevated,No Transfers,no,no,40.607954,-74.001736,66,D,BMT,West End,"1,393,300",exact,exact
+D,32,Bk,20 Av,local,elevated,No Transfers,no,no,40.604556,-73.998168,67,D,BMT,West End,"1,160,317",exact,exact
+D,33,Bk,Bay Pkwy,local,elevated,No Transfers,yes,no,40.601875,-73.993728,68,D,BMT,West End,"1,691,045",exact,exact
+D,34,Bk,25 Av,local,elevated,No Transfers,no,no,40.597704,-73.986829,69,D,BMT,West End,"940,080",exact,exact
+D,35,Bk,Bay-50 St,local,elevated,No Transfers,no,no,40.588841,-73.983765,70,D,BMT,West End,"581,541",exact,exact
+D,36,Bk,Coney Island-Stillwell Av,local,elevated,"F, N, Q",yes,yes,40.577422,-73.981233,58,D F N Q,BMT,Sea Beach / West End / Culver / Brighton,"3,254,148",exact,exact
+E,1,Q,Jamaica Center-Parsons/Archer,local_and_express,subway,"J, Z rush hour only",yes,yes,40.702147,-73.801109,278,E J Z,IND,Queens - Archer,"6,137,267",exact,exact
+E,2,Q,Sutphin Blvd-Archer Av-JFK Airport,local_and_express,subway,"J, Z rush hour only, LIRR",yes,no,40.700486,-73.807969,279,E J Z,IND,Queens - Archer,"6,496,357",exact,exact
+E,3,Q,Jamaica-Van Wyck,local,subway,No Transfers,yes,no,40.702566,-73.816859,280,E,IND,Queens - Archer,"1,053,098",exact,exact
+E,4,Q,Briarwood,local,subway,F,no,no,40.709179,-73.820574,258,E F,IND,Queens Blvd,"1,091,653",exact,no_match
+E,5,Q,Kew Gardens-Union Tpke,local_and_express,subway,F,yes,no,40.714441,-73.831008,259,E F,IND,Queens Blvd,"4,982,622",exact,fuzzy(0.92)
+E,6,Q,75 Av,local,subway,F,no,no,40.718331,-73.837324,260,E F,IND,Queens Blvd,"745,630",exact,exact
+E,7,Q,Forest Hills-71 Av,local_and_express,subway,"F, M weekdays until 9:30p.m., R all times except late nights",yes,no,40.721691,-73.844521,261,E F M R,IND,Queens Blvd,"5,697,461",exact,exact
+E,8,Q,Jackson Hts-Roosevelt Av,local_and_express,subway,"7, F, M weekdays until 9:30 p.m., R all times except late nights",yes,no,40.746644,-73.891338,616,E F M R,IND,Queens Blvd,"15,086,001",exact,exact
+E,9,Q,Queens Plaza,local_and_express,subway,"F weekdays until 9:30 p.m., R all times except late nights",yes,no,40.748973,-73.937243,273,E F R,IND,Queens Blvd,"4,178,609",exact,exact
+E,10,Q,Court Sq-23 St,local_and_express,subway,"F weekdays until 9:30 p.m., G, 7",yes,no,40.747846,-73.946,606,E F,IND,Queens Blvd,"6,032,857",exact,no_match
+E,11,M,Lexington Av/53 St,local_and_express,subway,"F weekdays until 9:30 p.m., 6",yes,no,40.757552,-73.969055,612,E F,IND,Queens Blvd,"12,536,617",exact,exact
+E,12,M,5 Av/53 St,local_and_express,subway,F weekdays until 9:30 p.m.,no,no,40.760167,-73.975224,276,E F,IND,Queens Blvd,"4,590,651",exact,exact
+E,13,M,7 Av,local_and_express,subway,"B weekdays until 11 p.m., D",no,no,40.762862,-73.981637,277,E B D,IND,Queens Blvd,"4,291,303",exact,exact
+E,14,M,50 St,local,subway,C all times except late nights,yes,no,40.762456,-73.985984,162,C E,IND,8th Av - Fulton St,"5,542,652",exact,exact
+E,15,M,42 St/Port Authority Bus Terminal,local_and_express,subway,"C all times except late nights, A all times; Times Sq-42 St N,Q,1,2,3,7 all times, W weekdays only, R,S all times except late nights",yes,no,40.757308,-73.989735,611,A C E,IND,8th Av - Fulton St,"57,743,486",exact,no_match
+E,16,M,34 St-Penn Station,local_and_express,subway,"A all times, C all times except late nights, LIRR",yes,no,40.752287,-73.993391,164,A C E,IND,8th Av - Fulton St,"18,393,456",exact,exact
+E,17,M,23 St,local,subway,C all times except late nights,no,no,40.745906,-73.998041,165,C E,IND,8th Av - Fulton St,"4,927,741",exact,exact
+E,18,M,14 St,local_and_express,subway,"A all times, C all times except late nights",yes,no,40.740893,-74.00169,618,A C E,IND,8th Av - Fulton St,"11,672,402",exact,exact
+E,19,M,W 4 St-Washington Sq,local_and_express,subway,"A all times, B weekdays until 11 p.m., D, C all times except late nights, F, M weekdays until 11 p.m",yes,no,40.732338,-74.000495,167,A C E,IND,8th Av - Fulton St,"10,872,255",exact,exact
+E,20,M,Spring St,local,subway,C all times except late nights,yes,no,40.726227,-74.003739,168,C E,IND,8th Av - Fulton St,"3,300,868",exact,exact
+E,21,M,Canal St,local_and_express,subway,"A all times, C all times except late nights",no,no,40.720824,-74.005229,169,A C E,IND,8th Av - Fulton St,"4,133,553",exact,exact
+E,22,M,World Trade Center,local,subway,"A all times, C all times except late nights, 2, 3 all times except late nights, R",yes,no,40.712582,-74.009781,624,E,IND,8th Av - Fulton St,"3,730,170",exact,no_match
+F,1,Q,Jamaica-179 St,local,subway,"E limited rush hour service, Q3 bus to JFK Airport",yes,yes,40.712646,-73.783817,254,F,IND,Queens Blvd,"3,998,340",exact,exact
+F,2,Q,169 St,local,subway,Q3 bus to JFK Airport,no,no,40.71047,-73.793604,255,F,IND,Queens Blvd,"1,712,282",exact,exact
+F,3,Q,Parsons Blvd,local,subway,No Transfers,no,no,40.707564,-73.803326,256,F,IND,Queens Blvd,"1,576,622",exact,exact
+F,4,Q,Sutphin Blvd,local,subway,No Transfers,no,no,40.70546,-73.810708,257,F,IND,Queens Blvd,"965,688",exact,exact
+F,5,Q,Briarwood,local,subway,E,no,no,40.709179,-73.820574,258,E F,IND,Queens Blvd,"1,091,653",exact,no_match
+F,6,Q,Kew Gardens-Union Tpke,local_and_express,subway,"E, Q10 bus to JFK Airport",yes,no,40.714441,-73.831008,259,E F,IND,Queens Blvd,"4,982,622",exact,fuzzy(0.92)
+F,7,Q,75 Av,local,subway,E,no,no,40.718331,-73.837324,260,E F,IND,Queens Blvd,"745,630",exact,exact
+F,8,Q,Forest Hills-71 Av,local_and_express,subway,"E, M weekdays except late nights, R except late nights",yes,no,40.721691,-73.844521,261,E F M R,IND,Queens Blvd,"5,697,461",exact,exact
+F,9,Q,Jackson Hts-Roosevelt Av,local_and_express,subway,"E, M weekdays until 11pm, R except late nights, 7, LaGuardia Link Q70 SBS, Q47 LGA Airport",yes,no,40.746644,-73.891338,616,E F M R,IND,Queens Blvd,"15,086,001",exact,exact
+F,10,Q,Queens Plaza,local_and_express,subway,"E, R",yes,no,40.748973,-73.937243,273,E F R,IND,Queens Blvd,"4,178,609",exact,no_match
+F,11,Q,Court Sq-23 St,local_and_express,subway,"E, G, 7",yes,no,40.747846,-73.946,606,E F,IND,Queens Blvd,"6,032,857",exact,no_match
+F,12,M,Lexington Av/53 St,local_and_express,subway,"E, 6",yes,no,40.757552,-73.969055,612,E F,IND,Queens Blvd,"12,536,617",exact,no_match
+F,13,M,5 Av/53 St,local_and_express,subway,E,no,no,40.760167,-73.975224,276,E F,IND,Queens Blvd,"4,590,651",exact,no_match
+F,14,M,47-50 Sts Rockefeller Ctr,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm",yes,no,40.758663,-73.981329,225,B D F M,IND,6th Av - Culver,"12,514,970",exact,exact
+F,15,M,42 St-Bryant Pk,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, 7",no,no,40.754222,-73.984569,609,B D F M,IND,6th Av - Culver,"57,743,486",exact,no_match
+F,16,M,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, N, Q, R except late nights, W weekdays only",yes,no,40.749719,-73.987823,607,B D F M,IND,6th Av - Culver,"25,012,549",exact,exact
+F,17,M,23 St,local,subway,M weekdays until 11pm,no,no,40.742878,-73.992821,228,F M,IND,6th Av - Culver,"5,958,666",exact,exact
+F,18,M,14 St,local,subway,"L, M weekdays until 11pm, 1, 2, 3 except late nights",yes,no,40.738228,-73.996209,601,F M,IND,6th Av - Culver,"10,463,838",exact,exact
+F,19,M,W 4 St-Washington Sq,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, A, C except late nights, E",yes,no,40.732338,-74.000495,167,B D F M,IND,6th Av - Culver,"10,872,255",exact,exact
+F,20,M,Broadway-Lafayette St,local_and_express,subway,"B weekdays until 11pm, D, M weekdays until 11pm, 6",yes,no,40.725297,-73.996204,619,B D F M,IND,6th Av - Culver,"9,991,286",exact,exact
+F,21,M,2 Av,local,subway,No Transfers,no,no,40.723402,-73.989938,232,F,IND,6th Av - Culver,"4,241,785",exact,exact
+F,22,M,Delancey St-Essex St,local,subway,"J, M except late nights, Z rush hours only",no,no,40.718611,-73.988114,625,F,IND,6th Av - Culver,"7,079,160",exact,no_match
+F,23,M,East Broadway,local,subway,No Transfers,no,no,40.713715,-73.990173,234,F,IND,6th Av - Culver,"3,596,399",exact,exact
+F,24,Bk,York St,local,subway,No Transfers,no,no,40.701397,-73.986751,235,F,IND,6th Av - Culver,"3,603,306",exact,exact
+F,25,Bk,Jay St-MetroTech,local_and_express,subway,"A, C except late nights, R except late nights",yes,no,40.692338,-73.987342,636,A C F,IND,8th Av - Fulton St,"8,252,709",exact,exact
+F,26,Bk,Bergen St,local,subway,G,no,no,40.686145,-73.990862,236,F G,IND,6th Av - Culver,"2,675,078",exact,exact
+F,27,Bk,Carroll St,local,subway,G,no,no,40.680303,-73.995048,237,F G,IND,6th Av - Culver,"2,712,885",exact,exact
+F,28,Bk,Smith-9 Sts,local,elevated,G,no,no,40.67358,-73.995959,238,F G,IND,6th Av - Culver,"959,212",exact,exact
+F,29,Bk,4 Av-9 St,local,elevated,"G, R except late nights",no,no,40.670272,-73.989779,608,F G,IND,6th Av - Culver,"2,904,247",exact,no_match
+F,30,Bk,7 Av,local_and_express,subway,G,yes,no,40.666271,-73.980305,240,F G,IND,6th Av - Culver,"2,790,876",exact,exact
+F,31,Bk,15 St-Prospect Park,local,subway,G,no,no,40.660365,-73.979493,241,F G,IND,6th Av - Culver,"1,383,267",exact,exact
+F,32,Bk,Fort Hamilton Pkwy,local,subway,G,no,no,40.650782,-73.975776,242,F G,IND,6th Av - Culver,"1,343,879",exact,exact
+F,33,Bk,Church Av,local,subway,G,no,no,40.644041,-73.979678,243,F G,IND,6th Av - Culver,"2,029,121",exact,exact
+F,34,Bk,Ditmas Av,local,elevated,No Transfers,no,no,40.636119,-73.978172,244,F,IND,6th Av - Culver,"835,510",exact,exact
+F,35,Bk,18 Av,local,elevated,No Transfers,no,no,40.629755,-73.976971,245,F,IND,6th Av - Culver,"736,233",exact,exact
+F,36,Bk,Avenue I,local,elevated,No Transfers,no,no,40.625322,-73.976127,246,F,IND,6th Av - Culver,"350,219",exact,exact
+F,37,Bk,Bay Pkwy,local,elevated,No Transfers,no,no,40.620769,-73.975264,247,F,IND,6th Av - Culver,"254,506",exact,exact
+F,38,Bk,Avenue N,local,elevated,No Transfers,no,no,40.61514,-73.974197,248,F,IND,6th Av - Culver,"576,682",exact,exact
+F,39,Bk,Avenue P,local,elevated,No Transfers,no,no,40.608944,-73.973022,249,F,IND,6th Av - Culver,"522,593",exact,exact
+F,40,Bk,Kings Hwy,local_and_express,elevated,No Transfers,no,no,40.603217,-73.972361,250,F,IND,6th Av - Culver,"764,764",exact,exact
+F,41,Bk,Avenue U,local,elevated,No Transfers,no,no,40.596063,-73.973357,251,F,IND,6th Av - Culver,"387,181",exact,exact
+F,42,Bk,Avenue X,local,elevated,No Transfers,no,no,40.58962,-73.97425,252,F,IND,6th Av - Culver,"467,240",exact,exact
+F,43,Bk,Neptune Av,local,elevated,No Transfers,no,no,40.581011,-73.974574,253,F,IND,6th Av - Culver,"317,976",exact,exact
+F,44,Bk,W 8 St-NY Aquarium,local,elevated,Q,no,no,40.576127,-73.975939,57,F Q,BMT,Broadway - Brighton,"603,367",exact,fuzzy(0.86)
+F,45,Bk,Coney Island-Stillwell Av,local,elevated,"D, N ,Q",yes,yes,40.577422,-73.981233,58,D F N Q,BMT,Sea Beach / West End / Culver / Brighton,"3,254,148",exact,exact
+G,1,Q,Court Sq,local,subway,"E, F, 7 rush hours until 9:30 pm peak direction",yes,yes,40.746554,-73.943832,606,G,IND,Crosstown,"6,032,857",exact,exact
+G,2,Q,21 St,local,subway,No Transfers,no,no,40.744065,-73.949724,282,G,IND,Crosstown,"398,927",exact,exact
+G,3,Bk,Greenpoint Av,local,subway,No Transfers,yes,no,40.731352,-73.954449,283,G,IND,Crosstown,"2,256,401",exact,exact
+G,4,Bk,Nassau Av,local,subway,No Transfers,no,no,40.724635,-73.951277,284,G,IND,Crosstown,"2,204,846",exact,exact
+G,5,Bk,Metropolitan Av,local,subway,L all times,yes,no,40.712792,-73.951418,629,G,IND,Crosstown,"4,080,474",exact,exact
+G,6,Bk,Broadway,local,subway,No Transfers,no,no,40.706092,-73.950308,286,G,IND,Crosstown,"985,993",exact,exact
+G,7,Bk,Flushing Av,local,subway,No Transfers,no,no,40.700377,-73.950234,287,G,IND,Crosstown,"622,660",exact,exact
+G,8,Bk,Myrtle Willoughby Avs,local,subway,No Transfers,no,no,40.694568,-73.949046,288,G,IND,Crosstown,"1,081,569",exact,exact
+G,9,Bk,Bedford-Nostrand Avs,local,subway,No Transfers,no,no,40.689627,-73.953522,289,G,IND,Crosstown,"2,028,456",exact,exact
+G,10,Bk,Classon Av,local,subway,No Transfers,no,no,40.688873,-73.96007,290,G,IND,Crosstown,"1,187,185",exact,exact
+G,11,Bk,Clinton-Washington Avs,local,subway,No Transfers,no,no,40.688089,-73.966839,291,G,IND,Crosstown,"1,149,325",exact,exact
+G,12,Bk,Fulton St,local,subway,No Transfers,no,no,40.687119,-73.975375,292,G,IND,Crosstown,"1,417,115",exact,exact
+G,13,Bk,Hoyt-Schermerhorn,local_and_express,subway,"A all times, C all times except late nights",no,no,40.688484,-73.985001,175,A C G,IND,8th Av - Fulton St,"2,866,434",fuzzy(0.89),fuzzy(0.89)
+G,14,Bk,Bergen St,local,subway,F all times,no,no,40.686145,-73.990862,236,F G,IND,6th Av - Culver,"2,675,078",exact,exact
+G,15,Bk,Carroll St,local,subway,F all times,no,no,40.680303,-73.995048,237,F G,IND,6th Av - Culver,"2,712,885",exact,exact
+G,16,Bk,Smith-9 Sts,local,viaduct,F all times,no,no,40.67358,-73.995959,238,F G,IND,6th Av - Culver,"959,212",exact,exact
+G,17,Bk,4 Av-9 Sts,local,viaduct,"F all times, R all times",no,no,40.670272,-73.989779,608,F G,IND,6th Av - Culver,"2,904,247",fuzzy(0.95),no_match
+G,18,Bk,7 Av,local_and_express,subway,F all times,yes,no,40.666271,-73.980305,240,F G,IND,6th Av - Culver,"2,790,876",exact,exact
+G,19,Bk,15 St-Prospect Park,local,subway,F all times,no,no,40.660365,-73.979493,241,F G,IND,6th Av - Culver,"1,383,267",exact,exact
+G,20,Bk,Fort Hamilton Pkwy,local,subway,F all times,no,no,40.650782,-73.975776,242,F G,IND,6th Av - Culver,"1,343,879",exact,exact
+G,21,Bk,Church Av,local,subway,F all times,yes,yes,40.644041,-73.979678,243,F G,IND,6th Av - Culver,"2,029,121",exact,exact
+J,1,Q,Jamaica Center-Parsons/Archer,local_and_express,subway,"E,Z rush hour",yes,yes,40.702147,-73.801109,278,E J Z,IND,Queens - Archer,"6,137,267",exact,exact
+J,2,Q,Sutphin Blvd-Archer Av-JFK Airport,local_and_express,subway,"E,Z rush hour only, LIRR",yes,no,40.700486,-73.807969,279,E J Z,IND,Queens - Archer,"6,496,357",exact,exact
+J,3,Q,121 St,local,elevated,Z rush hour only,no,no,40.700492,-73.828294,80,J Z,BMT,Jamaica,"464,940",exact,exact
+J,4,Q,111 St,local,elevated,No Transfers,no,no,40.697418,-73.836345,81,J,BMT,Jamaica,"469,638",exact,exact
+J,5,Q,104 St,local,elevated,Z rush hour only,no,no,40.695178,-73.84433,82,J Z,BMT,Jamaica,"599,302",exact,exact
+J,6,Q,Woodhaven Blvd,local_and_express,elevated,Z rush hour only,yes,no,40.693879,-73.851576,83,J Z,BMT,Jamaica,"561,288",exact,exact
+J,7,Q,85 St-Forest Pkwy,local,elevated,No Transfers,no,no,40.692435,-73.86001,84,J,BMT,Jamaica,"703,824",exact,exact
+J,8,Q,75 St-Elderts Ln,local,elevated,Z rush hour only,no,no,40.691324,-73.867139,85,J Z,BMT,Jamaica,"450,062",exact,exact
+J,9,Bk,Cypress Hills,local,elevated,No Transfers,no,no,40.689941,-73.87255,86,J,BMT,Jamaica,"272,614",exact,exact
+J,10,Bk,Crescent St,local_and_express,elevated,Z rush hour only,no,no,40.683194,-73.873785,87,J Z,BMT,Jamaica,"715,796",exact,exact
+J,11,Bk,Norwood Av,local,elevated,Z rush hour only,no,no,40.68141,-73.880039,88,J Z,BMT,Jamaica,"468,898",exact,exact
+J,12,Bk,Cleveland St,local,elevated,No Transfers,no,no,40.679947,-73.884639,89,J,BMT,Jamaica,"409,981",exact,exact
+J,13,Bk,Van Siclen Av,local,elevated,Z rush hour only,no,no,40.678024,-73.891688,90,J Z,BMT,Jamaica,"529,233",exact,exact
+J,14,Bk,Alabama Av,local_and_express,elevated,Z rush hour only,no,no,40.676992,-73.898654,91,J Z,BMT,Jamaica,"371,707",exact,exact
+J,15,Bk,Broadway Junction,local_and_express,elevated,"A,C all times except late nights,L,Z rush hour only",no,no,40.679498,-73.904512,621,J Z,BMT,Jamaica,"1,808,472",exact,exact
+J,16,Bk,Chauncey St,local,elevated,Z rush hour only,no,no,40.682893,-73.910456,93,J Z,BMT,Jamaica,"605,650",exact,exact
+J,17,Bk,Halsey St,local,elevated,No Transfers,no,no,40.68637,-73.916559,94,J,BMT,Jamaica,"1,221,794",exact,exact
+J,18,Bk,Gates Av,local,elevated,Z rush hour only,no,no,40.68963,-73.92227,95,J Z,BMT,Jamaica,"1,466,874",exact,exact
+J,19,Bk,Kosciuszko St,local,elevated,No Transfers,no,no,40.693342,-73.928814,96,J,BMT,Jamaica,"1,310,254",exact,exact
+J,20,Bk,Myrtle Av,local_and_express,elevated,"M,Z rush hour only",no,no,40.697207,-73.935657,97,M J Z,BMT,Jamaica,"2,788,090",exact,exact
+J,21,Bk,Flushing Av,local,elevated,M all times except late nights,yes,no,40.70026,-73.941126,98,M J,BMT,Jamaica,"1,658,300",exact,exact
+J,22,Bk,Lorimer St,local,elevated,M all times except late nights,no,no,40.703869,-73.947408,99,M J,BMT,Jamaica,"907,287",exact,exact
+J,23,Bk,Hewes St,local,elevated,M all times except late nights,no,no,40.70687,-73.953431,100,M J,BMT,Jamaica,"671,482",exact,exact
+J,24,Bk,Marcy Av,local_and_express,elevated,"M all times except late nights,Z rush hour only",yes,no,40.708359,-73.957757,101,M J Z,BMT,Jamaica,"2,841,630",exact,exact
+J,25,M,Delancey St-Essex St,local,subway,"F,M all times except late nights,Z rush hour only",no,no,40.718315,-73.987437,625,M J Z,BMT,Jamaica,"7,079,160",exact,no_match
+J,26,M,Bowery,local,subway,Z rush hour only,no,no,40.72028,-73.993915,103,J Z,BMT,Jamaica,"879,248",exact,exact
+J,27,M,Canal St,local,subway,"N,Q,R all times except late nights,W weekdays only,Z rush hour only,6",no,no,40.718092,-73.999892,623,J Z,BMT,Jamaica,"11,048,920",exact,exact
+J,28,M,Chambers St,local,subway,"Z rush hour only,4,5,6",yes,no,40.713243,-74.003401,622,J Z,BMT,Jamaica,"5,911,226",exact,exact
+J,29,M,Fulton St,local,subway,"A,C all times except late nights,Z rush hour only,2,3 all times except late nights,4,5 all times except late nights",yes,no,40.710374,-74.007582,628,J Z,BMT,Jamaica,"19,221,396",exact,exact
+J,30,M,Broad St,local,subway,Z rush hour only,no,no,40.706476,-74.011056,107,J Z,BMT,Jamaica,"1,289,698",exact,exact
+L,1,M,8 Av,local_and_express,subway,"A all times, E all times, C all times except late nights",yes,yes,40.739777,-74.002578,618,L,BMT,Canarsie,"11,672,402",exact,exact
+L,2,M,6 Av,local,subway,"1 all times, 2 all times, 3 all times except late nights, F all times, M weekdays during rush hour",yes,no,40.737335,-73.996786,601,L,BMT,Canarsie,"10,463,838",exact,exact
+L,3,M,14 St-Union Sq,local_and_express,subway,"N,Q,R all times except late nights, W weekdays only, 4,5 all times except late nights, 6",yes,no,40.734789,-73.99073,602,L,BMT,Canarsie,"22,811,597",exact,exact
+L,4,M,3 Av,local,subway,No Transfers,no,no,40.732849,-73.986122,118,L,BMT,Canarsie,"1,721,718",exact,exact
+L,5,M,1 Av,local,subway,No Transfers,yes,no,40.730953,-73.981628,119,L,BMT,Canarsie,"6,266,103",exact,exact
+L,6,Bk,Bedford Av,local,subway,No Transfers,yes,no,40.717304,-73.956872,120,L,BMT,Canarsie,"8,764,921",exact,exact
+L,7,Bk,Lorimer St,local,subway,G all times,yes,no,40.714063,-73.950275,629,L,BMT,Canarsie,"4,080,474",exact,exact
+L,8,Bk,Graham Av,local,subway,No Transfers,no,no,40.714565,-73.944053,122,L,BMT,Canarsie,"2,265,177",exact,exact
+L,9,Bk,Grand St,local,subway,No Transfers,yes,no,40.711926,-73.94067,123,L,BMT,Canarsie,"1,565,677",exact,exact
+L,10,Bk,Montrose Av,local,subway,No Transfers,no,no,40.707739,-73.93985,124,L,BMT,Canarsie,"1,710,697",exact,exact
+L,11,Bk,Morgan Av,local,subway,No Transfers,no,no,40.706152,-73.933147,125,L,BMT,Canarsie,"1,792,079",exact,exact
+L,12,Bk,Jefferson St,local,subway,No Transfers,no,no,40.706607,-73.922913,126,L,BMT,Canarsie,"2,285,957",exact,exact
+L,13,Bk,DeKalb Av,local,subway,No Transfers,no,no,40.703811,-73.918425,127,L,BMT,Canarsie,"2,932,695",exact,exact
+L,14,Bk,Myrtle-Wyckoff Avs,local,subway,M all times,yes,no,40.699814,-73.911586,630,L,BMT,Canarsie,"5,230,944",exact,exact
+L,15,Bk,Halsey St,local,subway,No Transfers,no,no,40.695602,-73.904084,129,L,BMT,Canarsie,"1,712,600",no_match,exact
+L,16,Bk,Wilson Av,local,subway,No Transfers,yes,no,40.688764,-73.904046,130,L,BMT,Canarsie,"981,068",exact,exact
+L,17,Bk,Bushwick Av-Aberdeen St,local,subway,No Transfers,no,no,40.682829,-73.905249,131,L,BMT,Canarsie,"575,667",exact,exact
+L,18,Bk,Broadway Junction,local_and_express,subway,"A all times, C all times except late nights, J all times, Z during rush hour",no,no,40.678856,-73.90324,621,L,BMT,Canarsie,"1,808,472",exact,exact
+L,19,Bk,Atlantic Av,local,subway,No Transfers,no,no,40.675345,-73.903097,133,L,BMT,Canarsie,"399,480",exact,exact
+L,20,Bk,Sutter Av,local,subway,No Transfers,no,no,40.669367,-73.901975,134,L,BMT,Canarsie,"538,062",exact,exact
+L,21,Bk,Livonia Av,local,subway,Free out-of-system transfer to 3 at Junius St,yes,no,40.664038,-73.900571,135,L,BMT,Canarsie,"568,134",exact,exact
+L,22,Bk,New Lots Av,local,subway,B15 to JFK Airport,no,no,40.658733,-73.899232,136,L,BMT,Canarsie,"686,824",exact,exact
+L,23,Bk,East 105 St,local,subway,No Transfers,no,no,40.650573,-73.899485,137,L,BMT,Canarsie,"559,693",exact,exact
+L,24,Bk,Canarsie-Rockaway Pkwy,local,subway,No Transfers,yes,yes,40.646654,-73.90185,138,L,BMT,Canarsie,"669,667",exact,exact
+M,1,Q,Forest Hills-71 Av,local_and_express,subway,"E, F, R except late nights",yes,no,40.721691,-73.844521,261,E F M R,IND,Queens Blvd,"5,697,461",exact,exact
+M,2,Q,67 Av,local,subway,R except late nights,no,no,40.726523,-73.852719,262,M R,IND,Queens Blvd,"1,708,800",exact,exact
+M,3,Q,63 Dr-Rego Park,local,subway,"R except late nights, Q72 to Laguardia",no,no,40.729846,-73.861604,263,M R,IND,Queens Blvd,"3,021,133",exact,exact
+M,4,Q,Woodhaven Blvd,local,subway,R except late nights,no,no,40.733106,-73.869229,264,M R,IND,Queens Blvd,"4,227,526",exact,exact
+M,5,Q,Grand Av-Newtown,local,subway,R except late nights,no,no,40.737015,-73.877223,265,M R,IND,Queens Blvd,"4,057,622",exact,exact
+M,6,Q,Elmhurst Av,local,subway,R except late nights,no,no,40.742454,-73.882017,266,M R,IND,Queens Blvd,"2,893,156",exact,exact
+M,7,Q,Jackson Hts-Roosevelt Av,local_and_express,subway,"E, F, R except late nights, 7",yes,no,40.746644,-73.891338,616,E F M R,IND,Queens Blvd,"15,086,001",exact,exact
+M,8,Q,65 St,local,subway,R except late nights,no,no,40.749669,-73.898453,268,M R,IND,Queens Blvd,"773,797",exact,exact
+M,9,Q,Northern Blvd,local,subway,R except late nights,yes,no,40.752885,-73.906006,269,M R,IND,Queens Blvd,"1,439,334",exact,exact
+M,10,Q,46 St,local,subway,R except late nights,no,no,40.756312,-73.913333,270,M R,IND,Queens Blvd,"1,600,276",exact,exact
+M,11,Q,Steinway St,local,subway,R except late nights,no,no,40.756879,-73.92074,271,M R,IND,Queens Blvd,"2,877,338",exact,exact
+M,12,Q,36 St,local,subway,R except late nights,no,no,40.752039,-73.928781,272,M R,IND,Queens Blvd,"766,587",exact,exact
+M,13,Q,21 St-Queensbridge,local,subway,No Transfers,yes,no,40.754203,-73.942836,221,M,IND,63rd St,"1,751,180",exact,no_match
+M,14,M,Roosevelt Island,local,subway,No Transfers,yes,no,40.759145,-73.95326,222,M,IND,63rd St,"1,885,823",exact,no_match
+M,15,M,Lexington Av/63 St,local,subway,"Q, free out-of-system transfer to Lexington Av/59 St to N, R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6",yes,no,40.764629,-73.966113,223,M Q,IND,63rd St,"3,781,248",exact,no_match
+M,16,M,57 St,local,subway,No Transfers,no,no,40.763972,-73.97745,224,M,IND,6th Av - Culver,"3,002,045",exact,no_match
+M,17,M,47-50 Sts-Rockefeller Ctr,local_and_express,subway,"B weekdays until 11pm, D, F",yes,no,40.758663,-73.981329,225,B D F M,IND,6th Av - Culver,"12,514,970",exact,exact
+M,18,M,42 St-Bryant Pk,local_and_express,subway,"B weekdays until 11pm, D, F, 7",no,no,40.754222,-73.984569,609,B D F M,IND,6th Av - Culver,"57,743,486",exact,no_match
+M,19,M,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11pm, D, F, N, Q, R except late nights, W weekdays only",yes,no,40.749719,-73.987823,607,B D F M,IND,6th Av - Culver,"25,012,549",exact,exact
+M,20,M,23 St,local,subway,F,no,no,40.742878,-73.992821,228,F M,IND,6th Av - Culver,"5,958,666",exact,exact
+M,21,M,14 St,local,subway,"F, L, 1, 2, 3 except late nights",yes,no,40.738228,-73.996209,601,F M,IND,6th Av - Culver,"10,463,838",exact,exact
+M,22,M,W 4 St-Washington Sq,local_and_express,subway,"A, C except late nights, E, B weekdays until 11pm, D, F",yes,no,40.732338,-74.000495,167,B D F M,IND,6th Av - Culver,"10,872,255",exact,exact
+M,23,M,Broadway-Lafayette St,local_and_express,subway,"B weekdays until 11pm, D, F, 6",yes,no,40.725297,-73.996204,619,B D F M,IND,6th Av - Culver,"9,991,286",exact,exact
+M,24,M,Delancey St-Essex St,local,subway,"F, J, Z rush hours only",no,no,40.718315,-73.987437,625,M J Z,BMT,Jamaica,"7,079,160",exact,no_match
+M,25,Bk,Marcy Av,local_and_express,elevated,"J, Z rush hours in peak direction",yes,no,40.708359,-73.957757,101,M J Z,BMT,Jamaica,"2,841,630",exact,exact
+M,26,Bk,Hewes St,local,elevated,J,no,no,40.70687,-73.953431,100,M J,BMT,Jamaica,"671,482",exact,exact
+M,27,Bk,Lorimer St,local,elevated,J,no,no,40.703869,-73.947408,99,M J,BMT,Jamaica,"907,287",exact,exact
+M,28,Bk,Flushing Av,local,elevated,J,yes,no,40.70026,-73.941126,98,M J,BMT,Jamaica,"1,658,300",exact,exact
+M,29,Bk,Myrtle Av,local_and_express,elevated,"J, Z rush hours in peak direction",no,no,40.697207,-73.935657,97,M J Z,BMT,Jamaica,"2,788,090",exact,exact
+M,30,Bk,Central Av,local,elevated,No Transfers,no,no,40.697857,-73.927397,114,M,BMT,Myrtle Av,"886,352",exact,exact
+M,31,Bk,Knickerbocker Av,local,elevated,No Transfers,no,no,40.698664,-73.919711,113,M,BMT,Myrtle Av,"919,957",exact,exact
+M,32,Bk,Myrtle-Wyckoff Avs,local,elevated,L,yes,no,40.69943,-73.912385,630,M,BMT,Myrtle Av,"5,230,944",exact,exact
+M,33,Q,Seneca Av,local,elevated,No Transfers,no,no,40.702762,-73.90774,111,M,BMT,Myrtle Av,"655,571",exact,exact
+M,34,Q,Forest Av,local,elevated,No Transfers,no,no,40.704423,-73.903077,110,M,BMT,Myrtle Av,"998,920",exact,exact
+M,35,Q,Fresh Pond Rd,local,elevated,No Transfers,no,no,40.706186,-73.895877,109,M,BMT,Myrtle Av,"1,207,460",exact,exact
+M,36,Q,Middle Village-Metropolitan Av,local,elevated,No Transfers,yes,no,40.711396,-73.889601,108,M,BMT,Myrtle Av,"842,211",exact,exact
+N,1,Q,Astoria Ditmars Blvd,local,elevated,W weekdays only,no,yes,40.775036,-73.912034,1,N W,BMT,Astoria,"3,309,906",exact,exact
+N,2,Q,Astoria Blvd,local,elevated,"W weekdays only, M60 SBS to LGA Airport",yes,no,40.770258,-73.917843,2,N W,BMT,Astoria,"2,470,238",exact,exact
+N,3,Q,30 Av,local,elevated,W weekdays only,no,no,40.766779,-73.921479,3,N W,BMT,Astoria,"3,112,084",exact,exact
+N,4,Q,Broadway,local,elevated,W weekdays only,no,no,40.76182,-73.925508,4,N W,BMT,Astoria,"2,835,094",exact,exact
+N,5,Q,36 Av,local,elevated,W weekdays only,no,no,40.756804,-73.929575,5,N W,BMT,Astoria,"1,520,124",exact,exact
+N,6,Q,39 Av,local,elevated,W weekdays only,no,no,40.752882,-73.932755,6,N W,BMT,Astoria,"873,251",no_match,exact
+N,7,Q,Queensboro Plaza,local_and_express,elevated,"W weekdays only, 7",yes,no,40.750582,-73.940202,461,N W,BMT,Astoria,"3,124,138",exact,exact
+N,8,M,Lexington Av/59 St,local,subway,"R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6, free out-of-system transfer to F, Q at Lexington Av/63 St",no,no,40.76266,-73.967258,613,N R W,BMT,Astoria,"11,961,525",exact,no_match
+N,9,M,5 Av/59 St,local,subway,"R all times except late nights, W weekdays only",no,no,40.764811,-73.973347,8,N R W,BMT,Astoria,"3,829,606",exact,exact
+N,10,M,57 St-7 Av,local_and_express,subway,"Q, R all times except late nights, W weekdays only",yes,no,40.764664,-73.980658,9,N Q R W,BMT,Broadway - Brighton,"8,342,178",exact,exact
+N,11,M,49 St,local,subway,"R all times except late nights, W weekdays only",yes,no,40.759901,-73.984139,10,N R W,BMT,Broadway - Brighton,"6,609,897",exact,exact
+N,12,M,Times Sq-42 St,local_and_express,subway,"A, C all times except late nights, E, Q, R all times except late nights, W weekdays only, S all times except late nights, 1, 2, 3, 7",yes,no,40.754672,-73.986754,611,N Q R W,BMT,Broadway - Brighton,"57,743,486",exact,exact
+N,13,M,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm, Q, R all times except late nights, W weekdays only",yes,no,40.749567,-73.98795,607,N Q R W,BMT,Broadway - Brighton,"25,012,549",exact,exact
+N,14,M,14 St-Union Sq,local_and_express,subway,"L, Q, R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6",no,no,40.735736,-73.990568,602,N Q R W,BMT,Broadway - Brighton,"22,811,597",exact,exact
+N,15,M,Canal St,local_and_express,subway,"J, Q, R all times except late nights, W weekdays only, Z rush hour only, 6",yes,no,40.718383,-74.00046,623,N Q,BMT,Manhattan Bridge,"11,048,920",exact,exact
+N,16,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D, Q, R, 2, 3 all times except late nights, 4, 5 weekdays only",yes,no,40.683666,-73.97881,617,D N R,BMT,4th Av,"10,108,995",exact,exact
+N,17,Bk,36 St,local_and_express,subway,"D, R",no,no,40.655144,-74.003549,32,D N R,BMT,4th Av,"3,587,714",exact,exact
+N,18,Bk,59 St,local_and_express,subway,R,yes,no,40.641362,-74.017881,35,N R,BMT,4th Av,"2,952,891",exact,exact
+N,19,Bk,8 Av,local,open_cut,No Transfers,yes,no,40.635064,-74.011719,71,N,BMT,Sea Beach,"2,632,321",exact,exact
+N,20,Bk,Fort Hamilton Pkwy,local,open_cut,No Transfers,no,no,40.631386,-74.005351,72,N,BMT,Sea Beach,"1,536,978",exact,exact
+N,21,Bk,New Utrecht Av,local,open_cut,D,yes,no,40.624842,-73.996353,615,N,BMT,Sea Beach,"1,152,489",exact,exact
+N,22,Bk,18 Av,local,open_cut,No Transfers,no,no,40.620671,-73.990414,74,N,BMT,Sea Beach,"1,145,261",exact,exact
+N,23,Bk,20 Av,local,open_cut,No Transfers,no,no,40.61741,-73.985026,75,N,BMT,Sea Beach,"998,987",exact,exact
+N,24,Bk,Bay Pkwy,local,open_cut,No Transfers,no,no,40.611815,-73.981848,76,N,BMT,Sea Beach,"1,564,961",exact,exact
+N,25,Bk,Kings Hwy,local,open_cut,No Transfers,no,no,40.603923,-73.980353,77,N,BMT,Sea Beach,"1,297,592",exact,exact
+N,26,Bk,Avenue U,local,open_cut,No Transfers,no,no,40.597473,-73.979137,78,N,BMT,Sea Beach,"891,603",exact,exact
+N,27,Bk,86 St,local,open_cut,No Transfers,no,no,40.592721,-73.97823,79,N,BMT,Sea Beach,"565,435",exact,exact
+N,28,Bk,Coney Island-Stillwell Av,local_and_express,elevated,"D, F, Q",yes,no,40.577422,-73.981233,58,D F N Q,BMT,Sea Beach / West End / Culver / Brighton,"3,254,148",exact,exact
+Q,1,M,96 St,local,subway,No Transfers,yes,yes,40.784318,-73.947152,475,Q,IND,Second Av,"3,995,561",exact,exact
+Q,2,M,86 St,local,subway,No Transfers,yes,no,40.777891,-73.951787,476,Q,IND,Second Av,"5,719,486",exact,exact
+Q,3,M,72 St,local,subway,No Transfers,yes,no,40.768799,-73.958424,477,Q,IND,Second Av,"6,995,154",exact,exact
+Q,4,M,Lexington Av/63 St,local,subway,"M weekdays 6 a.m. - 9:30 p.m.; Free out-of-system transfer to Lexington Av/59 St to N, R all times except late nights, W weekdays only, 4, 5 all times except late nights, 6",yes,no,40.764629,-73.966113,223,M Q,IND,63rd St,"3,781,248",exact,exact
+Q,5,M,57 St-7 Av,local_and_express,subway,"N, R, W",yes,no,40.764664,-73.980658,9,N Q R W,BMT,Broadway - Brighton,"8,342,178",exact,exact
+Q,6,M,Times Sq-42 St,local_and_express,subway,"A, C all times except late nights, E, N, R all times except late nights, W weekdays only, S all times except late nights, 1, 2, 3, 7",yes,no,40.754672,-73.986754,611,N Q R W,BMT,Broadway - Brighton,"57,743,486",exact,exact
+Q,7,M,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm, N, R all times except late nights, W weekdays only",yes,no,40.749567,-73.98795,607,N Q R W,BMT,Broadway - Brighton,"25,012,549",exact,exact
+Q,8,M,14 St-Union Sq,local_and_express,subway,"L, N, R all times except late nights, W weekdays o nly, Z rush hour only, 6",yes,no,40.735736,-73.990568,602,N Q R W,BMT,Broadway - Brighton,"22,811,597",exact,exact
+Q,9,M,Canal St,local_and_express,subway,"J, N, R all times except late nights, W weekdays only, Z rush hour only, 6",no,no,40.718383,-74.00046,623,N Q,BMT,Manhattan Bridge,"11,048,920",exact,exact
+Q,10,Bk,DeKalb Av,local_and_express,subway,"B weekdays until 11 pm, R all times except late nights",yes,no,40.690635,-73.981824,26,B Q R,BMT,Broadway - Brighton,"4,955,471",exact,exact
+Q,11,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D, N, R, 2, 3 all times except late nights, 4, 5, weekdays only",yes,no,40.68446,-73.97689,617,B Q,BMT,Broadway - Brighton,"10,108,995",exact,exact
+Q,12,Bk,7 Av,local_and_express,subway,B weekdays until 11 pm,no,no,40.67705,-73.972367,41,B Q,BMT,Broadway - Brighton,"2,176,497",exact,exact
+Q,13,Bk,Prospect Park,local_and_express,open_cut,"B weekdays until 11 pm, S",yes,no,40.661614,-73.962246,42,B Q S,BMT,Broadway - Brighton,"2,183,676",exact,exact
+Q,14,Bk,Parkside Av,local,open_cut,No Transfers,no,no,40.655292,-73.961495,43,Q,BMT,Broadway - Brighton,"1,511,379",exact,exact
+Q,15,Bk,Church Av,local_and_express,open_cut,B weekdays until 11 pm,yes,no,40.650527,-73.962982,44,B Q,BMT,Broadway - Brighton,"2,819,621",exact,exact
+Q,16,Bk,Beverley Rd,local,open_cut,No Transfers,no,no,40.644031,-73.964492,45,Q,BMT,Broadway - Brighton,"903,363",no_match,no_match
+Q,17,Bk,Cortelyou Rd,local,open_cut,No Transfers,no,no,40.640927,-73.963891,46,Q,BMT,Broadway - Brighton,"1,336,940",exact,exact
+Q,18,Bk,Newkirk Plaza,local_and_express,open_cut,B weekdays until 11 pm,no,no,40.635082,-73.962793,47,B Q,BMT,Broadway - Brighton,"2,146,924",exact,exact
+Q,19,Bk,Avenue H,local,open_cut,No Transfers,yes,no,40.62927,-73.961639,48,Q,BMT,Broadway - Brighton,"676,816",exact,exact
+Q,20,Bk,Avenue J,local,open_cut,No Transfers,no,no,40.625039,-73.960803,49,Q,BMT,Broadway - Brighton,"1,152,826",exact,exact
+Q,21,Bk,Avenue M,local,open_cut,No Transfers,no,no,40.617618,-73.959399,50,Q,BMT,Broadway - Brighton,"1,182,594",exact,exact
+Q,22,Bk,Kings Hwy,local_and_express,open_cut,B weekdays until 11 pm,yes,no,40.60867,-73.957734,51,B Q,BMT,Broadway - Brighton,"4,222,570",exact,exact
+Q,23,Bk,Avenue U,local,open_cut,No Transfers,no,no,40.5993,-73.955929,52,Q,BMT,Broadway - Brighton,"1,533,782",exact,exact
+Q,24,Bk,Neck Rd,local,open_cut,No Transfers,no,no,40.595246,-73.955161,53,Q,BMT,Broadway - Brighton,"972,084",exact,exact
+Q,25,Bk,Sheepshead Bay,local_and_express,open_cut,B weekdays until 11 pm,yes,no,40.586896,-73.954155,54,B Q,BMT,Broadway - Brighton,"2,810,621",exact,exact
+Q,26,Bk,Brighton Beach,local_and_express,elevated,B weekdays until 11 pm,no,no,40.577621,-73.961376,55,B Q,BMT,Broadway - Brighton,"2,493,646",exact,exact
+Q,27,Bk,Ocean Pkwy,local,elevated,No Transfers,no,no,40.576312,-73.968501,56,Q,BMT,Broadway - Brighton,"683,765",exact,exact
+Q,28,Bk,W 8 St-NY Aquarium,local,elevated,F,no,no,40.576127,-73.975939,57,F Q,BMT,Broadway - Brighton,"603,367",exact,fuzzy(0.86)
+Q,29,Bk,Coney Island-Stillwell Av,local_and_express,elevated,"D, F, N",yes,no,40.577422,-73.981233,58,D F N Q,BMT,Sea Beach / West End / Culver / Brighton,"3,254,148",exact,exact
+R,1,Q,Forest Hills-71 Av,local_and_express,subway,"E, F; M weekdays approx. 6 a.m. to 9:30 p.m.",yes,yes,40.721691,-73.844521,261,E F M R,IND,Queens Blvd,"5,697,461",exact,exact
+R,2,Q,67 Av,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.726523,-73.852719,262,M R,IND,Queens Blvd,"1,708,800",exact,exact
+R,3,Q,63 Dr-Rego Park,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.729846,-73.861604,263,M R,IND,Queens Blvd,"3,021,133",exact,exact
+R,4,Q,Woodhaven Blvd,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.733106,-73.869229,264,M R,IND,Queens Blvd,"4,227,526",exact,exact
+R,5,Q,Grand Av,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.737015,-73.877223,265,M R,IND,Queens Blvd,"4,057,622",no_match,no_match
+R,6,Q,Elmhurst Av,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.742454,-73.882017,266,M R,IND,Queens Blvd,"2,893,156",exact,exact
+R,7,Q,Jackson Hts-Roosevelt Av,local_and_express,subway,"E, F, M weekdays approx. 6 a.m. to 9:30 p.m., 7",yes,no,40.746644,-73.891338,616,E F M R,IND,Queens Blvd,"15,086,001",exact,exact
+R,8,Q,65 St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.749669,-73.898453,268,M R,IND,Queens Blvd,"773,797",exact,exact
+R,9,Q,Northern Blvd,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,yes,no,40.752885,-73.906006,269,M R,IND,Queens Blvd,"1,439,334",exact,exact
+R,10,Q,46 St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.756312,-73.913333,270,M R,IND,Queens Blvd,"1,600,276",exact,exact
+R,11,Q,Steinway St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.756879,-73.92074,271,M R,IND,Queens Blvd,"2,877,338",exact,exact
+R,12,Q,36 St,local,subway,M weekdays approx. 6 a.m. to 9:30 p.m.,no,no,40.752039,-73.928781,272,M R,IND,Queens Blvd,"766,587",exact,exact
+R,13,Q,Queens Plaza,local_and_express,subway,"E, F weekdays until 9:30 p.m.",yes,no,40.748973,-73.937243,273,E F R,IND,Queens Blvd,"4,178,609",exact,exact
+R,14,M,Lexington Av/59 St,local,subway,"N, W weekdays only, 4, 5 all times except late nights, 6, free out-of-system transfer to F, Q at Lexington Av/63 St",no,no,40.76266,-73.967258,613,N R W,BMT,Astoria,"11,961,525",exact,no_match
+R,15,M,5 Av/59 St,local,subway,"N, W weekdays only",no,no,40.764811,-73.973347,8,N R W,BMT,Astoria,"3,829,606",exact,exact
+R,16,M,57 St-7 Av,local_and_express,subway,"Q, N, W weekdays only",yes,no,40.764664,-73.980658,9,N Q R W,BMT,Broadway - Brighton,"8,342,178",exact,exact
+R,17,M,49 St,local,subway,"N, W weekdays only",yes,no,40.759901,-73.984139,10,N R W,BMT,Broadway - Brighton,"6,609,897",exact,exact
+R,18,M,Times Square-42 St,local_and_express,subway,"A, C all times except late nights, E, Q, R all times except late nights, W weekdays only, S all times except late nights, 1, 2, 3, 7",yes,no,40.754672,-73.986754,611,N Q R W,BMT,Broadway - Brighton,"57,743,486",exact,exact
+R,19,M,34 St-Herald Square,local_and_express,subway,"B weekdays until 11 pm, D, F, M until 11 pm, Q, W weekdays only",yes,no,40.749567,-73.98795,607,N Q R W,BMT,Broadway - Brighton,"25,012,549",exact,exact
+R,20,M,28 St,local,subway,W weekdays only,no,no,40.745494,-73.988691,13,R W,BMT,Broadway - Brighton,"2,982,859",exact,exact
+R,21,M,23 St,local,subway,W weekdays only,no,no,40.741303,-73.989344,14,R W,BMT,Broadway - Brighton,"4,517,469",exact,exact
+R,22,M,14 St-Union Sq,local_and_express,subway,"L, Q, N, W weekdays only, 4, 5 all times except last night, 6",yes,no,40.735736,-73.990568,602,N Q R W,BMT,Broadway - Brighton,"22,811,597",exact,exact
+R,23,M,8 St-NYU,local,subway,W weekdays only,no,no,40.730328,-73.992629,16,R W,BMT,Broadway - Brighton,"4,035,110",exact,no_match
+R,24,M,Prince St,local,subway,W weekdays only,no,no,40.724329,-73.997702,17,R W,BMT,Broadway - Brighton,"3,216,188",exact,exact
+R,25,M,Canal St,local_and_express,subway,"J, Q, N, W weekdays only, Z rush hour only, 6",no,no,40.719527,-74.001775,623,R W,BMT,Broadway,"11,048,920",exact,exact
+R,26,M,City Hall,local,subway,W weekdays only,no,no,40.713282,-74.006978,20,R W,BMT,Broadway,"1,185,779",exact,exact
+R,27,M,Cortlandt St,local,subway,"A, C all times except late nights, E, W weekdays only, 2, 3 all times except late nights",yes,no,40.710668,-74.011029,624,R W,BMT,Broadway,"13,299,237",exact,fuzzy(0.86)
+R,28,M,Rector St,local,subway,W weekdays only,no,no,40.70722,-74.013342,22,R W,BMT,Broadway,"1,212,917",exact,exact
+R,29,M,Whitehall St-South Ferry,local,subway,"W weekdays only, 1",no,no,40.703087,-74.012994,635,R W,BMT,Broadway,"6,519,960",exact,no_match
+R,30,Bk,Court St,local,subway,"2, 3 all times except late nights, 4, 5 weekdays only",no,no,40.6941,-73.991777,620,R,BMT,Broadway,"6,188,561",exact,exact
+R,31,Bk,Jay St-MetroTech,local_and_express,subway,"A, C all times except late nights, F",yes,no,40.69218,-73.985942,636,R,BMT,Broadway,"8,252,709",exact,exact
+R,32,Bk,DeKalb Av,local_and_express,subway,"B weekdays until 11 pm, Q",yes,no,40.690635,-73.981824,26,B Q R,BMT,Broadway - Brighton,"4,955,471",exact,exact
+R,33,Bk,Atlantic Av-Barclays Ctr,local_and_express,subway,"B weekdays until 11 pm, D, N, Q, 2, 3 all times except late nights, 4, 5 weekdays only",yes,no,40.683666,-73.97881,617,D N R,BMT,4th Av,"10,108,995",exact,exact
+R,34,Bk,Union St,local,subway,No Transfers,no,no,40.677316,-73.98311,28,R,BMT,4th Av,"1,810,611",exact,exact
+R,35,Bk,4 Av-9 St,local,subway,"F, G",no,no,40.670847,-73.988302,608,R,BMT,4th Av,"2,904,247",exact,no_match
+R,36,Bk,Prospect Av,local,subway,No Transfers,no,no,40.665414,-73.992872,30,R,BMT,4th Av,"1,336,248",exact,exact
+R,37,Bk,25 St,local,subway,No Transfers,no,no,40.660397,-73.998091,31,R,BMT,4th Av,"840,187",exact,exact
+R,38,Bk,36 St,local,subway,"D, N",no,no,40.655144,-74.003549,32,D N R,BMT,4th Av,"3,587,714",exact,exact
+R,39,Bk,45 St,local,subway,No Transfers,no,no,40.648939,-74.010006,33,R,BMT,4th Av,"1,759,462",exact,exact
+R,40,Bk,53 St,local,subway,No Transfers,no,no,40.645069,-74.014034,34,R,BMT,4th Av,"1,962,996",exact,exact
+R,41,Bk,59 St,local,subway,N,yes,no,40.641362,-74.017881,35,N R,BMT,4th Av,"2,952,891",exact,exact
+R,42,Bk,Bay Ridge Av,local,subway,No Transfers,no,no,40.634967,-74.023377,36,R,BMT,4th Av,"1,778,360",exact,exact
+R,43,Bk,77 St,local,subway,No Transfers,no,no,40.629742,-74.02551,37,R,BMT,4th Av,"1,221,923",exact,exact
+R,44,Bk,86 St,local,subway,No Transfers,yes,no,40.622687,-74.028398,38,R,BMT,4th Av,"2,580,130",exact,exact
+R,45,Bk,Bay Ridge-95 St,local,subway,No Transfers,yes,yes,40.616622,-74.030876,39,R,BMT,4th Av,"1,201,642",exact,exact
+S_M,1,M,Times Sq-42 St,local_and_express,subway,"N,Q,1,2,3,7 all times, W weekdays only, R all times except late nights; 42 St/Port Authority A, E all times, C all times except late nights",yes,yes,40.755983,-73.986229,611,S,IRT,Lexington - Shuttle,"57,743,486",exact,exact
+S_M,2,M,Grand Central-42 St,local_and_express,subway,"5 all times except late nights, 4,6,7 all times",yes,yes,40.752769,-73.979189,610,S,IRT,Lexington - Shuttle,"33,496,874",exact,exact
+S_B,3,Bk,Franklin Av,local,elevated,"C except late nights, A late nights",no,no,40.680596,-73.955827,627,S,BMT,Franklin Shuttle,"3,463,808",exact,exact
+S_B,4,Bk,Park Place,local,open_cut,No Transfers,yes,no,40.674772,-73.957624,141,S,BMT,Franklin Shuttle,"362,630",no_match,no_match
+S_B,5,Bk,Botanic Garden,local,open_cut,"2, 4 all times, 3 except late nights, 5 weekdays only",no,no,40.670343,-73.959245,626,S,BMT,Franklin Shuttle,"3,463,808",exact,exact
+S_B,6,Bk,Prospect Park,local_and_express,open_cut,"Q all times, B weekdays and weekday evenings only",yes,no,40.661614,-73.962246,42,B Q S,BMT,Broadway - Brighton,"2,183,676",exact,exact
+S_Q,7,Q,Broad Channel,local,at_grade,A all times,no,no,40.608382,-73.815925,199,A S,IND,Rockaway,"57,312",exact,exact
+S_Q,8,Q,Beach 90 St,local,elevated,A all times,no,no,40.588034,-73.813641,200,A S,IND,Rockaway,"181,605",exact,exact
+S_Q,9,Q,Beach 98 St,local,elevated,A all times,no,no,40.585307,-73.820558,201,A S,IND,Rockaway,"99,833",exact,exact
+S_Q,10,Q,Beach 105 St,local,elevated,A all times,no,no,40.583209,-73.827559,202,A S,IND,Rockaway,"71,496",exact,exact
+S_Q,11,Q,Rockaway Park-Beach 116 St,local,at_grade,A all times,yes,no,40.580903,-73.835592,203,A S,IND,Rockaway,"139,507",exact,exact
+W,1,Q,Astoria-Ditmars Blvd,local,elevated,N,no,yes,40.775036,-73.912034,1,N W,BMT,Astoria,"3,309,906",exact,exact
+W,2,Q,Astoria Blvd,local,elevated,"N, M60 SBS to LGA Airport",yes,no,40.770258,-73.917843,2,N W,BMT,Astoria,"2,470,238",exact,exact
+W,3,Q,30 Av,local,elevated,N,no,no,40.766779,-73.921479,3,N W,BMT,Astoria,"3,112,084",exact,exact
+W,4,Q,Broadway,local,elevated,N,no,no,40.76182,-73.925508,4,N W,BMT,Astoria,"2,835,094",exact,exact
+W,5,Q,36 Av,local,elevated,N,no,no,40.756804,-73.929575,5,N W,BMT,Astoria,"1,520,124",exact,exact
+W,6,Q,39 Av,local,elevated,N,no,no,40.752882,-73.932755,6,N W,BMT,Astoria,"873,251",no_match,exact
+W,7,Q,Queensboro Plaza,local_and_express,elevated,"N, 7",yes,no,40.750582,-73.940202,461,N W,BMT,Astoria,"3,124,138",exact,exact
+W,8,M,Lexington Av/59 St,local,subway,"R all times except late nights, N, 4, 5 all times except late nights, 6, free out-of-system transfer to F, Q at Lexington Av/63 St",no,no,40.76266,-73.967258,613,N R W,BMT,Astoria,"11,961,525",exact,no_match
+W,9,M,5 Av/59 St,local,subway,"R all times except late nights, N",no,no,40.764811,-73.973347,8,N R W,BMT,Astoria,"3,829,606",exact,exact
+W,10,M,57-7 Av,local_and_express,subway,"Q, R all times except late nights, N",yes,no,40.764664,-73.980658,9,N Q R W,BMT,Broadway - Brighton,"8,342,178",fuzzy(0.82),fuzzy(0.82)
+W,11,M,49 St,local,subway,"R all times except late nights, N",yes,no,40.759901,-73.984139,10,N R W,BMT,Broadway - Brighton,"6,609,897",exact,exact
+W,12,M,Times Sq-42 St,local_and_express,subway,"A, C all times except late nights, E, Q, R all times except late nights, 1, 2, 3, 7",yes,no,40.754672,-73.986754,611,N Q R W,BMT,Broadway - Brighton,"57,743,486",exact,exact
+W,13,M,34 St-Herald Sq,local_and_express,subway,"B weekdays until 11 pm, D, F, M weekdays until 11 pm, Q, R all times except late nights, N",yes,no,40.749567,-73.98795,607,N Q R W,BMT,Broadway - Brighton,"25,012,549",exact,exact
+W,14,M,28 St,local,subway,R all times except late nights,no,no,40.745494,-73.988691,13,R W,BMT,Broadway - Brighton,"2,982,859",exact,exact
+W,15,M,23 St,local,subway,R all times except late nights,no,no,40.741303,-73.989344,14,R W,BMT,Broadway - Brighton,"4,517,469",exact,exact
+W,16,M,14 St-Union Sq,local_and_express,subway,"L, N, Q, R all times except late nights, 4, 5 all times except late nights, 6",yes,no,40.735736,-73.990568,602,N Q R W,BMT,Broadway - Brighton,"22,811,597",exact,exact
+W,17,M,8 St-NYU,local,subway,R all times except late nights,no,no,40.730328,-73.992629,16,R W,BMT,Broadway - Brighton,"4,035,110",exact,no_match
+W,18,M,Prince St,local,subway,R all times except late nights,no,no,40.724329,-73.997702,17,R W,BMT,Broadway - Brighton,"3,216,188",exact,exact
+W,19,M,Canal St,local_and_express,subway,"J, Q, N, R all times except late nights, Z rush hour only, 6",no,no,40.719527,-74.001775,623,R W,BMT,Broadway,"11,048,920",exact,exact
+W,20,M,City Hall,local,subway,R all times except late nights,no,no,40.713282,-74.006978,20,R W,BMT,Broadway,"1,185,779",exact,exact
+W,21,M,Cortlandt St,local,subway,"A, C, all times except late nights, E, R all times except late nights, 2, 3 all times except late nights",yes,no,40.710668,-74.011029,624,R W,BMT,Broadway,"13,299,237",exact,fuzzy(0.86)
+W,22,M,Rector St,local,subway,R all times except late nights,no,no,40.70722,-74.013342,22,R W,BMT,Broadway,"1,212,917",exact,exact
+W,23,M,Whitehall St-South Ferry,local,subway,"R all times except late nights, 1",no,no,40.703087,-74.012994,635,R W,BMT,Broadway,"6,519,960",exact,no_match
+Z,1,Q,Jamaica Center-Parsons/Archer,local_and_express,subway,"E,J rush hour",yes,yes,40.702147,-73.801109,278,E J Z,IND,Queens - Archer,"6,137,267",exact,exact
+Z,2,Q,Sutphin Blvd-Archer Av-JFK Airport,local_and_express,subway,"E,J, LIRR",yes,no,40.700486,-73.807969,279,E J Z,IND,Queens - Archer,"6,496,357",exact,exact
+Z,3,Q,121 St,local,elevated,J all times except rush hours,no,no,40.700492,-73.828294,80,J Z,BMT,Jamaica,"464,940",exact,exact
+Z,4,Q,104 St,local,elevated,J all times except rush hours,no,no,40.695178,-73.84433,82,J Z,BMT,Jamaica,"599,302",exact,exact
+Z,5,Q,Woodhaven Blvd,local_and_express,elevated,J,yes,no,40.693879,-73.851576,83,J Z,BMT,Jamaica,"561,288",exact,exact
+Z,6,Q,75 St-Elderts Ln,local,elevated,Z rush hour only,no,no,40.691324,-73.867139,85,J Z,BMT,Jamaica,"450,062",exact,exact
+Z,7,Bk,Crescent St,local_and_express,elevated,J,no,no,40.683194,-73.873785,87,J Z,BMT,Jamaica,"715,796",exact,exact
+Z,8,Bk,Norwood Av,local,elevated,J all times except rush hours,no,no,40.68141,-73.880039,88,J Z,BMT,Jamaica,"468,898",exact,exact
+Z,9,Bk,Van Siclen Av,local,elevated,J all times except rush hours,no,no,40.678024,-73.891688,90,J Z,BMT,Jamaica,"529,233",exact,exact
+Z,10,Bk,Alabama Av,local_and_express,elevated,J,no,no,40.676992,-73.898654,91,J Z,BMT,Jamaica,"371,707",exact,no_match
+Z,11,Bk,Broadway Junction,local_and_express,elevated,"A,C all times except late nights,L,J",no,no,40.679498,-73.904512,621,J Z,BMT,Jamaica,"1,808,472",exact,exact
+Z,12,Bk,Chauncey St,local,elevated,J all times except rush hours,no,no,40.682893,-73.910456,93,J Z,BMT,Jamaica,"605,650",exact,exact
+Z,13,Bk,Gates Av,local,elevated,J all times except rush hours,no,no,40.68963,-73.92227,95,J Z,BMT,Jamaica,"1,466,874",exact,exact
+Z,14,Bk,Myrtle Av,local_and_express,elevated,"J,M",no,no,40.697207,-73.935657,97,M J Z,BMT,Jamaica,"2,788,090",exact,exact
+Z,15,Bk,Marcy Av,local_and_express,elevated,"J,M all times except late nights",yes,no,40.708359,-73.957757,101,M J Z,BMT,Jamaica,"2,841,630",exact,exact
+Z,16,M,Delancey St Essex St,local,subway,"F,M all times except late nights,J",no,no,40.718315,-73.987437,625,M J Z,BMT,Jamaica,"7,079,160",exact,no_match
+Z,17,M,Bowery,local,subway,J,no,no,40.72028,-73.993915,103,J Z,BMT,Jamaica,"879,248",exact,exact
+Z,18,M,Canal St,local,subway,"N,Q,R all times except late nights,W weekdays only,J,6",no,no,40.718092,-73.999892,623,J Z,BMT,Jamaica,"11,048,920",exact,exact
+Z,19,M,Chambers St,local,subway,"J,4,5,6",yes,no,40.713243,-74.003401,622,J Z,BMT,Jamaica,"5,911,226",exact,exact
+Z,20,M,Fulton St,local,subway,"A,C all times except late nights,J,2,3 all times except late nights,4,5 all times except late nights",yes,no,40.710374,-74.007582,628,J Z,BMT,Jamaica,"19,221,396",exact,exact
+Z,21,M,Broad St,local,subway,J,no,no,40.706476,-74.011056,107,J Z,BMT,Jamaica,"1,289,698",exact,exact

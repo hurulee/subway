@@ -1,0 +1,39 @@
+{
+  "system": "nyc",
+  "line": "S_B",
+  "name": "S Train (Franklin Ave)",
+  "stations": [
+    {
+      "name": "Franklin Av",
+      "stop_type": "local",
+      "passengers": 30,
+      "track_position": 0.02,
+      "lat": 40.680596,
+      "lon": -73.955827
+    },
+    {
+      "name": "Park Place",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.34,
+      "lat": 40.674772,
+      "lon": -73.957624
+    },
+    {
+      "name": "Botanic Garden",
+      "stop_type": "local",
+      "passengers": 30,
+      "track_position": 0.66,
+      "lat": 40.670343,
+      "lon": -73.959245
+    },
+    {
+      "name": "Prospect Park",
+      "stop_type": "local_and_express",
+      "passengers": 19,
+      "track_position": 0.98,
+      "lat": 40.661614,
+      "lon": -73.962246
+    }
+  ]
+}

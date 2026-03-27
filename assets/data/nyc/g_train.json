@@ -1,0 +1,175 @@
+{
+  "system": "nyc",
+  "line": "G",
+  "name": "G Train",
+  "stations": [
+    {
+      "name": "Court Sq",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.746554,
+      "lon": -73.943832
+    },
+    {
+      "name": "21 St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.068,
+      "lat": 40.744065,
+      "lon": -73.949724
+    },
+    {
+      "name": "Greenpoint Av",
+      "stop_type": "local",
+      "passengers": 17,
+      "track_position": 0.116,
+      "lat": 40.731352,
+      "lon": -73.954449
+    },
+    {
+      "name": "Nassau Av",
+      "stop_type": "local",
+      "passengers": 16,
+      "track_position": 0.164,
+      "lat": 40.724635,
+      "lon": -73.951277
+    },
+    {
+      "name": "Metropolitan Av",
+      "stop_type": "local",
+      "passengers": 30,
+      "track_position": 0.212,
+      "lat": 40.712792,
+      "lon": -73.951418
+    },
+    {
+      "name": "Broadway",
+      "stop_type": "local",
+      "passengers": 7,
+      "track_position": 0.26,
+      "lat": 40.706092,
+      "lon": -73.950308
+    },
+    {
+      "name": "Flushing Av",
+      "stop_type": "local",
+      "passengers": 5,
+      "track_position": 0.308,
+      "lat": 40.700377,
+      "lon": -73.950234
+    },
+    {
+      "name": "Myrtle Willoughby Avs",
+      "stop_type": "local",
+      "passengers": 8,
+      "track_position": 0.356,
+      "lat": 40.694568,
+      "lon": -73.949046
+    },
+    {
+      "name": "Bedford-Nostrand Avs",
+      "stop_type": "local",
+      "passengers": 15,
+      "track_position": 0.404,
+      "lat": 40.689627,
+      "lon": -73.953522
+    },
+    {
+      "name": "Classon Av",
+      "stop_type": "local",
+      "passengers": 9,
+      "track_position": 0.452,
+      "lat": 40.688873,
+      "lon": -73.96007
+    },
+    {
+      "name": "Clinton-Washington Avs",
+      "stop_type": "local",
+      "passengers": 8,
+      "track_position": 0.5,
+      "lat": 40.688089,
+      "lon": -73.966839
+    },
+    {
+      "name": "Fulton St",
+      "stop_type": "local",
+      "passengers": 10,
+      "track_position": 0.548,
+      "lat": 40.687119,
+      "lon": -73.975375
+    },
+    {
+      "name": "Hoyt-Schermerhorn",
+      "stop_type": "local_and_express",
+      "passengers": 21,
+      "track_position": 0.596,
+      "lat": 40.688484,
+      "lon": -73.985001
+    },
+    {
+      "name": "Bergen St",
+      "stop_type": "local",
+      "passengers": 20,
+      "track_position": 0.644,
+      "lat": 40.686145,
+      "lon": -73.990862
+    },
+    {
+      "name": "Carroll St",
+      "stop_type": "local",
+      "passengers": 20,
+      "track_position": 0.692,
+      "lat": 40.680303,
+      "lon": -73.995048
+    },
+    {
+      "name": "Smith-9 Sts",
+      "stop_type": "local",
+      "passengers": 7,
+      "track_position": 0.74,
+      "lat": 40.67358,
+      "lon": -73.995959
+    },
+    {
+      "name": "4 Av-9 Sts",
+      "stop_type": "local",
+      "passengers": 21,
+      "track_position": 0.788,
+      "lat": 40.670272,
+      "lon": -73.989779
+    },
+    {
+      "name": "7 Av",
+      "stop_type": "local_and_express",
+      "passengers": 21,
+      "track_position": 0.836,
+      "lat": 40.666271,
+      "lon": -73.980305
+    },
+    {
+      "name": "15 St-Prospect Park",
+      "stop_type": "local",
+      "passengers": 10,
+      "track_position": 0.884,
+      "lat": 40.660365,
+      "lon": -73.979493
+    },
+    {
+      "name": "Fort Hamilton Pkwy",
+      "stop_type": "local",
+      "passengers": 10,
+      "track_position": 0.932,
+      "lat": 40.650782,
+      "lon": -73.975776
+    },
+    {
+      "name": "Church Av",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.98,
+      "lat": 40.644041,
+      "lon": -73.979678
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "system": "nyc",
+  "line": "W",
+  "name": "W Train",
+  "stations": [
+    {
+      "name": "Astoria-Ditmars Blvd",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.775036,
+      "lon": -73.912034
+    },
+    {
+      "name": "Astoria Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.063636,
+      "lat": 40.770258,
+      "lon": -73.917843
+    },
+    {
+      "name": "30 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.107273,
+      "lat": 40.766779,
+      "lon": -73.921479
+    },
+    {
+      "name": "Broadway",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.150909,
+      "lat": 40.76182,
+      "lon": -73.925508
+    },
+    {
+      "name": "36 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.194545,
+      "lat": 40.756804,
+      "lon": -73.929575
+    },
+    {
+      "name": "39 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.238182,
+      "lat": 40.752882,
+      "lon": -73.932755
+    },
+    {
+      "name": "Queensboro Plaza",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.281818,
+      "lat": 40.750582,
+      "lon": -73.940202
+    },
+    {
+      "name": "Lexington Av/59 St",
+      "stop_type": "local",
+      "passengers": 6,
+      "track_position": 0.325455,
+      "lat": 40.76266,
+      "lon": -73.967258
+    },
+    {
+      "name": "5 Av/59 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.369091,
+      "lat": 40.764811,
+      "lon": -73.973347
+    },
+    {
+      "name": "57-7 Av",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.412727,
+      "lat": 40.764664,
+      "lon": -73.980658
+    },
+    {
+      "name": "49 St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.456364,
+      "lat": 40.759901,
+      "lon": -73.984139
+    },
+    {
+      "name": "Times Sq-42 St",
+      "stop_type": "local_and_express",
+      "passengers": 30,
+      "track_position": 0.5,
+      "lat": 40.754672,
+      "lon": -73.986754
+    },
+    {
+      "name": "34 St-Herald Sq",
+      "stop_type": "local_and_express",
+      "passengers": 13,
+      "track_position": 0.543636,
+      "lat": 40.749567,
+      "lon": -73.98795
+    },
+    {
+      "name": "28 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.587273,
+      "lat": 40.745494,
+      "lon": -73.988691
+    },
+    {
+      "name": "23 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.630909,
+      "lat": 40.741303,
+      "lon": -73.989344
+    },
+    {
+      "name": "14 St-Union Sq",
+      "stop_type": "local_and_express",
+      "passengers": 12,
+      "track_position": 0.674545,
+      "lat": 40.735736,
+      "lon": -73.990568
+    },
+    {
+      "name": "8 St-NYU",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.718182,
+      "lat": 40.730328,
+      "lon": -73.992629
+    },
+    {
+      "name": "Prince St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.761818,
+      "lat": 40.724329,
+      "lon": -73.997702
+    },
+    {
+      "name": "Canal St",
+      "stop_type": "local_and_express",
+      "passengers": 6,
+      "track_position": 0.805455,
+      "lat": 40.719527,
+      "lon": -74.001775
+    },
+    {
+      "name": "City Hall",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.849091,
+      "lat": 40.713282,
+      "lon": -74.006978
+    },
+    {
+      "name": "Cortlandt St",
+      "stop_type": "local",
+      "passengers": 7,
+      "track_position": 0.892727,
+      "lat": 40.710668,
+      "lon": -74.011029
+    },
+    {
+      "name": "Rector St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.936364,
+      "lat": 40.70722,
+      "lon": -74.013342
+    },
+    {
+      "name": "Whitehall St-South Ferry",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.98,
+      "lat": 40.703087,
+      "lon": -74.012994
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "system": "nyc",
+  "line": "F",
+  "name": "F Train",
+  "stations": [
+    {
+      "name": "Jamaica-179 St",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.712646,
+      "lon": -73.783817
+    },
+    {
+      "name": "169 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.041818,
+      "lat": 40.71047,
+      "lon": -73.793604
+    },
+    {
+      "name": "Parsons Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.063636,
+      "lat": 40.707564,
+      "lon": -73.803326
+    },
+    {
+      "name": "Sutphin Blvd",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.085455,
+      "lat": 40.70546,
+      "lon": -73.810708
+    },
+    {
+      "name": "Briarwood",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.107273,
+      "lat": 40.709179,
+      "lon": -73.820574
+    },
+    {
+      "name": "Kew Gardens-Union Tpke",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.129091,
+      "lat": 40.714441,
+      "lon": -73.831008
+    },
+    {
+      "name": "75 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.150909,
+      "lat": 40.718331,
+      "lon": -73.837324
+    },
+    {
+      "name": "Forest Hills-71 Av",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.172727,
+      "lat": 40.721691,
+      "lon": -73.844521
+    },
+    {
+      "name": "Jackson Hts-Roosevelt Av",
+      "stop_type": "local_and_express",
+      "passengers": 8,
+      "track_position": 0.194545,
+      "lat": 40.746644,
+      "lon": -73.891338
+    },
+    {
+      "name": "Queens Plaza",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.216364,
+      "lat": 40.748973,
+      "lon": -73.937243
+    },
+    {
+      "name": "Court Sq-23 St",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.238182,
+      "lat": 40.747846,
+      "lon": -73.946
+    },
+    {
+      "name": "Lexington Av/53 St",
+      "stop_type": "local_and_express",
+      "passengers": 7,
+      "track_position": 0.26,
+      "lat": 40.757552,
+      "lon": -73.969055
+    },
+    {
+      "name": "5 Av/53 St",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.281818,
+      "lat": 40.760167,
+      "lon": -73.975224
+    },
+    {
+      "name": "47-50 Sts Rockefeller Ctr",
+      "stop_type": "local_and_express",
+      "passengers": 7,
+      "track_position": 0.303636,
+      "lat": 40.758663,
+      "lon": -73.981329
+    },
+    {
+      "name": "42 St-Bryant Pk",
+      "stop_type": "local_and_express",
+      "passengers": 30,
+      "track_position": 0.325455,
+      "lat": 40.754222,
+      "lon": -73.984569
+    },
+    {
+      "name": "34 St-Herald Sq",
+      "stop_type": "local_and_express",
+      "passengers": 13,
+      "track_position": 0.347273,
+      "lat": 40.749719,
+      "lon": -73.987823
+    },
+    {
+      "name": "23 St",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.369091,
+      "lat": 40.742878,
+      "lon": -73.992821
+    },
+    {
+      "name": "14 St",
+      "stop_type": "local",
+      "passengers": 5,
+      "track_position": 0.390909,
+      "lat": 40.738228,
+      "lon": -73.996209
+    },
+    {
+      "name": "W 4 St-Washington Sq",
+      "stop_type": "local_and_express",
+      "passengers": 6,
+      "track_position": 0.412727,
+      "lat": 40.732338,
+      "lon": -74.000495
+    },
+    {
+      "name": "Broadway-Lafayette St",
+      "stop_type": "local_and_express",
+      "passengers": 5,
+      "track_position": 0.434545,
+      "lat": 40.725297,
+      "lon": -73.996204
+    },
+    {
+      "name": "2 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.456364,
+      "lat": 40.723402,
+      "lon": -73.989938
+    },
+    {
+      "name": "Delancey St-Essex St",
+      "stop_type": "local",
+      "passengers": 4,
+      "track_position": 0.478182,
+      "lat": 40.718611,
+      "lon": -73.988114
+    },
+    {
+      "name": "East Broadway",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.5,
+      "lat": 40.713715,
+      "lon": -73.990173
+    },
+    {
+      "name": "York St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.521818,
+      "lat": 40.701397,
+      "lon": -73.986751
+    },
+    {
+      "name": "Jay St-MetroTech",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.543636,
+      "lat": 40.692338,
+      "lon": -73.987342
+    },
+    {
+      "name": "Bergen St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.565455,
+      "lat": 40.686145,
+      "lon": -73.990862
+    },
+    {
+      "name": "Carroll St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.587273,
+      "lat": 40.680303,
+      "lon": -73.995048
+    },
+    {
+      "name": "Smith-9 Sts",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.609091,
+      "lat": 40.67358,
+      "lon": -73.995959
+    },
+    {
+      "name": "4 Av-9 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.630909,
+      "lat": 40.670272,
+      "lon": -73.989779
+    },
+    {
+      "name": "7 Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.652727,
+      "lat": 40.666271,
+      "lon": -73.980305
+    },
+    {
+      "name": "15 St-Prospect Park",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.674545,
+      "lat": 40.660365,
+      "lon": -73.979493
+    },
+    {
+      "name": "Fort Hamilton Pkwy",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.696364,
+      "lat": 40.650782,
+      "lon": -73.975776
+    },
+    {
+      "name": "Church Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.718182,
+      "lat": 40.644041,
+      "lon": -73.979678
+    },
+    {
+      "name": "Ditmas Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.74,
+      "lat": 40.636119,
+      "lon": -73.978172
+    },
+    {
+      "name": "18 Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.761818,
+      "lat": 40.629755,
+      "lon": -73.976971
+    },
+    {
+      "name": "Avenue I",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.783636,
+      "lat": 40.625322,
+      "lon": -73.976127
+    },
+    {
+      "name": "Bay Pkwy",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.805455,
+      "lat": 40.620769,
+      "lon": -73.975264
+    },
+    {
+      "name": "Avenue N",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.827273,
+      "lat": 40.61514,
+      "lon": -73.974197
+    },
+    {
+      "name": "Avenue P",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.849091,
+      "lat": 40.608944,
+      "lon": -73.973022
+    },
+    {
+      "name": "Kings Hwy",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.870909,
+      "lat": 40.603217,
+      "lon": -73.972361
+    },
+    {
+      "name": "Avenue U",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.892727,
+      "lat": 40.596063,
+      "lon": -73.973357
+    },
+    {
+      "name": "Avenue X",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.914545,
+      "lat": 40.58962,
+      "lon": -73.97425
+    },
+    {
+      "name": "Neptune Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.936364,
+      "lat": 40.581011,
+      "lon": -73.974574
+    },
+    {
+      "name": "W 8 St-NY Aquarium",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.958182,
+      "lat": 40.576127,
+      "lon": -73.975939
+    },
+    {
+      "name": "Coney Island-Stillwell Av",
+      "stop_type": "local",
+      "passengers": 0,
+      "track_position": 0.98,
+      "lat": 40.577422,
+      "lon": -73.981233
+    }
+  ]
+}

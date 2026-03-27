@@ -1,0 +1,23 @@
+{
+  "system": "nyc",
+  "line": "S_M",
+  "name": "S Train (42nd St)",
+  "stations": [
+    {
+      "name": "Times Sq-42 St",
+      "stop_type": "local_and_express",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.755983,
+      "lon": -73.986229
+    },
+    {
+      "name": "Grand Central-42 St",
+      "stop_type": "local_and_express",
+      "passengers": 0,
+      "track_position": 0.98,
+      "lat": 40.752769,
+      "lon": -73.979189
+    }
+  ]
+}

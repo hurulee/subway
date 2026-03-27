@@ -1,0 +1,247 @@
+{
+  "system": "nyc",
+  "line": "J",
+  "name": "J Train",
+  "stations": [
+    {
+      "name": "Jamaica Center-Parsons/Archer",
+      "stop_type": "local_and_express",
+      "passengers": 0,
+      "track_position": 0.02,
+      "lat": 40.702147,
+      "lon": -73.801109
+    },
+    {
+      "name": "Sutphin Blvd-Archer Av-JFK Airport",
+      "stop_type": "local_and_express",
+      "passengers": 10,
+      "track_position": 0.053103,
+      "lat": 40.700486,
+      "lon": -73.807969
+    },
+    {
+      "name": "121 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.086207,
+      "lat": 40.700492,
+      "lon": -73.828294
+    },
+    {
+      "name": "111 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.11931,
+      "lat": 40.697418,
+      "lon": -73.836345
+    },
+    {
+      "name": "104 St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.152414,
+      "lat": 40.695178,
+      "lon": -73.84433
+    },
+    {
+      "name": "Woodhaven Blvd",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.185517,
+      "lat": 40.693879,
+      "lon": -73.851576
+    },
+    {
+      "name": "85 St-Forest Pkwy",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.218621,
+      "lat": 40.692435,
+      "lon": -73.86001
+    },
+    {
+      "name": "75 St-Elderts Ln",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.251724,
+      "lat": 40.691324,
+      "lon": -73.867139
+    },
+    {
+      "name": "Cypress Hills",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.284828,
+      "lat": 40.689941,
+      "lon": -73.87255
+    },
+    {
+      "name": "Crescent St",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.317931,
+      "lat": 40.683194,
+      "lon": -73.873785
+    },
+    {
+      "name": "Norwood Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.351034,
+      "lat": 40.68141,
+      "lon": -73.880039
+    },
+    {
+      "name": "Cleveland St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.384138,
+      "lat": 40.679947,
+      "lon": -73.884639
+    },
+    {
+      "name": "Van Siclen Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.417241,
+      "lat": 40.678024,
+      "lon": -73.891688
+    },
+    {
+      "name": "Alabama Av",
+      "stop_type": "local_and_express",
+      "passengers": 2,
+      "track_position": 0.450345,
+      "lat": 40.676992,
+      "lon": -73.898654
+    },
+    {
+      "name": "Broadway Junction",
+      "stop_type": "local_and_express",
+      "passengers": 3,
+      "track_position": 0.483448,
+      "lat": 40.679498,
+      "lon": -73.904512
+    },
+    {
+      "name": "Chauncey St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.516552,
+      "lat": 40.682893,
+      "lon": -73.910456
+    },
+    {
+      "name": "Halsey St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.549655,
+      "lat": 40.68637,
+      "lon": -73.916559
+    },
+    {
+      "name": "Gates Av",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.582759,
+      "lat": 40.68963,
+      "lon": -73.92227
+    },
+    {
+      "name": "Kosciuszko St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.615862,
+      "lat": 40.693342,
+      "lon": -73.928814
+    },
+    {
+      "name": "Myrtle Av",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.648966,
+      "lat": 40.697207,
+      "lon": -73.935657
+    },
+    {
+      "name": "Flushing Av",
+      "stop_type": "local",
+      "passengers": 3,
+      "track_position": 0.682069,
+      "lat": 40.70026,
+      "lon": -73.941126
+    },
+    {
+      "name": "Lorimer St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.715172,
+      "lat": 40.703869,
+      "lon": -73.947408
+    },
+    {
+      "name": "Hewes St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.748276,
+      "lat": 40.70687,
+      "lon": -73.953431
+    },
+    {
+      "name": "Marcy Av",
+      "stop_type": "local_and_express",
+      "passengers": 4,
+      "track_position": 0.781379,
+      "lat": 40.708359,
+      "lon": -73.957757
+    },
+    {
+      "name": "Delancey St-Essex St",
+      "stop_type": "local",
+      "passengers": 11,
+      "track_position": 0.814483,
+      "lat": 40.718315,
+      "lon": -73.987437
+    },
+    {
+      "name": "Bowery",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.847586,
+      "lat": 40.72028,
+      "lon": -73.993915
+    },
+    {
+      "name": "Canal St",
+      "stop_type": "local",
+      "passengers": 17,
+      "track_position": 0.88069,
+      "lat": 40.718092,
+      "lon": -73.999892
+    },
+    {
+      "name": "Chambers St",
+      "stop_type": "local",
+      "passengers": 9,
+      "track_position": 0.913793,
+      "lat": 40.713243,
+      "lon": -74.003401
+    },
+    {
+      "name": "Fulton St",
+      "stop_type": "local",
+      "passengers": 30,
+      "track_position": 0.946897,
+      "lat": 40.710374,
+      "lon": -74.007582
+    },
+    {
+      "name": "Broad St",
+      "stop_type": "local",
+      "passengers": 2,
+      "track_position": 0.98,
+      "lat": 40.706476,
+      "lon": -74.011056
+    }
+  ]
+}
