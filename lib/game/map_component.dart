@@ -5,7 +5,7 @@ import 'models.dart';
 const double kExpressTrackX = 80.0;
 const double kLocalTrackX   = 210.0;
 const double kTrackTopY     = 100.0;
-const double kTrackBottomY  = 4200.0;
+const double kTrackBottomY  = 5500.0;
 const double kTrackLength   = kTrackBottomY - kTrackTopY;
 
 const double kExpressPlatLeft  = kExpressTrackX + 16.0;

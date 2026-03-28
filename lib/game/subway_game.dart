@@ -74,7 +74,13 @@ class SubwayGame extends FlameGame {
   double get _goodZone => level.platformHalfLen;
 
   void _pickRandomRoute() {
-    _currentRouteAsset = kLines[Random().nextInt(kLines.length)].assetPath;
+    final group = _currentLevelIndex < 5
+        ? LineGroup.short
+        : _currentLevelIndex < 10
+            ? LineGroup.medium
+            : LineGroup.long;
+    final pool = linesForGroup(group);
+    _currentRouteAsset = pool[Random().nextInt(pool.length)].assetPath;
   }
 
   Future<void> _loadRoute() async {
@@ -91,6 +97,7 @@ class SubwayGame extends FlameGame {
   @override
   Future<void> onLoad() async {
     _train = TrainComponent();
+    _pickRandomRoute();
     await _loadRoute();
     _initLevel();
   }

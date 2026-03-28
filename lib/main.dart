@@ -404,7 +404,7 @@ class GameCompleteOverlay extends StatelessWidget {
                     fontSize: 30,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            const Text('All 5 levels cleared',
+            const Text('All 15 rounds cleared',
                 style: TextStyle(color: Colors.white70, fontSize: 16)),
             const Divider(color: Colors.amber, height: 40),
             ValueListenableBuilder<HudData>(
