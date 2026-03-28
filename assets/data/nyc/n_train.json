@@ -6,226 +6,142 @@
     {
       "name": "Astoria Ditmars Blvd",
       "stop_type": "local",
-      "passengers": 0,
-      "track_position": 0.02,
-      "lat": 40.775036,
-      "lon": -73.912034
+      "passengers": 0
     },
     {
       "name": "Astoria Blvd",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.055556,
-      "lat": 40.770258,
-      "lon": -73.917843
+      "passengers": 2
     },
     {
       "name": "30 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.091111,
-      "lat": 40.766779,
-      "lon": -73.921479
+      "passengers": 2
     },
     {
       "name": "Broadway",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.126667,
-      "lat": 40.76182,
-      "lon": -73.925508
+      "passengers": 2
     },
     {
       "name": "36 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.162222,
-      "lat": 40.756804,
-      "lon": -73.929575
+      "passengers": 2
     },
     {
       "name": "39 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.197778,
-      "lat": 40.752882,
-      "lon": -73.932755
+      "passengers": 2
     },
     {
       "name": "Queensboro Plaza",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.233333,
-      "lat": 40.750582,
-      "lon": -73.940202
+      "passengers": 2
     },
     {
       "name": "Lexington Av/59 St",
       "stop_type": "local",
-      "passengers": 6,
-      "track_position": 0.268889,
-      "lat": 40.76266,
-      "lon": -73.967258
+      "passengers": 6
     },
     {
       "name": "5 Av/59 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.304444,
-      "lat": 40.764811,
-      "lon": -73.973347
+      "passengers": 2
     },
     {
       "name": "57 St-7 Av",
       "stop_type": "local_and_express",
-      "passengers": 4,
-      "track_position": 0.34,
-      "lat": 40.764664,
-      "lon": -73.980658
+      "passengers": 4
     },
     {
       "name": "49 St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.375556,
-      "lat": 40.759901,
-      "lon": -73.984139
+      "passengers": 3
     },
     {
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
-      "passengers": 30,
-      "track_position": 0.411111,
-      "lat": 40.754672,
-      "lon": -73.986754
+      "passengers": 30
     },
     {
       "name": "34 St-Herald Sq",
       "stop_type": "local_and_express",
-      "passengers": 13,
-      "track_position": 0.446667,
-      "lat": 40.749567,
-      "lon": -73.98795
+      "passengers": 13
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
-      "passengers": 12,
-      "track_position": 0.482222,
-      "lat": 40.735736,
-      "lon": -73.990568
+      "passengers": 12
     },
     {
       "name": "Canal St",
       "stop_type": "local_and_express",
-      "passengers": 6,
-      "track_position": 0.517778,
-      "lat": 40.718383,
-      "lon": -74.00046
+      "passengers": 6
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
-      "passengers": 5,
-      "track_position": 0.553333,
-      "lat": 40.683666,
-      "lon": -73.97881
+      "passengers": 5
     },
     {
       "name": "36 St",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.588889,
-      "lat": 40.655144,
-      "lon": -74.003549
+      "passengers": 2
     },
     {
       "name": "59 St",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.624444,
-      "lat": 40.641362,
-      "lon": -74.017881
+      "passengers": 2
     },
     {
       "name": "8 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.66,
-      "lat": 40.635064,
-      "lon": -74.011719
+      "passengers": 2
     },
     {
       "name": "Fort Hamilton Pkwy",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.695556,
-      "lat": 40.631386,
-      "lon": -74.005351
+      "passengers": 2
     },
     {
       "name": "New Utrecht Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.731111,
-      "lat": 40.624842,
-      "lon": -73.996353
+      "passengers": 2
     },
     {
       "name": "18 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.766667,
-      "lat": 40.620671,
-      "lon": -73.990414
+      "passengers": 2
     },
     {
       "name": "20 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.802222,
-      "lat": 40.61741,
-      "lon": -73.985026
+      "passengers": 2
     },
     {
       "name": "Bay Pkwy",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.837778,
-      "lat": 40.611815,
-      "lon": -73.981848
+      "passengers": 2
     },
     {
       "name": "Kings Hwy",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.873333,
-      "lat": 40.603923,
-      "lon": -73.980353
+      "passengers": 2
     },
     {
       "name": "Avenue U",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.908889,
-      "lat": 40.597473,
-      "lon": -73.979137
+      "passengers": 2
     },
     {
       "name": "86 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.944444,
-      "lat": 40.592721,
-      "lon": -73.97823
+      "passengers": 2
     },
     {
       "name": "Coney Island-Stillwell Av",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.98,
-      "lat": 40.577422,
-      "lon": -73.981233
+      "passengers": 2
     }
   ]
 }

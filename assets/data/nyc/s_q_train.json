@@ -6,42 +6,27 @@
     {
       "name": "Broad Channel",
       "stop_type": "local",
-      "passengers": 9,
-      "track_position": 0.02,
-      "lat": 40.608382,
-      "lon": -73.815925
+      "passengers": 9
     },
     {
       "name": "Beach 90 St",
       "stop_type": "local",
-      "passengers": 30,
-      "track_position": 0.26,
-      "lat": 40.588034,
-      "lon": -73.813641
+      "passengers": 30
     },
     {
       "name": "Beach 98 St",
       "stop_type": "local",
-      "passengers": 16,
-      "track_position": 0.5,
-      "lat": 40.585307,
-      "lon": -73.820558
+      "passengers": 16
     },
     {
       "name": "Beach 105 St",
       "stop_type": "local",
-      "passengers": 12,
-      "track_position": 0.74,
-      "lat": 40.583209,
-      "lon": -73.827559
+      "passengers": 12
     },
     {
       "name": "Rockaway Park-Beach 116 St",
       "stop_type": "local",
-      "passengers": 23,
-      "track_position": 0.98,
-      "lat": 40.580903,
-      "lon": -73.835592
+      "passengers": 23
     }
   ]
 }

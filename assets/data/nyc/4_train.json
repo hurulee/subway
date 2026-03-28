@@ -6,226 +6,142 @@
     {
       "name": "Woodlawn",
       "stop_type": "local",
-      "passengers": 0,
-      "track_position": 0.02,
-      "lat": 40.886037,
-      "lon": -73.878751
+      "passengers": 0
     },
     {
       "name": "Mosholu Pkwy",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.055556,
-      "lat": 40.87975,
-      "lon": -73.884655
+      "passengers": 2
     },
     {
       "name": "Bedford Pk Blvd-Lehman College",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.091111,
-      "lat": 40.873412,
-      "lon": -73.890064
+      "passengers": 2
     },
     {
       "name": "Kingsbridge Rd",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.126667,
-      "lat": 40.86776,
-      "lon": -73.897174
+      "passengers": 2
     },
     {
       "name": "Fordham Rd",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.162222,
-      "lat": 40.862803,
-      "lon": -73.901034
+      "passengers": 2
     },
     {
       "name": "183 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.197778,
-      "lat": 40.858407,
-      "lon": -73.903879
+      "passengers": 2
     },
     {
       "name": "Burnside Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.233333,
-      "lat": 40.853453,
-      "lon": -73.907684
+      "passengers": 2
     },
     {
       "name": "176 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.268889,
-      "lat": 40.84848,
-      "lon": -73.911794
+      "passengers": 2
     },
     {
       "name": "Mt Eden Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.304444,
-      "lat": 40.844434,
-      "lon": -73.914685
+      "passengers": 2
     },
     {
       "name": "170 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.34,
-      "lat": 40.840075,
-      "lon": -73.917791
+      "passengers": 2
     },
     {
       "name": "167 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.375556,
-      "lat": 40.835537,
-      "lon": -73.9214
+      "passengers": 2
     },
     {
       "name": "161 St-Yankee Stadium",
       "stop_type": "local",
-      "passengers": 5,
-      "track_position": 0.411111,
-      "lat": 40.827994,
-      "lon": -73.925831
+      "passengers": 5
     },
     {
       "name": "149 St-Grand Concourse",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.446667,
-      "lat": 40.818375,
-      "lon": -73.927351
+      "passengers": 2
     },
     {
       "name": "138 St-Grand Concourse",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.482222,
-      "lat": 40.813224,
-      "lon": -73.929849
+      "passengers": 2
     },
     {
       "name": "125 St",
       "stop_type": "local_and_express",
-      "passengers": 5,
-      "track_position": 0.517778,
-      "lat": 40.804138,
-      "lon": -73.937594
+      "passengers": 5
     },
     {
       "name": "86 St",
       "stop_type": "local",
-      "passengers": 10,
-      "track_position": 0.553333,
-      "lat": 40.779492,
-      "lon": -73.955589
+      "passengers": 10
     },
     {
       "name": "59 St",
       "stop_type": "local_and_express",
-      "passengers": 11,
-      "track_position": 0.588889,
-      "lat": 40.762526,
-      "lon": -73.967967
+      "passengers": 11
     },
     {
       "name": "Grand Central-42 St",
       "stop_type": "local_and_express",
-      "passengers": 30,
-      "track_position": 0.624444,
-      "lat": 40.751776,
-      "lon": -73.976848
+      "passengers": 30
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
-      "passengers": 20,
-      "track_position": 0.66,
-      "lat": 40.734673,
-      "lon": -73.989951
+      "passengers": 20
     },
     {
       "name": "Brooklyn Bridge-City Hall",
       "stop_type": "local_and_express",
-      "passengers": 5,
-      "track_position": 0.695556,
-      "lat": 40.713065,
-      "lon": -74.004131
+      "passengers": 5
     },
     {
       "name": "Fulton St",
       "stop_type": "local_and_express",
-      "passengers": 17,
-      "track_position": 0.731111,
-      "lat": 40.710368,
-      "lon": -74.009509
+      "passengers": 17
     },
     {
       "name": "Wall St",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.766667,
-      "lat": 40.707557,
-      "lon": -74.011862
+      "passengers": 3
     },
     {
       "name": "Bowling Green",
       "stop_type": "local_and_express",
-      "passengers": 4,
-      "track_position": 0.802222,
-      "lat": 40.704817,
-      "lon": -74.014065
+      "passengers": 4
     },
     {
       "name": "Borough Hall",
       "stop_type": "local_and_express",
-      "passengers": 6,
-      "track_position": 0.837778,
-      "lat": 40.692404,
-      "lon": -73.990151
+      "passengers": 6
     },
     {
       "name": "Nevins St",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.873333,
-      "lat": 40.688246,
-      "lon": -73.980492
+      "passengers": 2
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
-      "passengers": 9,
-      "track_position": 0.908889,
-      "lat": 40.684359,
-      "lon": -73.977666
+      "passengers": 9
     },
     {
       "name": "Franklin Av-Medgar Evers College",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.944444,
-      "lat": 40.670682,
-      "lon": -73.958131
+      "passengers": 3
     },
     {
       "name": "Crown Heights-Utica Av",
       "stop_type": "local_and_express",
-      "passengers": 5,
-      "track_position": 0.98,
-      "lat": 40.668897,
-      "lon": -73.932942
+      "passengers": 5
     }
   ]
 }

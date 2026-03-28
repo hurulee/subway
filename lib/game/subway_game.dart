@@ -62,7 +62,6 @@ class SubwayGame extends FlameGame {
   static const double trainScreenFraction = 0.68;
 
   // Route data loaded from JSON asset.
-  late RouteData _route;
   late double _trackLength;
   late double _trackBottomY;
 
@@ -98,7 +97,9 @@ class SubwayGame extends FlameGame {
       count,
       (i) => (i * (n - 1) / (count - 1)).round(),
     );
-    _route = base.subset(indices);
+    final stations = base.subset(indices);
+    _localStations   = stations.$1;
+    _expressStations = stations.$2;
     _trackLength = trackLengthForCount(count);
     _trackBottomY = trackBottomYForCount(count);
   }
@@ -112,9 +113,6 @@ class SubwayGame extends FlameGame {
   }
 
   void _initLevel() {
-    _localStations   = _route.localStations;
-    _expressStations = _route.expressStations;
-
     _map = MapComponent(
       localStations:   _localStations,
       expressStations: _expressStations,

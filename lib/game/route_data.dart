@@ -6,24 +6,15 @@ import 'models.dart';
 class RouteStation {
   final String name;
   final int passengers;
-  final double trackPosition;
   final String stopType; // 'local' or 'local_and_express'
 
   const RouteStation({
     required this.name,
     required this.passengers,
-    required this.trackPosition,
     required this.stopType,
   });
 
   bool get isExpressStop => stopType == 'local_and_express';
-
-  Station toStation(TrackType track) => Station(
-        name: name,
-        passengers: passengers,
-        trackPosition: trackPosition,
-        track: track,
-      );
 }
 
 /// A subway route loaded from a JSON asset file.
@@ -40,8 +31,7 @@ class RouteData {
     required this.stations,
   });
 
-  /// Load a route from an asset JSON file, e.g.
-  /// `RouteData.load('assets/data/nyc/a_train.json')`.
+  /// Load a route from an asset JSON file.
   static Future<RouteData> load(String assetPath) async {
     final raw  = await rootBundle.loadString(assetPath);
     final data = jsonDecode(raw) as Map<String, dynamic>;
@@ -51,48 +41,45 @@ class RouteData {
       name:   data['name']   as String,
       stations: (data['stations'] as List).map((s) {
         return RouteStation(
-          name:          s['name']           as String,
-          passengers:    s['passengers']     as int,
-          trackPosition: (s['track_position'] as num).toDouble(),
-          stopType:      s['stop_type']      as String,
+          name:       s['name']       as String,
+          passengers: s['passengers'] as int,
+          stopType:   s['stop_type']  as String,
         );
       }).toList(),
     );
   }
 
-  /// Return a new RouteData containing only the stations at [indices],
-  /// preserving the order of [indices] (sorted ascending automatically).
-  RouteData subset(List<int> indices) {
+  /// Select [indices] from the full station list and assign evenly-spaced
+  /// track positions in [0.02, 0.98] by sequential order.
+  /// Returns (localStations, expressStations).
+  (List<Station>, List<Station>) subset(List<int> indices) {
     final sorted = [...indices]..sort();
-    final n      = sorted.length;
-    if (n < 2) return this;
+    final n = sorted.length;
 
-    // Assign evenly-spaced track positions in [0.02, 0.98] by sequential index.
-    final mapped = sorted.asMap().entries.map((e) {
-      final src = stations[e.value];
-      final normalised = 0.02 + e.key / (n - 1) * 0.96;
-      return RouteStation(
-        name:          src.name,
-        passengers:    src.passengers,
-        trackPosition: double.parse(normalised.toStringAsFixed(4)),
-        stopType:      src.stopType,
+    final local   = <Station>[];
+    final express = <Station>[];
+
+    for (int i = 0; i < n; i++) {
+      final src = stations[sorted[i]];
+      final pos = double.parse(
+        (n > 1 ? 0.02 + i / (n - 1) * 0.96 : 0.5).toStringAsFixed(4),
       );
-    }).toList();
+      local.add(Station(
+        name: src.name,
+        passengers: src.passengers,
+        trackPosition: pos,
+        track: TrackType.local,
+      ));
+      if (src.isExpressStop) {
+        express.add(Station(
+          name: src.name,
+          passengers: src.passengers,
+          trackPosition: pos,
+          track: TrackType.express,
+        ));
+      }
+    }
 
-    return RouteData(system: system, line: line, name: name, stations: mapped);
+    return (local, express);
   }
-
-  /// Every station on the local track (all stations stop here).
-  List<Station> get localStations =>
-      stations.map((s) => s.toStation(TrackType.local)).toList();
-
-  /// Only the express stations (local_and_express stop type).
-  List<Station> get expressStations => stations
-      .where((s) => s.isExpressStop)
-      .map((s) => s.toStation(TrackType.express))
-      .toList();
-
-  /// Combined list in the format the game expects:
-  /// local stations first, then express stations.
-  List<Station> get allStations => [...localStations, ...expressStations];
 }

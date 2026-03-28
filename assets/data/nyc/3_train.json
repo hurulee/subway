@@ -6,274 +6,172 @@
     {
       "name": "Harlem-148 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.02,
-      "lat": 40.82388,
-      "lon": -73.93647
+      "passengers": 2
     },
     {
       "name": "145 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.049091,
-      "lat": 40.820421,
-      "lon": -73.936245
+      "passengers": 2
     },
     {
       "name": "135 St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.078182,
-      "lat": 40.814229,
-      "lon": -73.94077
+      "passengers": 3
     },
     {
       "name": "125 St",
       "stop_type": "local",
-      "passengers": 5,
-      "track_position": 0.107273,
-      "lat": 40.807754,
-      "lon": -73.945495
+      "passengers": 5
     },
     {
       "name": "116 St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.136364,
-      "lat": 40.802098,
-      "lon": -73.949625
+      "passengers": 3
     },
     {
       "name": "110 St-Malcolm X Plaza",
       "stop_type": "local",
-      "passengers": 5,
-      "track_position": 0.165455,
-      "lat": 40.799075,
-      "lon": -73.951822
+      "passengers": 5
     },
     {
       "name": "96 St",
       "stop_type": "local_and_express",
-      "passengers": 13,
-      "track_position": 0.194545,
-      "lat": 40.793919,
-      "lon": -73.972323
+      "passengers": 13
     },
     {
       "name": "72 St",
       "stop_type": "local_and_express",
-      "passengers": 15,
-      "track_position": 0.223636,
-      "lat": 40.778453,
-      "lon": -73.98197
+      "passengers": 15
     },
     {
       "name": "Times Square-42 St",
       "stop_type": "local_and_express",
-      "passengers": 0,
-      "track_position": 0.252727,
-      "lat": 40.75529,
-      "lon": -73.987495
+      "passengers": 0
     },
     {
       "name": "34 St-Penn Station",
       "stop_type": "local_and_express",
-      "passengers": 26,
-      "track_position": 0.281818,
-      "lat": 40.750373,
-      "lon": -73.991057
+      "passengers": 26
     },
     {
       "name": "14 St",
       "stop_type": "local_and_express",
-      "passengers": 16,
-      "track_position": 0.310909,
-      "lat": 40.737826,
-      "lon": -74.000201
+      "passengers": 16
     },
     {
       "name": "Chambers St",
       "stop_type": "local_and_express",
-      "passengers": 6,
-      "track_position": 0.34,
-      "lat": 40.715478,
-      "lon": -74.009266
+      "passengers": 6
     },
     {
       "name": "Park Place",
       "stop_type": "local",
-      "passengers": 21,
-      "track_position": 0.369091,
-      "lat": 40.713051,
-      "lon": -74.008811
+      "passengers": 21
     },
     {
       "name": "Fulton St",
       "stop_type": "local",
-      "passengers": 30,
-      "track_position": 0.398182,
-      "lat": 40.709416,
-      "lon": -74.006571
+      "passengers": 30
     },
     {
       "name": "Wall St",
       "stop_type": "local",
-      "passengers": 6,
-      "track_position": 0.427273,
-      "lat": 40.706821,
-      "lon": -74.0091
+      "passengers": 6
     },
     {
       "name": "Clark St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.456364,
-      "lat": 40.697466,
-      "lon": -73.993086
+      "passengers": 3
     },
     {
       "name": "Borough Hall",
       "stop_type": "local_and_express",
-      "passengers": 10,
-      "track_position": 0.485455,
-      "lat": 40.693219,
-      "lon": -73.989998
+      "passengers": 10
     },
     {
       "name": "Hoyt St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.514545,
-      "lat": 40.690545,
-      "lon": -73.985065
+      "passengers": 3
     },
     {
       "name": "Nevins St",
       "stop_type": "local_and_express",
-      "passengers": 4,
-      "track_position": 0.543636,
-      "lat": 40.688246,
-      "lon": -73.980492
+      "passengers": 4
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
-      "passengers": 16,
-      "track_position": 0.572727,
-      "lat": 40.684359,
-      "lon": -73.977666
+      "passengers": 16
     },
     {
       "name": "Bergen St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.601818,
-      "lat": 40.680829,
-      "lon": -73.975098
+      "passengers": 2
     },
     {
       "name": "Grand Army Plaza",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.630909,
-      "lat": 40.675235,
-      "lon": -73.971046
+      "passengers": 3
     },
     {
       "name": "Eastern Parkway-Brooklyn Museum",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.66,
-      "lat": 40.671987,
-      "lon": -73.964375
+      "passengers": 2
     },
     {
       "name": "Franklin Av-Medgar Evers College",
       "stop_type": "local_and_express",
-      "passengers": 5,
-      "track_position": 0.689091,
-      "lat": 40.670682,
-      "lon": -73.958131
+      "passengers": 5
     },
     {
       "name": "Nostrand Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.718182,
-      "lat": 40.669847,
-      "lon": -73.950466
+      "passengers": 2
     },
     {
       "name": "Kingston Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.747273,
-      "lat": 40.669399,
-      "lon": -73.942161
+      "passengers": 2
     },
     {
       "name": "Crown Heights-Utica Av",
       "stop_type": "local_and_express",
-      "passengers": 8,
-      "track_position": 0.776364,
-      "lat": 40.668897,
-      "lon": -73.932942
+      "passengers": 8
     },
     {
       "name": "Sutter Ave-Rutland Rd",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.805455,
-      "lat": 40.664717,
-      "lon": -73.92261
+      "passengers": 2
     },
     {
       "name": "Saratoga Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.834545,
-      "lat": 40.661453,
-      "lon": -73.916327
+      "passengers": 2
     },
     {
       "name": "Rockaway Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.863636,
-      "lat": 40.662549,
-      "lon": -73.908946
+      "passengers": 2
     },
     {
       "name": "Junius St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.892727,
-      "lat": 40.663515,
-      "lon": -73.902447
+      "passengers": 2
     },
     {
       "name": "Pennsylvania Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.921818,
-      "lat": 40.664635,
-      "lon": -73.894895
+      "passengers": 2
     },
     {
       "name": "Van Siclen Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.950909,
-      "lat": 40.665449,
-      "lon": -73.889395
+      "passengers": 2
     },
     {
       "name": "New Lots Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.98,
-      "lat": 40.666235,
-      "lon": -73.884079
+      "passengers": 2
     }
   ]
 }

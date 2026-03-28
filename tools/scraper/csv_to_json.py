@@ -1,7 +1,8 @@
 """
 Convert mta_stations_merged.csv → one JSON file per line in assets/data/nyc/.
 
-Track positions are assigned linearly: station 1 → 0.02, last → 0.98.
+Track positions are no longer stored in the JSON — they are computed at
+runtime based on the number of stations selected for each level.
 
 Passenger counts are derived from 2024 ridership, scaled per-line so the
 busiest station on each line maps to 30 and the quietest non-zero station
@@ -66,25 +67,15 @@ def main():
 
         station_list = []
         for i, s in enumerate(stations):
-            track_pos = round(0.02 + i / (n - 1) * 0.96, 6) if n > 1 else 0.5
-
             is_terminal = s['terminal'].strip().lower() == 'yes'
             ridership   = parse_ridership(s['ridership_2024'])
             passengers  = 0 if is_terminal else scale_passengers(ridership, max_ridership)
 
             entry = {
-                'name':           s['station_name'].strip(),
-                'stop_type':      s['stop_type'].strip(),
-                'passengers':     passengers,
-                'track_position': track_pos,
-                'lat':            float(s['gtfs_lat']) if s['gtfs_lat'] else None,
-                'lon':            float(s['gtfs_lon']) if s['gtfs_lon'] else None,
+                'name':       s['station_name'].strip(),
+                'stop_type':  s['stop_type'].strip(),
+                'passengers': passengers,
             }
-            # Drop null lat/lon
-            if entry['lat'] is None:
-                del entry['lat']
-                del entry['lon']
-
             station_list.append(entry)
 
         filename   = line.lower() + '_train.json'

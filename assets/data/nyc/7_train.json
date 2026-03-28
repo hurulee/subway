@@ -6,178 +6,112 @@
     {
       "name": "Flushing-Main St",
       "stop_type": "local_and_express",
-      "passengers": 0,
-      "track_position": 0.02,
-      "lat": 40.7596,
-      "lon": -73.83003
+      "passengers": 0
     },
     {
       "name": "Mets-Willets Point",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.065714,
-      "lat": 40.754622,
-      "lon": -73.845625
+      "passengers": 2
     },
     {
       "name": "111 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.111429,
-      "lat": 40.75173,
-      "lon": -73.855334
+      "passengers": 2
     },
     {
       "name": "103 St-Corona Plaza",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.157143,
-      "lat": 40.749865,
-      "lon": -73.8627
+      "passengers": 3
     },
     {
       "name": "Junction Blvd",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.202857,
-      "lat": 40.749145,
-      "lon": -73.869527
+      "passengers": 3
     },
     {
       "name": "90 St-Elmhurst Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.248571,
-      "lat": 40.748408,
-      "lon": -73.876613
+      "passengers": 2
     },
     {
       "name": "82 St-Jackson Hts",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.294286,
-      "lat": 40.747659,
-      "lon": -73.883697
+      "passengers": 2
     },
     {
       "name": "74 St-Broadway",
       "stop_type": "local",
-      "passengers": 8,
-      "track_position": 0.34,
-      "lat": 40.746848,
-      "lon": -73.891394
+      "passengers": 8
     },
     {
       "name": "69 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.385714,
-      "lat": 40.746325,
-      "lon": -73.896403
+      "passengers": 2
     },
     {
       "name": "61 St-Woodside",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.431429,
-      "lat": 40.74563,
-      "lon": -73.902984
+      "passengers": 2
     },
     {
       "name": "52 St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.477143,
-      "lat": 40.744149,
-      "lon": -73.912549
+      "passengers": 2
     },
     {
       "name": "46 St-Bliss St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.522857,
-      "lat": 40.743132,
-      "lon": -73.918435
+      "passengers": 2
     },
     {
       "name": "40 St-Lowery St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.568571,
-      "lat": 40.743781,
-      "lon": -73.924016
+      "passengers": 2
     },
     {
       "name": "33 St-Rawson St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.614286,
-      "lat": 40.744587,
-      "lon": -73.930997
+      "passengers": 2
     },
     {
       "name": "Queensboro Plaza",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.66,
-      "lat": 40.750582,
-      "lon": -73.940202
+      "passengers": 2
     },
     {
       "name": "Court Sq",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.705714,
-      "lat": 40.747023,
-      "lon": -73.945264
+      "passengers": 3
     },
     {
       "name": "Hunters Point Av",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.751429,
-      "lat": 40.742216,
-      "lon": -73.948916
+      "passengers": 2
     },
     {
       "name": "Vernon Blvd-Jackson Av",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.797143,
-      "lat": 40.742626,
-      "lon": -73.953581
+      "passengers": 2
     },
     {
       "name": "Grand Central-42 St",
       "stop_type": "local_and_express",
-      "passengers": 17,
-      "track_position": 0.842857,
-      "lat": 40.751431,
-      "lon": -73.976041
+      "passengers": 17
     },
     {
       "name": "5 Av",
       "stop_type": "local_and_express",
-      "passengers": 30,
-      "track_position": 0.888571,
-      "lat": 40.753821,
-      "lon": -73.981963
+      "passengers": 30
     },
     {
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
-      "passengers": 0,
-      "track_position": 0.934286,
-      "lat": 40.755477,
-      "lon": -73.987691
+      "passengers": 0
     },
     {
       "name": "34 St-Hudson Yards",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.98,
-      "lat": 40.755882,
-      "lon": -74.00191
+      "passengers": 3
     }
   ]
 }

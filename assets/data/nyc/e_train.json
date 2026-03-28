@@ -6,178 +6,112 @@
     {
       "name": "Jamaica Center-Parsons/Archer",
       "stop_type": "local_and_express",
-      "passengers": 0,
-      "track_position": 0.02,
-      "lat": 40.702147,
-      "lon": -73.801109
+      "passengers": 0
     },
     {
       "name": "Sutphin Blvd-Archer Av-JFK Airport",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.065714,
-      "lat": 40.700486,
-      "lon": -73.807969
+      "passengers": 3
     },
     {
       "name": "Jamaica-Van Wyck",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.111429,
-      "lat": 40.702566,
-      "lon": -73.816859
+      "passengers": 2
     },
     {
       "name": "Briarwood",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.157143,
-      "lat": 40.709179,
-      "lon": -73.820574
+      "passengers": 2
     },
     {
       "name": "Kew Gardens-Union Tpke",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.202857,
-      "lat": 40.714441,
-      "lon": -73.831008
+      "passengers": 3
     },
     {
       "name": "75 Av",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.248571,
-      "lat": 40.718331,
-      "lon": -73.837324
+      "passengers": 2
     },
     {
       "name": "Forest Hills-71 Av",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.294286,
-      "lat": 40.721691,
-      "lon": -73.844521
+      "passengers": 3
     },
     {
       "name": "Jackson Hts-Roosevelt Av",
       "stop_type": "local_and_express",
-      "passengers": 8,
-      "track_position": 0.34,
-      "lat": 40.746644,
-      "lon": -73.891338
+      "passengers": 8
     },
     {
       "name": "Queens Plaza",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.385714,
-      "lat": 40.748973,
-      "lon": -73.937243
+      "passengers": 2
     },
     {
       "name": "Court Sq-23 St",
       "stop_type": "local_and_express",
-      "passengers": 3,
-      "track_position": 0.431429,
-      "lat": 40.747846,
-      "lon": -73.946
+      "passengers": 3
     },
     {
       "name": "Lexington Av/53 St",
       "stop_type": "local_and_express",
-      "passengers": 7,
-      "track_position": 0.477143,
-      "lat": 40.757552,
-      "lon": -73.969055
+      "passengers": 7
     },
     {
       "name": "5 Av/53 St",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.522857,
-      "lat": 40.760167,
-      "lon": -73.975224
+      "passengers": 2
     },
     {
       "name": "7 Av",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.568571,
-      "lat": 40.762862,
-      "lon": -73.981637
+      "passengers": 2
     },
     {
       "name": "50 St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.614286,
-      "lat": 40.762456,
-      "lon": -73.985984
+      "passengers": 3
     },
     {
       "name": "42 St/Port Authority Bus Terminal",
       "stop_type": "local_and_express",
-      "passengers": 30,
-      "track_position": 0.66,
-      "lat": 40.757308,
-      "lon": -73.989735
+      "passengers": 30
     },
     {
       "name": "34 St-Penn Station",
       "stop_type": "local_and_express",
-      "passengers": 10,
-      "track_position": 0.705714,
-      "lat": 40.752287,
-      "lon": -73.993391
+      "passengers": 10
     },
     {
       "name": "23 St",
       "stop_type": "local",
-      "passengers": 3,
-      "track_position": 0.751429,
-      "lat": 40.745906,
-      "lon": -73.998041
+      "passengers": 3
     },
     {
       "name": "14 St",
       "stop_type": "local_and_express",
-      "passengers": 6,
-      "track_position": 0.797143,
-      "lat": 40.740893,
-      "lon": -74.00169
+      "passengers": 6
     },
     {
       "name": "W 4 St-Washington Sq",
       "stop_type": "local_and_express",
-      "passengers": 6,
-      "track_position": 0.842857,
-      "lat": 40.732338,
-      "lon": -74.000495
+      "passengers": 6
     },
     {
       "name": "Spring St",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.888571,
-      "lat": 40.726227,
-      "lon": -74.003739
+      "passengers": 2
     },
     {
       "name": "Canal St",
       "stop_type": "local_and_express",
-      "passengers": 2,
-      "track_position": 0.934286,
-      "lat": 40.720824,
-      "lon": -74.005229
+      "passengers": 2
     },
     {
       "name": "World Trade Center",
       "stop_type": "local",
-      "passengers": 2,
-      "track_position": 0.98,
-      "lat": 40.712582,
-      "lon": -74.009781
+      "passengers": 2
     }
   ]
 }
