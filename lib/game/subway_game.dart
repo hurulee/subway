@@ -47,7 +47,12 @@ class SubwayGame extends FlameGame {
   static const double stopDuration = 2.0;
   bool _waitingForStart = true;
 
-  // Switch window tracking
+  // Switch points — generated dynamically each level.
+  // _kSwitchWindowSize : fraction of track length for each window (tune to adjust difficulty).
+  // _kSwitchGapPosition: 0.0 = just after station, 0.5 = midpoint, 1.0 = just before next station.
+  static const double _kSwitchWindowSize  = 0.04;
+  static const double _kSwitchGapPosition = 0.5;
+  late List<SwitchPoint> _switchPoints;
   int _currentSwitchIdx = 0;
   bool _switchAvailable = false;
 
@@ -69,6 +74,39 @@ class SubwayGame extends FlameGame {
     if (_currentLevelIndex < 5)  return 15;
     if (_currentLevelIndex < 10) return 20;
     return 25;
+  }
+
+  int _switchCountForLevel() {
+    if (_currentLevelIndex < 5)  return 7;
+    if (_currentLevelIndex < 10) return 12;
+    if (_currentLevelIndex < 13) return 15;
+    return 18;
+  }
+
+  List<SwitchPoint> _generateSwitchPoints() {
+    final n = _localStations.length;
+    if (n < 2) return [];
+
+    // Compute one candidate switch position per inter-station gap.
+    final candidates = <double>[];
+    for (int i = 0; i < n - 1; i++) {
+      final gapStart = _localStations[i].trackPosition;
+      final gapEnd   = _localStations[i + 1].trackPosition;
+      candidates.add(gapStart + _kSwitchGapPosition * (gapEnd - gapStart));
+    }
+
+    final count = _switchCountForLevel().clamp(1, candidates.length);
+
+    // First gap always gets a switch; randomly pick the rest.
+    final remaining = List.generate(candidates.length - 1, (i) => i + 1)
+      ..shuffle(Random());
+    final selected = [0, ...remaining.take(count - 1)]..sort();
+
+    return selected.map((i) {
+      final windowStart = (candidates[i] - _kSwitchWindowSize / 2)
+          .clamp(0.01, 1.0 - _kSwitchWindowSize);
+      return SwitchPoint(trackPosition: windowStart, windowSize: _kSwitchWindowSize);
+    }).toList();
   }
 
   double get _activeCruiseSpeed => _activeTrack == TrackType.express
@@ -100,8 +138,9 @@ class SubwayGame extends FlameGame {
     final stations = base.subset(indices);
     _localStations   = stations.$1;
     _expressStations = stations.$2;
-    _trackLength = trackLengthForCount(count);
+    _trackLength  = trackLengthForCount(count);
     _trackBottomY = trackBottomYForCount(count);
+    _switchPoints = _generateSwitchPoints();
   }
 
   @override
@@ -116,7 +155,7 @@ class SubwayGame extends FlameGame {
     _map = MapComponent(
       localStations:   _localStations,
       expressStations: _expressStations,
-      switchPoints:    level.switchPoints,
+      switchPoints:    _switchPoints,
       obstacles:       level.obstacles,
       platformHalfLen: level.platformHalfLen,
       trackLength:     _trackLength,
@@ -156,11 +195,11 @@ class SubwayGame extends FlameGame {
   /// Pre-compute (localSignal, expressSignal) for each switch segment.
   List<(SignalColor, SignalColor)> _computeSegmentSignals() {
     final signals = <(SignalColor, SignalColor)>[];
-    for (int i = 0; i < level.switchPoints.length; i++) {
-      final segStart = level.switchPoints[i].trackPosition +
-          level.switchPoints[i].windowSize;
-      final segEnd = i + 1 < level.switchPoints.length
-          ? level.switchPoints[i + 1].trackPosition
+    for (int i = 0; i < _switchPoints.length; i++) {
+      final segStart = _switchPoints[i].trackPosition +
+          _switchPoints[i].windowSize;
+      final segEnd = i + 1 < _switchPoints.length
+          ? _switchPoints[i + 1].trackPosition
           : 1.0;
 
       bool localRed = false;
@@ -303,7 +342,7 @@ class SubwayGame extends FlameGame {
 
   void _checkSwitchWindow() {
     if (_train.isSwitching) return;
-    if (_currentSwitchIdx >= level.switchPoints.length) {
+    if (_currentSwitchIdx >= _switchPoints.length) {
       if (_switchAvailable) {
         _switchAvailable = false;
         switchAvailableNotifier.value = false;
@@ -311,7 +350,7 @@ class SubwayGame extends FlameGame {
       return;
     }
 
-    final sp = level.switchPoints[_currentSwitchIdx];
+    final sp = _switchPoints[_currentSwitchIdx];
     final frontT = _train.trackT + TrainComponent.h / 2 / _trackLength;
     final inWindow = frontT >= sp.trackPosition &&
         frontT <= sp.trackPosition + sp.windowSize;

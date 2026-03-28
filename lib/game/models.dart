@@ -30,7 +30,6 @@ class Obstacle {
 class Level {
   final int startIndex;
   final double parTime;
-  final List<SwitchPoint> switchPoints;
   final double expressSpeedMultiplier;
   final List<Obstacle> obstacles;
   final double platformHalfLen;
@@ -39,7 +38,6 @@ class Level {
   const Level({
     required this.startIndex,
     required this.parTime,
-    this.switchPoints = const [],
     this.expressSpeedMultiplier = 1.0,
     this.obstacles = const [],
     this.platformHalfLen = 130.0,
@@ -86,47 +84,38 @@ class HudData {
 
 const gameLevels = [
   // ── Rounds 1–5: Short lines ───────────────────────────────────────────────
+
+  // Level 1
   Level(
     startIndex: 0,
     parTime: 90,
     platformHalfLen: 178,
     cruiseSpeed: 120,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.38, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.06),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.56, track: TrackType.local),
     ],
   ),
+
+  // Level 2
   Level(
     startIndex: 0,
     parTime: 80,
     platformHalfLen: 174,
     cruiseSpeed: 138,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.38, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.06),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.27, track: TrackType.local),
       Obstacle(trackPosition: 0.56, track: TrackType.express),
     ],
   ),
+
+  // Level 3
   Level(
     startIndex: 0,
     parTime: 71,
     platformHalfLen: 170,
     cruiseSpeed: 155,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.38, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.06),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.27, track: TrackType.local),
@@ -134,17 +123,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.84, track: TrackType.local),
     ],
   ),
+
+  // Level 4
   Level(
     startIndex: 0,
     parTime: 63,
     platformHalfLen: 166,
     cruiseSpeed: 173,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.38, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.82, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.27, track: TrackType.local),
@@ -153,18 +138,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.92, track: TrackType.express),
     ],
   ),
+
+  // Level 5
   Level(
     startIndex: 0,
     parTime: 55,
     platformHalfLen: 161,
     cruiseSpeed: 190,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.38, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.82, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.27, track: TrackType.local),
@@ -175,18 +155,13 @@ const gameLevels = [
     ],
   ),
   // ── Rounds 6–10: Medium lines ─────────────────────────────────────────────
+
+  // Level 6
   Level(
     startIndex: 0,
     parTime: 49,
     platformHalfLen: 157,
     cruiseSpeed: 208,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.38, windowSize: 0.06),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.82, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.27, track: TrackType.express),
@@ -196,18 +171,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.92, track: TrackType.express),
     ],
   ),
+
+  // Level 7
   Level(
     startIndex: 0,
     parTime: 45,
     platformHalfLen: 153,
     cruiseSpeed: 223,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.82, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.local),
@@ -217,18 +187,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.92, track: TrackType.local),
     ],
   ),
+
+  // Level 8
   Level(
     startIndex: 0,
     parTime: 41,
     platformHalfLen: 149,
     cruiseSpeed: 237,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.68, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.82, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.express),
@@ -238,18 +203,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.92, track: TrackType.express),
     ],
   ),
+
+  // Level 9
   Level(
     startIndex: 0,
     parTime: 38,
     platformHalfLen: 145,
     cruiseSpeed: 250,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.82, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.local),
@@ -259,18 +219,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.92, track: TrackType.local),
     ],
   ),
+
+  // Level 10
   Level(
     startIndex: 0,
     parTime: 35,
     platformHalfLen: 141,
     cruiseSpeed: 262,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.70, windowSize: 0.05),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.express),
@@ -281,19 +236,13 @@ const gameLevels = [
     ],
   ),
   // ── Rounds 11–15: Long lines ──────────────────────────────────────────────
+
+  // Level 11
   Level(
     startIndex: 0,
     parTime: 33,
     platformHalfLen: 137,
     cruiseSpeed: 272,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.70, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.85, windowSize: 0.04),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.local),
@@ -304,19 +253,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.93, track: TrackType.express),
     ],
   ),
+
+  // Level 12
   Level(
     startIndex: 0,
     parTime: 31,
     platformHalfLen: 133,
     cruiseSpeed: 281,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.05),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.70, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.85, windowSize: 0.04),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.express),
@@ -327,19 +270,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.93, track: TrackType.local),
     ],
   ),
+
+  // Level 13
   Level(
     startIndex: 0,
     parTime: 29,
     platformHalfLen: 128,
     cruiseSpeed: 290,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.70, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.85, windowSize: 0.04),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.local),
@@ -350,19 +287,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.93, track: TrackType.express),
     ],
   ),
+
+  // Level 14
   Level(
     startIndex: 0,
     parTime: 27,
     platformHalfLen: 124,
     cruiseSpeed: 298,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.70, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.85, windowSize: 0.04),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.express),
@@ -373,19 +304,13 @@ const gameLevels = [
       Obstacle(trackPosition: 0.93, track: TrackType.local),
     ],
   ),
+
+  // Level 15
   Level(
     startIndex: 0,
     parTime: 25,
     platformHalfLen: 120,
     cruiseSpeed: 305,
-    switchPoints: [
-      SwitchPoint(trackPosition: 0.10, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.25, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.40, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.55, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.70, windowSize: 0.04),
-      SwitchPoint(trackPosition: 0.85, windowSize: 0.04),
-    ],
     expressSpeedMultiplier: 1.35,
     obstacles: [
       Obstacle(trackPosition: 0.20, track: TrackType.local),
