@@ -1,12 +1,16 @@
+import 'dart:math';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'models.dart';
 import 'route_data.dart';
+import 'line_data.dart';
 import 'train_component.dart';
 import 'map_component.dart';
 
 class SubwayGame extends FlameGame {
-  final String routeAsset;
+  // ignore: prefer_final_fields  — reassigned when randomizing per level
+  String _currentRouteAsset = 'assets/data/nyc/a_train.json';
+  String get routeAsset => _currentRouteAsset;
   final ValueNotifier<HudData> hudNotifier =
       ValueNotifier(const HudData(passengers: 0, elapsed: 0, nextStation: ''));
   final ValueNotifier<bool> brakingNotifier = ValueNotifier(false);
@@ -69,12 +73,12 @@ class SubwayGame extends FlameGame {
   double get _perfectZone => level.platformHalfLen * 0.615;
   double get _goodZone => level.platformHalfLen;
 
-  SubwayGame({required this.routeAsset});
+  void _pickRandomRoute() {
+    _currentRouteAsset = kLines[Random().nextInt(kLines.length)].assetPath;
+  }
 
-  @override
-  Future<void> onLoad() async {
-    _train = TrainComponent();
-    final base = await RouteData.load(routeAsset);
+  Future<void> _loadRoute() async {
+    final base = await RouteData.load(_currentRouteAsset);
     final n = base.stations.length;
     final count = _kStationCount.clamp(2, n);
     final indices = List.generate(
@@ -82,6 +86,12 @@ class SubwayGame extends FlameGame {
       (i) => (i * (n - 1) / (count - 1)).round(),
     );
     _route = base.subset(indices);
+  }
+
+  @override
+  Future<void> onLoad() async {
+    _train = TrainComponent();
+    await _loadRoute();
     _initLevel();
   }
 
@@ -397,12 +407,14 @@ class SubwayGame extends FlameGame {
   }
 
   /// Advance to next level after completing current one.
-  void proceedToNextLevel() {
+  Future<void> proceedToNextLevel() async {
     if (isLastLevel) return;
     overlays.remove('levelComplete');
     overlays.add('brake');
     overlays.add('switch');
     _currentLevelIndex++;
+    _pickRandomRoute();
+    await _loadRoute();
     _initLevel();
   }
 
@@ -418,13 +430,15 @@ class SubwayGame extends FlameGame {
   }
 
   /// Restart entire game from level 1.
-  void restartGame() {
+  Future<void> restartGame() async {
     overlays.remove('gameComplete');
     overlays.remove('levelComplete');
     overlays.add('brake');
     overlays.add('switch');
     _currentLevelIndex = 0;
     _totalScore = 0;
+    _pickRandomRoute();
+    await _loadRoute();
     _initLevel();
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'game/subway_game.dart';
 import 'game/models.dart';
-import 'line_select_screen.dart' show LineSelectScreen, kLines, LineInfo;
+import 'game/line_data.dart';
 
 void main() {
   runApp(const SubwayApp());
@@ -17,14 +17,13 @@ class SubwayApp extends StatelessWidget {
       title: 'Subway',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const LineSelectScreen(),
+      home: const GameScreen(),
     );
   }
 }
 
 class GameScreen extends StatefulWidget {
-  final String routeAsset;
-  const GameScreen({super.key, required this.routeAsset});
+  const GameScreen({super.key});
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -36,7 +35,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    _game = SubwayGame(routeAsset: widget.routeAsset);
+    _game = SubwayGame();
   }
 
   @override
