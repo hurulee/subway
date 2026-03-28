@@ -62,8 +62,15 @@ class SubwayGame extends FlameGame {
   static const double trainScreenFraction = 0.68;
 
   // Route data loaded from JSON asset.
-  static const int _kStationCount = 7;
   late RouteData _route;
+  late double _trackLength;
+  late double _trackBottomY;
+
+  int _stationCountForLevel() {
+    if (_currentLevelIndex < 5)  return 15;
+    if (_currentLevelIndex < 10) return 20;
+    return 25;
+  }
 
   double get _activeCruiseSpeed => _activeTrack == TrackType.express
       ? level.cruiseSpeed * level.expressSpeedMultiplier
@@ -86,12 +93,14 @@ class SubwayGame extends FlameGame {
   Future<void> _loadRoute() async {
     final base = await RouteData.load(_currentRouteAsset);
     final n = base.stations.length;
-    final count = _kStationCount.clamp(2, n);
+    final count = _stationCountForLevel().clamp(2, n);
     final indices = List.generate(
       count,
       (i) => (i * (n - 1) / (count - 1)).round(),
     );
     _route = base.subset(indices);
+    _trackLength = trackLengthForCount(count);
+    _trackBottomY = trackBottomYForCount(count);
   }
 
   @override
@@ -112,6 +121,8 @@ class SubwayGame extends FlameGame {
       switchPoints:    level.switchPoints,
       obstacles:       level.obstacles,
       platformHalfLen: level.platformHalfLen,
+      trackLength:     _trackLength,
+      trackBottomY:    _trackBottomY,
     );
 
     _train.trackT = _localStations[level.startIndex].trackPosition;
@@ -177,7 +188,7 @@ class SubwayGame extends FlameGame {
   (SignalColor, SignalColor) get _currentSignals =>
       _segmentSignals[_currentSwitchIdx.clamp(0, _segmentSignals.length - 1)];
 
-  double _worldYForT(double t) => kTrackBottomY - t * kTrackLength;
+  double _worldYForT(double t) => _trackBottomY - t * _trackLength;
 
   List<Station> get _activeStations =>
       _activeTrack == TrackType.local ? _localStations : _expressStations;
@@ -220,7 +231,7 @@ class SubwayGame extends FlameGame {
         }
       }
     } else {
-      _train.trackT += (_train.speed * dt) / kTrackLength;
+      _train.trackT += (_train.speed * dt) / _trackLength;
       _train.trackT = _train.trackT.clamp(0.0, 1.0);
       _checkArrival();
       if (_train.trackT >= 1.0) { _finishLevel(); return; }
@@ -303,7 +314,7 @@ class SubwayGame extends FlameGame {
     }
 
     final sp = level.switchPoints[_currentSwitchIdx];
-    final frontT = _train.trackT + TrainComponent.h / 2 / kTrackLength;
+    final frontT = _train.trackT + TrainComponent.h / 2 / _trackLength;
     final inWindow = frontT >= sp.trackPosition &&
         frontT <= sp.trackPosition + sp.windowSize;
 
@@ -342,7 +353,7 @@ class SubwayGame extends FlameGame {
       if (_hitObstacles.contains(i)) continue;
       final obs = level.obstacles[i];
       if (obs.track != _activeTrack) continue;
-      final frontT = _train.trackT + TrainComponent.h / (2 * kTrackLength);
+      final frontT = _train.trackT + TrainComponent.h / (2 * _trackLength);
       if (frontT >= obs.trackPosition) {
         _hitObstacles.add(i);
         _applyPenalty();

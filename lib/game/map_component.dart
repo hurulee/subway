@@ -5,14 +5,18 @@ import 'models.dart';
 const double kExpressTrackX = 80.0;
 const double kLocalTrackX   = 210.0;
 const double kTrackTopY     = 100.0;
-const double kTrackBottomY  = 5500.0;
-const double kTrackLength   = kTrackBottomY - kTrackTopY;
+
+// Pixel distance between adjacent stations (derived from original 7-station setup:
+// 0.96 * 5400px / 6 gaps = 864px per gap; 864 / 0.96 = 900 per unit).
+const double kStationSpacing = 864.0;
+
+double trackLengthForCount(int n) => 900.0 * (n - 1);
+double trackBottomYForCount(int n) => kTrackTopY + trackLengthForCount(n);
 
 const double kExpressPlatLeft  = kExpressTrackX + 16.0;
 const double kExpressPlatRight = kLocalTrackX - 16.0;
 const double kLocalPlatLeft    = kLocalTrackX + 16.0;
 const double kLocalPlatRight   = 365.0;
-double stationWorldY(double trackT) => kTrackBottomY - trackT * kTrackLength;
 
 class MapComponent {
   final List<Station> localStations;
@@ -20,6 +24,8 @@ class MapComponent {
   final List<SwitchPoint> switchPoints;
   final List<Obstacle> obstacles;
   final double platformHalfLen;
+  final double trackLength;
+  final double trackBottomY;
 
   late final List<double> _localYs;
   late final List<double> _expressYs;
@@ -29,11 +35,15 @@ class MapComponent {
     required this.expressStations,
     required this.switchPoints,
     required this.obstacles,
+    required this.trackLength,
+    required this.trackBottomY,
     this.platformHalfLen = 130.0,
   }) {
-    _localYs   = localStations.map((s) => stationWorldY(s.trackPosition)).toList();
-    _expressYs = expressStations.map((s) => stationWorldY(s.trackPosition)).toList();
+    _localYs   = localStations.map((s) => _worldY(s.trackPosition)).toList();
+    _expressYs = expressStations.map((s) => _worldY(s.trackPosition)).toList();
   }
+
+  double _worldY(double trackT) => trackBottomY - trackT * trackLength;
 
   void render(Canvas canvas) {
     _drawTrack(canvas, kLocalTrackX);
@@ -61,14 +71,14 @@ class MapComponent {
 
   void _drawTrack(Canvas canvas, double trackX) {
     canvas.drawRect(
-      Rect.fromLTWH(trackX - 16, kTrackTopY, 32, kTrackLength),
+      Rect.fromLTWH(trackX - 16, kTrackTopY, 32, trackLength),
       Paint()..color = const Color(0xFF2A2A2A),
     );
     final tiePaint = Paint()
       ..color = const Color(0xFF3D2B1A)
       ..strokeWidth = 2;
     const tieStep = 20.0;
-    final tieCount = (kTrackLength / tieStep).ceil();
+    final tieCount = (trackLength / tieStep).ceil();
     for (int i = 0; i <= tieCount; i++) {
       final y = kTrackTopY + i * tieStep;
       canvas.drawLine(Offset(trackX - 14, y), Offset(trackX + 14, y), tiePaint);
@@ -77,21 +87,21 @@ class MapComponent {
       ..color = const Color(0xFF999999)
       ..strokeWidth = 4
       ..strokeCap = StrokeCap.square;
-    canvas.drawLine(Offset(trackX - 9, kTrackTopY), Offset(trackX - 9, kTrackBottomY), railPaint);
-    canvas.drawLine(Offset(trackX + 9, kTrackTopY), Offset(trackX + 9, kTrackBottomY), railPaint);
+    canvas.drawLine(Offset(trackX - 9, kTrackTopY), Offset(trackX - 9, trackBottomY), railPaint);
+    canvas.drawLine(Offset(trackX + 9, kTrackTopY), Offset(trackX + 9, trackBottomY), railPaint);
   }
 
   void _drawSwitchZone(Canvas canvas, SwitchPoint sp) {
-    final topY = stationWorldY(sp.trackPosition);
-    final bottomY = stationWorldY(sp.trackPosition + sp.windowSize);
+    final topY    = _worldY(sp.trackPosition);
+    final bottomY = _worldY(sp.trackPosition + sp.windowSize);
     final midY = (topY + bottomY) / 2;
     final midX = (kLocalTrackX + kExpressTrackX) / 2;
 
     final linePaint = Paint()
       ..color = const Color(0xFFFFDD00).withValues(alpha: 0.6)
       ..strokeWidth = 2.0;
-    canvas.drawLine(Offset(kLocalTrackX, topY),    Offset(kExpressTrackX, bottomY), linePaint);
-    canvas.drawLine(Offset(kExpressTrackX, topY),  Offset(kLocalTrackX, bottomY),   linePaint);
+    canvas.drawLine(Offset(kLocalTrackX, topY),   Offset(kExpressTrackX, bottomY), linePaint);
+    canvas.drawLine(Offset(kExpressTrackX, topY), Offset(kLocalTrackX, bottomY),   linePaint);
 
     final path = Path()
       ..moveTo(midX, midY - 10)
@@ -170,13 +180,11 @@ class MapComponent {
 
   void _drawObstacle(Canvas canvas, Obstacle obs) {
     final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
-    final worldY = stationWorldY(obs.trackPosition);
+    final worldY = _worldY(obs.trackPosition);
 
-    // Barrier background
     final bgPaint = Paint()..color = const Color(0xFFDD2200);
     canvas.drawRect(Rect.fromLTWH(trackX - 14, worldY - 18, 28, 36), bgPaint);
 
-    // Hazard stripes
     final stripePaint = Paint()
       ..color = const Color(0xFFFFCC00)
       ..strokeWidth = 4;
@@ -185,13 +193,11 @@ class MapComponent {
       canvas.drawLine(Offset(sx, worldY - 18), Offset(sx + 14, worldY + 18), stripePaint);
     }
 
-    // Red overlay to unify
     canvas.drawRect(
       Rect.fromLTWH(trackX - 14, worldY - 18, 28, 36),
       Paint()..color = const Color(0xAADD2200),
     );
 
-    // "X" mark
     final xPaint = Paint()
       ..color = Colors.white
       ..strokeWidth = 3
@@ -199,7 +205,6 @@ class MapComponent {
     canvas.drawLine(Offset(trackX - 8, worldY - 10), Offset(trackX + 8, worldY + 10), xPaint);
     canvas.drawLine(Offset(trackX + 8, worldY - 10), Offset(trackX - 8, worldY + 10), xPaint);
 
-    // Warning glow ring
     final glowPaint = Paint()
       ..color = const Color(0x44FF4400)
       ..style = PaintingStyle.stroke

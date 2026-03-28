@@ -28,10 +28,7 @@ class Obstacle {
 }
 
 class Level {
-  final String name;
-  final List<Station> stations; // empty when loaded from a RouteData asset
   final int startIndex;
-  final int endIndex;
   final double parTime;
   final List<SwitchPoint> switchPoints;
   final double expressSpeedMultiplier;
@@ -40,10 +37,7 @@ class Level {
   final double cruiseSpeed;
 
   const Level({
-    required this.name,
-    this.stations = const [],
     required this.startIndex,
-    required this.endIndex,
     required this.parTime,
     this.switchPoints = const [],
     this.expressSpeedMultiplier = 1.0,
@@ -85,15 +79,15 @@ class HudData {
 
 // ── Level definitions ─────────────────────────────────────────────────────────
 //
-// Stations are loaded at runtime from assets/data/nyc/a_train.json
-// (7 key stations: indices 0, 5, 9, 17, 22, 29, 36).
-// startIndex / endIndex refer into the local-station list of that subset.
+// Rounds  Line group  Stations  Lines
+// 1–5     Short       15        7, E, G, L, W, Z
+// 6–10    Medium      20        3, 4, 5, D, J, M, N, Q
+// 11–15   Long        25        1, 2, 6, A, B, C, F, R
 
 const gameLevels = [
   // ── Rounds 1–5: Short lines ───────────────────────────────────────────────
   Level(
-    name: 'Round 1',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 90,
     platformHalfLen: 178,
     cruiseSpeed: 120,
@@ -108,8 +102,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 2',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 80,
     platformHalfLen: 174,
     cruiseSpeed: 138,
@@ -125,8 +118,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 3',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 71,
     platformHalfLen: 170,
     cruiseSpeed: 155,
@@ -143,8 +135,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 4',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 63,
     platformHalfLen: 166,
     cruiseSpeed: 173,
@@ -163,8 +154,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 5',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 55,
     platformHalfLen: 161,
     cruiseSpeed: 190,
@@ -186,8 +176,7 @@ const gameLevels = [
   ),
   // ── Rounds 6–10: Medium lines ─────────────────────────────────────────────
   Level(
-    name: 'Round 6',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 49,
     platformHalfLen: 157,
     cruiseSpeed: 208,
@@ -208,8 +197,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 7',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 45,
     platformHalfLen: 153,
     cruiseSpeed: 223,
@@ -230,8 +218,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 8',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 41,
     platformHalfLen: 149,
     cruiseSpeed: 237,
@@ -252,8 +239,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 9',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 38,
     platformHalfLen: 145,
     cruiseSpeed: 250,
@@ -274,8 +260,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 10',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 35,
     platformHalfLen: 141,
     cruiseSpeed: 262,
@@ -297,8 +282,7 @@ const gameLevels = [
   ),
   // ── Rounds 11–15: Long lines ──────────────────────────────────────────────
   Level(
-    name: 'Round 11',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 33,
     platformHalfLen: 137,
     cruiseSpeed: 272,
@@ -321,8 +305,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 12',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 31,
     platformHalfLen: 133,
     cruiseSpeed: 281,
@@ -345,8 +328,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 13',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 29,
     platformHalfLen: 128,
     cruiseSpeed: 290,
@@ -369,8 +351,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 14',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 27,
     platformHalfLen: 124,
     cruiseSpeed: 298,
@@ -393,8 +374,7 @@ const gameLevels = [
     ],
   ),
   Level(
-    name: 'Round 15',
-    startIndex: 0, endIndex: 6,
+    startIndex: 0,
     parTime: 25,
     platformHalfLen: 120,
     cruiseSpeed: 305,

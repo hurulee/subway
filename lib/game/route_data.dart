@@ -67,17 +67,10 @@ class RouteData {
     final n      = sorted.length;
     if (n < 2) return this;
 
-    // Re-map track positions linearly to [0.02, 0.98].
-    final origPositions = sorted.map((i) => stations[i].trackPosition).toList();
-    final origMin = origPositions.first;
-    final origMax = origPositions.last;
-    final origRange = origMax - origMin;
-
+    // Assign evenly-spaced track positions in [0.02, 0.98] by sequential index.
     final mapped = sorted.asMap().entries.map((e) {
       final src = stations[e.value];
-      final normalised = origRange > 0
-          ? 0.02 + (src.trackPosition - origMin) / origRange * 0.96
-          : 0.02 + e.key / (n - 1) * 0.96;
+      final normalised = 0.02 + e.key / (n - 1) * 0.96;
       return RouteStation(
         name:          src.name,
         passengers:    src.passengers,
