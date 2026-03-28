@@ -27,6 +27,9 @@ class SubwayGame extends FlameGame {
   int _currentLevelIndex = 0;
   int _totalScore = 0;
 
+  // Pre-shuffled route order — one asset path per round, no repeats within a group.
+  late List<String> _routeOrder;
+
   Level get level => gameLevels[_currentLevelIndex];
   int get currentLevelNumber => _currentLevelIndex + 1;
   bool get isLastLevel => _currentLevelIndex >= gameLevels.length - 1;
@@ -48,9 +51,9 @@ class SubwayGame extends FlameGame {
   bool _waitingForStart = true;
 
   // Switch points — generated dynamically each level.
-  // _kSwitchWindowSize : fraction of track length for each window (tune to adjust difficulty).
+  // _kSwitchWindowPx   : fixed pixel length of each switch window (tune to adjust difficulty).
   // _kSwitchGapPosition: 0.0 = just after station, 0.5 = midpoint, 1.0 = just before next station.
-  static const double _kSwitchWindowSize  = 0.04;
+  static const double _kSwitchWindowPx    = 300.0;
   static const double _kSwitchGapPosition = 0.5;
   late List<SwitchPoint> _switchPoints;
   int _currentSwitchIdx = 0;
@@ -59,7 +62,8 @@ class SubwayGame extends FlameGame {
   // Signals
   late List<(SignalColor, SignalColor)> _segmentSignals;
 
-  // Obstacles
+  // Obstacles — generated dynamically each level.
+  late List<Obstacle> _obstacles;
   final Set<int> _hitObstacles = {};
   int _penaltyCount = 0;
   double _penaltyFlashTimer = 0.0;
@@ -76,11 +80,17 @@ class SubwayGame extends FlameGame {
     return 25;
   }
 
+  int _obstacleCountForLevel() {
+    if (_currentLevelIndex < 5)  return 5;
+    if (_currentLevelIndex < 10) return 9;
+    return 15;
+  }
+
   int _switchCountForLevel() {
     if (_currentLevelIndex < 5)  return 7;
-    if (_currentLevelIndex < 10) return 12;
-    if (_currentLevelIndex < 13) return 15;
-    return 18;
+    if (_currentLevelIndex < 10) return 10;
+    if (_currentLevelIndex < 13) return 13;
+    return 16;
   }
 
   List<SwitchPoint> _generateSwitchPoints() {
@@ -102,11 +112,69 @@ class SubwayGame extends FlameGame {
       ..shuffle(Random());
     final selected = [0, ...remaining.take(count - 1)]..sort();
 
+    final windowSize = (_kSwitchWindowPx / _trackLength).clamp(0.001, 0.5);
     return selected.map((i) {
-      final windowStart = (candidates[i] - _kSwitchWindowSize / 2)
-          .clamp(0.01, 1.0 - _kSwitchWindowSize);
-      return SwitchPoint(trackPosition: windowStart, windowSize: _kSwitchWindowSize);
+      final windowStart = (candidates[i] - windowSize / 2)
+          .clamp(0.01, 1.0 - windowSize);
+      return SwitchPoint(trackPosition: windowStart, windowSize: windowSize);
     }).toList();
+  }
+
+  List<Obstacle> _generateObstacles() {
+    final candidates = <double>[];
+
+    // Station positions (skip terminals)
+    for (int i = 1; i < _localStations.length - 1; i++) {
+      candidates.add(_localStations[i].trackPosition);
+    }
+
+    // Gap midpoints
+    for (int i = 0; i < _localStations.length - 1; i++) {
+      final gapStart = _localStations[i].trackPosition;
+      final gapEnd   = _localStations[i + 1].trackPosition;
+      candidates.add(gapStart + _kSwitchGapPosition * (gapEnd - gapStart));
+    }
+
+    // Exclude positions before the first switch (unavoidable — player starts on
+    // local and cannot switch until they reach switch 0) and inside switch windows.
+    final firstSwitchStart =
+        _switchPoints.isEmpty ? 1.0 : _switchPoints.first.trackPosition;
+    final filtered = candidates.where((pos) {
+      if (pos < firstSwitchStart) return false;
+      return !_switchPoints.any((sp) =>
+          pos >= sp.trackPosition && pos <= sp.trackPosition + sp.windowSize);
+    }).toList()..shuffle(Random());
+
+    final count = _obstacleCountForLevel().clamp(0, filtered.length);
+    final selected = filtered.take(count).toList()..sort();
+
+    // Assign tracks while guaranteeing each segment has at most one blocked
+    // track — otherwise the signal logic would have to show both red, which
+    // leaves the player with no safe option.
+    final segmentTrack = <int, TrackType>{};
+    final result = <Obstacle>[];
+    bool nextIsLocal = true;
+
+    for (final pos in selected) {
+      final seg = _obstacleSegmentFor(pos);
+      if (segmentTrack.containsKey(seg)) continue; // already one obstacle here
+
+      final track = nextIsLocal ? TrackType.local : TrackType.express;
+      nextIsLocal = !nextIsLocal;
+      segmentTrack[seg] = track;
+      result.add(Obstacle(trackPosition: pos, track: track));
+    }
+
+    return result;
+  }
+
+  /// Returns which signal segment an obstacle position belongs to.
+  /// Segment i covers [switch_i_end, switch_{i+1}_start].
+  int _obstacleSegmentFor(double pos) {
+    for (int i = 0; i < _switchPoints.length; i++) {
+      if (pos < _switchPoints[i].trackPosition) return i - 1;
+    }
+    return _switchPoints.length - 1;
   }
 
   double get _activeCruiseSpeed => _activeTrack == TrackType.express
@@ -117,14 +185,21 @@ class SubwayGame extends FlameGame {
   double get _perfectZone => level.platformHalfLen * 0.615;
   double get _goodZone => level.platformHalfLen;
 
-  void _pickRandomRoute() {
-    final group = _currentLevelIndex < 5
-        ? LineGroup.short
-        : _currentLevelIndex < 10
-            ? LineGroup.medium
-            : LineGroup.long;
-    final pool = linesForGroup(group);
-    _currentRouteAsset = pool[Random().nextInt(pool.length)].assetPath;
+  /// Build a 15-entry route order: 5 from each group, shuffled within the group,
+  /// with no line repeated within a group.
+  void _buildRouteOrder() {
+    List<String> pickGroup(LineGroup g) =>
+        (linesForGroup(g)..shuffle(Random())).take(5).map((l) => l.assetPath).toList();
+
+    _routeOrder = [
+      ...pickGroup(LineGroup.short),
+      ...pickGroup(LineGroup.medium),
+      ...pickGroup(LineGroup.long),
+    ];
+  }
+
+  void _setRouteForCurrentLevel() {
+    _currentRouteAsset = _routeOrder[_currentLevelIndex];
   }
 
   Future<void> _loadRoute() async {
@@ -141,12 +216,14 @@ class SubwayGame extends FlameGame {
     _trackLength  = trackLengthForCount(count);
     _trackBottomY = trackBottomYForCount(count);
     _switchPoints = _generateSwitchPoints();
+    _obstacles    = _generateObstacles();
   }
 
   @override
   Future<void> onLoad() async {
     _train = TrainComponent();
-    _pickRandomRoute();
+    _buildRouteOrder();
+    _setRouteForCurrentLevel();
     await _loadRoute();
     _initLevel();
   }
@@ -156,7 +233,7 @@ class SubwayGame extends FlameGame {
       localStations:   _localStations,
       expressStations: _expressStations,
       switchPoints:    _switchPoints,
-      obstacles:       level.obstacles,
+      obstacles:       _obstacles,
       platformHalfLen: level.platformHalfLen,
       trackLength:     _trackLength,
       trackBottomY:    _trackBottomY,
@@ -204,14 +281,12 @@ class SubwayGame extends FlameGame {
 
       bool localRed = false;
       bool expressRed = false;
-      for (final obs in level.obstacles) {
+      for (final obs in _obstacles) {
         if (obs.trackPosition >= segStart && obs.trackPosition <= segEnd) {
           if (obs.track == TrackType.local) localRed = true;
           if (obs.track == TrackType.express) expressRed = true;
         }
       }
-      // Safety: never both red
-      if (localRed && expressRed) expressRed = false;
       signals.add((
         localRed ? SignalColor.red : SignalColor.green,
         expressRed ? SignalColor.red : SignalColor.green,
@@ -262,7 +337,8 @@ class SubwayGame extends FlameGame {
         _stoppedAtStation = false;
         _stopTimer = 0;
         _setNextActiveIdx(_nextActiveIdx + 1);
-        if (_nextActiveIdx >= _activeStations.length) {
+        if (_nextActiveIdx >= _activeStations.length &&
+            _activeTrack == TrackType.local) {
           _finishLevel();
           return;
         }
@@ -318,7 +394,8 @@ class SubwayGame extends FlameGame {
 
   void _missStation(int idx) {
     _setNextActiveIdx(idx + 1);
-    if (_nextActiveIdx >= _activeStations.length) {
+    if (_nextActiveIdx >= _activeStations.length &&
+        _activeTrack == TrackType.local) {
       _finishLevel();
     }
   }
@@ -372,8 +449,8 @@ class SubwayGame extends FlameGame {
     _activeTrack = targetTrack;
 
     // Pre-clear obstacles on the new track already behind the train
-    for (int i = 0; i < level.obstacles.length; i++) {
-      final obs = level.obstacles[i];
+    for (int i = 0; i < _obstacles.length; i++) {
+      final obs = _obstacles[i];
       if (obs.track == targetTrack && obs.trackPosition <= _train.trackT) {
         _hitObstacles.add(i);
       }
@@ -386,9 +463,9 @@ class SubwayGame extends FlameGame {
   }
 
   void _checkObstacles() {
-    for (int i = 0; i < level.obstacles.length; i++) {
+    for (int i = 0; i < _obstacles.length; i++) {
       if (_hitObstacles.contains(i)) continue;
-      final obs = level.obstacles[i];
+      final obs = _obstacles[i];
       if (obs.track != _activeTrack) continue;
       final frontT = _train.trackT + TrainComponent.h / (2 * _trackLength);
       if (frontT >= obs.trackPosition) {
@@ -468,7 +545,7 @@ class SubwayGame extends FlameGame {
     overlays.add('brake');
     overlays.add('switch');
     _currentLevelIndex++;
-    _pickRandomRoute();
+    _setRouteForCurrentLevel();
     await _loadRoute();
     _initLevel();
   }
@@ -492,7 +569,8 @@ class SubwayGame extends FlameGame {
     overlays.add('switch');
     _currentLevelIndex = 0;
     _totalScore = 0;
-    _pickRandomRoute();
+    _buildRouteOrder();
+    _setRouteForCurrentLevel();
     await _loadRoute();
     _initLevel();
   }
