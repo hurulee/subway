@@ -3,11 +3,11 @@ enum SignalColor { green, red }
 
 class Station {
   final String name;
-  final int passengers;
+  int passengers;
   final double trackPosition;
   final TrackType track;
 
-  const Station({
+  Station({
     required this.name,
     required this.passengers,
     required this.trackPosition,
@@ -54,6 +54,8 @@ class HudData {
   final SignalColor expressSignal;
   final int penaltyCount;
   final int level;
+  final int lives;
+  final int maxLives;
 
   const HudData({
     required this.passengers,
@@ -66,6 +68,8 @@ class HudData {
     this.expressSignal = SignalColor.green,
     this.penaltyCount = 0,
     this.level = 1,
+    this.lives = 3,
+    this.maxLives = 3,
   });
 
   int get penaltyDeduction => penaltyCount * 50;

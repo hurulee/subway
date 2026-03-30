@@ -68,6 +68,9 @@ class SubwayGame extends FlameGame {
   int _penaltyCount = 0;
   double _penaltyFlashTimer = 0.0;
 
+  static const int _kMaxLives = 3;
+  int _lives = _kMaxLives;
+
   static const double trainScreenFraction = 0.68;
 
   // Route data loaded from JSON asset.
@@ -257,6 +260,7 @@ class SubwayGame extends FlameGame {
     _hitObstacles.clear();
     _penaltyCount = 0;
     _penaltyFlashTimer = 0;
+    _lives = _kMaxLives;
     _waitingForStart = true;
     overlays.add('readyToStart');
 
@@ -386,6 +390,7 @@ class SubwayGame extends FlameGame {
         boarded = (station.passengers * 0.25).round();
       }
       _passengers += boarded;
+      station.passengers = 0;
     }
 
     _train.speed = 0;
@@ -478,6 +483,12 @@ class SubwayGame extends FlameGame {
   void _applyPenalty() {
     _penaltyCount++;
     _penaltyFlashTimer = 2.0;
+    _lives--;
+
+    if (_lives <= 0) {
+      _finishLevel();
+      return;
+    }
 
     // Snap back to just before the last switch window, staying on the
     // same track the player was on when they hit the obstacle.
@@ -538,12 +549,16 @@ class SubwayGame extends FlameGame {
       currentTrack: _activeTrack,
       penaltyCount: _penaltyCount,
       level: currentLevelNumber,
+      lives: _lives,
+      maxLives: _kMaxLives,
     );
 
     overlays.remove('brake');
     overlays.remove('switch');
 
-    if (isLastLevel) {
+    if (_lives <= 0) {
+      overlays.add('gameOver');
+    } else if (isLastLevel) {
       overlays.add('gameComplete');
     } else {
       overlays.add('levelComplete');
@@ -564,6 +579,8 @@ class SubwayGame extends FlameGame {
       expressSignal: sig.$2,
       penaltyCount: _penaltyCount,
       level: currentLevelNumber,
+      lives: _lives,
+      maxLives: _kMaxLives,
     );
   }
 
@@ -594,6 +611,7 @@ class SubwayGame extends FlameGame {
   void restartLevel() {
     overlays.remove('levelComplete');
     overlays.remove('gameComplete');
+    overlays.remove('gameOver');
     overlays.add('brake');
     overlays.add('switch');
     // Don't subtract previously accumulated score from prior levels
@@ -605,6 +623,7 @@ class SubwayGame extends FlameGame {
   Future<void> restartGame() async {
     overlays.remove('gameComplete');
     overlays.remove('levelComplete');
+    overlays.remove('gameOver');
     overlays.add('brake');
     overlays.add('switch');
     _currentLevelIndex = 0;

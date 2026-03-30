@@ -50,6 +50,7 @@ class _GameScreenState extends State<GameScreen> {
           'readyToStart':  (context, game) => ReadyToStartOverlay(game: game as SubwayGame),
           'levelComplete': (context, game) => LevelCompleteOverlay(game: game as SubwayGame),
           'gameComplete':  (context, game) => GameCompleteOverlay(game: game as SubwayGame),
+          'gameOver':      (context, game) => GameOverOverlay(game: game as SubwayGame),
         },
         initialActiveOverlays: const ['hud', 'brake', 'switch'],
       ),
@@ -81,26 +82,32 @@ class HudOverlay extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _hudPill('Passengers: ${data.passengers}', Colors.green),
-                  if (lineInfo != null) _lineBullet(lineInfo),
+                  _hudPill('${data.passengers}', Colors.green),
+                  const SizedBox(width: 6),
+                  _hearts(data.lives, data.maxLives),
+                  const SizedBox(width: 6),
+                  if (lineInfo != null) ...[_lineBullet(lineInfo), const SizedBox(width: 6)],
                   _hudPill('LVL ${data.level}', Colors.purple),
-                  _hudPill('Time: ${data.elapsed.toStringAsFixed(1)}s', Colors.blue),
+                  const Spacer(),
+                  _hudPill('${data.elapsed.toStringAsFixed(1)}s', Colors.blue),
                 ],
               ),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  if (data.nextStation.isNotEmpty)
-                    _hudPill('Next: ${data.nextStation}', Colors.orange),
-                  const SizedBox(width: 8),
                   _hudPill(
                     data.currentTrack == TrackType.express ? 'EXPRESS' : 'LOCAL',
                     data.currentTrack == TrackType.express
                         ? const Color(0xFFCC4400)
                         : const Color(0xFF0039A6),
                   ),
+                  if (data.nextStation.isNotEmpty) ...[
+                    const SizedBox(width: 8),
+                    Flexible(
+                      child: _hudPill('Next: ${data.nextStation}', Colors.orange),
+                    ),
+                  ],
                 ],
               ),
               const SizedBox(height: 8),
@@ -172,6 +179,20 @@ class HudOverlay extends StatelessWidget {
                   color: color, fontWeight: FontWeight.bold, fontSize: 12)),
         ],
       ),
+    );
+  }
+
+  Widget _hearts(int lives, int maxLives) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(maxLives, (i) => Padding(
+        padding: const EdgeInsets.only(right: 2),
+        child: Icon(
+          i < lives ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+          size: 22,
+        ),
+      )),
     );
   }
 
@@ -431,6 +452,74 @@ class GameCompleteOverlay extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12)),
               child: const Text('Play Again',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class GameOverOverlay extends StatelessWidget {
+  final SubwayGame game;
+  const GameOverOverlay({super.key, required this.game});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        padding: const EdgeInsets.all(32),
+        decoration: BoxDecoration(
+          color: Colors.black87,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.red, width: 2),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Game Over',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            Text('Level ${game.currentLevelNumber}',
+                style: const TextStyle(color: Colors.white70, fontSize: 16)),
+            const SizedBox(height: 8),
+            Text('Total Score: ${game.totalScore}',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 24),
+            Wrap(
+              spacing: 12,
+              runSpacing: 8,
+              alignment: WrapAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    game.overlays.remove('gameOver');
+                    game.overlays.add('brake');
+                    game.overlays.add('switch');
+                    game.restartLevel();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      foregroundColor: Colors.white),
+                  child: const Text('Retry Level',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+                ElevatedButton(
+                  onPressed: () => game.restartGame(),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white),
+                  child: const Text('Restart Game',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ),
+              ],
             ),
           ],
         ),
