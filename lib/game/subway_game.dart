@@ -476,9 +476,49 @@ class SubwayGame extends FlameGame {
   }
 
   void _applyPenalty() {
-    _elapsed += 10.0;
     _penaltyCount++;
     _penaltyFlashTimer = 2.0;
+
+    // Snap back to just before the last switch window, staying on the
+    // same track the player was on when they hit the obstacle.
+    if (_currentSwitchIdx > 0) {
+      final snapIdx = _currentSwitchIdx - 1;
+      final sp = _switchPoints[snapIdx];
+      _train.trackT = (sp.trackPosition - 0.02).clamp(0.0, 1.0);
+      _train.speed = 0;
+
+      // Stay on the current track (don't reset to local)
+      _train.laneOffset = _activeTrack == TrackType.express ? 1.0 : 0.0;
+      _train.isSwitching = false;
+
+      // Rewind switch index so the player can re-choose
+      _currentSwitchIdx = snapIdx;
+      _switchAvailable = false;
+      switchAvailableNotifier.value = false;
+
+      // Un-hit obstacles that are now ahead again
+      _hitObstacles.removeWhere(
+          (i) => _obstacles[i].trackPosition > _train.trackT);
+
+      // Re-sync station indices to match new position
+      _resyncStationIndex(_localStations, (v) => _nextLocalIdx = v);
+      _resyncStationIndex(_expressStations, (v) => _nextExpressIdx = v);
+
+      _stoppedAtStation = false;
+      _stopTimer = 0;
+    }
+  }
+
+  /// Reset a station index so it points at the first station ahead of the
+  /// train's current position.
+  void _resyncStationIndex(
+      List<Station> stations, void Function(int) setter) {
+    int idx = 1; // skip terminal 0
+    while (idx < stations.length &&
+        stations[idx].trackPosition <= _train.trackT) {
+      idx++;
+    }
+    setter(idx);
   }
 
   void _finishLevel() {
