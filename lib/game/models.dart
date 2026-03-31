@@ -5,7 +5,6 @@ enum SignalColor { green, red }
 
 class Station {
   final String name;
-  final int initialPassengers;
   int passengers;
   final double trackPosition;
   final TrackType track;
@@ -28,7 +27,7 @@ class Station {
     required this.passengers,
     required this.trackPosition,
     this.track = TrackType.local,
-  })  : initialPassengers = passengers {
+  }) {
     final rng = Random();
     figurePositions = List.generate(passengers, (_) => (
       _expSample(rng, kDepthLambda),

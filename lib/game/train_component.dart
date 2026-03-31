@@ -10,30 +10,44 @@ class TrainComponent {
   bool isBraking = false;
   double targetSpeed = 0.0;
   double trackT = 0.0;
+  double trackLength = 1.0; // set by game each level
 
   // Lane / switch animation  (0.0 = local, 1.0 = express)
   double laneOffset = 0.0;
   bool isSwitching = false;
-  static const double switchDuration = 0.7;
-  double _switchProgress = 0.0;
   double _switchStartOffset = 0.0;
   double _switchTargetOffset = 0.0;
+  double _switchZoneStart = 0.0; // trackT where switch begins
+  double _switchZoneEnd = 0.0;   // trackT where switch ends
 
-  void switchToTrack(double targetLaneOffset) {
+  void switchToTrack(double targetLaneOffset,
+      {required double zoneStart, required double zoneEnd}) {
     if (isSwitching) return;
     _switchStartOffset = laneOffset;
     _switchTargetOffset = targetLaneOffset;
-    _switchProgress = 0.0;
+    _switchZoneStart = zoneStart;
+    _switchZoneEnd = zoneEnd;
     isSwitching = true;
   }
 
-  /// Tilt angle (radians) — peaks at midpoint of switch, used by caller for rotation.
-  double get switchTiltAngle {
-    if (!isSwitching) return 0.0;
-    return sin(pi * _switchProgress) *
-        (_switchTargetOffset > _switchStartOffset ? 1 : -1) *
-        0.14; // ~8 degrees
+  /// Evaluate S-curve progress for an arbitrary trackT position [0..1].
+  double _curveProgressAt(double t) {
+    final span = _switchZoneEnd - _switchZoneStart;
+    if (span <= 0) return 1.0;
+    return ((t - _switchZoneStart) / span).clamp(0.0, 1.0);
   }
+
+  /// S-curve lane offset at an arbitrary track position.
+  /// Cubic Bézier with P0=P1=start, P2=P3=end:
+  ///   B(t) = start * (1-t)²(1+2t) + end * t²(3-2t)
+  double laneOffsetAt(double atTrackT) {
+    if (!isSwitching) return laneOffset;
+    final t = _curveProgressAt(atTrackT);
+    final omt = 1.0 - t;
+    return _switchStartOffset * omt * omt * (1 + 2 * t) +
+        _switchTargetOffset * t * t * (3 - 2 * t);
+  }
+
 
   // Car dimensions (top-down view)
   static const double carW = 28.0;
@@ -49,18 +63,14 @@ class TrainComponent {
   final Random _rng = Random();
 
   void update(double dt) {
-    // Switch lane animation
+    // Switch lane animation — position-based, follows S-curve.
+    // Don't complete until the rear of the train clears the zone.
     if (isSwitching) {
-      _switchProgress += dt / switchDuration;
-      if (_switchProgress >= 1.0) {
-        _switchProgress = 1.0;
+      laneOffset = laneOffsetAt(trackT);
+      final rearT = trackT - h / 2 / trackLength;
+      if (_curveProgressAt(rearT) >= 1.0) {
         laneOffset = _switchTargetOffset;
         isSwitching = false;
-      } else {
-        final t = _switchProgress;
-        final eased = t < 0.5 ? 2 * t * t : 1 - pow(-2 * t + 2, 2) / 2;
-        laneOffset = _switchStartOffset +
-            (_switchTargetOffset - _switchStartOffset) * eased;
       }
     }
 
@@ -95,19 +105,13 @@ class TrainComponent {
     }
   }
 
-  /// Render with origin at top-left of the train bounding box.
-  void render(Canvas canvas) {
-    for (int i = 0; i < numCars; i++) {
-      final carTop = i * (carH + couplingGap);
-      _drawCar(canvas, carTop, isFront: i == 0, isRear: i == numCars - 1);
+  /// Render a single car at origin (0,0) = top-left of the car.
+  void renderCar(Canvas canvas, int carIndex) {
+    _drawCar(canvas, 0, isFront: carIndex == 0, isRear: carIndex == numCars - 1);
+  }
 
-      // Coupling between cars
-      if (i < numCars - 1) {
-        _drawCoupling(canvas, carTop + carH);
-      }
-    }
-
-    // Sparks at rear
+  /// Render sparks relative to the train's bounding-box center.
+  void renderSparks(Canvas canvas) {
     final sparkPaint = Paint()
       ..strokeWidth = 1.5
       ..strokeCap = StrokeCap.round;
@@ -115,11 +119,23 @@ class TrainComponent {
       final alpha = (s.life / 0.35).clamp(0.0, 1.0);
       sparkPaint.color = Color.fromRGBO(255, 210, 60, alpha);
       canvas.drawLine(
-        Offset(w / 2 + s.dx, h / 2 + s.dy),
-        Offset(w / 2 + s.dx - s.vx * 0.015, h / 2 + s.dy - s.vy * 0.015),
+        Offset(s.dx, s.dy),
+        Offset(s.dx - s.vx * 0.015, s.dy - s.vy * 0.015),
         sparkPaint,
       );
     }
+  }
+
+  /// Fallback: render all cars as a rigid block (used when not switching).
+  void render(Canvas canvas) {
+    for (int i = 0; i < numCars; i++) {
+      final carTop = i * (carH + couplingGap);
+      _drawCar(canvas, carTop, isFront: i == 0, isRear: i == numCars - 1);
+      if (i < numCars - 1) {
+        _drawCoupling(canvas, carTop + carH);
+      }
+    }
+    renderSparks(canvas);
   }
 
   void _drawCar(Canvas canvas, double top, {bool isFront = false, bool isRear = false}) {

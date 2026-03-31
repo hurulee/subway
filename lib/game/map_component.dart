@@ -6,10 +6,6 @@ const double kExpressTrackX = 80.0;
 const double kLocalTrackX   = 210.0;
 const double kTrackTopY     = 100.0;
 
-// Pixel distance between adjacent stations (derived from original 7-station setup:
-// 0.96 * 5400px / 6 gaps = 864px per gap; 864 / 0.96 = 900 per unit).
-const double kStationSpacing = 864.0;
-
 double trackLengthForCount(int n) => 900.0 * (n - 1);
 double trackBottomYForCount(int n) => kTrackTopY + trackLengthForCount(n);
 
@@ -97,28 +93,40 @@ class MapComponent {
     final midY = (topY + bottomY) / 2;
     final midX = (kLocalTrackX + kExpressTrackX) / 2;
 
-    final linePaint = Paint()
-      ..color = const Color(0xFFFFDD00).withValues(alpha: 0.6)
-      ..strokeWidth = 2.0;
-    canvas.drawLine(Offset(kLocalTrackX, topY),   Offset(kExpressTrackX, bottomY), linePaint);
-    canvas.drawLine(Offset(kExpressTrackX, topY), Offset(kLocalTrackX, bottomY),   linePaint);
+    final height = topY - bottomY; // positive (topY > bottomY in screen coords)
+    final curvePaint = Paint()
+      ..color = const Color(0xFFFFDD00).withValues(alpha: 0.5)
+      ..strokeWidth = 2.0
+      ..style = PaintingStyle.stroke;
 
+    // S-curve from local track top → express track bottom
+    final curve1 = Path()
+      ..moveTo(kLocalTrackX, topY)
+      ..cubicTo(
+        kLocalTrackX, topY - height * 0.4,   // control point 1: depart vertically
+        kExpressTrackX, bottomY + height * 0.4, // control point 2: arrive vertically
+        kExpressTrackX, bottomY,
+      );
+    canvas.drawPath(curve1, curvePaint);
+
+    // S-curve from express track top → local track bottom
+    final curve2 = Path()
+      ..moveTo(kExpressTrackX, topY)
+      ..cubicTo(
+        kExpressTrackX, topY - height * 0.4,
+        kLocalTrackX, bottomY + height * 0.4,
+        kLocalTrackX, bottomY,
+      );
+    canvas.drawPath(curve2, curvePaint);
+
+    // Small diamond marker at center
     final path = Path()
-      ..moveTo(midX, midY - 10)
-      ..lineTo(midX + 9, midY)
-      ..lineTo(midX, midY + 10)
-      ..lineTo(midX - 9, midY)
+      ..moveTo(midX, midY - 7)
+      ..lineTo(midX + 6, midY)
+      ..lineTo(midX, midY + 7)
+      ..lineTo(midX - 6, midY)
       ..close();
     canvas.drawPath(path, Paint()..color = const Color(0xFFFFDD00));
-
-    final tp = TextPainter(
-      text: const TextSpan(
-        text: 'SW',
-        style: TextStyle(color: Colors.black, fontSize: 8, fontWeight: FontWeight.bold),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-    tp.paint(canvas, Offset(midX - tp.width / 2, midY - tp.height / 2));
   }
 
   void _drawStation(Canvas canvas, Station station, double worldY,

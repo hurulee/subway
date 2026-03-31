@@ -47,7 +47,6 @@ class SubwayGame extends FlameGame {
 
   bool _stoppedAtStation = false;
   double _stopTimer = 0.0;
-  static const double stopDuration = 2.0;
   bool _waitingForStart = true;
 
   // Switch points — generated dynamically each level.
@@ -249,6 +248,7 @@ class SubwayGame extends FlameGame {
     // Starting station is a terminal — no passengers to pick up
     _localStations[level.startIndex].passengers = 0;
     _train.trackT = _localStations[level.startIndex].trackPosition;
+    _train.trackLength = _trackLength;
     _train.speed = 0;
     _train.laneOffset = 0.0;
     _train.isSwitching = false;
@@ -313,6 +313,28 @@ class SubwayGame extends FlameGame {
       _segmentSignals[_currentSwitchIdx.clamp(0, _segmentSignals.length - 1)];
 
   double _worldYForT(double t) => _trackBottomY - t * _trackLength;
+
+  /// Walk backward along the S-curve from [startT] by [arcPixels] of arc length.
+  /// Returns the new trackT. [trackDx] is (kExpressTrackX - kLocalTrackX).
+  double _walkArcLength(double startT, double arcPixels, double trackDx) {
+    const stepPx = 1.0; // fine step for smooth integration
+    final stepT = stepPx / _trackLength;
+    double remaining = arcPixels;
+    double t = startT;
+    while (remaining > 0) {
+      // Use a smaller final step to avoid overshoot
+      final fraction = remaining < stepPx ? remaining / stepPx : 1.0;
+      final actualStepT = stepT * fraction;
+      final lane0 = _train.laneOffsetAt(t);
+      final lane1 = _train.laneOffsetAt(t - actualStepT);
+      final dx = (lane1 - lane0) * trackDx;
+      final dy = stepPx * fraction;
+      final arcStep = sqrt(dx * dx + dy * dy);
+      t -= actualStepT;
+      remaining -= arcStep;
+    }
+    return t;
+  }
 
   List<Station> get _activeStations =>
       _activeTrack == TrackType.local ? _localStations : _expressStations;
@@ -599,7 +621,12 @@ class SubwayGame extends FlameGame {
       }
     }
 
-    _train.switchToTrack(targetTrack == TrackType.express ? 1.0 : 0.0);
+    final sp = _switchPoints[_currentSwitchIdx];
+    _train.switchToTrack(
+      targetTrack == TrackType.express ? 1.0 : 0.0,
+      zoneStart: sp.trackPosition,
+      zoneEnd: sp.trackPosition + sp.windowSize,
+    );
     _currentSwitchIdx++;
 
     // Resync station indices so the new active track points at the correct
@@ -814,22 +841,97 @@ class SubwayGame extends FlameGame {
       _drawFigure(canvas, anim.x, anim.y);
     }
 
-    final trainX = kLocalTrackX +
-        (kExpressTrackX - kLocalTrackX) * _train.laneOffset;
-    final trainLeft = trainX - TrainComponent.w / 2;
-    final trainTop  = trainWorldY - TrainComponent.h / 2;
-
-    canvas.save();
     if (_train.isSwitching) {
-      final cx = trainX;
-      final cy = trainWorldY;
-      canvas.translate(cx, cy);
-      canvas.rotate(_train.switchTiltAngle);
-      canvas.translate(-cx, -cy);
+      // Per-car rendering: each car follows the S-curve, spaced by arc length.
+      final trackDx = (kExpressTrackX - kLocalTrackX).toDouble();
+
+      // Walk backward from the front of the train along the curve to find
+      // each car center's trackT, spaced by true arc length.
+      final frontTrackT = _train.trackT + TrainComponent.h / (2 * _trackLength);
+      final carTrackTs = <double>[];
+      double walkT = frontTrackT;
+
+      for (int i = 0; i < TrainComponent.numCars; i++) {
+        // Walk back by carH/2 to reach this car's center
+        walkT = _walkArcLength(walkT, TrainComponent.carH / 2, trackDx);
+        carTrackTs.add(walkT);
+        // Walk back by carH/2 + couplingGap to reach the next car's front
+        if (i < TrainComponent.numCars - 1) {
+          walkT = _walkArcLength(
+              walkT, TrainComponent.carH / 2 + TrainComponent.couplingGap, trackDx);
+        }
+      }
+
+      for (int i = 0; i < TrainComponent.numCars; i++) {
+        final carTrackT = carTrackTs[i];
+        final carLane = _train.laneOffsetAt(carTrackT);
+        final carX = kLocalTrackX + trackDx * carLane;
+        final carWorldY = _worldYForT(carTrackT);
+
+        // Tilt from the curve tangent in pixel space
+        const eps = 0.0001;
+        final dLane = _train.laneOffsetAt(carTrackT + eps) -
+            _train.laneOffsetAt(carTrackT - eps);
+        final dxPx = dLane * trackDx;
+        final dyPx = 2 * eps * _trackLength; // positive = downward in worldY
+        final carAngle = atan2(dxPx, dyPx); // angle from straight ahead
+
+        canvas.save();
+        canvas.translate(carX, carWorldY);
+        canvas.rotate(carAngle);
+        canvas.translate(-TrainComponent.w / 2, -TrainComponent.carH / 2);
+        _train.renderCar(canvas, i);
+        canvas.restore();
+
+        // Coupling to next car
+        if (i < TrainComponent.numCars - 1) {
+          final nextT = carTrackTs[i + 1];
+          final nextLane = _train.laneOffsetAt(nextT);
+          final nextX = kLocalTrackX + trackDx * nextLane;
+          final nextWorldY = _worldYForT(nextT);
+          final rearY = carWorldY + TrainComponent.carH / 2 * cos(carAngle);
+          final rearX = carX + TrainComponent.carH / 2 * sin(carAngle);
+
+          final dLaneNext = _train.laneOffsetAt(nextT + eps) -
+              _train.laneOffsetAt(nextT - eps);
+          final nextAngle = atan2(dLaneNext * trackDx, dyPx);
+          final frontY = nextWorldY - TrainComponent.carH / 2 * cos(nextAngle);
+          final frontX = nextX - TrainComponent.carH / 2 * sin(nextAngle);
+
+          final couplingPaint = Paint()
+            ..color = const Color(0xFF555555)
+            ..strokeWidth = 3
+            ..strokeCap = StrokeCap.round;
+          canvas.drawLine(
+            Offset(rearX - TrainComponent.w * 0.15, rearY),
+            Offset(frontX - TrainComponent.w * 0.15, frontY),
+            couplingPaint);
+          canvas.drawLine(
+            Offset(rearX + TrainComponent.w * 0.15, rearY),
+            Offset(frontX + TrainComponent.w * 0.15, frontY),
+            couplingPaint);
+        }
+      }
+      // Sparks relative to rear car
+      final rearCarT = carTrackTs.last;
+      final rearLane = _train.laneOffsetAt(rearCarT);
+      final rearX = kLocalTrackX + trackDx * rearLane;
+      final rearWorldY = _worldYForT(rearCarT);
+      canvas.save();
+      canvas.translate(rearX, rearWorldY);
+      _train.renderSparks(canvas);
+      canvas.restore();
+    } else {
+      // Rigid rendering when not switching
+      final trainX = kLocalTrackX +
+          (kExpressTrackX - kLocalTrackX) * _train.laneOffset;
+      final trainLeft = trainX - TrainComponent.w / 2;
+      final trainTop = trainWorldY - TrainComponent.h / 2;
+      canvas.save();
+      canvas.translate(trainLeft, trainTop);
+      _train.render(canvas);
+      canvas.restore();
     }
-    canvas.translate(trainLeft, trainTop);
-    _train.render(canvas);
-    canvas.restore();
 
     canvas.restore();
 
