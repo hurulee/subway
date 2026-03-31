@@ -41,7 +41,7 @@ class SubwayGame extends FlameGame {
 
   // Per-track next-station indices
   int _nextLocalIdx = 1;
-  int _nextExpressIdx = 1;
+  int _nextExpressIdx = 0;
 
   TrackType _activeTrack = TrackType.local;
 
@@ -256,8 +256,8 @@ class SubwayGame extends FlameGame {
     _passengers = 0;
     _elapsed = 0;
     _levelDone = false;
-    _nextLocalIdx = 1;
-    _nextExpressIdx = 1;
+    _nextLocalIdx = 1;   // skip local terminal at index 0
+    _nextExpressIdx = 0;  // express list may not start with the terminal
     _activeTrack = TrackType.local;
     _stoppedAtStation = false;
     _stopTimer = 0;
@@ -413,11 +413,12 @@ class SubwayGame extends FlameGame {
     final trainY = _worldYForT(_train.trackT);
     final stations = _activeStations;
 
-    // Search ALL stations (skip terminal 0) for the closest one within
-    // arrival range. This is robust against index desync after track switches.
+    // Search all stations for the closest one within arrival range.
+    // Skip the local starting terminal (index 0 on local track only).
     int? bestIdx;
     double bestDist = double.infinity;
-    for (int i = 1; i < stations.length; i++) {
+    final startSearch = _activeTrack == TrackType.local ? 1 : 0;
+    for (int i = startSearch; i < stations.length; i++) {
       if (stations[i].passengers <= 0) continue; // already fully boarded
       final targetY = _worldYForT(stations[i].trackPosition);
       final distPx = trainY - targetY;
@@ -603,7 +604,7 @@ class SubwayGame extends FlameGame {
 
     // Resync station indices so the new active track points at the correct
     // next station (passive sync may have advanced it too far).
-    _resyncStationIndex(_localStations, (v) => _nextLocalIdx = v);
+    _resyncStationIndex(_localStations, (v) => _nextLocalIdx = v, startIdx: 1);
     _resyncStationIndex(_expressStations, (v) => _nextExpressIdx = v);
   }
 
@@ -664,12 +665,12 @@ class SubwayGame extends FlameGame {
   /// Reset a station index so it points at the first station ahead of the
   /// train's current position.
   void _resyncStationIndex(
-      List<Station> stations, void Function(int) setter) {
+      List<Station> stations, void Function(int) setter, {int startIdx = 0}) {
     // Don't skip a station the player could still stop at — use the same
     // miss threshold as _checkArrival (_goodZone * 3 pixels, converted to
     // track-position units).
     final missBuffer = _goodZone * 3 / _trackLength;
-    int idx = 1; // skip terminal 0
+    int idx = startIdx;
     while (idx < stations.length &&
         _train.trackT > stations[idx].trackPosition + missBuffer) {
       idx++;
