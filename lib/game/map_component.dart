@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'models.dart';
 
@@ -93,40 +94,105 @@ class MapComponent {
     final midY = (topY + bottomY) / 2;
     final midX = (kLocalTrackX + kExpressTrackX) / 2;
 
-    final height = topY - bottomY; // positive (topY > bottomY in screen coords)
-    final curvePaint = Paint()
-      ..color = const Color(0xFFFFDD00).withValues(alpha: 0.5)
-      ..strokeWidth = 2.0
-      ..style = PaintingStyle.stroke;
+    final height = topY - bottomY;
 
-    // S-curve from local track top → express track bottom
-    final curve1 = Path()
-      ..moveTo(kLocalTrackX, topY)
-      ..cubicTo(
-        kLocalTrackX, topY - height * 0.4,   // control point 1: depart vertically
-        kExpressTrackX, bottomY + height * 0.4, // control point 2: arrive vertically
-        kExpressTrackX, bottomY,
-      );
-    canvas.drawPath(curve1, curvePaint);
+    // Draw both S-curves as railroad tracks (bed, ties, rails)
+    _drawCurvedTrack(canvas, kLocalTrackX, topY, kExpressTrackX, bottomY, height);
+    _drawCurvedTrack(canvas, kExpressTrackX, topY, kLocalTrackX, bottomY, height);
+  }
 
-    // S-curve from express track top → local track bottom
-    final curve2 = Path()
-      ..moveTo(kExpressTrackX, topY)
-      ..cubicTo(
-        kExpressTrackX, topY - height * 0.4,
-        kLocalTrackX, bottomY + height * 0.4,
-        kLocalTrackX, bottomY,
-      );
-    canvas.drawPath(curve2, curvePaint);
+  /// Evaluate a cubic Bézier at parameter t.
+  static Offset _bezierAt(double t, Offset p0, Offset p1, Offset p2, Offset p3) {
+    final omt = 1 - t;
+    return p0 * (omt * omt * omt) +
+        p1 * (3 * omt * omt * t) +
+        p2 * (3 * omt * t * t) +
+        p3 * (t * t * t);
+  }
 
-    // Small diamond marker at center
-    final path = Path()
-      ..moveTo(midX, midY - 7)
-      ..lineTo(midX + 6, midY)
-      ..lineTo(midX, midY + 7)
-      ..lineTo(midX - 6, midY)
-      ..close();
-    canvas.drawPath(path, Paint()..color = const Color(0xFFFFDD00));
+  /// Draw an S-curve switch track with rail bed, cross-ties, and steel rails.
+  void _drawCurvedTrack(Canvas canvas, double startX, double startY,
+      double endX, double endY, double height) {
+    final p0 = Offset(startX, startY);
+    final p1 = Offset(startX, startY - height * 0.4);
+    final p2 = Offset(endX, endY + height * 0.4);
+    final p3 = Offset(endX, endY);
+
+    // Sample points along the curve
+    const nSamples = 40;
+    final points = List.generate(nSamples + 1, (i) =>
+        _bezierAt(i / nSamples, p0, p1, p2, p3));
+
+    // Tangent at each point (for perpendicular ties)
+    final tangents = List.generate(nSamples + 1, (i) {
+      const eps = 0.001;
+      final t = i / nSamples;
+      final a = _bezierAt((t - eps).clamp(0.0, 1.0), p0, p1, p2, p3);
+      final b = _bezierAt((t + eps).clamp(0.0, 1.0), p0, p1, p2, p3);
+      final d = b - a;
+      final len = sqrt(d.dx * d.dx + d.dy * d.dy);
+      return len > 0 ? Offset(d.dx / len, d.dy / len) : const Offset(0, -1);
+    });
+
+    // 1. Rail bed — draw as a thick stroked path
+    final bedPaint = Paint()
+      ..color = const Color(0xFF2A2A2A)
+      ..strokeWidth = 28.0
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    final bedPath = Path()..moveTo(points[0].dx, points[0].dy);
+    for (int i = 1; i <= nSamples; i++) {
+      bedPath.lineTo(points[i].dx, points[i].dy);
+    }
+    canvas.drawPath(bedPath, bedPaint);
+
+    // 2. Cross-ties — perpendicular to curve, every ~20px of arc length
+    final tiePaint = Paint()
+      ..color = const Color(0xFF3D2B1A)
+      ..strokeWidth = 2;
+    double arcAccum = 0;
+    const tieSpacing = 20.0;
+    for (int i = 1; i <= nSamples; i++) {
+      final dx = points[i].dx - points[i - 1].dx;
+      final dy = points[i].dy - points[i - 1].dy;
+      arcAccum += sqrt(dx * dx + dy * dy);
+      if (arcAccum >= tieSpacing) {
+        arcAccum -= tieSpacing;
+        final pt = points[i];
+        final tan = tangents[i];
+        // Perpendicular direction
+        final perpX = -tan.dy;
+        final perpY = tan.dx;
+        canvas.drawLine(
+          Offset(pt.dx + perpX * 14, pt.dy + perpY * 14),
+          Offset(pt.dx - perpX * 14, pt.dy - perpY * 14),
+          tiePaint,
+        );
+      }
+    }
+
+    // 3. Steel rails — two lines offset perpendicular to the curve
+    final railPaint = Paint()
+      ..color = const Color(0xFF999999)
+      ..strokeWidth = 4
+      ..strokeCap = StrokeCap.square;
+    const railOffset = 9.0;
+    for (final sign in [-1.0, 1.0]) {
+      final railPath = Path();
+      for (int i = 0; i <= nSamples; i++) {
+        final pt = points[i];
+        final tan = tangents[i];
+        final rx = pt.dx + (-tan.dy) * railOffset * sign;
+        final ry = pt.dy + tan.dx * railOffset * sign;
+        if (i == 0) {
+          railPath.moveTo(rx, ry);
+        } else {
+          railPath.lineTo(rx, ry);
+        }
+      }
+      canvas.drawPath(railPath, railPaint..style = PaintingStyle.stroke);
+    }
   }
 
   void _drawStation(Canvas canvas, Station station, double worldY,
