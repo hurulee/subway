@@ -53,11 +53,12 @@ class SubwayGame extends FlameGame {
   // Switch points — generated dynamically each level.
   // _kSwitchWindowPx   : fixed pixel length of each switch window (tune to adjust difficulty).
   // _kSwitchGapPosition: 0.0 = just after station, 0.5 = midpoint, 1.0 = just before next station.
-  static const double _kSwitchWindowPx    = 300.0;
-  static const double _kSwitchGapPosition = 0.5;
+  static const double _kSwitchWindowPx    = 200.0;
+  static const double _kSwitchGapPosition = 0.6;
   late List<SwitchPoint> _switchPoints;
   int _currentSwitchIdx = 0;
   bool _switchAvailable = false;
+  bool _switchQueued = false;
 
   // Signals
   late List<(SignalColor, SignalColor)> _segmentSignals;
@@ -257,6 +258,7 @@ class SubwayGame extends FlameGame {
     _stopTimer = 0;
     _currentSwitchIdx = 0;
     _switchAvailable = false;
+    _switchQueued = false;
     _hitObstacles.clear();
     _penaltyCount = 0;
     _penaltyFlashTimer = 0;
@@ -434,21 +436,36 @@ class SubwayGame extends FlameGame {
 
     final sp = _switchPoints[_currentSwitchIdx];
     final frontT = _train.trackT + TrainComponent.h / 2 / _trackLength;
-    final inWindow = frontT >= sp.trackPosition &&
-        frontT <= sp.trackPosition + sp.windowSize;
+    // Decision window: available while the front is approaching the switch,
+    // closes once the front reaches the switch start.
+    final inWindow = frontT >= sp.trackPosition - sp.windowSize &&
+        frontT <= sp.trackPosition;
 
-    if (inWindow != _switchAvailable) {
+    if (!_switchQueued && inWindow != _switchAvailable) {
       _switchAvailable = inWindow;
       switchAvailableNotifier.value = inWindow;
     }
 
-    if (!inWindow && frontT > sp.trackPosition + sp.windowSize) {
+    // Execute queued switch when the front reaches the switch point
+    if (_switchQueued && frontT >= sp.trackPosition) {
+      _executeSwitch();
+      return;
+    }
+
+    if (!_switchQueued && !inWindow && frontT > sp.trackPosition) {
       _currentSwitchIdx++;
     }
   }
 
   void requestSwitch() {
-    if (!_switchAvailable || _train.isSwitching || _levelDone || _stoppedAtStation) return;
+    if (!_switchAvailable || _switchQueued || _train.isSwitching || _levelDone || _stoppedAtStation) return;
+    _switchQueued = true;
+    _switchAvailable = false;
+    switchAvailableNotifier.value = false;
+  }
+
+  void _executeSwitch() {
+    _switchQueued = false;
     final targetTrack =
         _activeTrack == TrackType.local ? TrackType.express : TrackType.local;
     _activeTrack = targetTrack;
@@ -462,8 +479,6 @@ class SubwayGame extends FlameGame {
     }
 
     _train.switchToTrack(targetTrack == TrackType.express ? 1.0 : 0.0);
-    _switchAvailable = false;
-    switchAvailableNotifier.value = false;
     _currentSwitchIdx++;
   }
 
@@ -505,6 +520,7 @@ class SubwayGame extends FlameGame {
       // Rewind switch index so the player can re-choose
       _currentSwitchIdx = snapIdx;
       _switchAvailable = false;
+      _switchQueued = false;
       switchAvailableNotifier.value = false;
 
       // Un-hit obstacles that are now ahead again

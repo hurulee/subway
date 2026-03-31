@@ -154,11 +154,11 @@ class MapComponent {
     final namePainter = TextPainter(
       text: TextSpan(
         text: station.name,
-        style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700),
+        style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
       ),
       textDirection: TextDirection.ltr,
     )..layout(maxWidth: platWidth - 24);
-    namePainter.paint(canvas, Offset(platLeft + 8, worldY - namePainter.height / 2));
+    namePainter.paint(canvas, Offset(platLeft + 8, worldY + platformHalfLen - namePainter.height - 6));
 
     if (station.passengers > 0) {
       final badgeX = platRight - 16;
