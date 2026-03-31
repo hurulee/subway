@@ -72,6 +72,9 @@ class SubwayGame extends FlameGame {
   static const int _kMaxLives = 3;
   int _lives = _kMaxLives;
 
+  // Boarding animations
+  final List<BoardingAnim> _boardingAnims = [];
+
   static const double trainScreenFraction = 0.68;
 
   // Route data loaded from JSON asset.
@@ -243,6 +246,8 @@ class SubwayGame extends FlameGame {
       trackBottomY:    _trackBottomY,
     );
 
+    // Starting station is a terminal — no passengers to pick up
+    _localStations[level.startIndex].passengers = 0;
     _train.trackT = _localStations[level.startIndex].trackPosition;
     _train.speed = 0;
     _train.laneOffset = 0.0;
@@ -263,6 +268,7 @@ class SubwayGame extends FlameGame {
     _penaltyCount = 0;
     _penaltyFlashTimer = 0;
     _lives = _kMaxLives;
+    _boardingAnims.clear();
     _waitingForStart = true;
     overlays.add('readyToStart');
 
@@ -338,8 +344,40 @@ class SubwayGame extends FlameGame {
 
     if (_stoppedAtStation) {
       _stopTimer += dt;
-      final earlyDepart = !brakingNotifier.value && _stopTimer >= 0.5;
-      if (earlyDepart || _stopTimer >= stopDuration) {
+
+      // Spawn all boarding animations at once when boarding starts
+      final idx = _nextActiveIdx;
+      if (idx < _activeStations.length) {
+        final station = _activeStations[idx];
+
+        if (station.boardableCount > 0 && !_boardingSpawned) {
+          _spawnAllBoardingAnims(station);
+          _boardingSpawned = true;
+        }
+
+        // Holding brake keeps doors open — spawn more if new passengers become boardable
+        if (brakingNotifier.value) {
+          if (station.boardableCount <= 0 && station.passengers > 0) {
+            station.boardableCount = station.passengers;
+            _spawnAllBoardingAnims(station);
+          }
+        }
+      }
+
+      // Count passengers as their animations reach the train
+      for (final anim in _boardingAnims) {
+        if (!anim.counted && anim.done) {
+          anim.counted = true;
+          _passengers++;
+        }
+      }
+
+      final animsInFlight = _boardingAnims.any((a) => !a.done);
+      final allBoarded = idx >= _activeStations.length ||
+          (_activeStations[idx].boardableCount <= 0 && !animsInFlight);
+      // Depart when brake is released (after min 0.5s) and all have boarded
+      final depart = allBoarded && !brakingNotifier.value && _stopTimer >= 0.5;
+      if (depart) {
         _stoppedAtStation = false;
         _stopTimer = 0;
         _setNextActiveIdx(_nextActiveIdx + 1);
@@ -359,23 +397,55 @@ class SubwayGame extends FlameGame {
       _checkObstacles();
     }
 
+    // Update boarding animations
+    for (final anim in _boardingAnims) {
+      anim.progress += dt / anim.duration;
+      if (anim.progress > 1.0) anim.progress = 1.0;
+    }
+    _boardingAnims.removeWhere((a) => a.done && a.counted);
+
     if (!_levelDone) _updateHud();
   }
 
   void _checkArrival() {
+    if (_train.speed >= 8) return;
+
+    final trainY = _worldYForT(_train.trackT);
+    final stations = _activeStations;
+
+    // Search ALL stations (skip terminal 0) for the closest one within
+    // arrival range. This is robust against index desync after track switches.
+    int? bestIdx;
+    double bestDist = double.infinity;
+    for (int i = 1; i < stations.length; i++) {
+      if (stations[i].passengers <= 0) continue; // already fully boarded
+      final targetY = _worldYForT(stations[i].trackPosition);
+      final distPx = trainY - targetY;
+      final absDist = distPx.abs();
+
+      if (distPx < _goodZone * 2 && distPx > -_goodZone * 3 && absDist < bestDist) {
+        bestDist = absDist;
+        bestIdx = i;
+      }
+    }
+
+    if (bestIdx != null) {
+      _setNextActiveIdx(bestIdx);
+      _arriveAtStation(bestIdx);
+      return;
+    }
+
+    // Advance index past missed stations
     final idx = _nextActiveIdx;
-    if (idx >= _activeStations.length) return;
-
-    final targetY = _worldYForT(_activeStations[idx].trackPosition);
-    final trainY  = _worldYForT(_train.trackT);
-    final distPx  = trainY - targetY;
-
-    if (_train.speed < 8 && distPx < _goodZone * 2) {
-      _arriveAtStation(idx);
-    } else if (distPx < -_goodZone * 3) {
-      _missStation(idx);
+    if (idx < stations.length) {
+      final distPx = trainY - _worldYForT(stations[idx].trackPosition);
+      if (distPx < -_goodZone * 3) {
+        _missStation(idx);
+      }
     }
   }
+
+  bool _boardingSpawned = false;
 
   void _arriveAtStation(int idx) {
     final station = _activeStations[idx];
@@ -383,20 +453,69 @@ class SubwayGame extends FlameGame {
     if (station.passengers > 0) {
       final distPx =
           (_worldYForT(_train.trackT) - _worldYForT(station.trackPosition)).abs();
-      int boarded;
       if (distPx <= _perfectZone) {
-        boarded = station.passengers;
+        station.boardableCount = station.passengers;
       } else if (distPx <= _goodZone) {
-        boarded = (station.passengers * 0.6).round();
+        station.boardableCount = (station.passengers * 0.6).round();
       } else {
-        boarded = (station.passengers * 0.25).round();
+        station.boardableCount = (station.passengers * 0.25).round();
       }
-      _passengers += boarded;
-      station.passengers = 0;
     }
 
+    _boardingSpawned = false;
     _train.speed = 0;
     _stoppedAtStation = true;
+  }
+
+  /// Spawn boarding animations for all boardable passengers at once.
+  /// Each walks to the nearest car; distance determines arrival time.
+  void _spawnAllBoardingAnims(Station station) {
+    final worldY = _worldYForT(station.trackPosition);
+    final isExpress = station.track == TrackType.express;
+    final platLeft = isExpress ? kExpressPlatLeft : kLocalPlatLeft;
+    final platRight = isExpress ? kExpressPlatRight : kLocalPlatRight;
+    final platWidth = platRight - platLeft;
+    final areaLeft = platLeft + 8;
+    final areaWidth = platWidth - 16;
+    final areaTop = worldY - _map.platformHalfLen + 8;
+    final areaHeight = _map.platformHalfLen * 2 - 28;
+    final trackX = isExpress ? kExpressTrackX : kLocalTrackX;
+
+    final trainWorldY = _worldYForT(_train.trackT);
+    final trainTop = trainWorldY - TrainComponent.h / 2;
+    final carCenters = List.generate(TrainComponent.numCars, (c) =>
+        trainTop + c * (TrainComponent.carH + TrainComponent.couplingGap) +
+        TrainComponent.carH / 2);
+
+    final startIdx = station.figurePositions.length - station.passengers;
+    final endIdx = startIdx + station.boardableCount;
+    for (int i = startIdx; i < endIdx; i++) {
+      final (xf, yf) = station.figurePositions[i];
+      final fx = areaLeft + xf * areaWidth;
+      final fy = areaTop + yf * areaHeight;
+
+      // Find nearest car
+      double bestDist = double.infinity;
+      double doorY = trainWorldY;
+      for (int c = 0; c < TrainComponent.numCars; c++) {
+        final dist = (fy - carCenters[c]).abs();
+        if (dist < bestDist) {
+          bestDist = dist;
+          doorY = carCenters[c];
+        }
+      }
+
+      // Target the platform-facing edge of the train, not the center
+      final doorX = trackX + TrainComponent.w / 2;
+      _boardingAnims.add(BoardingAnim(
+        startX: fx, startY: fy,
+        endX: doorX, endY: doorY,
+      ));
+    }
+
+    // Remove from platform immediately (they're now animating)
+    station.passengers -= station.boardableCount;
+    station.boardableCount = 0;
   }
 
   void _missStation(int idx) {
@@ -413,8 +532,9 @@ class SubwayGame extends FlameGame {
         _activeTrack == TrackType.local ? _expressStations : _localStations;
     var idx =
         _activeTrack == TrackType.local ? _nextExpressIdx : _nextLocalIdx;
+    final missBuffer = _goodZone * 3 / _trackLength;
     while (idx < passiveStations.length &&
-        _train.trackT > passiveStations[idx].trackPosition + 0.01) {
+        _train.trackT > passiveStations[idx].trackPosition + missBuffer) {
       idx++;
     }
     if (_activeTrack == TrackType.local) {
@@ -480,6 +600,11 @@ class SubwayGame extends FlameGame {
 
     _train.switchToTrack(targetTrack == TrackType.express ? 1.0 : 0.0);
     _currentSwitchIdx++;
+
+    // Resync station indices so the new active track points at the correct
+    // next station (passive sync may have advanced it too far).
+    _resyncStationIndex(_localStations, (v) => _nextLocalIdx = v);
+    _resyncStationIndex(_expressStations, (v) => _nextExpressIdx = v);
   }
 
   void _checkObstacles() {
@@ -540,9 +665,13 @@ class SubwayGame extends FlameGame {
   /// train's current position.
   void _resyncStationIndex(
       List<Station> stations, void Function(int) setter) {
+    // Don't skip a station the player could still stop at — use the same
+    // miss threshold as _checkArrival (_goodZone * 3 pixels, converted to
+    // track-position units).
+    final missBuffer = _goodZone * 3 / _trackLength;
     int idx = 1; // skip terminal 0
     while (idx < stations.length &&
-        stations[idx].trackPosition <= _train.trackT) {
+        _train.trackT > stations[idx].trackPosition + missBuffer) {
       idx++;
     }
     setter(idx);
@@ -679,6 +808,11 @@ class SubwayGame extends FlameGame {
 
     _map.render(canvas);
 
+    // Boarding animations (world space)
+    for (final anim in _boardingAnims) {
+      _drawFigure(canvas, anim.x, anim.y);
+    }
+
     final trainX = kLocalTrackX +
         (kExpressTrackX - kLocalTrackX) * _train.laneOffset;
     final trainLeft = trainX - TrainComponent.w / 2;
@@ -702,6 +836,17 @@ class SubwayGame extends FlameGame {
     _renderApproachBar(canvas);
     _renderSpeedIndicator(canvas);
     _renderPenaltyFlash(canvas);
+  }
+
+  void _drawFigure(Canvas canvas, double x, double y) {
+    final paint = Paint()..color = const Color(0xFFEEEEEE);
+    canvas.drawCircle(Offset(x, y), 3.0, paint);
+    canvas.drawLine(Offset(x, y + 3), Offset(x, y + 10),
+        paint..strokeWidth = 1.5..style = PaintingStyle.stroke);
+    canvas.drawLine(Offset(x - 3, y + 6), Offset(x + 3, y + 6), paint);
+    canvas.drawLine(Offset(x, y + 10), Offset(x - 2.5, y + 15), paint);
+    canvas.drawLine(Offset(x, y + 10), Offset(x + 2.5, y + 15), paint);
+    paint.style = PaintingStyle.fill;
   }
 
   void _renderApproachBar(Canvas canvas) {

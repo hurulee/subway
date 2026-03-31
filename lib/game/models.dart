@@ -1,24 +1,94 @@
+import 'dart:math';
+
 enum TrackType { local, express }
 enum SignalColor { green, red }
 
 class Station {
   final String name;
+  final int initialPassengers;
   int passengers;
   final double trackPosition;
   final TrackType track;
+
+  /// How many passengers will board at this stop (set on arrival based on
+  /// stopping accuracy). Decremented one-by-one during boarding.
+  int boardableCount = 0;
+
+  /// Pre-computed random positions for each passenger figure.
+  /// Each entry is (xFraction, yFraction) in [0, 1] relative to the
+  /// platform's drawable area. Generated once so they don't jitter.
+  late final List<(double, double)> figurePositions;
+
+  /// Lambda for the exponential distribution on the x-axis (platform depth).
+  /// Higher values cluster passengers closer to the track edge.
+  static double kDepthLambda = 2.5;
 
   Station({
     required this.name,
     required this.passengers,
     required this.trackPosition,
     this.track = TrackType.local,
-  });
+  })  : initialPassengers = passengers {
+    final rng = Random();
+    figurePositions = List.generate(passengers, (_) => (
+      _expSample(rng, kDepthLambda),
+      rng.nextDouble(),
+    ));
+  }
+
+  /// Sample from an exponential distribution mapped to [0, 1].
+  /// Uses inverse CDF with lambda controlling skew: higher lambda = more
+  /// passengers clustered near x=0 (the track-side edge).
+  static double _expSample(Random rng, double lambda) {
+    if (lambda <= 0) return rng.nextDouble();
+    // Inverse CDF: x = -ln(1-u) / lambda, then divide by a cutoff to
+    // map into [0,1]. We use the 99th percentile as the cutoff so most
+    // values land in range, with a clamp for the rare outlier.
+    final cutoff = -log(0.01) / lambda; // ≈ 4.6 / lambda
+    final u = rng.nextDouble();
+    final raw = -log(1 - u) / lambda;
+    return (raw / cutoff).clamp(0.0, 1.0);
+  }
 }
 
 class SwitchPoint {
   final double trackPosition;
   final double windowSize;
   const SwitchPoint({required this.trackPosition, required this.windowSize});
+}
+
+class BoardingAnim {
+  final double startX;
+  final double startY;
+  final double endX;
+  final double endY;
+  double progress = 0.0;
+  bool counted = false; // true once this passenger has been added to the counter
+
+  /// Walking speed in pixels per second.
+  static const double walkSpeed = 40.0;
+
+  /// Duration is based on distance so each passenger walks at the same speed.
+  late final double duration;
+
+  BoardingAnim({
+    required this.startX,
+    required this.startY,
+    required this.endX,
+    required this.endY,
+  }) {
+    final dx = endX - startX;
+    final dy = endY - startY;
+    final dist = sqrt(dx * dx + dy * dy);
+    duration = (dist / walkSpeed).clamp(0.3, 5.0);
+  }
+
+  bool get done => progress >= 1.0;
+
+  double get x => startX + (endX - startX) * _ease(progress);
+  double get y => startY + (endY - startY) * _ease(progress);
+
+  static double _ease(double t) => t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) * (-2 * t + 2) / 2;
 }
 
 class Obstacle {

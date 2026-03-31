@@ -160,22 +160,36 @@ class MapComponent {
     )..layout(maxWidth: platWidth - 24);
     namePainter.paint(canvas, Offset(platLeft + 8, worldY + platformHalfLen - namePainter.height - 6));
 
+    // Draw waiting passengers as small human figures, randomly spread
     if (station.passengers > 0) {
-      final badgeX = platRight - 16;
-      paint.color = station.track == TrackType.express
-          ? const Color(0xFFFF6600)
-          : const Color(0xFFFFCC00);
-      canvas.drawCircle(Offset(badgeX, worldY), 13, paint);
-      final numPainter = TextPainter(
-        text: TextSpan(
-          text: '${station.passengers}',
-          style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
-        ),
-        textDirection: TextDirection.ltr,
-      )..layout();
-      numPainter.paint(canvas,
-          Offset(badgeX - numPainter.width / 2, worldY - numPainter.height / 2));
+      final areaLeft = platLeft + 8;
+      final areaWidth = platWidth - 16;
+      final areaTop = worldY - platformHalfLen + 8;
+      final areaHeight = platformHalfLen * 2 - 28; // leave room for name at bottom
+      // Draw last N figures (passengers board from the front of the list)
+      final startIdx = station.figurePositions.length - station.passengers;
+      for (int i = startIdx; i < station.figurePositions.length; i++) {
+        final (xf, yf) = station.figurePositions[i];
+        final fx = areaLeft + xf * areaWidth;
+        final fy = areaTop + yf * areaHeight;
+        _drawFigure(canvas, fx, fy);
+      }
     }
+  }
+
+  void _drawFigure(Canvas canvas, double x, double y) {
+    final paint = Paint()..color = const Color(0xFFEEEEEE);
+    // Head
+    canvas.drawCircle(Offset(x, y), 3.0, paint);
+    // Body
+    canvas.drawLine(Offset(x, y + 3), Offset(x, y + 10),
+        paint..strokeWidth = 1.5..style = PaintingStyle.stroke);
+    // Arms
+    canvas.drawLine(Offset(x - 3, y + 6), Offset(x + 3, y + 6), paint);
+    // Legs
+    canvas.drawLine(Offset(x, y + 10), Offset(x - 2.5, y + 15), paint);
+    canvas.drawLine(Offset(x, y + 10), Offset(x + 2.5, y + 15), paint);
+    paint.style = PaintingStyle.fill;
   }
 
   void _drawObstacle(Canvas canvas, Obstacle obs) {
