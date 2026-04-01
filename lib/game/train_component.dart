@@ -131,11 +131,7 @@ class TrainComponent {
     for (int i = 0; i < numCars; i++) {
       final carTop = i * (carH + couplingGap);
       _drawCar(canvas, carTop, isFront: i == 0, isRear: i == numCars - 1);
-      if (i < numCars - 1) {
-        _drawCoupling(canvas, carTop + carH);
-      }
     }
-    renderSparks(canvas);
   }
 
   void _drawCar(Canvas canvas, double top, {bool isFront = false, bool isRear = false}) {
@@ -182,29 +178,8 @@ class TrainComponent {
     canvas.drawRect(
         Rect.fromLTWH(4, roofTop, carW - 8, roofBottom - roofTop), paint);
 
-    // Bogies
-    _drawBogie(canvas, carW / 2, top + carH * 0.2);
-    _drawBogie(canvas, carW / 2, top + carH * 0.8);
   }
 
-  void _drawCoupling(Canvas canvas, double y) {
-    final paint = Paint()
-      ..color = const Color(0xFF555555)
-      ..strokeWidth = 3
-      ..strokeCap = StrokeCap.round;
-    canvas.drawLine(
-        Offset(carW * 0.35, y), Offset(carW * 0.35, y + couplingGap), paint);
-    canvas.drawLine(
-        Offset(carW * 0.65, y), Offset(carW * 0.65, y + couplingGap), paint);
-  }
-
-  void _drawBogie(Canvas canvas, double cx, double cy) {
-    final paint = Paint()..color = const Color(0xFF333333);
-    canvas.drawRect(Rect.fromLTWH(cx - 10, cy - 4, 20, 8), paint);
-    paint.color = const Color(0xFF222222);
-    canvas.drawCircle(Offset(cx - 8, cy), 4, paint);
-    canvas.drawCircle(Offset(cx + 8, cy), 4, paint);
-  }
 }
 
 class _Spark {
