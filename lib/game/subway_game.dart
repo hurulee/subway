@@ -62,6 +62,11 @@ class SubwayGame extends FlameGame {
   // Signals
   late List<(SignalColor, SignalColor)> _segmentSignals;
 
+  // Track bend — single 90-degree test bend
+  double _bendStartT = 0;
+  double _bendEndT = 0;
+  bool _hasBend = false;
+
   // Obstacles — generated dynamically each level.
   late List<Obstacle> _obstacles;
   final Set<int> _hitObstacles = {};
@@ -73,6 +78,9 @@ class SubwayGame extends FlameGame {
 
   // Boarding animations
   final List<BoardingAnim> _boardingAnims = [];
+
+  // After a penalty snap-back, skip arrival checks until the train is moving
+  bool _penaltyImmunity = false;
 
   static const double trainScreenFraction = 0.68;
 
@@ -174,6 +182,46 @@ class SubwayGame extends FlameGame {
     return result;
   }
 
+  void _setupBend() {
+    _hasBend = false;
+    final n = _localStations.length;
+    if (n < 4) return;
+
+    // Find the second inter-station gap without a switch
+    int found = 0;
+    for (int i = 1; i < n - 1; i++) {
+      final gapStart = _localStations[i].trackPosition;
+      final gapEnd = _localStations[i + 1].trackPosition;
+
+      final hasSwitchInGap = _switchPoints.any((sp) =>
+          sp.trackPosition + sp.windowSize > gapStart &&
+          sp.trackPosition < gapEnd);
+      if (hasSwitchInGap) continue;
+
+      found++;
+      if (found >= 2) {
+        // Use inner portion of the gap (avoid station edges)
+        final margin = (gapEnd - gapStart) * 0.15;
+        _bendStartT = gapStart + margin;
+        _bendEndT = gapEnd - margin;
+        _hasBend = true;
+        return;
+      }
+    }
+  }
+
+  /// Cumulative camera rotation angle at the train's current trackT.
+  /// 0 before the bend, smoothly ramps to -pi/2 (90° left) through the bend,
+  /// stays at -pi/2 after.
+  double _cumulativeBendAngle() {
+    if (!_hasBend) return 0.0;
+    if (_train.trackT <= _bendStartT) return 0.0;
+    if (_train.trackT >= _bendEndT) return pi / 2;
+    final progress = (_train.trackT - _bendStartT) / (_bendEndT - _bendStartT);
+    final smooth = (1 - cos(pi * progress)) / 2;
+    return pi / 2 * smooth;
+  }
+
   /// Returns which signal segment an obstacle position belongs to.
   /// Segment i covers [switch_i_end, switch_{i+1}_start].
   int _obstacleSegmentFor(double pos) {
@@ -223,6 +271,7 @@ class SubwayGame extends FlameGame {
     _trackBottomY = trackBottomYForCount(count);
     _switchPoints = _generateSwitchPoints();
     _obstacles    = _generateObstacles();
+    _setupBend();
   }
 
   @override
@@ -243,6 +292,9 @@ class SubwayGame extends FlameGame {
       platformHalfLen: level.platformHalfLen,
       trackLength:     _trackLength,
       trackBottomY:    _trackBottomY,
+      bendStartT:      _bendStartT,
+      bendEndT:        _bendEndT,
+      hasBend:         _hasBend,
     );
 
     // Starting station is a terminal — no passengers to pick up
@@ -269,6 +321,7 @@ class SubwayGame extends FlameGame {
     _penaltyFlashTimer = 0;
     _lives = _kMaxLives;
     _boardingAnims.clear();
+    _penaltyImmunity = false;
     _waitingForStart = true;
     overlays.add('readyToStart');
 
@@ -313,6 +366,34 @@ class SubwayGame extends FlameGame {
       _segmentSignals[_currentSwitchIdx.clamp(0, _segmentSignals.length - 1)];
 
   double _worldYForT(double t) => _trackBottomY - t * _trackLength;
+
+  /// Walk backward along the track from [startT] by [arcPixels] of true
+  /// world-space arc length, using [worldPosForT] to account for bends.
+  /// [baseX] is the track's base X coordinate (e.g. kLocalTrackX or kExpressTrackX).
+  double _walkArcLengthOnTrack(double startT, double arcPixels, double baseX) {
+    double remaining = arcPixels;
+    double t = startT;
+    Offset prev = _map.worldPosForT(t, baseX);
+    // Adaptive: estimate pixels-per-trackT from the straight track initially,
+    // then update from measured arc steps so we converge on curves of any radius.
+    double pxPerT = _trackLength;
+    int safety = 0;
+    while (remaining > 0.5 && safety < 1000) {
+      safety++;
+      final targetPx = remaining.clamp(1.0, 4.0);
+      final stepT = targetPx / pxPerT;
+      t -= stepT;
+      final cur = _map.worldPosForT(t, baseX);
+      final d = cur - prev;
+      final arcStep = sqrt(d.dx * d.dx + d.dy * d.dy);
+      if (arcStep > 1e-6) {
+        pxPerT = arcStep / stepT;
+      }
+      remaining -= arcStep;
+      prev = cur;
+    }
+    return t;
+  }
 
   /// Walk backward along the S-curve from [startT] by [arcPixels] of arc length.
   /// Returns the new trackT. [trackDx] is (kExpressTrackX - kLocalTrackX).
@@ -430,6 +511,10 @@ class SubwayGame extends FlameGame {
   }
 
   void _checkArrival() {
+    if (_penaltyImmunity) {
+      if (_train.speed >= 8) _penaltyImmunity = false;
+      return;
+    }
     if (_train.speed >= 8) return;
 
     final trainY = _worldYForT(_train.trackT);
@@ -514,6 +599,22 @@ class SubwayGame extends FlameGame {
         trainTop + c * (TrainComponent.carH + TrainComponent.couplingGap) +
         TrainComponent.carH / 2);
 
+    // For stations after the bend, transform straight-line positions to
+    // curved world space (matching the track-tangent-rotated station rendering).
+    final stationWorld = _map.worldPosForT(station.trackPosition, trackX);
+    final tangentAngle = _map.trackAngleAtT(station.trackPosition, trackX);
+    final cosA = cos(tangentAngle);
+    final sinA = sin(tangentAngle);
+
+    Offset toWorld(double sx, double sy) {
+      final dx = sx - trackX;
+      final dy = sy - worldY;
+      return Offset(
+        stationWorld.dx + dx * cosA - dy * sinA,
+        stationWorld.dy + dx * sinA + dy * cosA,
+      );
+    }
+
     final startIdx = station.figurePositions.length - station.passengers;
     final endIdx = startIdx + station.boardableCount;
     for (int i = startIdx; i < endIdx; i++) {
@@ -534,9 +635,12 @@ class SubwayGame extends FlameGame {
 
       // Target the platform-facing edge of the train, not the center
       final doorX = trackX + TrainComponent.w / 2;
+
+      final startPos = toWorld(fx, fy);
+      final endPos = toWorld(doorX, doorY);
       _boardingAnims.add(BoardingAnim(
-        startX: fx, startY: fy,
-        endX: doorX, endY: doorY,
+        startX: startPos.dx, startY: startPos.dy,
+        endX: endPos.dx, endY: endPos.dy,
       ));
     }
 
@@ -648,6 +752,7 @@ class SubwayGame extends FlameGame {
       if (frontT >= obs.trackPosition) {
         _hitObstacles.add(i);
         _applyPenalty();
+        return; // process one penalty per frame; snap-back changes trackT
       }
     }
   }
@@ -685,11 +790,13 @@ class SubwayGame extends FlameGame {
           (i) => _obstacles[i].trackPosition > _train.trackT);
 
       // Re-sync station indices to match new position
-      _resyncStationIndex(_localStations, (v) => _nextLocalIdx = v);
+      _resyncStationIndex(_localStations, (v) => _nextLocalIdx = v, startIdx: 1);
       _resyncStationIndex(_expressStations, (v) => _nextExpressIdx = v);
 
       _stoppedAtStation = false;
       _stopTimer = 0;
+      _boardingAnims.clear();
+      _penaltyImmunity = true;
     }
   }
 
@@ -821,22 +928,29 @@ class SubwayGame extends FlameGame {
   void render(Canvas canvas) {
     super.render(canvas);
 
-    final trainWorldY = _worldYForT(_train.trackT);
-    final scrollY = trainWorldY - size.y * trainScreenFraction;
+    final baseTrainX = kLocalTrackX +
+        (kExpressTrackX - kLocalTrackX) * _train.laneOffset;
+    final trainWorldPos = _map.worldPosForT(_train.trackT, baseTrainX);
+    final bendAngle = _cumulativeBendAngle();
 
-    // ── Background ──────────────────────────────────────────────────────────
+    // ── Background (large enough to cover rotation) ─────────────────────────
+    canvas.save();
+    final diagonal = sqrt(size.x * size.x + size.y * size.y);
     canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.x, size.y),
+      Rect.fromLTWH(-diagonal, -diagonal, diagonal * 3, diagonal * 3),
       Paint()..color = const Color(0xFF111111),
     );
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, kExpressTrackX - 20, size.y),
-      Paint()..color = const Color(0xFF1C1C1C),
-    );
+    canvas.restore();
 
     // ── World space ─────────────────────────────────────────────────────────
+    // Camera: pin the train at a fixed screen position, rotate to keep
+    // the track direction pointing "up" on screen.
+    final screenTrainX = baseTrainX; // keep horizontal position stable
+    final screenTrainY = size.y * trainScreenFraction;
     canvas.save();
-    canvas.translate(0, -scrollY);
+    canvas.translate(screenTrainX, screenTrainY);
+    canvas.rotate(bendAngle);
+    canvas.translate(-trainWorldPos.dx, -trainWorldPos.dy);
 
     _map.render(canvas);
 
@@ -869,33 +983,63 @@ class SubwayGame extends FlameGame {
       for (int i = 0; i < TrainComponent.numCars; i++) {
         final carTrackT = carTrackTs[i];
         final carLane = _train.laneOffsetAt(carTrackT);
-        final carX = kLocalTrackX + trackDx * carLane;
-        final carWorldY = _worldYForT(carTrackT);
+        final carBaseX = kLocalTrackX + trackDx * carLane;
+        final pos = _map.worldPosForT(carTrackT, carBaseX);
 
+        // Tangent combines both the S-curve lane change and the track bend
         const eps = 0.0001;
-        final dLane = _train.laneOffsetAt(carTrackT + eps) -
-            _train.laneOffsetAt(carTrackT - eps);
-        final dxPx = dLane * trackDx;
-        final dyPx = 2 * eps * _trackLength;
-        final carAngle = atan2(dxPx, dyPx);
+        final laneA = _train.laneOffsetAt(carTrackT + eps);
+        final laneB = _train.laneOffsetAt(carTrackT - eps);
+        final posA = _map.worldPosForT(carTrackT + eps, kLocalTrackX + trackDx * laneA);
+        final posB = _map.worldPosForT(carTrackT - eps, kLocalTrackX + trackDx * laneB);
+        final dx = posA.dx - posB.dx;
+        final dy = posA.dy - posB.dy;
+        final carAngle = atan2(dx, -dy);
 
         canvas.save();
-        canvas.translate(carX, carWorldY);
+        canvas.translate(pos.dx, pos.dy);
         canvas.rotate(carAngle);
         canvas.translate(-TrainComponent.w / 2, -TrainComponent.carH / 2);
         _train.renderCar(canvas, i);
         canvas.restore();
       }
     } else {
-      // Rigid rendering when not switching
-      final trainX = kLocalTrackX +
+      // Per-car rendering following the track path (including bends)
+      final baseX = kLocalTrackX +
           (kExpressTrackX - kLocalTrackX) * _train.laneOffset;
-      final trainLeft = trainX - TrainComponent.w / 2;
-      final trainTop = trainWorldY - TrainComponent.h / 2;
-      canvas.save();
-      canvas.translate(trainLeft, trainTop);
-      _train.render(canvas);
-      canvas.restore();
+      final frontTrackT = _train.trackT + TrainComponent.h / (2 * _trackLength);
+      final carTrackTs = <double>[];
+      double walkT = frontTrackT;
+
+      for (int i = 0; i < TrainComponent.numCars; i++) {
+        walkT = _walkArcLengthOnTrack(walkT, TrainComponent.carH / 2, baseX);
+        carTrackTs.add(walkT);
+        if (i < TrainComponent.numCars - 1) {
+          walkT = _walkArcLengthOnTrack(
+              walkT, TrainComponent.carH / 2 + TrainComponent.couplingGap, baseX);
+        }
+      }
+
+      for (int i = 0; i < TrainComponent.numCars; i++) {
+        final carT = carTrackTs[i];
+        final pos = _map.worldPosForT(carT, baseX);
+
+        // Tangent for rotation
+        const eps = 0.0001;
+        final posA = _map.worldPosForT(carT + eps, baseX);
+        final posB = _map.worldPosForT(carT - eps, baseX);
+        final dx = posA.dx - posB.dx;
+        final dy = posA.dy - posB.dy;
+        // atan2(dx, -dy) gives 0 when direction is (0, -1) i.e. upward
+        final carAngle = atan2(dx, -dy);
+
+        canvas.save();
+        canvas.translate(pos.dx, pos.dy);
+        canvas.rotate(carAngle);
+        canvas.translate(-TrainComponent.w / 2, -TrainComponent.carH / 2);
+        _train.renderCar(canvas, i);
+        canvas.restore();
+      }
     }
 
     canvas.restore();
@@ -907,14 +1051,11 @@ class SubwayGame extends FlameGame {
   }
 
   void _drawFigure(Canvas canvas, double x, double y) {
-    final paint = Paint()..color = const Color(0xFFEEEEEE);
-    canvas.drawCircle(Offset(x, y), 3.0, paint);
-    canvas.drawLine(Offset(x, y + 3), Offset(x, y + 10),
-        paint..strokeWidth = 1.5..style = PaintingStyle.stroke);
-    canvas.drawLine(Offset(x - 3, y + 6), Offset(x + 3, y + 6), paint);
-    canvas.drawLine(Offset(x, y + 10), Offset(x - 2.5, y + 15), paint);
-    canvas.drawLine(Offset(x, y + 10), Offset(x + 2.5, y + 15), paint);
-    paint.style = PaintingStyle.fill;
+    canvas.drawCircle(Offset(x, y), 4.0, Paint()..color = const Color(0xFFFFCBA4));
+    canvas.drawCircle(Offset(x, y), 4.0, Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.2);
   }
 
   void _renderApproachBar(Canvas canvas) {

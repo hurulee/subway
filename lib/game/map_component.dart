@@ -24,8 +24,10 @@ class MapComponent {
   final double trackLength;
   final double trackBottomY;
 
-  late final List<double> _localYs;
-  late final List<double> _expressYs;
+  // Bend
+  final double bendStartT;
+  final double bendEndT;
+  final bool hasBend;
 
   MapComponent({
     required this.localStations,
@@ -35,65 +37,181 @@ class MapComponent {
     required this.trackLength,
     required this.trackBottomY,
     this.platformHalfLen = 130.0,
-  }) {
-    _localYs   = localStations.map((s) => _worldY(s.trackPosition)).toList();
-    _expressYs = expressStations.map((s) => _worldY(s.trackPosition)).toList();
-  }
+    this.bendStartT = 0,
+    this.bendEndT = 0,
+    this.hasBend = false,
+  });
 
   double _worldY(double trackT) => trackBottomY - trackT * trackLength;
+
+  /// Reference X used as the arc center for bends (midpoint of the two tracks).
+  static const double _bendCenterX = (kLocalTrackX + kExpressTrackX) / 2;
+
+  /// World position for a trackT, accounting for the 90° left bend.
+  /// Both tracks curve around a shared center so they remain parallel
+  /// (concentric arcs with different radii).
+  Offset worldPosForT(double trackT, double baseX) {
+    if (!hasBend || trackT <= bendStartT) {
+      return Offset(baseX, _worldY(trackT));
+    }
+
+    final bendStartY = _worldY(bendStartT);
+    final bendPixels = (bendEndT - bendStartT) * trackLength;
+    // Reference radius for the midpoint track
+    final refRadius = bendPixels * 2 / pi;
+    // Per-track radius: offset from the shared center
+    // Center is to the left of _bendCenterX by refRadius
+    final cx = _bendCenterX - refRadius;
+    final cy = bendStartY;
+    final radius = baseX - cx; // larger for tracks further right
+
+    if (trackT >= bendEndT) {
+      // After the bend: horizontal continuation to the left
+      final overshoot = (trackT - bendEndT) * trackLength;
+      return Offset(cx - overshoot, cy - radius);
+    }
+
+    // During the bend: quarter-circle arc
+    final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
+    final angle = bendProgress * pi / 2;
+    return Offset(cx + radius * cos(angle), cy - radius * sin(angle));
+  }
+
+  /// Track tangent angle at a given trackT position.
+  /// Returns 0 for straight (upward) sections, pi/2 after the bend (leftward).
+  double trackAngleAtT(double trackT, double baseX) {
+    const eps = 0.0001;
+    final posA = worldPosForT(trackT + eps, baseX);
+    final posB = worldPosForT(trackT - eps, baseX);
+    final dx = posA.dx - posB.dx;
+    final dy = posA.dy - posB.dy;
+    // atan2(dx, -dy) gives 0 when direction is (0, -1) i.e. upward
+    return atan2(dx, -dy);
+  }
 
   void render(Canvas canvas) {
     _drawTrack(canvas, kLocalTrackX);
     _drawTrack(canvas, kExpressTrackX);
 
     for (final sp in switchPoints) {
-      _drawSwitchZone(canvas, sp);
+      _drawSwitchZoneAtT(canvas, sp);
     }
     for (int i = 0; i < localStations.length; i++) {
-      _drawStation(canvas, localStations[i], _localYs[i],
+      _drawStationAtT(canvas, localStations[i],
           trackX: kLocalTrackX,
           platLeft: kLocalPlatLeft,
           platRight: kLocalPlatRight);
     }
     for (int i = 0; i < expressStations.length; i++) {
-      _drawStation(canvas, expressStations[i], _expressYs[i],
+      _drawStationAtT(canvas, expressStations[i],
           trackX: kExpressTrackX,
           platLeft: kExpressPlatLeft,
           platRight: kExpressPlatRight);
     }
     for (final obs in obstacles) {
-      _drawObstacle(canvas, obs);
+      _drawObstacleAtT(canvas, obs);
     }
   }
 
-  void _drawTrack(Canvas canvas, double trackX) {
-    canvas.drawRect(
-      Rect.fromLTWH(trackX - 16, kTrackTopY, 32, trackLength),
-      Paint()..color = const Color(0xFF2A2A2A),
-    );
+  void _drawTrack(Canvas canvas, double baseTrackX) {
+    // Sample the track path at fine intervals along trackT [0, 1]
+    const sampleStep = 4.0;
+    final nSamples = (trackLength / sampleStep).ceil();
+
+    final points = List.generate(nSamples + 1, (i) {
+      final trackT = i / nSamples;
+      return worldPosForT(trackT, baseTrackX);
+    });
+
+    // Tangents
+    final tangents = List.generate(nSamples + 1, (i) {
+      final prev = i > 0 ? points[i - 1] : points[i];
+      final next = i < nSamples ? points[i + 1] : points[i];
+      final d = next - prev;
+      final len = sqrt(d.dx * d.dx + d.dy * d.dy);
+      return len > 0 ? Offset(d.dx / len, d.dy / len) : const Offset(0, -1);
+    });
+
+    // Rail bed
+    final bedPaint = Paint()
+      ..color = const Color(0xFF2A2A2A)
+      ..strokeWidth = 28.0
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.square
+      ..strokeJoin = StrokeJoin.round;
+    final bedPath = Path()..moveTo(points[0].dx, points[0].dy);
+    for (int i = 1; i <= nSamples; i++) {
+      bedPath.lineTo(points[i].dx, points[i].dy);
+    }
+    canvas.drawPath(bedPath, bedPaint);
+
+    // Cross-ties
     final tiePaint = Paint()
       ..color = const Color(0xFF3D2B1A)
       ..strokeWidth = 2;
-    const tieStep = 20.0;
-    final tieCount = (trackLength / tieStep).ceil();
-    for (int i = 0; i <= tieCount; i++) {
-      final y = kTrackTopY + i * tieStep;
-      canvas.drawLine(Offset(trackX - 14, y), Offset(trackX + 14, y), tiePaint);
+    double arcAccum = 0;
+    const tieSpacing = 20.0;
+    for (int i = 1; i <= nSamples; i++) {
+      final dx = points[i].dx - points[i - 1].dx;
+      final dy = points[i].dy - points[i - 1].dy;
+      arcAccum += sqrt(dx * dx + dy * dy);
+      if (arcAccum >= tieSpacing) {
+        arcAccum -= tieSpacing;
+        final pt = points[i];
+        final tan = tangents[i];
+        final perpX = -tan.dy;
+        final perpY = tan.dx;
+        canvas.drawLine(
+          Offset(pt.dx + perpX * 14, pt.dy + perpY * 14),
+          Offset(pt.dx - perpX * 14, pt.dy - perpY * 14),
+          tiePaint,
+        );
+      }
     }
+
+    // Steel rails
     final railPaint = Paint()
       ..color = const Color(0xFF999999)
       ..strokeWidth = 4
+      ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.square;
-    canvas.drawLine(Offset(trackX - 9, kTrackTopY), Offset(trackX - 9, trackBottomY), railPaint);
-    canvas.drawLine(Offset(trackX + 9, kTrackTopY), Offset(trackX + 9, trackBottomY), railPaint);
+    const railOffset = 9.0;
+    for (final sign in [-1.0, 1.0]) {
+      final railPath = Path();
+      for (int i = 0; i <= nSamples; i++) {
+        final pt = points[i];
+        final tan = tangents[i];
+        final rx = pt.dx + (-tan.dy) * railOffset * sign;
+        final ry = pt.dy + tan.dx * railOffset * sign;
+        if (i == 0) {
+          railPath.moveTo(rx, ry);
+        } else {
+          railPath.lineTo(rx, ry);
+        }
+      }
+      canvas.drawPath(railPath, railPaint);
+    }
+  }
+
+  void _drawSwitchZoneAtT(Canvas canvas, SwitchPoint sp) {
+    // Midpoint of the switch in trackT
+    final midT = sp.trackPosition + sp.windowSize / 2;
+    final midTrackX = (kLocalTrackX + kExpressTrackX) / 2;
+    final pos = worldPosForT(midT, midTrackX);
+    final straightY = _worldY(midT);
+    final tangentAngle = trackAngleAtT(midT, midTrackX);
+
+    canvas.save();
+    canvas.translate(pos.dx, pos.dy);
+    canvas.rotate(tangentAngle);
+    canvas.translate(-midTrackX, -straightY);
+    _drawSwitchZone(canvas, sp);
+    canvas.restore();
   }
 
   void _drawSwitchZone(Canvas canvas, SwitchPoint sp) {
     final topY    = _worldY(sp.trackPosition);
     final bottomY = _worldY(sp.trackPosition + sp.windowSize);
-    final midY = (topY + bottomY) / 2;
-    final midX = (kLocalTrackX + kExpressTrackX) / 2;
-
     final height = topY - bottomY;
 
     // Draw both S-curves as railroad tracks (bed, ties, rails)
@@ -195,6 +313,24 @@ class MapComponent {
     }
   }
 
+  /// Draw a station at its worldPosForT position, rotated to follow the track
+  /// tangent so it stays stationary relative to the track.
+  void _drawStationAtT(Canvas canvas, Station station,
+      {required double trackX, required double platLeft, required double platRight}) {
+    final t = station.trackPosition;
+    final pos = worldPosForT(t, trackX);
+    final straightY = _worldY(t);
+    final tangentAngle = trackAngleAtT(t, trackX);
+
+    canvas.save();
+    canvas.translate(pos.dx, pos.dy);
+    canvas.rotate(tangentAngle);
+    canvas.translate(-trackX, -straightY);
+    _drawStation(canvas, station, straightY,
+        trackX: trackX, platLeft: platLeft, platRight: platRight);
+    canvas.restore();
+  }
+
   void _drawStation(Canvas canvas, Station station, double worldY,
       {required double trackX, required double platLeft, required double platRight}) {
     final paint = Paint();
@@ -252,18 +388,26 @@ class MapComponent {
   }
 
   void _drawFigure(Canvas canvas, double x, double y) {
-    final paint = Paint()..color = const Color(0xFFEEEEEE);
-    // Head
-    canvas.drawCircle(Offset(x, y), 3.0, paint);
-    // Body
-    canvas.drawLine(Offset(x, y + 3), Offset(x, y + 10),
-        paint..strokeWidth = 1.5..style = PaintingStyle.stroke);
-    // Arms
-    canvas.drawLine(Offset(x - 3, y + 6), Offset(x + 3, y + 6), paint);
-    // Legs
-    canvas.drawLine(Offset(x, y + 10), Offset(x - 2.5, y + 15), paint);
-    canvas.drawLine(Offset(x, y + 10), Offset(x + 2.5, y + 15), paint);
-    paint.style = PaintingStyle.fill;
+    canvas.drawCircle(Offset(x, y), 4.0, Paint()..color = const Color(0xFFFFCBA4));
+    canvas.drawCircle(Offset(x, y), 4.0, Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.2);
+  }
+
+  void _drawObstacleAtT(Canvas canvas, Obstacle obs) {
+    final t = obs.trackPosition;
+    final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
+    final pos = worldPosForT(t, trackX);
+    final straightY = _worldY(t);
+    final tangentAngle = trackAngleAtT(t, trackX);
+
+    canvas.save();
+    canvas.translate(pos.dx, pos.dy);
+    canvas.rotate(tangentAngle);
+    canvas.translate(-trackX, -straightY);
+    _drawObstacle(canvas, obs);
+    canvas.restore();
   }
 
   void _drawObstacle(Canvas canvas, Obstacle obs) {
