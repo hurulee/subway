@@ -12,8 +12,9 @@ double trackBottomYForCount(int n) => kTrackTopY + trackLengthForCount(n);
 
 const double kExpressPlatLeft  = kExpressTrackX + 16.0;
 const double kExpressPlatRight = kLocalTrackX - 16.0;
+const double _platWidth        = kExpressPlatRight - kExpressPlatLeft;
 const double kLocalPlatLeft    = kLocalTrackX + 16.0;
-const double kLocalPlatRight   = 365.0;
+const double kLocalPlatRight   = kLocalPlatLeft + _platWidth;
 
 class MapComponent {
   final List<Station> localStations;
@@ -395,14 +396,22 @@ class MapComponent {
     canvas.drawCircle(Offset(trackX, worldY), 7, paint);
     paint.style = PaintingStyle.fill;
 
+    // Station name below the platform
     final namePainter = TextPainter(
       text: TextSpan(
         text: station.name,
         style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
       ),
       textDirection: TextDirection.ltr,
-    )..layout(maxWidth: platWidth - 24);
-    namePainter.paint(canvas, Offset(platLeft + 8, worldY + platformHalfLen - namePainter.height - 6));
+    )..layout(maxWidth: platWidth - 8);
+    final nameX = platLeft + 8;
+    final nameY = worldY - platformHalfLen - namePainter.height - 6;
+    final bgRect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(nameX - 4, nameY - 2, namePainter.width + 8, namePainter.height + 4),
+      const Radius.circular(3),
+    );
+    canvas.drawRRect(bgRect, Paint()..color = const Color(0xCC222222));
+    namePainter.paint(canvas, Offset(nameX, nameY));
 
     // Draw waiting passengers as small human figures, randomly spread
     if (station.passengers > 0) {
@@ -422,8 +431,8 @@ class MapComponent {
   }
 
   void _drawFigure(Canvas canvas, double x, double y) {
-    canvas.drawCircle(Offset(x, y), 4.0, Paint()..color = const Color(0xFFFFCBA4));
-    canvas.drawCircle(Offset(x, y), 4.0, Paint()
+    canvas.drawCircle(Offset(x, y), 6.0, Paint()..color = const Color(0xFFFFCBA4));
+    canvas.drawCircle(Offset(x, y), 6.0, Paint()
       ..color = Colors.black
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.2);

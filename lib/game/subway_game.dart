@@ -1069,8 +1069,8 @@ class SubwayGame extends FlameGame {
   }
 
   void _drawFigure(Canvas canvas, double x, double y) {
-    canvas.drawCircle(Offset(x, y), 4.0, Paint()..color = const Color(0xFFFFCBA4));
-    canvas.drawCircle(Offset(x, y), 4.0, Paint()
+    canvas.drawCircle(Offset(x, y), 6.0, Paint()..color = const Color(0xFFFFCBA4));
+    canvas.drawCircle(Offset(x, y), 6.0, Paint()
       ..color = Colors.black
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.2);
