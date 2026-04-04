@@ -28,6 +28,10 @@ class MapComponent {
   // Bends
   final List<Bend> bends;
 
+  // Debris & rats
+  late final List<_Debris> _debris;
+  late final List<_Rat> _rats;
+
   MapComponent({
     required this.localStations,
     required this.expressStations,
@@ -37,7 +41,55 @@ class MapComponent {
     required this.trackBottomY,
     this.platformHalfLen = 130.0,
     this.bends = const [],
-  });
+  }) {
+    _generateDebris();
+    _generateRats();
+  }
+
+  void _generateDebris() {
+    final rng = Random();
+    _debris = [];
+    const count = 40;
+    for (int i = 0; i < count; i++) {
+      final trackT = 0.02 + rng.nextDouble() * 0.96;
+      // Place debris on either side of either track
+      final trackX = rng.nextBool() ? kLocalTrackX : kExpressTrackX;
+      final offsetX = (rng.nextDouble() * 24 + 16) * (rng.nextBool() ? 1 : -1);
+      final type = _DebrisType.values[rng.nextInt(_DebrisType.values.length)];
+      _debris.add(_Debris(
+        trackT: trackT,
+        trackX: trackX,
+        offsetX: offsetX,
+        type: type,
+        rotation: rng.nextDouble() * pi * 2,
+      ));
+    }
+  }
+
+  void _generateRats() {
+    final rng = Random();
+    _rats = [];
+    const count = 8;
+    for (int i = 0; i < count; i++) {
+      final trackT = 0.05 + rng.nextDouble() * 0.90;
+      final trackX = rng.nextBool() ? kLocalTrackX : kExpressTrackX;
+      final offsetX = (rng.nextDouble() * 20 + 18) * (rng.nextBool() ? 1 : -1);
+      _rats.add(_Rat(
+        trackT: trackT,
+        trackX: trackX,
+        offsetX: offsetX,
+        heading: rng.nextDouble() * pi * 2,
+        idleTimer: rng.nextDouble() * 3.0,
+        rng: rng,
+      ));
+    }
+  }
+
+  void update(double dt) {
+    for (final rat in _rats) {
+      rat.update(dt);
+    }
+  }
 
   double _worldY(double trackT) => trackBottomY - trackT * trackLength;
 
@@ -128,6 +180,8 @@ class MapComponent {
     _drawTrack(canvas, kLocalTrackX);
     _drawTrack(canvas, kExpressTrackX);
     _drawColumns(canvas);
+    _renderDebris(canvas);
+    _renderRats(canvas);
 
     for (final sp in switchPoints) {
       _drawSwitchZoneAtT(canvas, sp);
@@ -505,5 +559,176 @@ class MapComponent {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 6;
     canvas.drawRect(Rect.fromLTWH(trackX - 18, worldY - 22, 36, 44), glowPaint);
+  }
+
+  void _renderDebris(Canvas canvas) {
+    for (final d in _debris) {
+      final basePos = worldPosForT(d.trackT, d.trackX);
+      final angle = trackAngleAtT(d.trackT, d.trackX);
+      // Offset perpendicular to track
+      final px = basePos.dx + d.offsetX * cos(angle);
+      final py = basePos.dy - d.offsetX * sin(angle);
+
+      canvas.save();
+      canvas.translate(px, py);
+      canvas.rotate(d.rotation + angle);
+      canvas.scale(1.8);
+
+      switch (d.type) {
+        case _DebrisType.groceryBag:
+          // Crinkled plastic bag shape
+          final bagPaint = Paint()..color = const Color(0xCCDDDDDD);
+          final path = Path()
+            ..moveTo(-5, -4)
+            ..lineTo(-3, -6)
+            ..lineTo(2, -5)
+            ..lineTo(5, -3)
+            ..lineTo(4, 2)
+            ..lineTo(6, 5)
+            ..lineTo(1, 4)
+            ..lineTo(-2, 6)
+            ..lineTo(-5, 3)
+            ..lineTo(-6, -1)
+            ..close();
+          canvas.drawPath(path, bagPaint);
+          // Bag handles
+          final handlePaint = Paint()
+            ..color = const Color(0x88AAAAAA)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 0.8;
+          canvas.drawOval(Rect.fromLTWH(-3, -8, 6, 4), handlePaint);
+          break;
+
+        case _DebrisType.sodaCup:
+          // Cup body
+          final cupPaint = Paint()..color = const Color(0xFFEEEEEE);
+          canvas.drawRRect(
+            RRect.fromRectAndRadius(
+              Rect.fromLTWH(-3, -4, 6, 8),
+              const Radius.circular(1),
+            ),
+            cupPaint,
+          );
+          // Colored band (brand stripe)
+          canvas.drawRect(
+            Rect.fromLTWH(-3, -1, 6, 3),
+            Paint()..color = const Color(0xFFCC3333),
+          );
+          // Lid
+          canvas.drawRect(
+            Rect.fromLTWH(-3.5, -4.5, 7, 1.5),
+            Paint()..color = const Color(0xFFCCCCCC),
+          );
+          break;
+      }
+
+      canvas.restore();
+    }
+  }
+
+  void _renderRats(Canvas canvas) {
+    for (final rat in _rats) {
+      final basePos = worldPosForT(rat.trackT, rat.trackX);
+      final trackAngle = trackAngleAtT(rat.trackT, rat.trackX);
+      final px = basePos.dx + (rat.offsetX + rat.localX) * cos(trackAngle);
+      final py = basePos.dy - (rat.offsetX + rat.localX) * sin(trackAngle);
+
+      canvas.save();
+      canvas.translate(px, py);
+      canvas.rotate(rat.heading + trackAngle);
+      canvas.scale(1.8);
+
+      // Body
+      final bodyPaint = Paint()..color = const Color(0xFF4A4040);
+      canvas.drawOval(Rect.fromLTWH(-4, -2.5, 8, 5), bodyPaint);
+      // Head
+      canvas.drawOval(Rect.fromLTWH(3, -1.5, 4, 3), bodyPaint);
+      // Ears
+      final earPaint = Paint()..color = const Color(0xFF5A5050);
+      canvas.drawCircle(const Offset(5.5, -2), 1.2, earPaint);
+      canvas.drawCircle(const Offset(5.5, 2), 1.2, earPaint);
+      // Tail
+      final tailPaint = Paint()
+        ..color = const Color(0xFF6A5A5A)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 0.8
+        ..strokeCap = StrokeCap.round;
+      final tailPath = Path()
+        ..moveTo(-4, 0)
+        ..cubicTo(-7, -2, -9, 1, -11, -1);
+      canvas.drawPath(tailPath, tailPaint);
+      // Eyes
+      canvas.drawCircle(const Offset(5.5, -0.5), 0.6, Paint()..color = Colors.black);
+      canvas.drawCircle(const Offset(5.5, 0.5), 0.6, Paint()..color = Colors.black);
+
+      canvas.restore();
+    }
+  }
+}
+
+// ── Debris ───────────────────────────────────────────────────────────────────
+
+enum _DebrisType { groceryBag, sodaCup }
+
+class _Debris {
+  final double trackT;
+  final double trackX;
+  final double offsetX;
+  final _DebrisType type;
+  final double rotation;
+
+  const _Debris({
+    required this.trackT,
+    required this.trackX,
+    required this.offsetX,
+    required this.type,
+    required this.rotation,
+  });
+}
+
+// ── Rats ─────────────────────────────────────────────────────────────────────
+
+class _Rat {
+  final double trackT;
+  final double trackX;
+  final double offsetX;
+  double heading;
+  double localX = 0; // small lateral wander
+  double _moveTimer = 0;
+  double idleTimer;
+  double _targetHeading = 0;
+  bool _moving = false;
+  final Random rng;
+
+  _Rat({
+    required this.trackT,
+    required this.trackX,
+    required this.offsetX,
+    required this.heading,
+    required this.idleTimer,
+    required this.rng,
+  });
+
+  void update(double dt) {
+    if (_moving) {
+      // Scurry in current heading direction
+      localX += cos(heading) * 20 * dt;
+      localX = localX.clamp(-12, 12);
+      // Smoothly turn toward target
+      final diff = _targetHeading - heading;
+      heading += diff * 4 * dt;
+      _moveTimer -= dt;
+      if (_moveTimer <= 0) {
+        _moving = false;
+        idleTimer = 1.0 + rng.nextDouble() * 4.0;
+      }
+    } else {
+      idleTimer -= dt;
+      if (idleTimer <= 0) {
+        _moving = true;
+        _moveTimer = 0.3 + rng.nextDouble() * 0.8;
+        _targetHeading = rng.nextDouble() * pi * 2;
+      }
+    }
   }
 }

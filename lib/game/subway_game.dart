@@ -462,6 +462,7 @@ class SubwayGame extends FlameGame {
   }
 
   void _fixedUpdate(double dt) {
+    _map.update(dt);
     _elapsed += dt;
     if (_penaltyFlashTimer > 0) _penaltyFlashTimer -= dt;
     _train.isBraking = brakingNotifier.value;
