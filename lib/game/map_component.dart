@@ -47,7 +47,10 @@ class MapComponent {
   /// Reference X used as the arc center for bends (midpoint of the two tracks).
   static const double _bendCenterX = (kLocalTrackX + kExpressTrackX) / 2;
 
-  /// World position for a trackT, accounting for the 90° left bend.
+  /// Bend angle constant (45 degrees).
+  static const double bendAngle = pi / 4;
+
+  /// World position for a trackT, accounting for the 45° left bend.
   /// Both tracks curve around a shared center so they remain parallel
   /// (concentric arcs with different radii).
   Offset worldPosForT(double trackT, double baseX) {
@@ -58,7 +61,7 @@ class MapComponent {
     final bendStartY = _worldY(bendStartT);
     final bendPixels = (bendEndT - bendStartT) * trackLength;
     // Reference radius for the midpoint track
-    final refRadius = bendPixels * 2 / pi;
+    final refRadius = bendPixels / bendAngle;
     // Per-track radius: offset from the shared center
     // Center is to the left of _bendCenterX by refRadius
     final cx = _bendCenterX - refRadius;
@@ -66,27 +69,30 @@ class MapComponent {
     final radius = baseX - cx; // larger for tracks further right
 
     if (trackT >= bendEndT) {
-      // After the bend: horizontal continuation to the left
+      // After the bend: continuation at 45° (up-left)
       final overshoot = (trackT - bendEndT) * trackLength;
-      return Offset(cx - overshoot, cy - radius);
+      return Offset(
+        cx + radius * cos(bendAngle) - overshoot * sin(bendAngle),
+        cy - radius * sin(bendAngle) - overshoot * cos(bendAngle),
+      );
     }
 
-    // During the bend: quarter-circle arc
+    // During the bend: arc
     final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
-    final angle = bendProgress * pi / 2;
+    final angle = bendProgress * bendAngle;
     return Offset(cx + radius * cos(angle), cy - radius * sin(angle));
   }
 
   /// Track tangent angle at a given trackT position.
-  /// Returns 0 for straight (upward) sections, pi/2 after the bend (leftward).
+  /// Returns 0 for straight (upward) sections, -bendAngle after the bend.
   /// Computed analytically from the known geometry to avoid finite-difference noise.
   double trackAngleAtT(double trackT, double baseX) {
     if (!hasBend || trackT <= bendStartT) return 0.0;
-    if (trackT >= bendEndT) return -pi / 2;
-    // During the bend: tangent of a quarter-circle arc at this progress
+    if (trackT >= bendEndT) return -bendAngle;
+    // During the bend: tangent of the arc at this progress
     // Negative because the track curves leftward (negative x direction)
     final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
-    return -bendProgress * pi / 2;
+    return -bendProgress * bendAngle;
   }
 
   void render(Canvas canvas) {

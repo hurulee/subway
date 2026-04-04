@@ -216,10 +216,10 @@ class SubwayGame extends FlameGame {
   double _cumulativeBendAngle() {
     if (!_hasBend) return 0.0;
     if (_train.trackT <= _bendStartT) return 0.0;
-    if (_train.trackT >= _bendEndT) return pi / 2;
+    if (_train.trackT >= _bendEndT) return MapComponent.bendAngle;
     final progress = (_train.trackT - _bendStartT) / (_bendEndT - _bendStartT);
     final smooth = (1 - cos(pi * progress)) / 2;
-    return pi / 2 * smooth;
+    return MapComponent.bendAngle * smooth;
   }
 
   /// Returns which signal segment an obstacle position belongs to.
