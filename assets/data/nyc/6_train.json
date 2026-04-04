@@ -6,191 +6,229 @@
     {
       "name": "Pelham Bay Park",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 0
     },
     {
       "name": "Buhre Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Middletown Rd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Westchester Sq-East Tremont Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Zerega Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Castle Hill Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Parkchester",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "St Lawrence Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Morrison Av-Soundview",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Elder Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Whitlock Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Hunts Point Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Longwood Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "E 149 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "E 143 St-St Mary's St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Cypress Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Brook Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "3 Av-138 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "125 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "116 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "110 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "103 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "96 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "86 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "77 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "68 St-Hunter College",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "59 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 11
     },
     {
       "name": "51 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 11
     },
     {
       "name": "Grand Central-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "33 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "28 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "23 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 20
     },
     {
       "name": "Astor Pl",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Bleecker St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "Spring St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Canal St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "Brooklyn Bridge-City Hall",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     }
   ]

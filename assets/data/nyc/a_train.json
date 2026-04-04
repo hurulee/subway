@@ -6,186 +6,223 @@
     {
       "name": "Inwood-207 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "Dyckman St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "190 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "181 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "175 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "168 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "145 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "125 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "59 St-Columbus Circle",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "42 St/Port Authority Bus Terminal",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "34 St-Penn Station",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "14 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "W 4 St-Washington Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Canal St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Chambers St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "Fulton St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "High St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Jay St-MetroTech",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Hoyt-Schermerhorn",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Nostrand Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Utica Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Broadway Junction",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Euclid Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Grant Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "80 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "88 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Rockaway Blvd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Aqueduct Racetrack",
       "stop_type": "local",
+      "structure": "at_grade",
       "passengers": 2
     },
     {
       "name": "Aqueduct-North Conduit Av",
       "stop_type": "local",
+      "structure": "at_grade",
       "passengers": 2
     },
     {
       "name": "Howard Beach-JFK Airport",
       "stop_type": "local",
+      "structure": "at_grade",
       "passengers": 2
     },
     {
       "name": "Broad Channel",
       "stop_type": "local",
+      "structure": "at_grade",
       "passengers": 2
     },
     {
       "name": "Beach 67 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Beach 60 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Beach 44 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Beach 36 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Beach 25 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Far Rockaway-Mott Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     }
   ]

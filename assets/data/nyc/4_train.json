@@ -6,141 +6,169 @@
     {
       "name": "Woodlawn",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 0
     },
     {
       "name": "Mosholu Pkwy",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Bedford Pk Blvd-Lehman College",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Kingsbridge Rd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Fordham Rd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "183 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Burnside Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "176 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Mt Eden Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "170 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "167 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "161 St-Yankee Stadium",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 5
     },
     {
       "name": "149 St-Grand Concourse",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "138 St-Grand Concourse",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "125 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "86 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "59 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 11
     },
     {
       "name": "Grand Central-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 20
     },
     {
       "name": "Brooklyn Bridge-City Hall",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Fulton St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 17
     },
     {
       "name": "Wall St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Bowling Green",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Borough Hall",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Nevins St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "Franklin Av-Medgar Evers College",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Crown Heights-Utica Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     }
   ]

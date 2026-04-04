@@ -6,21 +6,25 @@
     {
       "name": "Franklin Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 30
     },
     {
       "name": "Park Place",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 3
     },
     {
       "name": "Botanic Garden",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 30
     },
     {
       "name": "Prospect Park",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 19
     }
   ]

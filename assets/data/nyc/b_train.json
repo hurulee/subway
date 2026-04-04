@@ -6,186 +6,223 @@
     {
       "name": "Bedford Park Blvd",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "Kingsbridge Rd",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Fordham Rd",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "182-183 Sts",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Tremont Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "174-175 Sts",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "170 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "167 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "161 St-Yankee Stadium",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "155 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "145 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "135 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "125 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "116 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Cathedral Pkwy (110 St)",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "103 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "96 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "86 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "81 St-Museum of Natural History",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "72 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "59 St-Columbus Circle",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "7 Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "47-50 Sts-Rockefeller Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "42 St-Bryant Park",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "34 St-Herald Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 13
     },
     {
       "name": "W 4 St-Washington Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Broadway-Lafayette St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Grand St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "DeKalb Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "7 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Prospect Park",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Church Av",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Newkirk Plaza",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Kings Hwy",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Sheepshead Bay",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Brighton Beach",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     }
   ]

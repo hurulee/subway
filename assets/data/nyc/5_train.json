@@ -6,181 +6,217 @@
     {
       "name": "Eastchester-Dyre Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 0
     },
     {
       "name": "Baychester Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Gun Hill Rd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Pelham Pkwy",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Morris Park",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "E 180 St",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "West Farms Sq-E Tremont Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "174 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Freeman St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Simpson St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Intervale Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Prospect Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Jackson Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "3 Av-149 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "149 St-Grand Concourse",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "138 St-Grand Concourse",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "125 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "86 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "59 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 11
     },
     {
       "name": "Grand Central-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 20
     },
     {
       "name": "Brooklyn Bridge-City Hall",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Fulton St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 17
     },
     {
       "name": "Wall St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Bowling Green",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Borough Hall",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Nevins St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "Franklin Av-Medgar Evers College",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "President St-Medgar Evers College",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Sterling St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Winthrop St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Church Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Beverly Rd",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Newkirk Av-Little Haiti",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Flatbush Av-Brooklyn College",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     }
   ]

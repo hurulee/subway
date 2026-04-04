@@ -74,6 +74,7 @@ def main():
             entry = {
                 'name':       s['station_name'].strip(),
                 'stop_type':  s['stop_type'].strip(),
+                'structure':  s['structure'].strip(),
                 'passengers': passengers,
             }
             station_list.append(entry)

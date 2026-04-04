@@ -6,181 +6,217 @@
     {
       "name": "Forest Hills-71 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "67 Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "63 Dr-Rego Park",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Woodhaven Blvd",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Grand Av-Newtown",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Elmhurst Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Jackson Hts-Roosevelt Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 8
     },
     {
       "name": "65 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Northern Blvd",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "46 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Steinway St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "36 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "21 St-Queensbridge",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Roosevelt Island",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Lexington Av/63 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "57 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "47-50 Sts-Rockefeller Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "42 St-Bryant Pk",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "34 St-Herald Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 13
     },
     {
       "name": "23 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "14 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "W 4 St-Washington Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Broadway-Lafayette St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Delancey St-Essex St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Marcy Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Hewes St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Lorimer St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Flushing Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Myrtle Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Central Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Knickerbocker Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Myrtle-Wyckoff Avs",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "Seneca Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Forest Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Fresh Pond Rd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Middle Village-Metropolitan Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     }
   ]

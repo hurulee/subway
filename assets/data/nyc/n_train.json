@@ -6,141 +6,169 @@
     {
       "name": "Astoria Ditmars Blvd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 0
     },
     {
       "name": "Astoria Blvd",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "30 Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Broadway",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "36 Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "39 Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Queensboro Plaza",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Lexington Av/59 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "5 Av/59 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "57 St-7 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "49 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "34 St-Herald Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 13
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 12
     },
     {
       "name": "Canal St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "36 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "59 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "8 Av",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Fort Hamilton Pkwy",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "New Utrecht Av",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "18 Av",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "20 Av",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Bay Pkwy",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Kings Hwy",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Avenue U",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "86 St",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Coney Island-Stillwell Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     }
   ]

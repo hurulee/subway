@@ -6,111 +6,133 @@
     {
       "name": "Flushing-Main St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "Mets-Willets Point",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "111 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "103 St-Corona Plaza",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "Junction Blvd",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "90 St-Elmhurst Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "82 St-Jackson Hts",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "74 St-Broadway",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 8
     },
     {
       "name": "69 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "61 St-Woodside",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "52 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "46 St-Bliss St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "40 St-Lowery St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "33 St-Rawson St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Queensboro Plaza",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Court Sq",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "Hunters Point Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Vernon Blvd-Jackson Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Grand Central-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 17
     },
     {
       "name": "5 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
-      "passengers": 25
+      "structure": "subway",
+      "passengers": 0
     },
     {
       "name": "34 St-Hudson Yards",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     }
   ]

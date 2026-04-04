@@ -6,106 +6,127 @@
     {
       "name": "Court Sq",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "21 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Greenpoint Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 17
     },
     {
       "name": "Nassau Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 16
     },
     {
       "name": "Metropolitan Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "Broadway",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "Flushing Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Myrtle Willoughby Avs",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 8
     },
     {
       "name": "Bedford-Nostrand Avs",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 15
     },
     {
       "name": "Classon Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "Clinton-Washington Avs",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 8
     },
     {
       "name": "Fulton St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "Hoyt-Schermerhorn",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 21
     },
     {
       "name": "Bergen St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 20
     },
     {
       "name": "Carroll St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 20
     },
     {
       "name": "Smith-9 Sts",
       "stop_type": "local",
+      "structure": "viaduct",
       "passengers": 7
     },
     {
       "name": "4 Av-9 Sts",
       "stop_type": "local",
+      "structure": "viaduct",
       "passengers": 21
     },
     {
       "name": "7 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 21
     },
     {
       "name": "15 St-Prospect Park",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "Fort Hamilton Pkwy",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "Church Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 0
     }
   ]

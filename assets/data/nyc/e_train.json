@@ -6,111 +6,133 @@
     {
       "name": "Jamaica Center-Parsons/Archer",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "Sutphin Blvd-Archer Av-JFK Airport",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Jamaica-Van Wyck",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Briarwood",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Kew Gardens-Union Tpke",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "75 Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Forest Hills-71 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Jackson Hts-Roosevelt Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 8
     },
     {
       "name": "Queens Plaza",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Court Sq-23 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Lexington Av/53 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "5 Av/53 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "7 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "50 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "42 St/Port Authority Bus Terminal",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "34 St-Penn Station",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "23 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "14 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "W 4 St-Washington Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Spring St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Canal St",
       "stop_type": "local_and_express",
-      "passengers": 4
+      "structure": "subway",
+      "passengers": 2
     },
     {
       "name": "World Trade Center",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     }
   ]

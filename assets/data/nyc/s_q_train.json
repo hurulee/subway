@@ -6,26 +6,31 @@
     {
       "name": "Broad Channel",
       "stop_type": "local",
+      "structure": "at_grade",
       "passengers": 9
     },
     {
       "name": "Beach 90 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 30
     },
     {
       "name": "Beach 98 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 16
     },
     {
       "name": "Beach 105 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 12
     },
     {
       "name": "Rockaway Park-Beach 116 St",
       "stop_type": "local",
+      "structure": "at_grade",
       "passengers": 23
     }
   ]

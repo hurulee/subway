@@ -6,191 +6,229 @@
     {
       "name": "Van Cortlandt Park-242",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 0
     },
     {
       "name": "238 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "231 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "Marble Hill-225 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "215 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "207 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Dyckman St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "191 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "181 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "168 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "157 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "145 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "137 St-City College",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "125 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 4
     },
     {
       "name": "116 St-Columbia University",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "Cathedral Pkwy (110 St)",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "103 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "96 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 15
     },
     {
       "name": "86 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "79 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "72 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 17
     },
     {
       "name": "66 St-Lincoln Center",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 8
     },
     {
       "name": "59 St-Columbus Circle",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "50 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "34 St-Penn Station",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 29
     },
     {
       "name": "28 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "23 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "18 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "14 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 19
     },
     {
       "name": "Christopher St-Stonewall",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Houston St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Canal St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Franklin St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Chambers St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "WTC Cortlandt",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "Rector St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "South Ferry",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 12
     }
   ]

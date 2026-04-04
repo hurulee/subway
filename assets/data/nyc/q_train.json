@@ -6,146 +6,175 @@
     {
       "name": "96 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "86 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "72 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Lexington Av/63 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "57 St-7 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "34 St-Herald Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 13
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 12
     },
     {
       "name": "Canal St",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 6
     },
     {
       "name": "DeKalb Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Atlantic Av-Barclays Ctr",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "7 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Prospect Park",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Parkside Av",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Church Av",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Beverley Rd",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Cortelyou Rd",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Newkirk Plaza",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Avenue H",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Avenue J",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Avenue M",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Kings Hwy",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Avenue U",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Neck Rd",
       "stop_type": "local",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Sheepshead Bay",
       "stop_type": "local_and_express",
+      "structure": "open_cut",
       "passengers": 2
     },
     {
       "name": "Brighton Beach",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Ocean Pkwy",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "W 8 St-NY Aquarium",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Coney Island-Stillwell Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     }
   ]

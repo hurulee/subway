@@ -6,151 +6,181 @@
     {
       "name": "Jamaica Center-Parsons/Archer",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "Sutphin Blvd-Archer Av-JFK Airport",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 10
     },
     {
       "name": "121 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "111 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "104 St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Woodhaven Blvd",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "85 St-Forest Pkwy",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "75 St-Elderts Ln",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Cypress Hills",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Crescent St",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Norwood Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Cleveland St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Van Siclen Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Alabama Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Broadway Junction",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "Chauncey St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Halsey St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Gates Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Kosciuszko St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Myrtle Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 4
     },
     {
       "name": "Flushing Av",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 3
     },
     {
       "name": "Lorimer St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Hewes St",
       "stop_type": "local",
+      "structure": "elevated",
       "passengers": 2
     },
     {
       "name": "Marcy Av",
       "stop_type": "local_and_express",
+      "structure": "elevated",
       "passengers": 4
     },
     {
       "name": "Delancey St-Essex St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 11
     },
     {
       "name": "Bowery",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Canal St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 17
     },
     {
       "name": "Chambers St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 9
     },
     {
       "name": "Fulton St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "Broad St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     }
   ]

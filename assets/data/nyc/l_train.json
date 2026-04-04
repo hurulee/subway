@@ -6,121 +6,145 @@
     {
       "name": "8 Av",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 0
     },
     {
       "name": "6 Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 14
     },
     {
       "name": "14 St-Union Sq",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 30
     },
     {
       "name": "3 Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "1 Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 8
     },
     {
       "name": "Bedford Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 12
     },
     {
       "name": "Lorimer St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 5
     },
     {
       "name": "Graham Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "Grand St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Montrose Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Morgan Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Jefferson St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 3
     },
     {
       "name": "DeKalb Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 4
     },
     {
       "name": "Myrtle-Wyckoff Avs",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 7
     },
     {
       "name": "Halsey St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Wilson Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Bushwick Av-Aberdeen St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Broadway Junction",
       "stop_type": "local_and_express",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Atlantic Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Sutter Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Livonia Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "New Lots Av",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "East 105 St",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 2
     },
     {
       "name": "Canarsie-Rockaway Pkwy",
       "stop_type": "local",
+      "structure": "subway",
       "passengers": 0
     }
   ]
