@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/services.dart';
 import 'models.dart';
 
@@ -55,6 +56,8 @@ class RouteData {
   (List<Station>, List<Station>) subset(List<int> indices) {
     final sorted = [...indices]..sort();
     final n = sorted.length;
+    final rng = Random();
+    const variance = 3; // ±3 passengers from base value
 
     final local   = <Station>[];
     final express = <Station>[];
@@ -64,16 +67,18 @@ class RouteData {
       final pos = double.parse(
         (n > 1 ? 0.02 + i / (n - 1) * 0.96 : 0.5).toStringAsFixed(4),
       );
+      final localPax = (src.passengers + rng.nextInt(variance * 2 + 1) - variance).clamp(0, 99);
       local.add(Station(
         name: src.name,
-        passengers: src.passengers,
+        passengers: localPax,
         trackPosition: pos,
         track: TrackType.local,
       ));
       if (src.isExpressStop) {
+        final expressPax = (src.passengers + rng.nextInt(variance * 2 + 1) - variance).clamp(0, 99);
         express.add(Station(
           name: src.name,
-          passengers: src.passengers,
+          passengers: expressPax,
           trackPosition: pos,
           track: TrackType.express,
         ));
