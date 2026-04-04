@@ -127,7 +127,7 @@
       "name": "Times Sq-42 St",
       "stop_type": "local_and_express",
       "structure": "subway",
-      "passengers": 0
+      "passengers": 10
     },
     {
       "name": "34 St-Hudson Yards",

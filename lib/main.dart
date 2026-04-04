@@ -96,23 +96,6 @@ class HudOverlay extends StatelessWidget {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  _hudPill(
-                    data.currentTrack == TrackType.express ? 'EXPRESS' : 'LOCAL',
-                    data.currentTrack == TrackType.express
-                        ? const Color(0xFFCC4400)
-                        : const Color(0xFF0039A6),
-                  ),
-                  if (data.nextStation.isNotEmpty) ...[
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: _hudPill('Next: ${data.nextStation}', Colors.orange),
-                    ),
-                  ],
-                ],
-              ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
                   _signalLight('EXPRESS', data.expressSignal),
                   const SizedBox(width: 10),
                   _signalLight('LOCAL', data.localSignal),

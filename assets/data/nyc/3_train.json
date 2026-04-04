@@ -55,7 +55,7 @@
       "name": "Times Square-42 St",
       "stop_type": "local_and_express",
       "structure": "subway",
-      "passengers": 0
+      "passengers": 15
     },
     {
       "name": "34 St-Penn Station",
