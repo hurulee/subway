@@ -62,10 +62,11 @@ class SubwayGame extends FlameGame {
   // Signals
   late List<(SignalColor, SignalColor)> _segmentSignals;
 
-  // Track bend — single 90-degree test bend
+  // Track bend — single 45-degree bend
   double _bendStartT = 0;
   double _bendEndT = 0;
   bool _hasBend = false;
+  int _bendDirection = 1; // 1 = left, -1 = right
 
   // Obstacles — generated dynamically each level.
   late List<Obstacle> _obstacles;
@@ -204,6 +205,7 @@ class SubwayGame extends FlameGame {
         final margin = (gapEnd - gapStart) * 0.15;
         _bendStartT = gapStart + margin;
         _bendEndT = gapEnd - margin;
+        _bendDirection = -1; // 1 = left, -1 = right
         _hasBend = true;
         return;
       }
@@ -216,10 +218,10 @@ class SubwayGame extends FlameGame {
   double _cumulativeBendAngle() {
     if (!_hasBend) return 0.0;
     if (_train.trackT <= _bendStartT) return 0.0;
-    if (_train.trackT >= _bendEndT) return MapComponent.bendAngle;
+    if (_train.trackT >= _bendEndT) return _bendDirection * MapComponent.bendAngle;
     final progress = (_train.trackT - _bendStartT) / (_bendEndT - _bendStartT);
     final smooth = (1 - cos(pi * progress)) / 2;
-    return MapComponent.bendAngle * smooth;
+    return _bendDirection * MapComponent.bendAngle * smooth;
   }
 
   /// Returns which signal segment an obstacle position belongs to.
@@ -295,6 +297,7 @@ class SubwayGame extends FlameGame {
       bendStartT:      _bendStartT,
       bendEndT:        _bendEndT,
       hasBend:         _hasBend,
+      bendDirection:   _bendDirection,
     );
 
     // Starting station is a terminal — no passengers to pick up

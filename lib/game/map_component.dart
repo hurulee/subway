@@ -28,6 +28,7 @@ class MapComponent {
   final double bendStartT;
   final double bendEndT;
   final bool hasBend;
+  final int bendDirection; // 1 = left, -1 = right
 
   MapComponent({
     required this.localStations,
@@ -40,6 +41,7 @@ class MapComponent {
     this.bendStartT = 0,
     this.bendEndT = 0,
     this.hasBend = false,
+    this.bendDirection = 1,
   });
 
   double _worldY(double trackT) => trackBottomY - trackT * trackLength;
@@ -50,29 +52,30 @@ class MapComponent {
   /// Bend angle constant (45 degrees).
   static const double bendAngle = pi / 4;
 
-  /// World position for a trackT, accounting for the 45° left bend.
+  /// World position for a trackT, accounting for the 45° bend.
   /// Both tracks curve around a shared center so they remain parallel
   /// (concentric arcs with different radii).
+  /// bendDirection: 1 = left, -1 = right.
   Offset worldPosForT(double trackT, double baseX) {
     if (!hasBend || trackT <= bendStartT) {
       return Offset(baseX, _worldY(trackT));
     }
 
+    final dir = bendDirection.toDouble();
     final bendStartY = _worldY(bendStartT);
     final bendPixels = (bendEndT - bendStartT) * trackLength;
     // Reference radius for the midpoint track
     final refRadius = bendPixels / bendAngle;
-    // Per-track radius: offset from the shared center
-    // Center is to the left of _bendCenterX by refRadius
-    final cx = _bendCenterX - refRadius;
+    // Center is offset from _bendCenterX by refRadius in the bend direction
+    final cx = _bendCenterX - dir * refRadius;
     final cy = bendStartY;
-    final radius = baseX - cx; // larger for tracks further right
+    final radius = dir * (baseX - cx); // positive for both directions
 
     if (trackT >= bendEndT) {
-      // After the bend: continuation at 45° (up-left)
+      // After the bend: continuation at bendAngle
       final overshoot = (trackT - bendEndT) * trackLength;
       return Offset(
-        cx + radius * cos(bendAngle) - overshoot * sin(bendAngle),
+        cx + dir * radius * cos(bendAngle) - dir * overshoot * sin(bendAngle),
         cy - radius * sin(bendAngle) - overshoot * cos(bendAngle),
       );
     }
@@ -80,19 +83,18 @@ class MapComponent {
     // During the bend: arc
     final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
     final angle = bendProgress * bendAngle;
-    return Offset(cx + radius * cos(angle), cy - radius * sin(angle));
+    return Offset(cx + dir * radius * cos(angle), cy - radius * sin(angle));
   }
 
   /// Track tangent angle at a given trackT position.
-  /// Returns 0 for straight (upward) sections, -bendAngle after the bend.
+  /// Returns 0 for straight sections, ±bendAngle after the bend.
   /// Computed analytically from the known geometry to avoid finite-difference noise.
   double trackAngleAtT(double trackT, double baseX) {
     if (!hasBend || trackT <= bendStartT) return 0.0;
-    if (trackT >= bendEndT) return -bendAngle;
-    // During the bend: tangent of the arc at this progress
-    // Negative because the track curves leftward (negative x direction)
+    final dir = -bendDirection.toDouble(); // left bend = negative angle
+    if (trackT >= bendEndT) return dir * bendAngle;
     final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
-    return -bendProgress * bendAngle;
+    return dir * bendProgress * bendAngle;
   }
 
   void render(Canvas canvas) {
