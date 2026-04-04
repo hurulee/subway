@@ -844,7 +844,7 @@ class SubwayGame extends FlameGame {
     _levelDone = true;
     final passengerScore = _passengers * 10;
     final timeBonus =
-        ((level.parTime - _elapsed) * 10).round().clamp(0, 999999);
+        ((level.parTime - _elapsed) * 15).round().clamp(0, 999999);
     final levelScore = (passengerScore + timeBonus - _penaltyCount * 50).clamp(0, 999999);
     _totalScore += levelScore;
 
@@ -944,7 +944,7 @@ class SubwayGame extends FlameGame {
 
   int _computeLevelScore() {
     final passengerScore = _passengers * 10;
-    final timeBonus = ((level.parTime - _elapsed) * 10).round().clamp(0, 999999);
+    final timeBonus = ((level.parTime - _elapsed) * 15).round().clamp(0, 999999);
     return (passengerScore + timeBonus - _penaltyCount * 50).clamp(0, 999999);
   }
 
@@ -1064,7 +1064,7 @@ class SubwayGame extends FlameGame {
 
     // ── Screen-space overlays ───────────────────────────────────────────────
     _renderApproachBar(canvas);
-    _renderSpeedIndicator(canvas);
+    // _renderSpeedIndicator(canvas);
     _renderPenaltyFlash(canvas);
   }
 

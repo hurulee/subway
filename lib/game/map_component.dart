@@ -127,6 +127,7 @@ class MapComponent {
   void render(Canvas canvas) {
     _drawTrack(canvas, kLocalTrackX);
     _drawTrack(canvas, kExpressTrackX);
+    _drawColumns(canvas);
 
     for (final sp in switchPoints) {
       _drawSwitchZoneAtT(canvas, sp);
@@ -145,6 +146,38 @@ class MapComponent {
     }
     for (final obs in obstacles) {
       _drawObstacleAtT(canvas, obs);
+    }
+  }
+
+  void _drawColumns(Canvas canvas) {
+    // Support columns between the two tracks, evenly spaced along the track.
+    const spacingPx = 120.0; // pixels between columns
+    final nColumns = (trackLength / spacingPx).floor();
+    final midX = _bendCenterX;
+
+    final columnPaint = Paint()..color = const Color(0xFF555555);
+    final highlightPaint = Paint()..color = const Color(0xFF6A6A6A);
+    const radius = 5.0;
+
+    for (int i = 1; i < nColumns; i++) {
+      final t = i / nColumns;
+
+      // Skip columns that overlap with switch zones
+      final inSwitch = switchPoints.any((sp) =>
+          t >= sp.trackPosition && t <= sp.trackPosition + sp.windowSize);
+      if (inSwitch) continue;
+
+      final pos = worldPosForT(t, midX);
+      final angle = trackAngleAtT(t, midX);
+      const half = 5.0;
+      canvas.save();
+      canvas.translate(pos.dx, pos.dy);
+      canvas.rotate(angle);
+      // Column body
+      canvas.drawRect(Rect.fromLTWH(-half, -half, half * 2, half * 2), columnPaint);
+      // Small highlight to give a 3D look
+      canvas.drawRect(Rect.fromLTWH(-half, -half, half * 0.6, half * 2), highlightPaint);
+      canvas.restore();
     }
   }
 
@@ -182,7 +215,7 @@ class MapComponent {
 
     // Cross-ties
     final tiePaint = Paint()
-      ..color = const Color(0xFF3D2B1A)
+      ..color = const Color(0xFF666666)
       ..strokeWidth = 2;
     double arcAccum = 0;
     const tieSpacing = 20.0;
@@ -302,7 +335,7 @@ class MapComponent {
 
     // 2. Cross-ties — perpendicular to curve, every ~20px of arc length
     final tiePaint = Paint()
-      ..color = const Color(0xFF3D2B1A)
+      ..color = const Color(0xFF666666)
       ..strokeWidth = 2;
     double arcAccum = 0;
     const tieSpacing = 20.0;
@@ -382,19 +415,6 @@ class MapComponent {
       Rect.fromLTWH(platLeft, worldY - platformHalfLen, 5, platformHalfLen * 2),
       paint,
     );
-
-    paint
-      ..color = Colors.white
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(trackX, worldY), 7, paint);
-    paint
-      ..color = station.track == TrackType.express
-          ? const Color(0xFFAA4400)
-          : const Color(0xFF0039A6)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.5;
-    canvas.drawCircle(Offset(trackX, worldY), 7, paint);
-    paint.style = PaintingStyle.fill;
 
     // Station name below the platform
     final namePainter = TextPainter(
