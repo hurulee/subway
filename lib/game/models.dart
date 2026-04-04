@@ -96,6 +96,13 @@ class Obstacle {
   const Obstacle({required this.trackPosition, required this.track});
 }
 
+class Bend {
+  final double startT;
+  final double endT;
+  final int direction; // 1 = left, -1 = right
+  const Bend({required this.startT, required this.endT, required this.direction});
+}
+
 class Level {
   final int startIndex;
   final double parTime;

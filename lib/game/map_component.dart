@@ -24,11 +24,8 @@ class MapComponent {
   final double trackLength;
   final double trackBottomY;
 
-  // Bend
-  final double bendStartT;
-  final double bendEndT;
-  final bool hasBend;
-  final int bendDirection; // 1 = left, -1 = right
+  // Bends
+  final List<Bend> bends;
 
   MapComponent({
     required this.localStations,
@@ -38,10 +35,7 @@ class MapComponent {
     required this.trackLength,
     required this.trackBottomY,
     this.platformHalfLen = 130.0,
-    this.bendStartT = 0,
-    this.bendEndT = 0,
-    this.hasBend = false,
-    this.bendDirection = 1,
+    this.bends = const [],
   });
 
   double _worldY(double trackT) => trackBottomY - trackT * trackLength;
@@ -52,49 +46,81 @@ class MapComponent {
   /// Bend angle constant (45 degrees).
   static const double bendAngle = pi / 4;
 
-  /// World position for a trackT, accounting for the 45° bend.
-  /// Both tracks curve around a shared center so they remain parallel
-  /// (concentric arcs with different radii).
-  /// bendDirection: 1 = left, -1 = right.
+  /// World position for a trackT, supporting multiple bends.
+  /// Tracks the reference midpoint and accumulated angle through each bend,
+  /// with per-track offset applied perpendicular to the current heading.
   Offset worldPosForT(double trackT, double baseX) {
-    if (!hasBend || trackT <= bendStartT) {
-      return Offset(baseX, _worldY(trackT));
+    if (bends.isEmpty) return Offset(baseX, _worldY(trackT));
+
+    // Reference midpoint position and accumulated heading angle.
+    // angle=0 means straight up (-Y). Heading vector = (-sin(a), -cos(a)).
+    // Left-perpendicular = (-cos(a), sin(a)).
+    double rx = _bendCenterX, ry = _worldY(0);
+    double a = 0.0;
+    double curT = 0.0;
+
+    for (final bend in bends) {
+      if (trackT <= bend.startT) break;
+
+      // Advance reference straight to bend start
+      final d = (bend.startT - curT) * trackLength;
+      rx -= d * sin(a);
+      ry -= d * cos(a);
+      curT = bend.startT;
+
+      final dir = bend.direction.toDouble();
+      final bendPx = (bend.endT - bend.startT) * trackLength;
+      final refR = bendPx / bendAngle;
+
+      // Arc center: perpendicular to heading, in bend direction
+      final cx = rx - dir * refR * cos(a);
+      final cy = ry + dir * refR * sin(a);
+
+      if (trackT <= bend.endT) {
+        // Within this bend's arc
+        final progress = (trackT - bend.startT) / (bend.endT - bend.startT);
+        final arcA = progress * bendAngle;
+        final trackOff = baseX - _bendCenterX;
+        final r = refR + dir * trackOff;
+        // Vector from center back to ref at start = (dir*cos(a), -dir*sin(a)) * refR
+        // Rotate this by -dir * arcA
+        final startAngle = atan2(-dir * sin(a), dir * cos(a));
+        final curAngle = startAngle - dir * arcA;
+        return Offset(cx + r * cos(curAngle), cy + r * sin(curAngle));
+      }
+
+      // Advance past this bend
+      final startAngle = atan2(-dir * sin(a), dir * cos(a));
+      final endAngle = startAngle - dir * bendAngle;
+      rx = cx + refR * cos(endAngle);
+      ry = cy + refR * sin(endAngle);
+      a += dir * bendAngle;
+      curT = bend.endT;
     }
 
-    final dir = bendDirection.toDouble();
-    final bendStartY = _worldY(bendStartT);
-    final bendPixels = (bendEndT - bendStartT) * trackLength;
-    // Reference radius for the midpoint track
-    final refRadius = bendPixels / bendAngle;
-    // Center is offset from _bendCenterX by refRadius in the bend direction
-    final cx = _bendCenterX - dir * refRadius;
-    final cy = bendStartY;
-    final radius = dir * (baseX - cx); // positive for both directions
-
-    if (trackT >= bendEndT) {
-      // After the bend: continuation at bendAngle
-      final overshoot = (trackT - bendEndT) * trackLength;
-      return Offset(
-        cx + dir * radius * cos(bendAngle) - dir * overshoot * sin(bendAngle),
-        cy - radius * sin(bendAngle) - overshoot * cos(bendAngle),
-      );
-    }
-
-    // During the bend: arc
-    final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
-    final angle = bendProgress * bendAngle;
-    return Offset(cx + dir * radius * cos(angle), cy - radius * sin(angle));
+    // Straight segment (before first unprocessed bend, or after all bends)
+    final d = (trackT - curT) * trackLength;
+    final trackOff = baseX - _bendCenterX;
+    return Offset(
+      rx + trackOff * cos(a) - d * sin(a),
+      ry - trackOff * sin(a) - d * cos(a),
+    );
   }
 
   /// Track tangent angle at a given trackT position.
-  /// Returns 0 for straight sections, ±bendAngle after the bend.
-  /// Computed analytically from the known geometry to avoid finite-difference noise.
+  /// Accumulates across all bends. Computed analytically.
   double trackAngleAtT(double trackT, double baseX) {
-    if (!hasBend || trackT <= bendStartT) return 0.0;
-    final dir = -bendDirection.toDouble(); // left bend = negative angle
-    if (trackT >= bendEndT) return dir * bendAngle;
-    final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
-    return dir * bendProgress * bendAngle;
+    double acc = 0.0;
+    for (final bend in bends) {
+      if (trackT <= bend.startT) return acc;
+      final dir = -bend.direction.toDouble();
+      if (trackT <= bend.endT) {
+        final progress = (trackT - bend.startT) / (bend.endT - bend.startT);
+        return acc + dir * progress * bendAngle;
+      }
+      acc += dir * bendAngle;
+    }
+    return acc;
   }
 
   void render(Canvas canvas) {

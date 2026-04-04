@@ -62,11 +62,8 @@ class SubwayGame extends FlameGame {
   // Signals
   late List<(SignalColor, SignalColor)> _segmentSignals;
 
-  // Track bend — single 45-degree bend
-  double _bendStartT = 0;
-  double _bendEndT = 0;
-  bool _hasBend = false;
-  int _bendDirection = 1; // 1 = left, -1 = right
+  // Track bends
+  List<Bend> _bends = [];
 
   // Obstacles — generated dynamically each level.
   late List<Obstacle> _obstacles;
@@ -183,13 +180,14 @@ class SubwayGame extends FlameGame {
     return result;
   }
 
-  void _setupBend() {
-    _hasBend = false;
+  void _setupBends() {
+    _bends = [];
     final n = _localStations.length;
     if (n < 4) return;
 
-    // Find the second inter-station gap without a switch
+    // Find all inter-station gaps without a switch, skip the first eligible
     int found = 0;
+    int nextDir = 1; // alternate left/right
     for (int i = 1; i < n - 1; i++) {
       final gapStart = _localStations[i].trackPosition;
       final gapEnd = _localStations[i + 1].trackPosition;
@@ -200,28 +198,35 @@ class SubwayGame extends FlameGame {
       if (hasSwitchInGap) continue;
 
       found++;
-      if (found >= 2) {
-        // Use inner portion of the gap (avoid station edges)
-        final margin = (gapEnd - gapStart) * 0.15;
-        _bendStartT = gapStart + margin;
-        _bendEndT = gapEnd - margin;
-        _bendDirection = -1; // 1 = left, -1 = right
-        _hasBend = true;
-        return;
-      }
+      if (found < 2) continue; // skip first eligible gap
+
+      final margin = (gapEnd - gapStart) * 0.15;
+      _bends.add(Bend(
+        startT: gapStart + margin,
+        endT: gapEnd - margin,
+        direction: nextDir,
+      ));
+      nextDir = -nextDir; // alternate
     }
   }
 
   /// Cumulative camera rotation angle at the train's current trackT.
-  /// 0 before the bend, smoothly ramps to -pi/2 (90° left) through the bend,
-  /// stays at -pi/2 after.
+  /// Accumulates across all bends with cosine easing per bend.
   double _cumulativeBendAngle() {
-    if (!_hasBend) return 0.0;
-    if (_train.trackT <= _bendStartT) return 0.0;
-    if (_train.trackT >= _bendEndT) return _bendDirection * MapComponent.bendAngle;
-    final progress = (_train.trackT - _bendStartT) / (_bendEndT - _bendStartT);
-    final smooth = (1 - cos(pi * progress)) / 2;
-    return _bendDirection * MapComponent.bendAngle * smooth;
+    if (_bends.isEmpty) return 0.0;
+    double acc = 0.0;
+    final t = _train.trackT;
+    for (final bend in _bends) {
+      if (t <= bend.startT) return acc;
+      if (t >= bend.endT) {
+        acc += bend.direction * MapComponent.bendAngle;
+        continue;
+      }
+      final progress = (t - bend.startT) / (bend.endT - bend.startT);
+      final smooth = (1 - cos(pi * progress)) / 2;
+      return acc + bend.direction * MapComponent.bendAngle * smooth;
+    }
+    return acc;
   }
 
   /// Returns which signal segment an obstacle position belongs to.
@@ -273,7 +278,7 @@ class SubwayGame extends FlameGame {
     _trackBottomY = trackBottomYForCount(count);
     _switchPoints = _generateSwitchPoints();
     _obstacles    = _generateObstacles();
-    _setupBend();
+    _setupBends();
   }
 
   @override
@@ -294,10 +299,7 @@ class SubwayGame extends FlameGame {
       platformHalfLen: level.platformHalfLen,
       trackLength:     _trackLength,
       trackBottomY:    _trackBottomY,
-      bendStartT:      _bendStartT,
-      bendEndT:        _bendEndT,
-      hasBend:         _hasBend,
-      bendDirection:   _bendDirection,
+      bends:           _bends,
     );
 
     // Starting station is a terminal — no passengers to pick up
