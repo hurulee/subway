@@ -79,14 +79,14 @@ class MapComponent {
 
   /// Track tangent angle at a given trackT position.
   /// Returns 0 for straight (upward) sections, pi/2 after the bend (leftward).
+  /// Computed analytically from the known geometry to avoid finite-difference noise.
   double trackAngleAtT(double trackT, double baseX) {
-    const eps = 0.0001;
-    final posA = worldPosForT(trackT + eps, baseX);
-    final posB = worldPosForT(trackT - eps, baseX);
-    final dx = posA.dx - posB.dx;
-    final dy = posA.dy - posB.dy;
-    // atan2(dx, -dy) gives 0 when direction is (0, -1) i.e. upward
-    return atan2(dx, -dy);
+    if (!hasBend || trackT <= bendStartT) return 0.0;
+    if (trackT >= bendEndT) return -pi / 2;
+    // During the bend: tangent of a quarter-circle arc at this progress
+    // Negative because the track curves leftward (negative x direction)
+    final bendProgress = (trackT - bendStartT) / (bendEndT - bendStartT);
+    return -bendProgress * pi / 2;
   }
 
   void render(Canvas canvas) {

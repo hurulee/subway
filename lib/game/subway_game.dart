@@ -378,9 +378,9 @@ class SubwayGame extends FlameGame {
     // then update from measured arc steps so we converge on curves of any radius.
     double pxPerT = _trackLength;
     int safety = 0;
-    while (remaining > 0.5 && safety < 1000) {
+    while (remaining > 0.01 && safety < 1000) {
       safety++;
-      final targetPx = remaining.clamp(1.0, 4.0);
+      final targetPx = remaining.clamp(0.5, 4.0);
       final stepT = targetPx / pxPerT;
       t -= stepT;
       final cur = _map.worldPosForT(t, baseX);
@@ -391,6 +391,10 @@ class SubwayGame extends FlameGame {
       }
       remaining -= arcStep;
       prev = cur;
+    }
+    // Final correction: adjust by remaining overshoot/undershoot
+    if (pxPerT > 0) {
+      t -= remaining / pxPerT;
     }
     return t;
   }
@@ -431,6 +435,9 @@ class SubwayGame extends FlameGame {
     }
   }
 
+  static const double _fixedDt = 1.0 / 120.0; // fixed physics timestep
+  double _dtAccumulator = 0.0;
+
   @override
   void update(double dt) {
     super.update(dt);
@@ -438,6 +445,18 @@ class SubwayGame extends FlameGame {
 
     if (_waitingForStart) return;
 
+    // Accumulate frame time and step physics at a fixed rate
+    _dtAccumulator += dt;
+    // Cap to avoid spiral of death if app was suspended
+    if (_dtAccumulator > 0.1) _dtAccumulator = 0.1;
+    while (_dtAccumulator >= _fixedDt) {
+      _dtAccumulator -= _fixedDt;
+      _fixedUpdate(_fixedDt);
+      if (_levelDone) return;
+    }
+  }
+
+  void _fixedUpdate(double dt) {
     _elapsed += dt;
     if (_penaltyFlashTimer > 0) _penaltyFlashTimer -= dt;
     _train.isBraking = brakingNotifier.value;
@@ -948,9 +967,9 @@ class SubwayGame extends FlameGame {
     final screenTrainX = baseTrainX; // keep horizontal position stable
     final screenTrainY = size.y * trainScreenFraction;
     canvas.save();
-    canvas.translate(screenTrainX, screenTrainY);
+    canvas.translate(screenTrainX.roundToDouble(), screenTrainY.roundToDouble());
     canvas.rotate(bendAngle);
-    canvas.translate(-trainWorldPos.dx, -trainWorldPos.dy);
+    canvas.translate(-trainWorldPos.dx.roundToDouble(), -trainWorldPos.dy.roundToDouble());
 
     _map.render(canvas);
 
@@ -987,7 +1006,7 @@ class SubwayGame extends FlameGame {
         final pos = _map.worldPosForT(carTrackT, carBaseX);
 
         // Tangent combines both the S-curve lane change and the track bend
-        const eps = 0.0001;
+        const eps = 0.002;
         final laneA = _train.laneOffsetAt(carTrackT + eps);
         final laneB = _train.laneOffsetAt(carTrackT - eps);
         final posA = _map.worldPosForT(carTrackT + eps, kLocalTrackX + trackDx * laneA);
@@ -1024,14 +1043,8 @@ class SubwayGame extends FlameGame {
         final carT = carTrackTs[i];
         final pos = _map.worldPosForT(carT, baseX);
 
-        // Tangent for rotation
-        const eps = 0.0001;
-        final posA = _map.worldPosForT(carT + eps, baseX);
-        final posB = _map.worldPosForT(carT - eps, baseX);
-        final dx = posA.dx - posB.dx;
-        final dy = posA.dy - posB.dy;
-        // atan2(dx, -dy) gives 0 when direction is (0, -1) i.e. upward
-        final carAngle = atan2(dx, -dy);
+        // Tangent for rotation — use analytical track angle (no lane change here)
+        final carAngle = _map.trackAngleAtT(carT, baseX);
 
         canvas.save();
         canvas.translate(pos.dx, pos.dy);
