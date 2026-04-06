@@ -528,6 +528,26 @@ class MapComponent {
   }
 
   void _drawObstacle(Canvas canvas, Obstacle obs) {
+    switch (obs.type) {
+      case ObstacleType.barricade:
+        _drawBarricade(canvas, obs);
+        break;
+      case ObstacleType.flooding:
+        _drawFlooding(canvas, obs);
+        break;
+      case ObstacleType.fire:
+        _drawFire(canvas, obs);
+        break;
+      case ObstacleType.citiBike:
+        _drawCitiBike(canvas, obs);
+        break;
+      case ObstacleType.shoppingCart:
+        _drawShoppingCart(canvas, obs);
+        break;
+    }
+  }
+
+  void _drawBarricade(Canvas canvas, Obstacle obs) {
     final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
     final worldY = _worldY(obs.trackPosition);
 
@@ -554,11 +574,325 @@ class MapComponent {
     canvas.drawLine(Offset(trackX - 8, worldY - 10), Offset(trackX + 8, worldY + 10), xPaint);
     canvas.drawLine(Offset(trackX + 8, worldY - 10), Offset(trackX - 8, worldY + 10), xPaint);
 
-    final glowPaint = Paint()
-      ..color = const Color(0x44FF4400)
+  }
+
+  void _drawFlooding(Canvas canvas, Obstacle obs) {
+    final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
+    final worldY = _worldY(obs.trackPosition);
+
+    // Murky water puddle — long with very wavy edges
+    final waterPaint = Paint()..color = const Color(0xFF4A90B0);
+    final puddlePath = Path()
+      ..moveTo(trackX - 18, worldY - 14)
+      // Top edge — wavy, rounded
+      ..cubicTo(trackX - 22, worldY - 30, trackX - 18, worldY - 50, trackX - 8, worldY - 60)
+      ..cubicTo(trackX, worldY - 68, trackX + 10, worldY - 68, trackX + 16, worldY - 58)
+      ..cubicTo(trackX + 22, worldY - 48, trackX + 20, worldY - 38, trackX + 22, worldY - 30)
+      // Right edge — wavy
+      ..cubicTo(trackX + 28, worldY - 18, trackX + 20, worldY - 6, trackX + 26, worldY + 8)
+      ..cubicTo(trackX + 30, worldY + 22, trackX + 20, worldY + 30, trackX + 26, worldY + 42)
+      // Bottom edge — wavy scallops
+      ..cubicTo(trackX + 28, worldY + 56, trackX + 14, worldY + 64, trackX + 8, worldY + 70)
+      ..cubicTo(trackX + 2, worldY + 76, trackX - 6, worldY + 66, trackX - 2, worldY + 60)
+      ..cubicTo(trackX - 8, worldY + 52, trackX - 20, worldY + 70, trackX - 20, worldY + 56)
+      // Left edge — wavy
+      ..cubicTo(trackX - 26, worldY + 42, trackX - 28, worldY + 28, trackX - 24, worldY + 14)
+      ..cubicTo(trackX - 18, worldY + 0, trackX - 26, worldY - 6, trackX - 18, worldY - 14)
+      ..close();
+    canvas.drawPath(puddlePath, waterPaint);
+
+    // Lighter inner reflection
+    final reflectPaint = Paint()..color = const Color(0x555090AA);
+    final reflectPath = Path()
+      ..moveTo(trackX - 6, worldY - 24)
+      ..cubicTo(trackX - 4, worldY - 40, trackX + 8, worldY - 38, trackX + 10, worldY - 22)
+      ..cubicTo(trackX + 14, worldY - 4, trackX + 6, worldY + 20, trackX - 2, worldY + 18)
+      ..cubicTo(trackX - 10, worldY + 14, trackX - 8, worldY - 8, trackX - 6, worldY - 24)
+      ..close();
+    canvas.drawPath(reflectPath, reflectPaint);
+
+    // Ripple rings
+    final ripplePaint = Paint()
+      ..color = const Color(0x6690C0D0)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 6;
-    canvas.drawRect(Rect.fromLTWH(trackX - 18, worldY - 22, 36, 44), glowPaint);
+      ..strokeWidth = 0.8;
+    canvas.drawOval(Rect.fromLTWH(trackX - 6, worldY - 46, 10, 6), ripplePaint);
+    canvas.drawOval(Rect.fromLTWH(trackX + 3, worldY - 12, 8, 5), ripplePaint);
+    canvas.drawOval(Rect.fromLTWH(trackX - 4, worldY + 20, 9, 5), ripplePaint);
+    canvas.drawOval(Rect.fromLTWH(trackX + 2, worldY + 44, 8, 5), ripplePaint);
+
+  }
+
+  void _drawCitiBike(Canvas canvas, Obstacle obs) {
+    final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
+    final worldY = _worldY(obs.trackPosition);
+
+    canvas.save();
+    canvas.translate(trackX.toDouble(), worldY);
+    canvas.rotate(obs.rotation);
+    canvas.translate(-trackX.toDouble(), -worldY);
+
+    const blue = Color(0xFF1A5AA0);
+    const darkBlue = Color(0xFF0E3D6E);
+    const silver = Color(0xFFBBBBBB);
+    const darkSilver = Color(0xFF888888);
+    const black = Color(0xFF222222);
+
+    // Bike is lying on its side — drawn as side view
+    // Rear wheel
+    final wheelPaint = Paint()
+      ..color = darkSilver
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0;
+    final tirePaint = Paint()
+      ..color = black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.5;
+    // Rear wheel
+    canvas.drawCircle(Offset(trackX - 10, worldY + 14), 10, tirePaint);
+    canvas.drawCircle(Offset(trackX - 10, worldY + 14), 8, wheelPaint);
+    // Rear hub
+    canvas.drawCircle(Offset(trackX - 10, worldY + 14), 2, Paint()..color = silver);
+    // Spokes
+    final spokePaint = Paint()
+      ..color = silver
+      ..strokeWidth = 0.5;
+    for (int i = 0; i < 8; i++) {
+      final a = i * pi / 4;
+      canvas.drawLine(
+        Offset(trackX - 10 + 2 * cos(a), worldY + 14 + 2 * sin(a)),
+        Offset(trackX - 10 + 8 * cos(a), worldY + 14 + 8 * sin(a)),
+        spokePaint,
+      );
+    }
+
+    // Front wheel
+    canvas.drawCircle(Offset(trackX + 10, worldY - 14), 10, tirePaint);
+    canvas.drawCircle(Offset(trackX + 10, worldY - 14), 8, wheelPaint);
+    // Front hub
+    canvas.drawCircle(Offset(trackX + 10, worldY - 14), 2, Paint()..color = silver);
+    // Spokes
+    for (int i = 0; i < 8; i++) {
+      final a = i * pi / 4;
+      canvas.drawLine(
+        Offset(trackX + 10 + 2 * cos(a), worldY - 14 + 2 * sin(a)),
+        Offset(trackX + 10 + 8 * cos(a), worldY - 14 + 8 * sin(a)),
+        spokePaint,
+      );
+    }
+
+    // Frame — blue
+    final framePaint = Paint()
+      ..color = blue
+      ..strokeWidth = 3.5
+      ..strokeCap = StrokeCap.round;
+    // Down tube (bottom bracket to head tube)
+    canvas.drawLine(Offset(trackX - 6, worldY + 10), Offset(trackX + 8, worldY - 10), framePaint);
+    // Seat tube (bottom bracket up to seat)
+    canvas.drawLine(Offset(trackX - 6, worldY + 10), Offset(trackX - 10, worldY - 4), framePaint);
+    // Top tube (seat to head tube)
+    canvas.drawLine(Offset(trackX - 10, worldY - 4), Offset(trackX + 8, worldY - 10), framePaint);
+    // Chain stay (bottom bracket to rear axle)
+    canvas.drawLine(Offset(trackX - 6, worldY + 10), Offset(trackX - 10, worldY + 14), framePaint);
+    // Seat stay (seat to rear axle)
+    final stayPaint = Paint()
+      ..color = blue
+      ..strokeWidth = 2.5
+      ..strokeCap = StrokeCap.round;
+    canvas.drawLine(Offset(trackX - 10, worldY - 2), Offset(trackX - 10, worldY + 14), stayPaint);
+    // Fork (head tube to front axle)
+    canvas.drawLine(Offset(trackX + 8, worldY - 10), Offset(trackX + 10, worldY - 14), framePaint);
+
+    // Handlebar
+    final handlePaint = Paint()
+      ..color = black
+      ..strokeWidth = 2.5
+      ..strokeCap = StrokeCap.round;
+    canvas.drawLine(Offset(trackX + 6, worldY - 14), Offset(trackX + 14, worldY - 14), handlePaint);
+    // Handlebar stem
+    canvas.drawLine(Offset(trackX + 9, worldY - 12), Offset(trackX + 9, worldY - 16), handlePaint);
+
+    // Seat
+    final seatPaint = Paint()..color = black;
+    canvas.drawOval(Rect.fromLTWH(trackX - 14, worldY - 7, 8, 4), seatPaint);
+
+    // Front basket
+    final basketPaint = Paint()
+      ..color = darkBlue
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.5;
+    canvas.drawRect(Rect.fromLTWH(trackX + 12, worldY - 20, 8, 8), basketPaint);
+    // Basket fill
+    canvas.drawRect(
+      Rect.fromLTWH(trackX + 12, worldY - 20, 8, 8),
+      Paint()..color = const Color(0x881A5AA0),
+    );
+
+    // Pedal/crank
+    canvas.drawCircle(Offset(trackX - 6, worldY + 10), 3, Paint()..color = darkSilver);
+    // Pedal
+    canvas.drawLine(
+      Offset(trackX - 6, worldY + 7),
+      Offset(trackX - 6, worldY + 13),
+      Paint()..color = silver..strokeWidth = 1.5..strokeCap = StrokeCap.round,
+    );
+
+    canvas.restore();
+  }
+
+  void _drawShoppingCart(Canvas canvas, Obstacle obs) {
+    final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
+    final worldY = _worldY(obs.trackPosition);
+
+    const red = Color(0xFFCC2222);
+    const darkRed = Color(0xFF991818);
+    const black = Color(0xFF222222);
+    const silver = Color(0xFFAAAAAA);
+
+    canvas.save();
+    canvas.translate(trackX.toDouble(), worldY);
+    canvas.rotate(obs.rotation);
+    canvas.translate(-trackX.toDouble(), -worldY);
+
+    // Cart basket — wireframe look, side view (scaled up)
+    final basketPaint = Paint()
+      ..color = red
+      ..strokeWidth = 2.5
+      ..style = PaintingStyle.stroke;
+
+    // Basket body — trapezoid shape (wider, shorter)
+    final basket = Path()
+      ..moveTo(trackX - 18, worldY - 10)
+      ..lineTo(trackX + 20, worldY - 10)
+      ..lineTo(trackX + 16, worldY + 10)
+      ..lineTo(trackX - 14, worldY + 10)
+      ..close();
+    canvas.drawPath(basket, basketPaint);
+    // Fill with semi-transparent red
+    canvas.drawPath(basket, Paint()..color = const Color(0x44CC2222));
+
+    // Wire grid lines — horizontal (dense)
+    final wirePaint = Paint()
+      ..color = darkRed
+      ..strokeWidth = 1.0;
+    for (double y = -6; y <= 6; y += 4) {
+      final t = (y + 10) / 20;
+      final leftX = trackX - 18 + 4 * t;
+      final rightX = trackX + 20 - 4 * t;
+      canvas.drawLine(Offset(leftX, worldY + y), Offset(rightX, worldY + y), wirePaint);
+    }
+    // Wire grid lines — vertical (dense)
+    for (double x = -14; x <= 16; x += 3.5) {
+      final t0 = (x + 18) / 38;
+      final topX = trackX - 18 + t0 * 38;
+      final bottomX = trackX - 14 + t0 * 30;
+      canvas.drawLine(Offset(topX, worldY - 10), Offset(bottomX, worldY + 10), wirePaint);
+    }
+
+    // Handle — extends up from back of cart
+    final handlePaint = Paint()
+      ..color = red
+      ..strokeWidth = 3.0
+      ..strokeCap = StrokeCap.round;
+    canvas.drawLine(Offset(trackX - 18, worldY - 10), Offset(trackX - 24, worldY - 26), handlePaint);
+    // Handle grip bar
+    canvas.drawLine(Offset(trackX - 24, worldY - 26), Offset(trackX - 12, worldY - 26), handlePaint);
+    // Handle grip — black rubber
+    canvas.drawLine(
+      Offset(trackX - 24, worldY - 26),
+      Offset(trackX - 12, worldY - 26),
+      Paint()..color = black..strokeWidth = 4.5..strokeCap = StrokeCap.round,
+    );
+
+    // Child seat flap at top
+    final flapPaint = Paint()
+      ..color = red
+      ..strokeWidth = 1.8
+      ..style = PaintingStyle.stroke;
+    canvas.drawLine(Offset(trackX - 4, worldY - 10), Offset(trackX - 4, worldY - 5), flapPaint);
+    canvas.drawLine(Offset(trackX + 6, worldY - 10), Offset(trackX + 6, worldY - 5), flapPaint);
+
+    // Front support leg
+    final legPaint = Paint()
+      ..color = silver
+      ..strokeWidth = 2.0;
+    canvas.drawLine(Offset(trackX + 16, worldY + 10), Offset(trackX + 20, worldY + 22), legPaint);
+    // Rear support leg
+    canvas.drawLine(Offset(trackX - 14, worldY + 10), Offset(trackX - 14, worldY + 22), legPaint);
+
+    // Wheels
+    final wheelPaint = Paint()..color = black;
+    canvas.drawCircle(Offset(trackX + 20, worldY + 25), 4.5, wheelPaint);
+    canvas.drawCircle(Offset(trackX - 14, worldY + 25), 4.5, wheelPaint);
+    // Wheel hubs
+    canvas.drawCircle(Offset(trackX + 20, worldY + 25), 1.8, Paint()..color = silver);
+    canvas.drawCircle(Offset(trackX - 14, worldY + 25), 1.8, Paint()..color = silver);
+
+    // Bottom rack/shelf under basket
+    final rackPaint = Paint()
+      ..color = darkRed
+      ..strokeWidth = 1.5;
+    canvas.drawLine(Offset(trackX - 14, worldY + 16), Offset(trackX + 16, worldY + 16), rackPaint);
+    canvas.drawLine(Offset(trackX - 14, worldY + 16), Offset(trackX - 14, worldY + 10), rackPaint);
+    canvas.drawLine(Offset(trackX + 16, worldY + 16), Offset(trackX + 16, worldY + 10), rackPaint);
+    // Rack wire lines
+    for (double x = -8; x <= 10; x += 4) {
+      canvas.drawLine(Offset(trackX + x, worldY + 10), Offset(trackX + x, worldY + 16), rackPaint);
+    }
+
+    canvas.restore();
+  }
+
+  void _drawFire(Canvas canvas, Obstacle obs) {
+    final trackX = obs.track == TrackType.local ? kLocalTrackX : kExpressTrackX;
+    final worldY = _worldY(obs.trackPosition);
+
+    // Dark char base
+    final charPaint = Paint()..color = const Color(0xFF2A1A0A);
+    canvas.drawOval(
+      Rect.fromLTWH(trackX - 16, worldY + 10, 32, 14),
+      charPaint,
+    );
+
+    // Large outer flames — red/orange
+    final outerFlamePaint = Paint()..color = const Color(0xFFCC2200);
+    final outerFlame = Path()
+      ..moveTo(trackX - 14, worldY + 14)
+      ..cubicTo(trackX - 18, worldY - 4, trackX - 10, worldY - 18, trackX - 4, worldY - 28)
+      ..cubicTo(trackX - 2, worldY - 16, trackX - 6, worldY - 8, trackX, worldY - 20)
+      ..cubicTo(trackX + 4, worldY - 30, trackX + 8, worldY - 22, trackX + 6, worldY - 34)
+      ..cubicTo(trackX + 12, worldY - 20, trackX + 16, worldY - 8, trackX + 14, worldY + 14)
+      ..close();
+    canvas.drawPath(outerFlame, outerFlamePaint);
+
+    // Middle flames — orange
+    final midFlamePaint = Paint()..color = const Color(0xFFEE6600);
+    final midFlame = Path()
+      ..moveTo(trackX - 10, worldY + 12)
+      ..cubicTo(trackX - 12, worldY, trackX - 6, worldY - 12, trackX - 2, worldY - 20)
+      ..cubicTo(trackX, worldY - 10, trackX + 2, worldY - 16, trackX + 4, worldY - 24)
+      ..cubicTo(trackX + 8, worldY - 14, trackX + 12, worldY - 2, trackX + 10, worldY + 12)
+      ..close();
+    canvas.drawPath(midFlame, midFlamePaint);
+
+    // Inner flames — yellow
+    final innerFlamePaint = Paint()..color = const Color(0xFFFFCC00);
+    final innerFlame = Path()
+      ..moveTo(trackX - 6, worldY + 10)
+      ..cubicTo(trackX - 8, worldY + 2, trackX - 4, worldY - 6, trackX - 1, worldY - 12)
+      ..cubicTo(trackX + 1, worldY - 4, trackX + 3, worldY - 10, trackX + 4, worldY - 14)
+      ..cubicTo(trackX + 6, worldY - 6, trackX + 8, worldY + 2, trackX + 6, worldY + 10)
+      ..close();
+    canvas.drawPath(innerFlame, innerFlamePaint);
+
+    // Bright white-yellow core
+    final corePaint = Paint()..color = const Color(0xCCFFEEAA);
+    final core = Path()
+      ..moveTo(trackX - 2, worldY + 8)
+      ..cubicTo(trackX - 3, worldY + 2, trackX - 1, worldY - 2, trackX, worldY - 4)
+      ..cubicTo(trackX + 1, worldY - 2, trackX + 3, worldY + 2, trackX + 2, worldY + 8)
+      ..close();
+    canvas.drawPath(core, corePaint);
   }
 
   void _renderDebris(Canvas canvas) {
@@ -576,27 +910,56 @@ class MapComponent {
 
       switch (d.type) {
         case _DebrisType.groceryBag:
-          // Crinkled plastic bag shape
-          final bagPaint = Paint()..color = const Color(0xCCDDDDDD);
-          final path = Path()
-            ..moveTo(-5, -4)
-            ..lineTo(-3, -6)
-            ..lineTo(2, -5)
-            ..lineTo(5, -3)
-            ..lineTo(4, 2)
-            ..lineTo(6, 5)
-            ..lineTo(1, 4)
-            ..lineTo(-2, 6)
-            ..lineTo(-5, 3)
-            ..lineTo(-6, -1)
-            ..close();
-          canvas.drawPath(path, bagPaint);
-          // Bag handles
-          final handlePaint = Paint()
-            ..color = const Color(0x88AAAAAA)
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 0.8;
-          canvas.drawOval(Rect.fromLTWH(-3, -8, 6, 4), handlePaint);
+          // T-shirt style "Thank You" bag
+          final bagPaint = Paint()..color = const Color(0xDDEEEEEE);
+          // Bag body
+          canvas.drawRRect(
+            RRect.fromRectAndRadius(
+              Rect.fromLTWH(-5, -3, 10, 12),
+              const Radius.circular(0.5),
+            ),
+            bagPaint,
+          );
+          // Left handle strap
+          final handlePaint = Paint()..color = const Color(0xDDEEEEEE);
+          final leftHandle = Path()
+            ..moveTo(-4, -3)
+            ..lineTo(-4, -8)
+            ..cubicTo(-4, -10, -2, -10, -2, -8)
+            ..lineTo(-2, -3);
+          canvas.drawPath(leftHandle, handlePaint);
+          // Right handle strap
+          final rightHandle = Path()
+            ..moveTo(2, -3)
+            ..lineTo(2, -8)
+            ..cubicTo(2, -10, 4, -10, 4, -8)
+            ..lineTo(4, -3);
+          canvas.drawPath(rightHandle, handlePaint);
+          // Handle holes
+          final holePaint = Paint()..color = const Color(0xFF111111);
+          canvas.drawOval(Rect.fromLTWH(-3.5, -9, 1.5, 2.5), holePaint);
+          canvas.drawOval(Rect.fromLTWH(2, -9, 1.5, 2.5), holePaint);
+          // "Thank You" text in red
+          final textPaint = Paint()
+            ..color = const Color(0xFFDD3333)
+            ..strokeWidth = 0.4
+            ..style = PaintingStyle.stroke;
+          // Simplified cursive strokes for "Thank You" at tiny scale
+          final line1 = Path()
+            ..moveTo(-3.5, 1)
+            ..cubicTo(-2, 0, 0, 0, 1, 1)
+            ..cubicTo(2, 1.5, 3, 1, 3.5, 0.5);
+          canvas.drawPath(line1, textPaint);
+          final line2 = Path()
+            ..moveTo(-3, 4)
+            ..cubicTo(-1.5, 3, 0.5, 3, 1.5, 4)
+            ..cubicTo(2.5, 4.5, 3.5, 4, 4, 3.5);
+          canvas.drawPath(line2, textPaint);
+          final line3 = Path()
+            ..moveTo(-2.5, 7)
+            ..cubicTo(-1, 6, 1, 6, 2, 7)
+            ..cubicTo(3, 7.5, 3.8, 7, 4.2, 6.5);
+          canvas.drawPath(line3, textPaint);
           break;
 
         case _DebrisType.sodaCup:
@@ -619,6 +982,177 @@ class MapComponent {
             Rect.fromLTWH(-3.5, -4.5, 7, 1.5),
             Paint()..color = const Color(0xFFCCCCCC),
           );
+          // Bendy straw
+          final strawPaint = Paint()
+            ..color = Colors.white
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 1.0
+            ..strokeCap = StrokeCap.round;
+          final strawPath = Path()
+            ..moveTo(1, -4.5)
+            ..lineTo(1, -7)
+            ..cubicTo(1, -8.5, 3, -8.5, 3, -9.5)
+            ..lineTo(4.5, -12);
+          canvas.drawPath(strawPath, strawPaint);
+          break;
+
+        case _DebrisType.candyBar:
+          // Brown wrapper body
+          final wrapPaint = Paint()..color = const Color(0xFF4A2A14);
+          canvas.drawRRect(
+            RRect.fromRectAndRadius(
+              Rect.fromLTWH(-7, -3, 14, 6),
+              const Radius.circular(0.5),
+            ),
+            wrapPaint,
+          );
+          // Crimped ends
+          final crimpPaint = Paint()..color = const Color(0xFF3A1E0C);
+          // Left crimp
+          final leftCrimp = Path()
+            ..moveTo(-7, -3)
+            ..lineTo(-9, -2)
+            ..lineTo(-9, 2)
+            ..lineTo(-7, 3);
+          canvas.drawPath(leftCrimp, crimpPaint);
+          // Crimp ridges left
+          final ridgePaint = Paint()
+            ..color = const Color(0xFF5A3A24)
+            ..strokeWidth = 0.4
+            ..style = PaintingStyle.stroke;
+          for (double y = -1.5; y <= 1.5; y += 0.8) {
+            canvas.drawLine(Offset(-9, y), Offset(-7, y), ridgePaint);
+          }
+          // Right crimp
+          final rightCrimp = Path()
+            ..moveTo(7, -3)
+            ..lineTo(9, -2)
+            ..lineTo(9, 2)
+            ..lineTo(7, 3);
+          canvas.drawPath(rightCrimp, crimpPaint);
+          for (double y = -1.5; y <= 1.5; y += 0.8) {
+            canvas.drawLine(Offset(7, y), Offset(9, y), ridgePaint);
+          }
+          // Label area — white rectangle with red border
+          canvas.drawRRect(
+            RRect.fromRectAndRadius(
+              Rect.fromLTWH(-5, -2, 10, 4),
+              const Radius.circular(0.8),
+            ),
+            Paint()..color = const Color(0xFFCC3322),
+          );
+          canvas.drawRRect(
+            RRect.fromRectAndRadius(
+              Rect.fromLTWH(-4.2, -1.4, 8.4, 2.8),
+              const Radius.circular(0.5),
+            ),
+            Paint()..color = const Color(0xFFEEDDCC),
+          );
+          // Blue text squiggle
+          final labelPaint = Paint()
+            ..color = const Color(0xFF1A237E)
+            ..strokeWidth = 0.8
+            ..style = PaintingStyle.stroke
+            ..strokeCap = StrokeCap.round;
+          final labelPath = Path()
+            ..moveTo(-3.5, 0.3)
+            ..cubicTo(-2, -1, 0, -1, 1, 0)
+            ..cubicTo(2, 0.8, 3, 0.2, 3.8, -0.2);
+          canvas.drawPath(labelPath, labelPaint);
+          break;
+
+        case _DebrisType.coffeeCup:
+          // Anthora-style NYC coffee cup (top-down: slightly tapered circle)
+          const blue = Color(0xFF2B4C7E);
+          // Cup body — blue
+          canvas.drawOval(
+            Rect.fromLTWH(-4, -5, 8, 10),
+            Paint()..color = blue,
+          );
+          // White rim at top (thin lip)
+          canvas.drawOval(
+            Rect.fromLTWH(-4.3, -5.3, 8.6, 1.4),
+            Paint()..color = const Color(0xFFEEEEEE),
+          );
+          // Greek key border band — top (white stripe)
+          final keyPaint = Paint()
+            ..color = const Color(0xDDFFFFFF)
+            ..strokeWidth = 0.6
+            ..style = PaintingStyle.stroke;
+          canvas.drawLine(const Offset(-3.5, -3), const Offset(3.5, -3), keyPaint);
+          canvas.drawLine(const Offset(-3.5, -2), const Offset(3.5, -2), keyPaint);
+          // Small key pattern ticks
+          for (double x = -3; x <= 3; x += 1.5) {
+            canvas.drawLine(Offset(x, -3), Offset(x, -2), keyPaint);
+            canvas.drawLine(Offset(x + 0.75, -2.8), Offset(x + 0.75, -2.2), keyPaint);
+          }
+          // Greek key border band — bottom
+          canvas.drawLine(const Offset(-3, 3.5), const Offset(3, 3.5), keyPaint);
+          canvas.drawLine(const Offset(-3, 4.3), const Offset(3, 4.3), keyPaint);
+          for (double x = -2.5; x <= 2.5; x += 1.5) {
+            canvas.drawLine(Offset(x, 3.5), Offset(x, 4.3), keyPaint);
+            canvas.drawLine(Offset(x + 0.75, 3.7), Offset(x + 0.75, 4.1), keyPaint);
+          }
+          // White label shield in center
+          final shieldPath = Path()
+            ..moveTo(-3, -1.2)
+            ..lineTo(3, -1.2)
+            ..lineTo(3, 2.5)
+            ..cubicTo(2, 3.2, -2, 3.2, -3, 2.5)
+            ..close();
+          canvas.drawPath(shieldPath, Paint()..color = const Color(0xEEFFFFFF));
+          // Small coffee cup icon (orange)
+          final cupIconPaint = Paint()..color = const Color(0xFFCC6622);
+          canvas.drawRect(Rect.fromLTWH(-1.2, 1, 2.4, 1.2), cupIconPaint);
+          // Steam wisps
+          final steamPaint = Paint()
+            ..color = const Color(0xFFCC6622)
+            ..strokeWidth = 0.4
+            ..style = PaintingStyle.stroke;
+          final steam1 = Path()
+            ..moveTo(-0.5, 1)
+            ..cubicTo(-0.7, 0.2, -0.3, -0.2, -0.5, -0.8);
+          final steam2 = Path()
+            ..moveTo(0.5, 1)
+            ..cubicTo(0.7, 0.2, 0.3, -0.2, 0.5, -0.8);
+          canvas.drawPath(steam1, steamPaint);
+          canvas.drawPath(steam2, steamPaint);
+          break;
+
+        case _DebrisType.cocaColaCan:
+          // Crushed soda can seen from above — oval shape
+          const red = Color(0xFFD12020);
+          // Can body — red
+          canvas.drawOval(
+            Rect.fromLTWH(-5, -3, 10, 6),
+            Paint()..color = red,
+          );
+          // Silver rim — top
+          canvas.drawOval(
+            Rect.fromLTWH(-5.2, -3.2, 10.4, 0.9),
+            Paint()..color = const Color(0xFFBBBBBB),
+          );
+          // Silver rim — bottom
+          canvas.drawOval(
+            Rect.fromLTWH(-5.2, 2.3, 10.4, 0.9),
+            Paint()..color = const Color(0xFFAAAAAA),
+          );
+          // White wave stripe across center
+          final wavePaint = Paint()
+            ..color = const Color(0xEEFFFFFF)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 1.2
+            ..strokeCap = StrokeCap.round;
+          final wavePath = Path()
+            ..moveTo(-4, 0.5)
+            ..cubicTo(-2, -1.5, 0, 1.5, 2, -0.5)
+            ..cubicTo(3, -1.2, 3.5, -0.2, 4, 0);
+          canvas.drawPath(wavePath, wavePaint);
+          // Pull tab on top
+          canvas.drawOval(
+            Rect.fromLTWH(-1, -2.8, 2, 1.2),
+            Paint()..color = const Color(0xFF999999),
+          );
           break;
       }
 
@@ -636,20 +1170,20 @@ class MapComponent {
       canvas.save();
       canvas.translate(px, py);
       canvas.rotate(rat.heading + trackAngle);
-      canvas.scale(1.8);
+      canvas.scale(2.3);
 
       // Body
-      final bodyPaint = Paint()..color = const Color(0xFF4A4040);
+      final bodyPaint = Paint()..color = const Color(0xFF5A3E2E);
       canvas.drawOval(Rect.fromLTWH(-4, -2.5, 8, 5), bodyPaint);
       // Head
       canvas.drawOval(Rect.fromLTWH(3, -1.5, 4, 3), bodyPaint);
       // Ears
-      final earPaint = Paint()..color = const Color(0xFF5A5050);
+      final earPaint = Paint()..color = const Color(0xFF6B4F3E);
       canvas.drawCircle(const Offset(5.5, -2), 1.2, earPaint);
       canvas.drawCircle(const Offset(5.5, 2), 1.2, earPaint);
       // Tail
       final tailPaint = Paint()
-        ..color = const Color(0xFF6A5A5A)
+        ..color = const Color(0xFF7A6050)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 0.8
         ..strokeCap = StrokeCap.round;
@@ -668,7 +1202,7 @@ class MapComponent {
 
 // ── Debris ───────────────────────────────────────────────────────────────────
 
-enum _DebrisType { groceryBag, sodaCup }
+enum _DebrisType { groceryBag, sodaCup, candyBar, coffeeCup, cocaColaCan }
 
 class _Debris {
   final double trackT;

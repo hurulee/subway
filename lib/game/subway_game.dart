@@ -174,7 +174,10 @@ class SubwayGame extends FlameGame {
       final track = nextIsLocal ? TrackType.local : TrackType.express;
       nextIsLocal = !nextIsLocal;
       segmentTrack[seg] = track;
-      result.add(Obstacle(trackPosition: pos, track: track));
+      final rng = Random();
+      final type = ObstacleType.values[rng.nextInt(ObstacleType.values.length)];
+      final rotation = rng.nextDouble() * pi * 2;
+      result.add(Obstacle(trackPosition: pos, track: track, type: type, rotation: rotation));
     }
 
     return result;

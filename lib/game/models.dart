@@ -90,10 +90,14 @@ class BoardingAnim {
   static double _ease(double t) => t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) * (-2 * t + 2) / 2;
 }
 
+enum ObstacleType { barricade, flooding, fire, citiBike, shoppingCart }
+
 class Obstacle {
   final double trackPosition;
   final TrackType track;
-  const Obstacle({required this.trackPosition, required this.track});
+  final ObstacleType type;
+  final double rotation;
+  const Obstacle({required this.trackPosition, required this.track, this.type = ObstacleType.barricade, this.rotation = 0.0});
 }
 
 class Bend {
